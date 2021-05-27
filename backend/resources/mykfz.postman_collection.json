@@ -1,0 +1,139 @@
+{
+	"info": {
+		"_postman_id": "cad71900-bd1b-42d7-a656-daa467ac8916",
+		"name": "mykfz",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get All Vehicles",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/vehicles",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"vehicles"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Vehicles By Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Vehicle",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwYWU2M2YwODY3ZTYyYWMxYWYyNzE5NiIsInVzZXJuYW1lIjoiamFuaWsiLCJpYXQiOjE2MjIwNDE1ODQsImV4cCI6MTYyMjEyNzk4NH0.e-J0eJint6VmOLFf0PdlLtho-GiCHS-I8wUQnbh7vRo",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"vin\": \"vin123\",\n    \"license_plate\": \"M - MD 1000\",\n    \"owner\": \"60ae63f0867e62ac1af27196\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/vehicles",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"vehicles"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Vehicle",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwYWU2M2YwODY3ZTYyYWMxYWYyNzE5NiIsInVzZXJuYW1lIjoiamFuaWsiLCJpYXQiOjE2MjIwNDE1ODQsImV4cCI6MTYyMjEyNzk4NH0.e-J0eJint6VmOLFf0PdlLtho-GiCHS-I8wUQnbh7vRo"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"license_plate\": \"M - MD 1000\",\n    \"owner\": \"Daniel\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/vehicles/60ae5431b7ae3d973818ba70",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"vehicles",
+						"60ae5431b7ae3d973818ba70"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"daniel123\",\n    \"password\": \"daniel123\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/auth/register",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"auth",
+						"register"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
