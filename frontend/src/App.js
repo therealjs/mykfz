@@ -15,6 +15,7 @@ import { UserLoginView } from "./views/UserLoginView";
 import { UserSignupView } from "./views/UserSignupView";
 
 import UserService from "./services/UserService";
+import { VehicleListView } from "./views/VehicleListView";
 
 export default class App extends React.Component {
   constructor(props) {
@@ -23,7 +24,7 @@ export default class App extends React.Component {
     this.state = {
       title: "MyKfz",
       routes: [
-        { component: MovieListView, path: "/", exact: true },
+        { component: VehicleListView, path: "/", exact: true },
         { component: MovieDetailView, path: "/show/:id" },
         {
           render: (props) => {
