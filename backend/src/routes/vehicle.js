@@ -8,12 +8,25 @@ const VehicleController = require("../controllers/vehicle");
 
 router.get("/", VehicleController.list); // List all vehicles
 router.post("/", middlewares.checkAuthentication, VehicleController.create); // Create a new vehicle
-router.get("/:id", VehicleController.read); // Read a vehicle by Id
-router.put("/:id", middlewares.checkAuthentication, VehicleController.update); // Update a vehicle by Id
+router.get("/:vehicleId", VehicleController.read); // Read a vehicle by Id
+router.put(
+  "/:vehicleId",
+  middlewares.checkAuthentication,
+  VehicleController.update
+); // Update a vehicle by Id
 router.delete(
-  "/:id",
+  "/:vehicleId",
   middlewares.checkAuthentication,
   VehicleController.remove
 ); // Delete a vehicle by Id
+
+// process related
+router.get("/:vehicleId/processes/", VehicleController.listProcesses); // List all processes of the vehicle
+router.post(
+  "/:vehicleId/processes",
+  // middlewares.checkAuthentication,
+  VehicleController.createProcess
+); // Create a new process for specified vehicle
+router.get("/:vehicleId/processes/:processId", VehicleController.readProcess); // Read a specific process by vehicleId and processId
 
 module.exports = router;

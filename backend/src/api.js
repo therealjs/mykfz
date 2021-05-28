@@ -8,6 +8,7 @@ const middlewares = require("./middlewares");
 
 const auth = require("./routes/auth");
 const vehicle = require("./routes/vehicle");
+const process = require("./routes/vehicle");
 
 const api = express();
 
