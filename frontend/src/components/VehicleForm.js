@@ -1,11 +1,19 @@
 "use strict";
 
 import React from "react";
-import { Card, Button, FontIcon, TextField } from "react-md";
+import {
+  Card,
+  Button,
+  FontIcon,
+  TextField,
+  NativeSelect,
+  DatePicker,
+} from "react-md";
 import { withRouter } from "react-router-dom";
 
 import { AlertMessage } from "./AlertMessage";
 import Page from "./Page";
+import UserService from "../services/UserService";
 
 const style = { maxWidth: 500 };
 
@@ -15,42 +23,51 @@ class VehicleForm extends React.Component {
 
     if (this.props.vehicle != undefined) {
       this.state = {
+        owner: UserService.isAuthenticated()
+          ? UserService.getCurrentUser().id
+          : undefined,
         vin: props.vehicle.vin,
-        licensePlate: props.vehicle.year,
-        rating: props.vehicle.mpaa_rating,
-        synopsis: props.vehicle.synopsis,
+        licensePlate: props.vehicle.licensePlate,
+        state: props.vehicle.state,
+        generalInspection: props.vehicle.generalInspection,
+        processes: props.vehicle.processes,
       };
     } else {
       this.state = {
+        owner: UserService.isAuthenticated()
+          ? UserService.getCurrentUser().id
+          : undefined,
         vin: "",
-        year: "",
-        rating: "",
-        synopsis: "",
+        licensePlate: "",
+        state: "",
+        generalInspection: "",
+        processes: [],
       };
     }
 
-    this.handleChangeTitle = this.handleChangeTitle.bind(this);
-    this.handleChangeYear = this.handleChangeYear.bind(this);
-    this.handleChangeRating = this.handleChangeRating.bind(this);
-    this.handleChangeSynopsis = this.handleChangeSynopsis.bind(this);
+    this.handleChangeVIN = this.handleChangeVIN.bind(this);
+    this.handleChangeLicensePlate = this.handleChangeLicensePlate.bind(this);
+    this.handleChangeState = this.handleChangeState.bind(this);
+    this.handleChangeGeneralInspection =
+      this.handleChangeGeneralInspection.bind(this);
 
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleChangeTitle(value) {
-    this.setState(Object.assign({}, this.state, { title: value }));
+  handleChangeVIN(value) {
+    this.setState(Object.assign({}, this.state, { vin: value }));
   }
 
-  handleChangeYear(value) {
-    this.setState(Object.assign({}, this.state, { year: value }));
+  handleChangeLicensePlate(value) {
+    this.setState(Object.assign({}, this.state, { licensePlate: value }));
   }
 
-  handleChangeRating(value) {
-    this.setState(Object.assign({}, this.state, { rating: value }));
+  handleChangeState(value) {
+    this.setState(Object.assign({}, this.state, { state: value }));
   }
 
-  handleChangeSynopsis(value) {
-    this.setState(Object.assign({}, this.state, { synopsis: value }));
+  handleChangeGeneralInspection(value) {
+    this.setState(Object.assign({}, this.state, { generalInspection: value }));
   }
 
   handleSubmit(event) {
@@ -61,10 +78,11 @@ class VehicleForm extends React.Component {
       vehicle = {};
     }
 
-    vehicle.title = this.state.title;
-    vehicle.mpaa_rating = this.state.rating;
-    vehicle.year = this.state.year;
-    vehicle.synopsis = this.state.synopsis;
+    vehicle.owner = this.state.owner;
+    vehicle.vin = this.state.vin;
+    vehicle.licensePlate = this.state.licensePlate;
+    vehicle.state = this.state.state;
+    vehicle.generalInspection = this.state.generalInspection;
 
     this.props.onSubmit(vehicle);
   }
@@ -79,58 +97,64 @@ class VehicleForm extends React.Component {
             onReset={() => this.props.history.goBack()}
           >
             <TextField
+              label="Owner"
+              id="OwnerField"
+              type="text"
+              disabled={true}
+              value={this.state.owner}
+            />
+            <TextField
               label="VIN"
               id="VINField"
               type="text"
               className="md-row"
               required={true}
               value={this.state.vin}
-              onChange={this.handleChangeTitle}
-              errorText="Title is required"
+              onChange={this.handleChangeVIN}
+              errorText="VIN is required"
             />
             <TextField
-              label="Year"
-              id="YearField"
-              type="number"
+              label="LicensePlate"
+              id="LicensePlateField"
+              type="text"
               className="md-row"
               required={true}
-              value={this.state.year}
-              onChange={this.handleChangeYear}
-              errorText="Year is required"
-              maxLength={4}
+              value={this.state.licensePlate}
+              onChange={this.handleChangeLicensePlate}
+              errorText="LicensePlate is required"
+              maxLength={12}
             />
             <TextField
-              label="Rating"
-              id="RatingField"
+              label="State"
+              id="StateField"
               type="text"
               className="md-row"
               required={false}
-              value={this.state.rating}
-              onChange={this.handleChangeRating}
+              value={this.state.state}
+              onChange={this.handleChangeState}
             />
             <TextField
-              label="Synopsis"
-              id="SynopsisField"
-              type="text"
+              label="GeneralInspection"
+              id="GeneralInspectionField"
+              type="date"
               className="md-row"
-              rows={5}
-              required={true}
-              value={this.state.synopsis}
-              onChange={this.handleChangeSynopsis}
-              errorText="Synopsis is required"
+              required={false}
+              value={this.state.generalInspection}
+              onChange={this.handleChangeGeneralInspection}
+              errorText="GeneralInspection is required"
             />
 
             <Button
               id="submit"
               type="submit"
               disabled={
-                this.state.year.toString().length != 4 ||
-                this.state.title == undefined ||
-                this.state.title == "" ||
-                this.state.year == undefined ||
-                this.state.year == "" ||
-                this.state.synopsis == undefined ||
-                this.state.synopsis == ""
+                // this.state.licensePlate.toString().length != 4 ||
+                this.state.vin == undefined ||
+                this.state.vin == "" ||
+                this.state.licensePlate == undefined ||
+                this.state.licensePlate == "" ||
+                this.state.generalInspection == undefined ||
+                this.state.generalInspection == ""
               }
               raised
               primary
