@@ -28,7 +28,7 @@ export class VehicleListRow extends React.Component {
         </TableColumn>
         <TableColumn>
           <SimpleLink to={`/show/${this.props.vehicle._id}`}>
-            {this.props.vehicle.license_plate}
+            {this.props.vehicle.licensePlate}
           </SimpleLink>
         </TableColumn>
         {UserService.isAuthenticated() ? (
