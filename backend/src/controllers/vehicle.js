@@ -88,13 +88,16 @@ const list = async (req, res) => {
 
     let owner = req.query.owner; // query parameter called owner, e.g., .../vehicles?owner=1234
 
-    if (owner && owner.match(/^[0-9a-fA-F]{24}$/)) {
-      // owner is defined and a valid ObjectId
-      console.log(`querying for vehicles of owner ${owner}`);
-      filter = { owner: owner };
-    } else {
-      console.log("querying for all vehicles");
-      // TODO throw 400 if owner is invalid
+    if (owner) {
+      if (!owner.match(/^[0-9a-fA-F]{24}$/)) {
+        return res.status(400).json({
+          error: "Bad Request",
+          message: `Owner ${owner} is not a valid ObjectId`,
+        });
+      } else {
+        console.log(`querying for vehicles of owner ${owner}`);
+        filter = { owner: owner };
+      }
     }
 
     let vehicles = await VehicleModel.find(filter).exec();
