@@ -82,8 +82,7 @@ const register = async (req,res) => {
 
 const me = async (req, res) => {
     try {
-        let user = await UserModel.findById(req.userId).select('username').exec();
-
+        let user = await UserModel.findById(req.userId).exec();
         if (!user) return res.status(404).json({
             error: 'Not Found',
             message: `User not found`

@@ -9,11 +9,16 @@ export default class UserService {
 
     static baseURL() {return 'http://localhost:3000/auth'; }
 
-    static register(user, pass) {
+    static register(user) {
         return new Promise((resolve, reject) => {
             HttpService.post(`${UserService.baseURL()}/register`, {
-                username: user,
-                password: pass
+                username: user.username,
+                password: user.password,
+                firstName: user.firstName,
+                lastName: user.lastName,
+                address: user.address,
+                identityDocument: user.identityDocument
+
             }, function(data) {
                 resolve(data);
             }, function(textStatus) {
@@ -49,6 +54,17 @@ export default class UserService {
             id : JSON.parse(window.atob(base64)).id,
             username: JSON.parse(window.atob(base64)).username
         };
+    }
+
+    static getUserDetails() {
+        return new Promise((resolve, reject) => {
+            HttpService.get(`${UserService.baseURL()}/me`,
+            function (data) {
+                resolve(data);
+            }, function(textStatus) {
+                reject(textStatus);
+            });
+        });
     }
 
     static isAuthenticated() {

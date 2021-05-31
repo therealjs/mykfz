@@ -75,7 +75,7 @@ export class VehicleDetail extends React.Component {
 
           <CardText>
             <p>some info here maybe?</p>
-            <p>the owner of this vehicle is {this.props.vehicle.owner}</p>
+            <p>the owner of this vehicle is {this.props.owner.firstName + ' ' + this.props.owner.lastName}</p>
           </CardText>
         </Card>
       </Page>
