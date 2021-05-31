@@ -46,6 +46,32 @@ export class VehicleListRow extends React.Component {
         )}
         {UserService.isAuthenticated() ? (
           <TableColumn>
+            <Link to={`/vehicle/${this.props.vehicle._id}`}>
+              <FontIcon>add</FontIcon>
+            </Link>
+          </TableColumn>
+        ) : (
+          <TableColumn>
+            <Link to={"/login"}>
+              <FontIcon>add</FontIcon>
+            </Link>
+          </TableColumn>
+        )}
+        {UserService.isAuthenticated() ? (
+          <TableColumn>
+            <Link to={`/edit/${this.props.vehicle._id}`}>
+              <FontIcon>remove</FontIcon>
+            </Link>
+          </TableColumn>
+        ) : (
+          <TableColumn>
+            <Link to={"/login"}>
+              <FontIcon>remove</FontIcon>
+            </Link>
+          </TableColumn>
+        )}
+        {UserService.isAuthenticated() ? (
+          <TableColumn>
             <Button
               onClick={() => this.props.onDelete(this.props.vehicle._id)}
               icon
