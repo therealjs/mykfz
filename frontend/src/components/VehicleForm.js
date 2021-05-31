@@ -114,7 +114,7 @@ class VehicleForm extends React.Component {
               errorText="VIN is required"
             />
             <TextField
-              label="LicensePlate"
+              label="License Plate"
               id="LicensePlateField"
               type="text"
               className="md-row"
@@ -134,7 +134,7 @@ class VehicleForm extends React.Component {
               onChange={this.handleChangeState}
             />
             <TextField
-              label="GeneralInspection"
+              label="General Inspection"
               id="GeneralInspectionField"
               type="date"
               className="md-row"

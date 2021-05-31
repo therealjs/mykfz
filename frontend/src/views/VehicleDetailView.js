@@ -3,6 +3,7 @@
 import React from "react";
 
 import { VehicleDetail } from "../components/VehicleDetail";
+import UserService from "../services/UserService";
 
 import VehicleService from "../services/VehicleService";
 
@@ -21,9 +22,11 @@ export class VehicleDetailView extends React.Component {
     (async () => {
       try {
         let vehicle = await VehicleService.getVehicle(id);
+        let owner = await UserService.getUserDetails();
         this.setState({
           vehicle: vehicle,
           loading: false,
+          owner: owner
         });
       } catch (err) {
         console.error(err);
@@ -57,6 +60,7 @@ export class VehicleDetailView extends React.Component {
     return (
       <VehicleDetail
         vehicle={this.state.vehicle}
+        owner={this.state.owner}
         onDelete={(id) => this.deleteVehicle(id)}
       />
     );
