@@ -15,6 +15,7 @@ import { UserSignupView } from "./views/UserSignupView";
 import { VehicleListView } from "./views/VehicleListView";
 import { VehicleDetailView } from "./views/VehicleDetailView";
 import { VehicleRegisterView } from "./views/VehicleRegisterView";
+import { VehicleDeregisterView } from "./views/VehicleDeregisterView";
 import { VehicleFormView } from "./views/VehicleFormView";
 
 export default class App extends React.Component {
@@ -38,6 +39,7 @@ export default class App extends React.Component {
         },
         { component: VehicleDetailView, path: "/show/:id" },
         { component: VehicleRegisterView, path: "/register/:id"},
+        { component: VehicleDeregisterView, path: "/deregister/:id"},
         {
           render: (props) => {
             if (UserService.isAuthenticated()) {
