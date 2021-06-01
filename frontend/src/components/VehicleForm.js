@@ -4,10 +4,7 @@ import React from "react";
 import {
   Card,
   Button,
-  FontIcon,
   TextField,
-  NativeSelect,
-  DatePicker,
 } from "react-md";
 import { withRouter } from "react-router-dom";
 
@@ -104,7 +101,7 @@ class VehicleForm extends React.Component {
               value={this.state.owner}
             />
             <TextField
-              label="VIN"
+              label="VIN (17)"
               id="VINField"
               type="text"
               className="md-row"
@@ -118,7 +115,6 @@ class VehicleForm extends React.Component {
               id="LicensePlateField"
               type="text"
               className="md-row"
-              required={true}
               value={this.state.licensePlate}
               onChange={this.handleChangeLicensePlate}
               errorText="LicensePlate is required"
@@ -129,7 +125,6 @@ class VehicleForm extends React.Component {
               id="StateField"
               type="text"
               className="md-row"
-              required={false}
               value={this.state.state}
               onChange={this.handleChangeState}
             />
@@ -138,7 +133,6 @@ class VehicleForm extends React.Component {
               id="GeneralInspectionField"
               type="date"
               className="md-row"
-              required={false}
               value={this.state.generalInspection}
               onChange={this.handleChangeGeneralInspection}
               errorText="GeneralInspection is required"
@@ -148,13 +142,7 @@ class VehicleForm extends React.Component {
               id="submit"
               type="submit"
               disabled={
-                // this.state.licensePlate.toString().length != 4 ||
-                this.state.vin == undefined ||
-                this.state.vin == "" ||
-                this.state.licensePlate == undefined ||
-                this.state.licensePlate == "" ||
-                this.state.generalInspection == undefined ||
-                this.state.generalInspection == ""
+                this.state.vin.toString().length != 17
               }
               raised
               primary
