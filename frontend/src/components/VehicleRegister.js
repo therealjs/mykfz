@@ -4,10 +4,7 @@ import React from "react";
 import {
   Card,
   Button,
-  FontIcon,
   TextField,
-  NativeSelect,
-  DatePicker,
 } from "react-md";
 import { withRouter } from "react-router-dom";
 
@@ -17,7 +14,7 @@ import UserService from "../services/UserService";
 
 const style = { maxWidth: 500 };
 
-class RegisterVehicleForm extends React.Component {
+class VehicleRegister extends React.Component {
   constructor(props) {
     super(props);
       this.state = {
@@ -30,10 +27,11 @@ class RegisterVehicleForm extends React.Component {
         secCodeII: ""
     };
     
-
     this.handleChangeVIN = this.handleChangeVIN.bind(this);
     this.handleChangeLicensePlate = this.handleChangeLicensePlate.bind(this);
-    this.handleChangeState = this.handleChangeState.bind(this);
+    this.handleChangeEVB = this.handleChangeEVB.bind(this);
+    this.handleChangeIBAN = this.handleChangeIBAN.bind(this);
+    this.handleChangeSecCodeII = this.handleChangeSecCodeII.bind(this);
     this.handleChangeGeneralInspection =
       this.handleChangeGeneralInspection.bind(this);
 
@@ -48,8 +46,16 @@ class RegisterVehicleForm extends React.Component {
     this.setState(Object.assign({}, this.state, { licensePlate: value }));
   }
 
-  handleChangeState(value) {
-    this.setState(Object.assign({}, this.state, { state: value }));
+  handleChangeEVB(value) {
+    this.setState(Object.assign({}, this.state, { evb: value }));
+  }
+
+  handleChangeIBAN(value) {
+    this.setState(Object.assign({}, this.state, { iban: value }));
+  }
+
+  handleChangeSecCodeII(value) {
+    this.setState(Object.assign({}, this.state, { secCodeII: value }));
   }
 
   handleChangeGeneralInspection(value) {
@@ -60,15 +66,20 @@ class RegisterVehicleForm extends React.Component {
     event.preventDefault();
 
     let vehicle = this.props.vehicle;
-    if (vehicle == undefined) {
-      vehicle = {};
-    }
 
-    vehicle.owner = this.state.owner;
-    vehicle.vin = this.state.vin;
     vehicle.licensePlate = this.state.licensePlate;
-    vehicle.state = this.state.state;
+    vehicle.state = "REGISTERED";
     vehicle.generalInspection = this.state.generalInspection;
+    vehicle.processes.push({
+      processType: "REGISTRATION",
+      date: "2020-05-30",
+      state: "NEW",
+      info: {
+        eVB: this.state.evb,
+        secCodeII: this.state.secCodeII,
+        iban: this.state.iban
+      }
+    })
 
     this.props.onSubmit(vehicle);
   }
@@ -77,6 +88,7 @@ class RegisterVehicleForm extends React.Component {
     return (
       <Page>
         <Card style={style} className="md-block-centered">
+          Register Vehicle
           <form
             className="md-grid"
             onSubmit={this.handleSubmit}
@@ -98,13 +110,12 @@ class RegisterVehicleForm extends React.Component {
               id="VINField"
               type="text"
               className="md-row"
+              disabled={true}
               required={true}
               value={this.state.vin}
-              onChange={this.handleChangeVIN}
-              errorText="VIN is required"
                     />
             <TextField
-              label="eVB"
+              label="eVB (7)"
               id="eVBField"
               type="text"
               className="md-row"
@@ -112,19 +123,21 @@ class RegisterVehicleForm extends React.Component {
               value={this.state.evb}
               onChange={this.handleChangeEVB}
               errorText="eVB is required"
+              maxLength={7}
                     />
             <TextField
-              label="Security Code II"
+              label="Security Code II (12)"
               id="SecCodeIIField"
               type="text"
               className="md-row"
               required={true}
               value={this.state.secCodeII}
               onChange={this.handleChangeSecCodeII}
+              maxLength={12}
               errorText="Security Code II is required"
                     />
             <TextField
-              label="IBAN"
+              label="IBAN (22)"
               id="IBANField"
               type="text"
               className="md-row"
@@ -132,6 +145,7 @@ class RegisterVehicleForm extends React.Component {
               value={this.state.iban}
               onChange={this.handleChangeIBAN}
               errorText="IBAN is required"
+              maxLength={22}
             />
             <TextField
               label="Date of General Inspection"
@@ -149,18 +163,15 @@ class RegisterVehicleForm extends React.Component {
               type="submit"
               disabled={
                 // this.state.licensePlate.toString().length != 4 ||
-                this.state.vin == undefined ||
-                this.state.vin == "" ||
-                this.state.licensePlate == undefined ||
-                this.state.licensePlate == "" ||
-                this.state.generalInspection == undefined ||
-                this.state.generalInspection == ""
+                this.state.evb.toString().length != 7,
+                this.state.secCodeII.toString().length != 12,
+                this.state.iban.toString().length != 22
               }
               raised
               primary
               className="md-cell md-cell--2"
             >
-              Save
+              Register
             </Button>
             <Button
               id="reset"
@@ -181,4 +192,4 @@ class RegisterVehicleForm extends React.Component {
   }
 }
 
-export default withRouter(RegisterVehicleForm);
+export default withRouter(VehicleRegister);

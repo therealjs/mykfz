@@ -25,9 +25,8 @@ export const VehicleList = ({ data, onDelete }) => (
           <TableColumn></TableColumn>
           <TableColumn>VIN</TableColumn>
           <TableColumn>License Plate</TableColumn>
+          <TableColumn>Start Process</TableColumn>
           <TableColumn>Edit</TableColumn>
-          <TableColumn>Register</TableColumn>
-          <TableColumn>Deregister</TableColumn>
           <TableColumn>Remove</TableColumn>
         </TableRow>
       </TableHeader>
