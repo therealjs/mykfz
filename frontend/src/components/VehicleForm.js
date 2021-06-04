@@ -1,16 +1,13 @@
 "use strict";
 
 import React from "react";
-import {
-  Card,
-  Button,
-  TextField,
-} from "react-md";
+import { Card, Button, TextField } from "react-md";
 import { withRouter } from "react-router-dom";
 
 import { AlertMessage } from "./AlertMessage";
 import Page from "./Page";
 import UserService from "../services/UserService";
+import VINService from "../services/VINService";
 
 const style = { maxWidth: 500 };
 
@@ -51,8 +48,15 @@ class VehicleForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleChangeVIN(value) {
-    this.setState(Object.assign({}, this.state, { vin: value }));
+  async handleChangeVIN(value) {
+    let vin = value;
+    this.setState(Object.assign({}, this.state, { vin: vin }));
+    console.log(`vin is ${vin}`);
+    if (vin.length == 17) {
+      let result = await VINService.getVehicleInfo(vin);
+      console.log(result);
+      console.log(result.Make);
+    }
   }
 
   handleChangeLicensePlate(value) {
@@ -141,9 +145,7 @@ class VehicleForm extends React.Component {
             <Button
               id="submit"
               type="submit"
-              disabled={
-                this.state.vin.toString().length != 17
-              }
+              disabled={this.state.vin.toString().length != 17}
               raised
               primary
               className="md-cell md-cell--2"
