@@ -6,15 +6,30 @@ export default class VehicleService {
   constructor() {}
 
   static baseURL() {
-    return "https://vpic.nhtsa.dot.gov/api/vehicles/decodevinextended";
+    return "https://vpic.nhtsa.dot.gov/api/vehicles";
+  }
+
+  static getAllMakes() {
+    return new Promise((resolve, reject) => {
+      HttpService.get(
+        `${this.baseURL()}/GetAllMakes?format=json`,
+        function (data) {
+          const makesList = VehicleService.parseMakesData(data);
+          resolve(makesList);
+        },
+        function (textStatus) {
+          reject(textStatus);
+        }
+      );
+    });
   }
 
   static getVehicleInfo(vin) {
     return new Promise((resolve, reject) => {
       HttpService.get(
-        `${this.baseURL()}/${vin}?format=json`,
+        `${this.baseURL()}/decodevinextended/${vin}?format=json`,
         function (data) {
-          const vehicleInfo = VehicleService.parseRawData(data);
+          const vehicleInfo = VehicleService.parseVehicleData(data);
           resolve(vehicleInfo);
         },
         function (textStatus) {
@@ -25,7 +40,7 @@ export default class VehicleService {
   }
 
   // parse raw data returned by gov API into a more structured JSON Object
-  static parseRawData(rawData) {
+  static parseVehicleData(rawData) {
     let vehicle = {};
     for (const property in rawData.Results) {
       const field = rawData.Results[property];
@@ -34,5 +49,15 @@ export default class VehicleService {
       vehicle[key] = val;
     }
     return vehicle;
+  }
+
+  static parseMakesData(rawData) {
+    let makes = [];
+    for (const property in rawData.Results) {
+      const field = rawData.Results[property];
+      const makeName = field.Make_Name;
+      makes.push(makeName);
+    }
+    return makes;
   }
 }
