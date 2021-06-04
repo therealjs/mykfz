@@ -14,6 +14,14 @@ const VehicleSchema = new mongoose.Schema({
     required: true,
     dropDups: true,
   },
+  make: {
+    type: String,
+    required: false,
+  },
+  model: {
+    type: String,
+    required: false,
+  },
   licensePlate: {
     type: String,
   },

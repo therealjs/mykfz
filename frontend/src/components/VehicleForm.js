@@ -1,16 +1,15 @@
 "use strict";
 
 import React from "react";
-import {
-  Card,
-  Button,
-  TextField,
-} from "react-md";
+import { Card, Button, TextField } from "react-md";
+// import Button from "@material-ui/core/Button";
+import { Select, NativeSelect, MenuItem } from "@material-ui/core";
 import { withRouter } from "react-router-dom";
 
 import { AlertMessage } from "./AlertMessage";
 import Page from "./Page";
 import UserService from "../services/UserService";
+import VINService from "../services/VINService";
 
 const style = { maxWidth: 500 };
 
@@ -24,6 +23,8 @@ class VehicleForm extends React.Component {
           ? UserService.getCurrentUser().id
           : undefined,
         vin: props.vehicle.vin,
+        make: props.vehicle.make,
+        model: props.vehicle.model,
         licensePlate: props.vehicle.licensePlate,
         state: props.vehicle.state,
         generalInspection: props.vehicle.generalInspection,
@@ -35,6 +36,8 @@ class VehicleForm extends React.Component {
           ? UserService.getCurrentUser().id
           : undefined,
         vin: "",
+        make: "",
+        model: "",
         licensePlate: "",
         state: "",
         generalInspection: "",
@@ -43,6 +46,8 @@ class VehicleForm extends React.Component {
     }
 
     this.handleChangeVIN = this.handleChangeVIN.bind(this);
+    this.handleChangeMake = this.handleChangeMake.bind(this);
+    this.handleChangeModel = this.handleChangeModel.bind(this);
     this.handleChangeLicensePlate = this.handleChangeLicensePlate.bind(this);
     this.handleChangeState = this.handleChangeState.bind(this);
     this.handleChangeGeneralInspection =
@@ -51,20 +56,42 @@ class VehicleForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleChangeVIN(value) {
-    this.setState(Object.assign({}, this.state, { vin: value }));
+  async handleChangeVIN(value) {
+    const vin = value;
+    this.setState({ vin: vin });
+    console.log(`vin is ${vin}`);
+    if (vin.length == 17) {
+      const result = await VINService.getVehicleInfo(vin);
+      const make = result.Make;
+      const model = result.Model;
+      console.log(`make is ${make}, model is ${model}`);
+      if (make) {
+        this.handleChangeMake(make);
+      }
+      if (model) {
+        this.handleChangeModel(model);
+      }
+    }
+  }
+
+  handleChangeMake(value) {
+    this.setState({ make: value });
+  }
+
+  handleChangeModel(value) {
+    this.setState({ model: value });
   }
 
   handleChangeLicensePlate(value) {
-    this.setState(Object.assign({}, this.state, { licensePlate: value }));
+    this.setState({ licensePlate: value });
   }
 
   handleChangeState(value) {
-    this.setState(Object.assign({}, this.state, { state: value }));
+    this.setState({ state: value });
   }
 
   handleChangeGeneralInspection(value) {
-    this.setState(Object.assign({}, this.state, { generalInspection: value }));
+    this.setState({ generalInspection: value });
   }
 
   handleSubmit(event) {
@@ -77,6 +104,8 @@ class VehicleForm extends React.Component {
 
     vehicle.owner = this.state.owner;
     vehicle.vin = this.state.vin;
+    vehicle.make = this.state.make;
+    vehicle.model = this.state.model;
     vehicle.licensePlate = this.state.licensePlate;
     vehicle.state = this.state.state;
     vehicle.generalInspection = this.state.generalInspection;
@@ -110,6 +139,37 @@ class VehicleForm extends React.Component {
               onChange={this.handleChangeVIN}
               errorText="VIN is required"
             />
+
+            {/* <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              value={this.state.make}
+              onChange={this.handleChangeMake}
+            >
+              <MenuItem value="BMW"}>BMW</MenuItem>
+              <MenuItem value={20}>Twenty</MenuItem>
+              <MenuItem value={30}>Thirty</MenuItem>
+            </Select> */}
+            <TextField
+              label="Make"
+              id="MakeField"
+              type="text"
+              className="md-row"
+              required={true}
+              value={this.state.make}
+              onChange={this.handleChangeMake}
+              errorText="Make is required"
+            />
+            <TextField
+              label="Model"
+              id="ModelField"
+              type="text"
+              className="md-row"
+              required={true}
+              value={this.state.model}
+              onChange={this.handleChangeModel}
+              errorText="Model is required"
+            />
             <TextField
               label="License Plate"
               id="LicensePlateField"
@@ -131,7 +191,7 @@ class VehicleForm extends React.Component {
             <TextField
               label="General Inspection"
               id="GeneralInspectionField"
-              type="date"
+              type="text"
               className="md-row"
               value={this.state.generalInspection}
               onChange={this.handleChangeGeneralInspection}
@@ -141,9 +201,7 @@ class VehicleForm extends React.Component {
             <Button
               id="submit"
               type="submit"
-              disabled={
-                this.state.vin.toString().length != 17
-              }
+              disabled={this.state.vin.toString().length != 17}
               raised
               primary
               className="md-cell md-cell--2"
