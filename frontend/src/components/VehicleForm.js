@@ -24,7 +24,7 @@ class VehicleForm extends React.Component {
           : undefined,
         vin: props.vehicle.vin,
         make: props.vehicle.make,
-        model: props.vehicle.modell,
+        model: props.vehicle.model,
         licensePlate: props.vehicle.licensePlate,
         state: props.vehicle.state,
         generalInspection: props.vehicle.generalInspection,
@@ -104,6 +104,8 @@ class VehicleForm extends React.Component {
 
     vehicle.owner = this.state.owner;
     vehicle.vin = this.state.vin;
+    vehicle.make = this.state.make;
+    vehicle.model = this.state.model;
     vehicle.licensePlate = this.state.licensePlate;
     vehicle.state = this.state.state;
     vehicle.generalInspection = this.state.generalInspection;

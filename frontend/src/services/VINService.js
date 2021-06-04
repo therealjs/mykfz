@@ -27,7 +27,7 @@ export default class VehicleService {
   static getVehicleInfo(vin) {
     return new Promise((resolve, reject) => {
       HttpService.get(
-        `${this.baseURL()}/decodevinextended/${vin}?format=json`,
+        `${this.baseURL()}/decodevinvalues/${vin}?format=json`,
         function (data) {
           const vehicleInfo = VehicleService.parseVehicleData(data);
           resolve(vehicleInfo);
@@ -39,15 +39,8 @@ export default class VehicleService {
     });
   }
 
-  // parse raw data returned by gov API into a more structured JSON Object
   static parseVehicleData(rawData) {
-    let vehicle = {};
-    for (const property in rawData.Results) {
-      const field = rawData.Results[property];
-      const key = field.Variable;
-      const val = field.Value;
-      vehicle[key] = val;
-    }
+    let vehicle = rawData.Results[0];
     return vehicle;
   }
 
