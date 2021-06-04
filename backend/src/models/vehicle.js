@@ -16,7 +16,6 @@ const VehicleSchema = new mongoose.Schema({
   },
   licensePlate: {
     type: String,
-    unique: true,
   },
   state: {
     type: String,

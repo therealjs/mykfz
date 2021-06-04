@@ -22,15 +22,15 @@ export class VehicleListRow extends React.Component {
           </Link>
         </TableColumn>
         <TableColumn>
-          <SimpleLink to={`/show/${this.props.vehicle._id}`}>
             {this.props.vehicle.vin}
-          </SimpleLink>
         </TableColumn>
         <TableColumn>
-          <SimpleLink to={`/show/${this.props.vehicle._id}`}>
             {this.props.vehicle.licensePlate}
-          </SimpleLink>
         </TableColumn>
+        <TableColumn>
+            {this.props.vehicle.state}
+        </TableColumn>
+        {this.renderProcess(this.props.vehicle.state)}
         {UserService.isAuthenticated() ? (
           <TableColumn>
             <Link to={`/edit/${this.props.vehicle._id}`}>
@@ -62,5 +62,40 @@ export class VehicleListRow extends React.Component {
         )}
       </TableRow>
     );
+  }
+
+  renderProcess(state) {
+    switch (state) {
+      case "NEW":
+        return(
+          <TableColumn>
+          <Link to={`/register/${this.props.vehicle._id}`}>
+            <Button>
+              Register
+            </Button>
+          </Link>
+          </TableColumn>
+        )
+      case "REGISTERED":
+        return(
+          <TableColumn>
+          <Link to={`/deregister/${this.props.vehicle._id}`}>
+            <Button>
+              Deregister
+            </Button>
+          </Link>
+          </TableColumn>
+        )
+      case "DEREGISTERED":
+        return(
+          <TableColumn>
+          <Link to={`/register/${this.props.vehicle._id}`}>
+            <Button>
+              Reregister
+            </Button>
+          </Link>
+          </TableColumn>
+        )
+    }
   }
 }

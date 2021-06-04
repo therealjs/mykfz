@@ -14,6 +14,8 @@ import { UserSignupView } from "./views/UserSignupView";
 
 import { VehicleListView } from "./views/VehicleListView";
 import { VehicleDetailView } from "./views/VehicleDetailView";
+import { VehicleRegisterView } from "./views/VehicleRegisterView";
+import { VehicleDeregisterView } from "./views/VehicleDeregisterView";
 import { VehicleFormView } from "./views/VehicleFormView";
 
 export default class App extends React.Component {
@@ -23,8 +25,27 @@ export default class App extends React.Component {
     this.state = {
       title: "MyKfz",
       routes: [
-        { component: VehicleListView, path: "/", exact: true },
-        { component: VehicleDetailView, path: "/show/:id" },
+        {
+          render: (props) => {
+            if (UserService.isAuthenticated()) {
+              return <VehicleListView {...props} />;
+            } else {
+              return <Redirect to={"/login"} />;
+            }
+          },
+          path: "/",
+          exact: true,
+        },
+        {
+          render: (props) => {
+            if (UserService.isAuthenticated()) {
+              return <VehicleDetailView {...props} />;
+            } else {
+              return <Redirect to={"/login"} />;
+            }
+          },
+          path: "/show/:id",
+        },
         {
           render: (props) => {
             if (UserService.isAuthenticated()) {
@@ -34,6 +55,26 @@ export default class App extends React.Component {
             }
           },
           path: "/edit/:id",
+        },
+        {
+          render: (props) => {
+            if (UserService.isAuthenticated()) {
+              return <VehicleRegisterView {...props} />;
+            } else {
+              return <Redirect to={"/login"} />;
+            }
+          },
+          path: "/register/:id",
+        },
+        {
+          render: (props) => {
+            if (UserService.isAuthenticated()) {
+              return <VehicleDeregisterView {...props} />;
+            } else {
+              return <Redirect to={"/login"} />;
+            }
+          },
+          path: "/deregister/:id",
         },
         {
           render: (props) => {

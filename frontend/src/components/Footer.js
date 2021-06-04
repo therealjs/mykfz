@@ -14,7 +14,7 @@ class PlainFooter extends React.Component {
         return (
             <div className={this.props.className}>
                 <hr/>
-                <p>© {new Date().getFullYear()} sebis. All rights reserved.</p>
+                <p>Made with ♥ by Team 11</p>
             </div>
         );
     }

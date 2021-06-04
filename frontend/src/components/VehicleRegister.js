@@ -14,37 +14,24 @@ import UserService from "../services/UserService";
 
 const style = { maxWidth: 500 };
 
-class VehicleForm extends React.Component {
+class VehicleRegister extends React.Component {
   constructor(props) {
     super(props);
-
-    if (this.props.vehicle != undefined) {
       this.state = {
-        owner: UserService.isAuthenticated()
-          ? UserService.getCurrentUser().id
-          : undefined,
+        owner: UserService.getCurrentUser().id,
         vin: props.vehicle.vin,
+        evb: "",
+        iban: "",
         licensePlate: props.vehicle.licensePlate,
-        state: props.vehicle.state,
         generalInspection: props.vehicle.generalInspection,
-        processes: props.vehicle.processes,
-      };
-    } else {
-      this.state = {
-        owner: UserService.isAuthenticated()
-          ? UserService.getCurrentUser().id
-          : undefined,
-        vin: "",
-        licensePlate: "",
-        state: "",
-        generalInspection: "",
-        processes: [],
-      };
-    }
-
+        secCodeII: ""
+    };
+    
     this.handleChangeVIN = this.handleChangeVIN.bind(this);
     this.handleChangeLicensePlate = this.handleChangeLicensePlate.bind(this);
-    this.handleChangeState = this.handleChangeState.bind(this);
+    this.handleChangeEVB = this.handleChangeEVB.bind(this);
+    this.handleChangeIBAN = this.handleChangeIBAN.bind(this);
+    this.handleChangeSecCodeII = this.handleChangeSecCodeII.bind(this);
     this.handleChangeGeneralInspection =
       this.handleChangeGeneralInspection.bind(this);
 
@@ -59,8 +46,16 @@ class VehicleForm extends React.Component {
     this.setState(Object.assign({}, this.state, { licensePlate: value }));
   }
 
-  handleChangeState(value) {
-    this.setState(Object.assign({}, this.state, { state: value }));
+  handleChangeEVB(value) {
+    this.setState(Object.assign({}, this.state, { evb: value }));
+  }
+
+  handleChangeIBAN(value) {
+    this.setState(Object.assign({}, this.state, { iban: value }));
+  }
+
+  handleChangeSecCodeII(value) {
+    this.setState(Object.assign({}, this.state, { secCodeII: value }));
   }
 
   handleChangeGeneralInspection(value) {
@@ -71,15 +66,20 @@ class VehicleForm extends React.Component {
     event.preventDefault();
 
     let vehicle = this.props.vehicle;
-    if (vehicle == undefined) {
-      vehicle = {};
-    }
 
-    vehicle.owner = this.state.owner;
-    vehicle.vin = this.state.vin;
     vehicle.licensePlate = this.state.licensePlate;
-    vehicle.state = this.state.state;
+    vehicle.state = "REGISTERED";
     vehicle.generalInspection = this.state.generalInspection;
+    vehicle.processes.push({
+      processType: "REGISTRATION",
+      date: "2020-05-30",
+      state: "NEW",
+      info: {
+        eVB: this.state.evb,
+        secCodeII: this.state.secCodeII,
+        iban: this.state.iban
+      }
+    })
 
     this.props.onSubmit(vehicle);
   }
@@ -88,51 +88,71 @@ class VehicleForm extends React.Component {
     return (
       <Page>
         <Card style={style} className="md-block-centered">
+          Register Vehicle
           <form
             className="md-grid"
             onSubmit={this.handleSubmit}
             onReset={() => this.props.history.goBack()}
-          >
-            <TextField
-              label="Owner"
-              id="OwnerField"
-              type="text"
-              disabled={true}
-              value={this.state.owner}
-            />
-            <TextField
-              label="VIN (17)"
-              id="VINField"
-              type="text"
-              className="md-row"
-              required={true}
-              value={this.state.vin}
-              onChange={this.handleChangeVIN}
-              errorText="VIN is required"
-            />
+                >
             <TextField
               label="License Plate"
               id="LicensePlateField"
               type="text"
               className="md-row"
+              required={true}
               value={this.state.licensePlate}
               onChange={this.handleChangeLicensePlate}
               errorText="LicensePlate is required"
               maxLength={12}
-            />
+                    />
             <TextField
-              label="State"
-              id="StateField"
+              label="VIN"
+              id="VINField"
               type="text"
               className="md-row"
-              value={this.state.state}
-              onChange={this.handleChangeState}
+              disabled={true}
+              required={true}
+              value={this.state.vin}
+                    />
+            <TextField
+              label="eVB (7)"
+              id="eVBField"
+              type="text"
+              className="md-row"
+              required={true}
+              value={this.state.evb}
+              onChange={this.handleChangeEVB}
+              errorText="eVB is required"
+              maxLength={7}
+                    />
+            <TextField
+              label="Security Code II (12)"
+              id="SecCodeIIField"
+              type="text"
+              className="md-row"
+              required={true}
+              value={this.state.secCodeII}
+              onChange={this.handleChangeSecCodeII}
+              maxLength={12}
+              errorText="Security Code II is required"
+                    />
+            <TextField
+              label="IBAN (22)"
+              id="IBANField"
+              type="text"
+              className="md-row"
+              required={true}
+              value={this.state.iban}
+              onChange={this.handleChangeIBAN}
+              errorText="IBAN is required"
+              maxLength={22}
             />
             <TextField
-              label="General Inspection"
+              label="Date of General Inspection"
               id="GeneralInspectionField"
               type="date"
               className="md-row"
+              required={false}
               value={this.state.generalInspection}
               onChange={this.handleChangeGeneralInspection}
               errorText="GeneralInspection is required"
@@ -142,13 +162,16 @@ class VehicleForm extends React.Component {
               id="submit"
               type="submit"
               disabled={
-                this.state.vin.toString().length != 17
+                // this.state.licensePlate.toString().length != 4 ||
+                this.state.evb.toString().length != 7,
+                this.state.secCodeII.toString().length != 12,
+                this.state.iban.toString().length != 22
               }
               raised
               primary
               className="md-cell md-cell--2"
             >
-              Save
+              Register
             </Button>
             <Button
               id="reset"
@@ -169,4 +192,4 @@ class VehicleForm extends React.Component {
   }
 }
 
-export default withRouter(VehicleForm);
+export default withRouter(VehicleRegister);

@@ -6,134 +6,279 @@
 	},
 	"item": [
 		{
-			"name": "Get All Vehicles",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "localhost:3000/vehicles",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"vehicles"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Get Vehicles By Id",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": ""
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Create Vehicle",
-			"request": {
-				"auth": {
-					"type": "noauth"
-				},
-				"method": "POST",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwYWU2M2YwODY3ZTYyYWMxYWYyNzE5NiIsInVzZXJuYW1lIjoiamFuaWsiLCJpYXQiOjE2MjIwNDE1ODQsImV4cCI6MTYyMjEyNzk4NH0.e-J0eJint6VmOLFf0PdlLtho-GiCHS-I8wUQnbh7vRo",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"vin\": \"vin123\",\n    \"license_plate\": \"M - MD 1000\",\n    \"owner\": \"60ae63f0867e62ac1af27196\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+			"name": "auth",
+			"item": [
+				{
+					"name": "Register User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"mike12\",\n    \"password\": \"pass\",\n    \"lastName\": \"Effzett\",\n    \"firstName\": \"Mike\",\n    \"address\": {\n        \"district\": \"Munich\",\n        \"zipCode\": \"80999\"\n    },\n    \"identityDocument\": {\n        \"idId\": \"LF30\",\n        \"expirationDate\": \"2025-04-01\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/auth/register",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"register"
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "localhost:3000/vehicles",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"vehicles"
-					]
+				{
+					"name": "Login User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"mike12\",\n    \"password\": \"pass\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/auth/login",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		},
 		{
-			"name": "Delete Vehicle",
-			"request": {
-				"auth": {
-					"type": "noauth"
-				},
-				"method": "DELETE",
-				"header": [
-					{
-						"key": "Authorization",
-						"type": "text",
-						"value": "JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwYWU2M2YwODY3ZTYyYWMxYWYyNzE5NiIsInVzZXJuYW1lIjoiamFuaWsiLCJpYXQiOjE2MjIwNDE1ODQsImV4cCI6MTYyMjEyNzk4NH0.e-J0eJint6VmOLFf0PdlLtho-GiCHS-I8wUQnbh7vRo"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"license_plate\": \"M - MD 1000\",\n    \"owner\": \"Daniel\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+			"name": "vehicle",
+			"item": [
+				{
+					"name": "Get All Vehicles",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/vehicles",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"vehicles"
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "localhost:3000/vehicles/60ae5431b7ae3d973818ba70",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"vehicles",
-						"60ae5431b7ae3d973818ba70"
-					]
+				{
+					"name": "Get All Vehicles Of Owner",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/vehicles?owner=60afb4db11661e59d8b5e81f",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"vehicles"
+							],
+							"query": [
+								{
+									"key": "owner",
+									"value": "60afb4db11661e59d8b5e81f"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Vehicles By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/vehicles/60b0c39a4cd09acea7175a45",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"vehicles",
+								"60b0c39a4cd09acea7175a45"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Vehicle",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwYWZiNGRiMTE2NjFlNTlkOGI1ZTgxZiIsInVzZXJuYW1lIjoidXNlciIsImlhdCI6MTYyMjE4MzEyMywiZXhwIjoxNjIyMjY5NTIzfQ.6Evnz00DcYpENJrWHfp2nk0YMRY7ZLXH_73PZmEunZ8",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"vin\": \"vin1234\",\n    \"licensePlate\": \"M - MD 10020\",\n    \"owner\": \"60afb4db11661e59d8b5e81f\",\n    \"state\": \"NEW\",\n    \"generalInspection\": \"2021-05-28\",\n    \"processes\": [\n        {\n            \"processType\": \"DEREGISTRATION\",\n            \"state\": \"completed\",\n            \"info\": {\n                \"plate-code\": \"XYZ\"\n            }\n        },\n        {\n            \"processType\": \"DEREGISTRATION\",\n            \"state\": \"completed\",\n            \"info\": {\n                \"plate-code\": \"XYZ\"\n            }\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/vehicles",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"vehicles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Vehicle",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwYWU2M2YwODY3ZTYyYWMxYWYyNzE5NiIsInVzZXJuYW1lIjoiamFuaWsiLCJpYXQiOjE2MjIwNDE1ODQsImV4cCI6MTYyMjEyNzk4NH0.e-J0eJint6VmOLFf0PdlLtho-GiCHS-I8wUQnbh7vRo"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"license_plate\": \"M - MD 1000\",\n    \"owner\": \"Daniel\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/vehicles/60ae5431b7ae3d973818ba70",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"vehicles",
+								"60ae5431b7ae3d973818ba70"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		},
 		{
-			"name": "Register User",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"username\": \"daniel123\",\n    \"password\": \"daniel123\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+			"name": "process",
+			"item": [
+				{
+					"name": "Get Processes of Vehicle",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/vehicles/60b0f476b6d28417d04cb590/processes",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"vehicles",
+								"60b0f476b6d28417d04cb590",
+								"processes"
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "localhost:3000/auth/register",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"auth",
-						"register"
-					]
+				{
+					"name": "Create Process for Vehicle",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "   {\n        \"hello\": \"there\"\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/vehicles/60b0f476b6d28417d04cb590/processes",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"vehicles",
+								"60b0f476b6d28417d04cb590",
+								"processes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Specific Process of Vehicle",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/vehicles/60b0f476b6d28417d04cb590/processes/60b0f476b6d28417d04cb591",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"vehicles",
+								"60b0f476b6d28417d04cb590",
+								"processes",
+								"60b0f476b6d28417d04cb591"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		}
 	]
 }

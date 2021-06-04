@@ -2,11 +2,11 @@
 
 import React from "react";
 
-import VehicleForm from "../components/VehicleForm";
+import VehicleRegister from "../components/VehicleRegister";
 
 import VehicleService from "../services/VehicleService";
 
-export class VehicleFormView extends React.Component {
+export class VehicleRegisterView extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -58,7 +58,7 @@ export class VehicleFormView extends React.Component {
         console.error(err);
         this.setState(
           Object.assign({}, this.state, {
-            error: `Error while creating vehicle: ${err}`,
+            error: "Error while creating vehicle",
           })
         );
       }
@@ -70,7 +70,7 @@ export class VehicleFormView extends React.Component {
         console.error(err);
         this.setState(
           Object.assign({}, this.state, {
-            error: `Error while creating vehicle: ${err}`,
+            error: "Error while creating vehicle",
           })
         );
       }
@@ -83,7 +83,7 @@ export class VehicleFormView extends React.Component {
     }
 
     return (
-      <VehicleForm
+      <VehicleRegister
         vehicle={this.state.vehicle}
         onSubmit={(vehicle) => this.updateVehicle(vehicle)}
         error={this.state.error}

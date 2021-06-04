@@ -72,7 +72,7 @@ const remove = async (req, res) => {
     await VehicleModel.findByIdAndRemove(req.params.vehicleId).exec();
 
     return res.status(200).json({
-      message: `Vehicle with vehicleId${req.params.vehicleId} was deleted`,
+      message: `Vehicle with vehicleId ${req.params.vehicleId} was deleted`,
     });
   } catch (err) {
     return res.status(500).json({

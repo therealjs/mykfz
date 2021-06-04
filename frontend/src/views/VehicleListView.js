@@ -5,6 +5,7 @@ import React from "react";
 import { VehicleList } from "../components/VehicleList";
 
 import VehicleService from "../services/VehicleService";
+import UserService from "../services/UserService";
 
 export class VehicleListView extends React.Component {
   constructor(props) {
@@ -21,16 +22,26 @@ export class VehicleListView extends React.Component {
       loading: true,
     });
 
-    VehicleService.getVehicles()
-      .then((data) => {
-        this.setState({
-          data: [...data],
-          loading: false,
-        });
-      })
-      .catch((e) => {
-        console.error(e);
-      });
+    (async () => {
+      try {
+        let user = await UserService.getUserDetails();
+        let data = await VehicleService.getVehiclesForUser(user._id);
+        this.setState({ data: [...data], loading: false });
+      } catch (err) {
+        console.error(err);
+      }
+    })();
+
+    // VehicleService.getVehicles()
+    //   .then((data) => {
+    //     this.setState({
+    //       data: [...data],
+    //       loading: false,
+    //     });
+    //   })
+    //   .catch((e) => {
+    //     console.error(e);
+    //   });
   }
 
   async deleteVehicle(id) {
