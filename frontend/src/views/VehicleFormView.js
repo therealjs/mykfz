@@ -58,7 +58,7 @@ export class VehicleFormView extends React.Component {
         console.error(err);
         this.setState(
           Object.assign({}, this.state, {
-            error: "Error while creating vehicle",
+            error: `Error while creating vehicle: ${err}`,
           })
         );
       }
@@ -70,7 +70,7 @@ export class VehicleFormView extends React.Component {
         console.error(err);
         this.setState(
           Object.assign({}, this.state, {
-            error: "Error while creating vehicle",
+            error: `Error while creating vehicle: ${err}`,
           })
         );
       }
