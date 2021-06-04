@@ -25,8 +25,27 @@ export default class App extends React.Component {
     this.state = {
       title: "MyKfz",
       routes: [
-        { component: VehicleListView, path: "/", exact: true },
-        { component: VehicleDetailView, path: "/show/:id" },
+        {
+          render: (props) => {
+            if (UserService.isAuthenticated()) {
+              return <VehicleListView {...props} />;
+            } else {
+              return <Redirect to={"/login"} />;
+            }
+          },
+          path: "/",
+          exact: true,
+        },
+        {
+          render: (props) => {
+            if (UserService.isAuthenticated()) {
+              return <VehicleDetailView {...props} />;
+            } else {
+              return <Redirect to={"/login"} />;
+            }
+          },
+          path: "/show/:id",
+        },
         {
           render: (props) => {
             if (UserService.isAuthenticated()) {
@@ -37,9 +56,26 @@ export default class App extends React.Component {
           },
           path: "/edit/:id",
         },
-        { component: VehicleDetailView, path: "/show/:id" },
-        { component: VehicleRegisterView, path: "/register/:id"},
-        { component: VehicleDeregisterView, path: "/deregister/:id"},
+        {
+          render: (props) => {
+            if (UserService.isAuthenticated()) {
+              return <VehicleRegisterView {...props} />;
+            } else {
+              return <Redirect to={"/login"} />;
+            }
+          },
+          path: "/register/:id",
+        },
+        {
+          render: (props) => {
+            if (UserService.isAuthenticated()) {
+              return <VehicleDeregisterView {...props} />;
+            } else {
+              return <Redirect to={"/login"} />;
+            }
+          },
+          path: "/deregister/:id",
+        },
         {
           render: (props) => {
             if (UserService.isAuthenticated()) {

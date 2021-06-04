@@ -25,7 +25,7 @@ export class VehicleListView extends React.Component {
     (async () => {
       try {
         let user = await UserService.getUserDetails();
-        let data = VehicleService.getVehiclesForUser(user._id);
+        let data = await VehicleService.getVehiclesForUser(user._id);
         this.setState({ data: [...data], loading: false });
       } catch (err) {
         console.error(err);
