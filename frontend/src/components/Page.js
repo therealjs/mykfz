@@ -24,11 +24,13 @@ export default class Page extends React.Component {
 
     render() {
         return (
-            <section>
+            <div>
                 <Header title={this.state.title} />
-                {this.props.children}
+                <body style={{display: "flex", justifyContent: "center"}}>
+                    {this.props.children}
+                </body>
                 <Footer />
-            </section>
+            </div>
         );
     }
 }
