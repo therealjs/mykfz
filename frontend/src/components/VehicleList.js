@@ -1,45 +1,40 @@
 "use strict";
 
 import React from "react";
-import {
-  DataTable,
-  TableHeader,
-  TableBody,
-  TableRow,
-  TableColumn,
-  Button,
-} from "react-md";
+import { Link } from "react-router-dom";
 
-import { VehicleListRow } from "./VehicleListRow";
+import { VehicleListPaper } from "./VehicleListPaper";
 import Page from "./Page";
+import Grid from '@material-ui/core/Grid';
+import IconButton from '@material-ui/core/IconButton';
+import AddIcon from '@material-ui/icons/Add';
 
-const dataTableStyle = {
-  marginBottom: "36px",
-};
 
-export const VehicleList = ({ data, onDelete }) => (
+export const VehicleList = ({ data, onDelete, props }) => (
+
   <Page>
-    <DataTable plain style={dataTableStyle}>
-      <TableHeader>
-        <TableRow>
-          <TableColumn></TableColumn>
-          <TableColumn>VIN</TableColumn>
-          <TableColumn>License Plate</TableColumn>
-          <TableColumn>Status</TableColumn>
-          <TableColumn>Start Process</TableColumn>
-          <TableColumn>Edit</TableColumn>
-          <TableColumn>Remove</TableColumn>
-        </TableRow>
-      </TableHeader>
-      <TableBody>
+    <Grid     justify="flex-start"
+              container
+              direction="row"
+              alignItems="center"
+              spacing={3}>
         {data.map((vehicle, i) => (
-          <VehicleListRow
+          <VehicleListPaper
             key={i}
             vehicle={vehicle}
             onDelete={(id) => onDelete(id)}
+            {...props}
           />
         ))}
-      </TableBody>
-    </DataTable>
+        
+        <Grid item xs={12} sm={6} md={4}>
+           <div style={{display: "flex", justifyContent: "center"}}>
+          <IconButton syle={{width: 80}} component={ Link } to={"/add"} aria-label="add">
+            <AddIcon />
+
+          </IconButton>
+          </div>
+        </Grid>
+    </Grid>
   </Page>
 );
