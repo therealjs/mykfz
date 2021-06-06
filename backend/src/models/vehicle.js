@@ -30,7 +30,8 @@ const VehicleSchema = new mongoose.Schema({
     enum: ["NEW", "REGISTERED", "DEREGISTERED"],
     required: true,
   }, // new / registered / deregistered
-  generalInspection: Date,
+  generalInspectionMonth: String,
+  generalInspectionYear: String,
   processes: [
     {
       processType: {
