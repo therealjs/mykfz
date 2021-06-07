@@ -36,7 +36,7 @@ class UserSignup extends React.Component {
             street: '',
             houseNumber: '',
             idId: '',
-            districtOptions: [{name: ''}]
+            districtOptions: [{ name: '' }]
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -45,10 +45,10 @@ class UserSignup extends React.Component {
 
         DistrictService.getDistricts()
             .then((data) => {
-                this.setState({districtOptions: data});
+                this.setState({ districtOptions: data });
             })
             .catch((e) => {
-              console.error(e);
+                console.error(e);
             });
     }
 
@@ -57,7 +57,7 @@ class UserSignup extends React.Component {
     }
 
     handleDistrictChange(event, value) {
-        this.setState({district: value});
+        this.setState({ district: value });
     }
 
     handleSubmit(event) {
@@ -157,7 +157,12 @@ class UserSignup extends React.Component {
                                     required={true}
                                     fullWidth
                                     onChange={this.handleDistrictChange}
-                                    renderInput={(params) => <TextField {...params} label="District" />}
+                                    renderInput={(params) => (
+                                        <TextField
+                                            {...params}
+                                            label="District"
+                                        />
+                                    )}
                                 />
                                 {/* <Select
                                     label="District"
@@ -263,7 +268,7 @@ class UserSignup extends React.Component {
                                 </Button>
                                 <Button
                                     component={Link}
-                                    to={'/register'}
+                                    to={'/login'}
                                     style={{ float: 'right' }}
                                     variant="contained"
                                     type="reset"
