@@ -4,7 +4,9 @@ const DistrictModel = require('../models/district');
 
 const read = async (req, res) => {
     try {
-        let district = await DistrictModel.findById(req.params.districtId).exec();
+        let district = await DistrictModel.findById(
+            req.params.districtId
+        ).exec();
 
         if (!district)
             return res.status(404).json({

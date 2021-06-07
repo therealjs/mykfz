@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 const DistrictSchema = new mongoose.Schema({
     name: {
         type: String,
-        required: true,
+        required: true
     },
     kfz: {
         type: String,
