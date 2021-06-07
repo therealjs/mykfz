@@ -1,11 +1,9 @@
 "use strict";
 
 import React from "react";
-// import Button from "@material-ui/core/Button";
-import { Grid, Card, Select, InputLabel, NativeSelect, MenuItem, Button, FormControlLabel, RadioGroup, Radio, Switch} from "@material-ui/core";
-import TextField from '@material-ui/core/TextField';
+import { Grid, Card, TextField, InputLabel, Select, MenuItem, Button, FormControlLabel, RadioGroup, Radio, Switch, Typography
+} from "@material-ui/core";
 
-import { makeStyles } from '@material-ui/core/styles';
 import { withRouter } from "react-router-dom";
 
 import Page from "./Page";
@@ -121,6 +119,9 @@ class VehicleForm extends React.Component {
             onSubmit={this.handleSubmit}
             onReset={() => this.props.history.goBack()}
           >
+            <Typography style={{marginBottom: "10px"}} component="h5" variant="h5">
+            Add vehicle
+            </Typography>
             <Grid
               justify="space-between"
               container
