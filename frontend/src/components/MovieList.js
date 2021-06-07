@@ -1,16 +1,23 @@
-"use strict";
+'use strict';
 
 import React from 'react';
-import { DataTable, TableHeader, TableBody, TableRow, TableColumn, Button } from 'react-md';
+import {
+    DataTable,
+    TableHeader,
+    TableBody,
+    TableRow,
+    TableColumn,
+    Button
+} from 'react-md';
 
 import { MovieListRow } from './MovieListRow';
-import Page from './Page'
+import Page from './Page';
 
 const dataTableStyle = {
-  'marginBottom': '36px'
+    marginBottom: '36px'
 };
 
-export const MovieList = ({data, onDelete}) => (
+export const MovieList = ({ data, onDelete }) => (
     <Page>
         <DataTable plain style={dataTableStyle}>
             <TableHeader>
@@ -22,9 +29,14 @@ export const MovieList = ({data, onDelete}) => (
                 </TableRow>
             </TableHeader>
             <TableBody>
-                {data.map((movie, i) => <MovieListRow key={i} movie={movie} onDelete={(id) => onDelete(id)} />)}
+                {data.map((movie, i) => (
+                    <MovieListRow
+                        key={i}
+                        movie={movie}
+                        onDelete={(id) => onDelete(id)}
+                    />
+                ))}
             </TableBody>
         </DataTable>
     </Page>
 );
-

@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 import React from 'react';
 
@@ -6,9 +6,7 @@ import UserSignup from '../components/UserSignup';
 
 import UserService from '../services/UserService';
 
-
 export class UserSignupView extends React.Component {
-
     constructor(props) {
         super(props);
         this.state = {};
@@ -18,7 +16,7 @@ export class UserSignupView extends React.Component {
         try {
             let ret = await UserService.register(user);
             this.props.history.push('/');
-        } catch(err) {
+        } catch (err) {
             console.error(err);
             this.setState({
                 error: err
@@ -28,7 +26,10 @@ export class UserSignupView extends React.Component {
 
     render() {
         return (
-            <UserSignup onSubmit={(user) => this.signup(user)} error={this.state.error}></UserSignup>
+            <UserSignup
+                onSubmit={(user) => this.signup(user)}
+                error={this.state.error}
+            ></UserSignup>
         );
     }
 }

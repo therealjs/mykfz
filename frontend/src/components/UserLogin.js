@@ -1,38 +1,29 @@
-"use strict";
+'use strict';
 
 import React from 'react';
-import { Card, Button, TextField } from 'react-md';
+import { Grid, Card, TextField, Button, Typography } from '@material-ui/core';
 import { withRouter, Link } from 'react-router-dom';
 
 import { AlertMessage } from './AlertMessage';
 import Page from './Page';
 
-
 const style = { maxWidth: 500 };
 
-
 class UserLogin extends React.Component {
-
     constructor(props) {
         super(props);
 
         this.state = {
-            username : '',
-            password : ''
+            username: '',
+            password: ''
         };
 
-        this.handleChangeUsername = this.handleChangeUsername.bind(this);
-        this.handleChangePassword = this.handleChangePassword.bind(this);
-
+        this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    handleChangeUsername(value) {
-        this.setState(Object.assign({}, this.state, {username: value}));
-    }
-
-    handleChangePassword(value) {
-        this.setState(Object.assign({}, this.state, {password: value}));
+    handleChange(event) {
+        this.setState({ [event.target.name]: event.target.value });
     }
 
     handleSubmit(event) {
@@ -49,38 +40,82 @@ class UserLogin extends React.Component {
     render() {
         return (
             <Page>
-                <Card style={style} className="md-block-centered">
-                    <form className="md-grid" onSubmit={this.handleSubmit} onReset={() => this.props.history.goBack()}>
-                        <TextField
-                            label="Login"
-                            id="LoginField"
-                            type="text"
-                            className="md-row"
-                            required={true}
-                            value={this.state.username}
-                            onChange={this.handleChangeUsername}
-                            errorText="Login is required"/>
-                        <TextField
-                            label="Password"
-                            id="PasswordField"
-                            type="password"
-                            className="md-row"
-                            required={true}
-                            value={this.state.password}
-                            onChange={this.handleChangePassword}
-                            errorText="Password is required"/>
+                <Card style={{ padding: '20px', maxWidth: '500px' }}>
+                    <form
+                        onSubmit={this.handleSubmit}
+                        onReset={() => this.props.history.goBack()}
+                    >
+                        <Typography
+                            style={{ marginBottom: '10px' }}
+                            component="h5"
+                            variant="h5"
+                        >
+                            Login
+                        </Typography>
+                        <Grid
+                            justify="space-between"
+                            container
+                            direction="row"
+                            alignItems="center"
+                            justify="center"
+                            spacing={3}
+                        >
+                            <Grid item xs={12}>
+                                <TextField
+                                    label="Username"
+                                    name="username"
+                                    fullWidth
+                                    required={true}
+                                    value={this.state.username}
+                                    onChange={this.handleChange}
+                                />
+                            </Grid>
+                            <Grid item xs={12}>
+                                <TextField
+                                    label="Password"
+                                    name="password"
+                                    fullWidth
+                                    type="password"
+                                    required={true}
+                                    value={this.state.password}
+                                    onChange={this.handleChange}
+                                />
+                            </Grid>
 
-                        <Button id="submit" type="submit"
-                                disabled={this.state.username == undefined || this.state.username == '' || this.state.password == undefined || this.state.password == '' ? true : false}
-                                raised primary className="md-cell md-cell--2">Login</Button>
-                        <Button id="reset" type="reset" raised secondary className="md-cell md-cell--2">Dismiss</Button>
-                        <Link to={'/register'} className="md-cell">Not registered yet?</Link>
-                        <AlertMessage className="md-row md-full-width" >{this.props.error ? `${this.props.error}` : ''}</AlertMessage>
+                            <Grid item xs={12}>
+                                <Button
+                                    style={{
+                                        float: 'right',
+                                        marginLeft: '15px'
+                                    }}
+                                    variant="contained"
+                                    type="submit"
+                                    color="primary"
+                                    disabled={
+                                        this.state.username.toString().length <
+                                            1 ||
+                                        this.state.password.toString().length <
+                                            1
+                                    }
+                                >
+                                    Login
+                                </Button>
+                                <Button
+                                    component={Link}
+                                    to={'/register'}
+                                    style={{ float: 'right' }}
+                                    variant="contained"
+                                    color="secondary"
+                                >
+                                    Register
+                                </Button>
+                            </Grid>
+                        </Grid>
                     </form>
                 </Card>
             </Page>
         );
     }
-};
+}
 
 export default withRouter(UserLogin);

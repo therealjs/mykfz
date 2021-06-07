@@ -1,34 +1,34 @@
-"use strict";
+'use strict';
 
 import React from 'react';
 
 import Header from './Header';
 import { Footer } from './Footer';
 
-
 export default class Page extends React.Component {
-
     constructor(props) {
         super(props);
 
         this.state = {
             title: ''
-        }
+        };
     }
 
-    componentDidMount(){
-       this.setState({
-           title: document.title
-       });
+    componentDidMount() {
+        this.setState({
+            title: document.title
+        });
     }
 
     render() {
         return (
-            <section>
+            <div>
                 <Header title={this.state.title} />
-                {this.props.children}
+                <body style={{ display: 'flex', justifyContent: 'center' }}>
+                    {this.props.children}
+                </body>
                 <Footer />
-            </section>
+            </div>
         );
     }
 }

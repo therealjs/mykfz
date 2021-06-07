@@ -1,6 +1,6 @@
-"use strict";
+'use strict';
 
-import Styled from "styled-components";
+import Styled from 'styled-components';
 
 export const AlertMessage = Styled.div`
     text-align: center;

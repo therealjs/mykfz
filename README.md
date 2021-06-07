@@ -14,3 +14,9 @@ npm run devstart
 cd frontend
 npm start
 ```
+
+## run prettier
+
+```bash
+prettier --write "**/*.js"
+```

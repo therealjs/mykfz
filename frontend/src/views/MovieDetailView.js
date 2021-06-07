@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 import React from 'react';
 
@@ -6,14 +6,12 @@ import { MovieDetail } from '../components/MovieDetail';
 
 import MovieService from '../services/MovieService';
 
-
 export class MovieDetailView extends React.Component {
-
     constructor(props) {
         super(props);
     }
 
-    componentWillMount(props){
+    componentWillMount(props) {
         this.setState({
             loading: true
         });
@@ -27,7 +25,7 @@ export class MovieDetailView extends React.Component {
                     movie: movie,
                     loading: false
                 });
-            } catch(err) {
+            } catch (err) {
                 console.error(err);
             }
         })();
@@ -46,18 +44,21 @@ export class MovieDetailView extends React.Component {
         try {
             let ret = await MovieService.deleteMovie(id);
             this.props.history.push('/');
-        } catch(err) {
+        } catch (err) {
             console.error(err);
         }
     }
 
     render() {
         if (this.state.loading) {
-            return (<h2>Loading...</h2>);
+            return <h2>Loading...</h2>;
         }
 
         return (
-            <MovieDetail movie={this.state.movie} onDelete={(id) => this.deleteMovie(id)}/>
+            <MovieDetail
+                movie={this.state.movie}
+                onDelete={(id) => this.deleteMovie(id)}
+            />
         );
     }
 }

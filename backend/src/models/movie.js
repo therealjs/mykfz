@@ -1,10 +1,9 @@
-"use strict";
+'use strict';
 
 const mongoose = require('mongoose');
 
-
 // Define the movie schema
-const MovieSchema  = new mongoose.Schema({
+const MovieSchema = new mongoose.Schema({
     title: {
         type: String,
         required: true
@@ -17,16 +16,15 @@ const MovieSchema  = new mongoose.Schema({
         required: true
     },
     posters: {
-            thumbnail: String,
-            profile: String,
-            detailed: String,
-            original: String
-        }
+        thumbnail: String,
+        profile: String,
+        detailed: String,
+        original: String
+    }
 });
 
 MovieSchema.set('versionKey', false);
 MovieSchema.set('timestamps', true);
-
 
 // Export the Movie model
 module.exports = mongoose.model('Movie', MovieSchema);
