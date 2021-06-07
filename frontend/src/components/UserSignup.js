@@ -1,10 +1,11 @@
 "use strict";
 
 import React from 'react';
-import { Card, Button, TextField } from 'react-md';
-import { withRouter } from 'react-router-dom';
+import { Grid, Card, TextField, Select, ListItemAvatar, Avatar, ListItemText, InputLabel,  MenuItem, Button, Typography
+} from "@material-ui/core";
 
-import { AlertMessage } from './AlertMessage';
+import { withRouter, Link } from 'react-router-dom';
+
 import Page from './Page';
 
 
@@ -29,59 +30,18 @@ class UserSignup extends React.Component {
             idId: '',
         };
 
-        this.handleChangeUsername = this.handleChangeUsername.bind(this);
-        this.handleChangePassword = this.handleChangePassword.bind(this);
-        this.handleChangeFirstName = this.handleChangeFirstName.bind(this);
-        this.handleChangeLastName = this.handleChangeLastName.bind(this);
-        this.handleChangeDistrict = this.handleChangeDistrict.bind(this);
-        this.handleChangeCity = this.handleChangeCity.bind(this);
-        this.handleChangeZipCode = this.handleChangeZipCode.bind(this);
-        this.handleChangeStreet = this.handleChangeStreet.bind(this);
-        this.handleChangeHouseNumber = this.handleChangeHouseNumber.bind(this);
-
-        this.handleChangeIdId = this.handleChangeIdId.bind(this);
-
+        this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+
+        // ToDo Use the new District Json for this
+        this.districtOptions = ["Munich (City)",
+                                "Dachau", 
+                                "Miltenberg"];
     }
 
-    handleChangeUsername(value) {
-        this.setState(Object.assign({}, this.state, {username: value}));
-    }
 
-    handleChangePassword(value) {
-        this.setState(Object.assign({}, this.state, {password: value}));
-    }
-
-    handleChangeFirstName(value) {
-        this.setState(Object.assign({}, this.state, {firstName: value}));
-    }
-
-    handleChangeLastName(value) {
-        this.setState(Object.assign({}, this.state, {lastName: value}));
-    }
-
-    handleChangeDistrict(value) {
-        this.setState(Object.assign({}, this.state, {district: value}));
-    }
-
-    handleChangeZipCode(value) {
-        this.setState(Object.assign({}, this.state, {zipCode: value}));
-    }
-
-    handleChangeCity(value) {
-        this.setState(Object.assign({}, this.state, {city: value}));
-    }
-
-    handleChangeStreet(value) {
-        this.setState(Object.assign({}, this.state, {street: value}));
-    }
-
-    handleChangeHouseNumber(value) {
-        this.setState(Object.assign({}, this.state, {houseNumber: value}));
-    }
-
-    handleChangeIdId(value) {
-        this.setState(Object.assign({}, this.state, {idId: value}));
+    handleChange(event) {
+        this.setState({[event.target.name]: event.target.value});
     }
 
     handleSubmit(event) {
@@ -110,105 +70,157 @@ class UserSignup extends React.Component {
     render() {
         return (
             <Page>
-                <Card style={style} className="md-block-centered">
-                    <form className="md-grid" onSubmit={this.handleSubmit} onReset={() => this.props.history.goBack()}>
-                        <TextField
+            <Card style={{padding: "20px", maxWidth: "500px"}}>
+          <form
+            onSubmit={this.handleSubmit}
+            onReset={() => this.props.history.goBack()}
+          >
+            <Typography style={{marginBottom: "10px"}} component="h5" variant="h5">
+              Login
+            </Typography>
+            <Grid
+              justify="space-between"
+              container
+              direction="row"
+              alignItems="center"
+              justify="center"
+              spacing={3}
+            >
+            <Grid item xs = {12}>
+                <TextField
                             label="Username"
-                            id="UsernameField"
-                            type="text"
-                            className="md-row"
+                            name="username"
                             required={true}
+                            fullWidth
                             value={this.state.username}
-                            onChange={this.handleChangeUsername}
-                            errorText="Username is required"/>
+                            onChange={this.handleChange}/>
+</Grid>
+<Grid item xs = {12}>
+
                         <TextField
                             label="Password"
-                            id="PasswordField"
                             type="password"
-                            className="md-row"
+                            name="password"
+                            fullWidth
                             required={true}
                             value={this.state.password}
-                            onChange={this.handleChangePassword}
-                            errorText="Password is required"/>
+                            onChange={this.handleChange}/>
+                            </Grid>
+                            <Grid item xs = {6}>
+
                         <TextField
                             label="First Name"
-                            id="FirstNameField"
-                            type="text"
-                            className="md-row"
                             required={true}
+                            name="firstName"
+                            fullWidth
                             value={this.state.firstName}
-                            onChange={this.handleChangeFirstName}
-                            errorText="First Name is required"/>
+                            onChange={this.handleChange}/>
+                    </Grid>
+                    <Grid item xs = {6}>
                         <TextField
                             label="Last Name"
-                            id="LastNameField"
-                            type="text"
-                            className="md-row"
                             required={true}
+                            name="lastName"
+                            fullWidth
                             value={this.state.lastName}
-                            onChange={this.handleChangeLastName}
-                            errorText="Last Name is required"/>
-                        <TextField
-                            label="District"
-                            id="DistrictField"
-                            type="text"
-                            className="md-row"
-                            required={true}
-                            value={this.state.district}
-                            onChange={this.handleChangeDistrict}
-                            errorText="District is required"/>
+                            onChange={this.handleChange}/>
+
+                    </Grid>
+                    <Grid item xs={12}>  
+                    <InputLabel>District</InputLabel>
+                    <Select
+                        label="District"
+                        value={this.state.district}
+                        required={true}
+                        fullWidth
+                        name="district"
+                        onChange={this.handleChange}
+                    >
+                        {this.districtOptions.map((district) => {
+                        return (
+                            <MenuItem style={{display: "flex"}} value={district}>
+                                <ListItemAvatar>
+                                <Avatar alt={district} src="https://upload.wikimedia.org/wikipedia/commons/1/17/Muenchen_Kleines_Stadtwappen.svg" />
+                                </ListItemAvatar>
+                                <ListItemText style={{maerginTop: "8px"}} primary={district} />
+                            </MenuItem>
+                            );
+                            })}
+                    </Select>
+                    </Grid>
+
+
+                    <Grid item xs = {6}>
                         <TextField
                             label="City"
-                            id="CityField"
-                            type="text"
-                            className="md-row"
+                            name="city"
+                            fullWidth
                             required={true}
                             value={this.state.city}
-                            onChange={this.handleChangeCity}
+                            onChange={this.handleChange}
                             errorText="City is required"/>
+
+                    </Grid>
+                    <Grid item xs = {6}>
                         <TextField
                             label="Zip Code"
-                            id="ZipCodeField"
-                            type="text"
-                            className="md-row"
+                            name="zipCode"
+                            fullWidth
                             required={true}
                             value={this.state.zipCode}
-                            onChange={this.handleChangeZipCode}
-                            errorText="Zip Code is required"/>
+                            onChange={this.handleChange}/>
+
+                    </Grid>
+                    <Grid item xs = {6}>
                         <TextField
                             label="Street"
-                            id="SteetField"
-                            type="text"
-                            className="md-row"
                             required={true}
+                            name="street"
+                            fullWidth
                             value={this.state.street}
-                            onChange={this.handleChangeStreet}
-                            errorText="Street is required"/>
+                            onChange={this.handleChange}/>
+
+                    </Grid>
+                    <Grid item xs = {6}>
                         <TextField
                             label="House Number"
-                            id="HouseNumberField"
-                            type="text"
-                            className="md-row"
+                            name="houseNumber"
+                            fullWidth
                             required={true}
                             value={this.state.houseNumber}
-                            onChange={this.handleChangeHouseNumber}
-                            errorText="House Number is required"/>
-                        <TextField
-                            label="Id"
-                            id="IdField"
-                            type="text"
-                            className="md-row"
-                            required={true}
-                            value={this.state.idId}
-                            onChange={this.handleChangeIdId}
-                            errorText="ID is required"/>
-                        
+                            onChange={this.handleChange}/>
 
-                        <Button id="submit" type="submit"
-                                disabled={this.state.username == undefined || this.state.username == '' || this.state.password == undefined || this.state.password == '' ? true : false}
-                                raised primary className="md-cell md-cell--2">Register</Button>
-                        <Button id="reset" type="reset" raised secondary className="md-cell md-cell--2">Dismiss</Button>
-                        <AlertMessage className="md-row md-full-width" >{this.props.error ? `${this.props.error}` : ''}</AlertMessage>
+                    </Grid>
+                    <Grid item xs = {12}>
+                        <TextField
+                            label="Document Id"
+                            required={true}
+                            name="idId"
+                            fullWidth
+                            value={this.state.idId}
+                            onChange={this.handleChange}/>
+</Grid>
+
+                    <Grid item xs={12}>
+                        <Button
+                        style={{float: "right", marginLeft: "15px"}}
+                        variant="contained"
+                        type="submit"
+                        color="primary"
+                        disabled={this.state.username.toString().length < 4 || 
+                                    this.state.password.toString().length < 4}
+                        >
+                        Register
+                        </Button>
+                        <Button component={ Link } to={'/register'}
+                            style={{float: "right"}}
+                            variant="contained"
+                            type="reset"
+                            >
+                            Cancel
+                        </Button>
+                        </Grid>
+                    </Grid>
                     </form>
                 </Card>
             </Page>
