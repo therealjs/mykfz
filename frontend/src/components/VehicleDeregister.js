@@ -1,11 +1,8 @@
 "use strict";
 
 import React from "react";
-import {
-  Card,
-  Button,
-  TextField,
-} from "react-md";
+import { Grid, Card, TextField, Checkbox, InputLabel, NativeSelect, MenuItem, Button, FormControlLabel, RadioGroup, Radio, Switch, Typography
+} from "@material-ui/core";
 import { withRouter } from "react-router-dom";
 
 import { AlertMessage } from "./AlertMessage";
@@ -25,19 +22,20 @@ class VehicleDeregister extends React.Component {
         secCodeI: "",
         plateCode: ""
     };
-    
-    this.handleChangePlateCode = this.handleChangePlateCode.bind(this);
-    this.handleChangeSecCodeI = this.handleChangeSecCodeI.bind(this);
 
+    this.handleChange = this.handleChange.bind(this);
+    this.handleChangeCheckbox = this.handleChangeCheckbox.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleChangePlateCode(value) {
-    this.setState(Object.assign({}, this.state, { plateCode: value }));
-  }
 
-  handleChangeSecCodeI(value) {
-    this.setState(Object.assign({}, this.state, { secCodeI: value }));
+
+  handleChange(event) {
+    this.setState({[event.target.name]: event.target.value});
+}
+
+  handleChangeCheckbox(event) {
+    this.setState({[event.target.name]: event.target.checked});
   }
 
   handleSubmit(event) {
@@ -63,81 +61,98 @@ class VehicleDeregister extends React.Component {
   render() {
     return (
       <Page>
-        <Card style={style} className="md-block-centered">
-          Deregister Vehicle
+        <Card style={{padding: "20px", maxWidth: "500px"}}>
           <form
-            className="md-grid"
             onSubmit={this.handleSubmit}
             onReset={() => this.props.history.goBack()}
-                >
+          >
+            <Typography style={{marginBottom: "10px"}} component="h5" variant="h5">
+              Deregister
+            </Typography>
+            <Grid
+              justify="space-between"
+              container
+              direction="row"
+              alignItems="center"
+              justify="center"
+              spacing={3}
+            >
+            <Grid item xs = {12}>
             <TextField
               label="License Plate"
-              id="LicensePlateField"
-              type="text"
-              className="md-row"
+              name="licensePlate"
+              fullWidth
               disabled={true}
               value={this.state.licensePlate}
-                    />
+            />
+            </Grid>
+            <Grid item xs = {12}>
             <TextField
               label="VIN"
-              id="VINField"
-              type="text"
-              className="md-row"
+              name="vin"
+              fullWidth
               disabled={true}
               value={this.state.vin}
                     />
+            </Grid>
+            <Grid item xs = {12}>
             <TextField
               label="Security Code I (7)"
-              id="SecCodeIField"
-              type="text"
-              className="md-row"
+              name="secCodeI"
+              fullWidth
               required={true}
               value={this.state.secCodeI}
-              onChange={this.handleChangeSecCodeI}
-              inputProps={{
-                minLength:7,
-                maxLength: 7
-              }}
-              errorText="Security Code I is required"
+              onChange={this.handleChange}
               maxLength={7}
-                    />
+            />
+            </Grid>
+            <Grid item xs = {12}>
             <TextField
               label="Plate Code (3)"
-              id="PlateCodeField"
-              type="text"
-              className="md-row"
               required={true}
+              name="plateCode"
+              fullWidth
               value={this.state.plateCode}
-              onChange={this.handleChangePlateCode}
-              errorText="IBAN is required"
+              onChange={this.handleChange}
               maxLength={3}
             />
+            </Grid>
+            <Grid item xs = {12}>
 
-            <Button
+            <FormControlLabel
+              control={<Checkbox
+                checked={this.state.reserveLicensePlate}
+                onChange={this.handleChangeCheckbox}
+                name="reserveLicensePlate"
+                color="primary"
+                />}
+              label="Reserve license plate for 90 days"
+            />
+
+
+              </Grid>
+            <Grid item xs={12}>
+              <Button
+              style={{float: "right", marginLeft: "15px"}}
               id="submit"
+              variant="contained"
               type="submit"
-              disabled={
-                this.state.secCodeI.toString().length != 7,
-                this.state.plateCode.toString().length != 3
-              }
-              raised
-              primary
-              className="md-cell md-cell--2"
-            >
-              Deregister
-            </Button>
-            <Button
-              id="reset"
-              type="reset"
-              raised
-              secondary
-              className="md-cell md-cell--2"
-            >
-              Dismiss
-            </Button>
-            <AlertMessage className="md-row md-full-width">
-              {this.props.error ? `${this.props.error}` : ""}
-            </AlertMessage>
+              color="primary"
+              disabled={this.state.plateCode.toString().length != 3 || 
+                        this.state.secCodeI.toString().length != 7}
+              >
+              Save
+              </Button>
+              <Button
+                style={{float: "right"}}
+                id="reset"
+                type="reset"
+                color="default"
+                >
+                Cancel
+              </Button>
+              </Grid>
+            </Grid>
           </form>
         </Card>
       </Page>

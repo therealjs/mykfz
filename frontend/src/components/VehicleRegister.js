@@ -1,14 +1,10 @@
 "use strict";
 
 import React from "react";
-import {
-  Card,
-  Button,
-  TextField,
-} from "react-md";
+import { Grid, Card, Checkbox, TextField, InputLabel, Select, MenuItem, Button, Typography, FormControl, FormControlLabel, FormGroup, FormLabel
+} from "@material-ui/core";
 import { withRouter } from "react-router-dom";
 
-import { AlertMessage } from "./AlertMessage";
 import Page from "./Page";
 import UserService from "../services/UserService";
 
@@ -23,43 +19,20 @@ class VehicleRegister extends React.Component {
         evb: "",
         iban: "",
         licensePlate: props.vehicle.licensePlate,
-        generalInspection: props.vehicle.generalInspection,
+        generalInspectionMonth: props.vehicle.generalInspectionMonth,
+        generalInspectionYear: props.vehicle.generalInspectionYear,
         secCodeII: ""
     };
-    
-    this.handleChangeVIN = this.handleChangeVIN.bind(this);
-    this.handleChangeLicensePlate = this.handleChangeLicensePlate.bind(this);
-    this.handleChangeEVB = this.handleChangeEVB.bind(this);
-    this.handleChangeIBAN = this.handleChangeIBAN.bind(this);
-    this.handleChangeSecCodeII = this.handleChangeSecCodeII.bind(this);
-    this.handleChangeGeneralInspection =
-      this.handleChangeGeneralInspection.bind(this);
 
+    this.yearOptions = this.monthOptions = Array(4).fill().map((element, index) => new Date().getFullYear() + index)
+    this.monthOptions = Array(12).fill().map((element, index) => index + 1)
+    
+    this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleChangeVIN(value) {
-    this.setState(Object.assign({}, this.state, { vin: value }));
-  }
-
-  handleChangeLicensePlate(value) {
-    this.setState(Object.assign({}, this.state, { licensePlate: value }));
-  }
-
-  handleChangeEVB(value) {
-    this.setState(Object.assign({}, this.state, { evb: value }));
-  }
-
-  handleChangeIBAN(value) {
-    this.setState(Object.assign({}, this.state, { iban: value }));
-  }
-
-  handleChangeSecCodeII(value) {
-    this.setState(Object.assign({}, this.state, { secCodeII: value }));
-  }
-
-  handleChangeGeneralInspection(value) {
-    this.setState(Object.assign({}, this.state, { generalInspection: value }));
+  handleChange(event) {
+    this.setState({[event.target.name]: event.target.value});
   }
 
   handleSubmit(event) {
@@ -69,10 +42,11 @@ class VehicleRegister extends React.Component {
 
     vehicle.licensePlate = this.state.licensePlate;
     vehicle.state = "REGISTERED";
-    vehicle.generalInspection = this.state.generalInspection;
+    vehicle.generalInspectionMonth = this.state.generalInspectionMonth;
+    vehicle.generalInspectionYear = this.state.generalInspectionYear;
     vehicle.processes.push({
       processType: "REGISTRATION",
-      date: "2020-05-30",
+      date: Date(),
       state: "NEW",
       info: {
         eVB: this.state.evb,
@@ -87,104 +61,145 @@ class VehicleRegister extends React.Component {
   render() {
     return (
       <Page>
-        <Card style={style} className="md-block-centered">
-          Register Vehicle
+        <Card style={{padding: "20px", maxWidth: "500px"}}>
           <form
-            className="md-grid"
             onSubmit={this.handleSubmit}
             onReset={() => this.props.history.goBack()}
-                >
+          >
+            <Typography style={{marginBottom: "10px"}} component="h5" variant="h5">
+              Register
+            </Typography>
+            <Grid
+              justify="space-between"
+              container
+              direction="row"
+              alignItems="center"
+              justify="center"
+              spacing={3}
+            >
+            <Grid item xs = {12}>
             <TextField
               label="License Plate"
-              id="LicensePlateField"
-              type="text"
-              className="md-row"
               required={true}
+              fullWidth
+              name="licensePlate"
               value={this.state.licensePlate}
-              onChange={this.handleChangeLicensePlate}
-              errorText="LicensePlate is required"
+              onChange={this.handleChange}
               maxLength={12}
                     />
+            </Grid>
+            <Grid item xs = {12}>
             <TextField
               label="VIN"
-              id="VINField"
-              type="text"
-              className="md-row"
               disabled={true}
               required={true}
+              fullWidth
               value={this.state.vin}
                     />
+            </Grid>
+            <Grid item xs = {12}>
             <TextField
               label="eVB (7)"
-              id="eVBField"
-              type="text"
-              className="md-row"
+              name="evb"
               required={true}
+              fullWidth
               value={this.state.evb}
-              onChange={this.handleChangeEVB}
-              errorText="eVB is required"
+              onChange={this.handleChange}
               maxLength={7}
-                    />
+            />
+            </Grid>
+            <Grid item xs = {12}>
             <TextField
               label="Security Code II (12)"
-              id="SecCodeIIField"
-              type="text"
-              className="md-row"
+              name="secCodeII"
               required={true}
+              fullWidth
               value={this.state.secCodeII}
-              onChange={this.handleChangeSecCodeII}
+              onChange={this.handleChange}
               maxLength={12}
-              errorText="Security Code II is required"
                     />
+            </Grid>
+            <Grid item xs = {12}>
             <TextField
               label="IBAN (22)"
-              id="IBANField"
-              type="text"
-              className="md-row"
+              name="iban"
               required={true}
+              fullWidth
               value={this.state.iban}
-              onChange={this.handleChangeIBAN}
-              errorText="IBAN is required"
+              onChange={this.handleChange}
               maxLength={22}
             />
-            <TextField
-              label="Date of General Inspection"
-              id="GeneralInspectionField"
-              type="date"
-              className="md-row"
-              required={false}
-              value={this.state.generalInspection}
-              onChange={this.handleChangeGeneralInspection}
-              errorText="GeneralInspection is required"
-            />
+            </Grid>
+            <Grid item xs={12}>
+              <FormLabel component="legend">General Inspection</FormLabel>
+            </Grid>
 
-            <Button
+            <Grid item xs={6}>
+              <InputLabel>Month</InputLabel>
+              <Select
+                label="Month"
+                value={this.state.generalInspectionMonth}
+                required={true}
+                fullWidth
+                name="generalInspectionMonth"
+                onChange={this.handleChange}
+              >
+                {this.monthOptions.map(year => {
+                  return (
+                    <MenuItem value={year}>
+                      {year}
+                    </MenuItem>
+                    );
+                    })}
+              </Select>
+            </Grid>
+            <Grid item xs={6}>
+              <InputLabel>Year</InputLabel>
+              <Select
+                label="Year"
+                value={this.state.generalInspectionYear}
+                required={true}
+                fullWidth
+                name="generalInspectionYear"
+                onChange={this.handleChange}
+              >
+                {this.yearOptions.map(year => {
+                  return (
+                    <MenuItem value={year}>
+                      {year}
+                    </MenuItem>
+                    );
+                    })}
+              </Select>
+            </Grid>
+
+
+            <Grid item xs={12}>
+              <Button
+              style={{float: "right", marginLeft: "15px"}}
               id="submit"
+              variant="contained"
               type="submit"
+              color="primary"
               disabled={
-                // this.state.licensePlate.toString().length != 4 ||
-                this.state.evb.toString().length != 7,
-                this.state.secCodeII.toString().length != 12,
+                //this.state.licensePlate.toString().length != 4 ||
+                this.state.evb.toString().length != 7 ||
+                this.state.secCodeII.toString().length != 12 ||
                 this.state.iban.toString().length != 22
               }
-              raised
-              primary
-              className="md-cell md-cell--2"
-            >
-              Register
-            </Button>
-            <Button
-              id="reset"
-              type="reset"
-              raised
-              secondary
-              className="md-cell md-cell--2"
-            >
-              Dismiss
-            </Button>
-            <AlertMessage className="md-row md-full-width">
-              {this.props.error ? `${this.props.error}` : ""}
-            </AlertMessage>
+              >
+              Save
+              </Button>
+              <Button
+                style={{float: "right"}}
+                id="reset"
+                type="reset"
+                color="default"
+                >
+                Cancel
+              </Button>
+              </Grid>
+            </Grid>
           </form>
         </Card>
       </Page>
