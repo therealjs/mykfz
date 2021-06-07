@@ -51,6 +51,12 @@ export MONGODB_URI="mongodb://localhost:27017/mykfzdb"
 export JWT_SECRET="very secret secret"
 ```
 
+**Add districts to your mongo db**
+
+```bash
+mongoimport --db mykfz --collection districts --drop --type json --jsonArray --file "C:\path\to\project\backend\resources\district.json"
+```
+
 ## Start the project
 
 **Development environment**

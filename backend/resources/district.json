@@ -1,5 +1,4 @@
-{"districts":[
-
+[
     { "name" : "Städteregion Aachen", "kfz": "AC, MON", "picture" : "https://upload.wikimedia.org/wikipedia/commons/f/fb/DEU_Staedteregion_Aachen_COA.svg"},
     { "name" : "Landkreis Ahrweiler", "kfz": "AW", "picture" : "https://upload.wikimedia.org/wikipedia/commons/2/20/DEU_Kreis_Ahrweiler_COA.svg"},
     { "name" :  "Landkreis Aichach-Friedberg", "kfz": "AIC, FDB", "picture" : "https://upload.wikimedia.org/wikipedia/commons/c/c0/Wappen_Landkreis_Aichach-Friedberg.svg"},
@@ -424,8 +423,5 @@
      {"name" : "Zollernalbkreis (Balingen)", "kfz": "BL, HCH", "picture" : "https://upload.wikimedia.org/wikipedia/commons/d/d0/Wappen_Zollernalbkreis.svg"},
      {"name" : "Stadt Zweibrücken", "kfz": "ZW", "picture" : "https://upload.wikimedia.org/wikipedia/commons/8/8f/Wappen_Zweibruecken.jpg"},
      {"name" : "Landkreis Zwickau", "kfz": "Z, GC, HOT, WDA", "picture" : "https://upload.wikimedia.org/wikipedia/commons/7/79/Wappen_vom_Landkreis_Zwickau.svg"}
- 
  ]
- }
- 
  
