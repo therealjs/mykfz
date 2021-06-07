@@ -1,11 +1,9 @@
-"use strict";
+'use strict';
 
 import React from 'react';
 import Styled from 'styled-components';
 
-
 class PlainFooter extends React.Component {
-
     constructor(props) {
         super(props);
     }
@@ -13,7 +11,7 @@ class PlainFooter extends React.Component {
     render() {
         return (
             <div className={this.props.className}>
-                <hr/>
+                <hr />
                 <p>Made with ♥ by Team 11</p>
             </div>
         );

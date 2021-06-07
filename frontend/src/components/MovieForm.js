@@ -1,33 +1,30 @@
-"use strict";
+'use strict';
 
 import React from 'react';
 import { Card, Button, FontIcon, TextField } from 'react-md';
-import { withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom';
 
 import { AlertMessage } from './AlertMessage';
 import Page from './Page';
 
-
 const style = { maxWidth: 500 };
 
-
 class MovieForm extends React.Component {
-
     constructor(props) {
         super(props);
 
-        if(this.props.movie != undefined) {
+        if (this.props.movie != undefined) {
             this.state = {
-                title : props.movie.title,
-                year : props.movie.year,
-                rating : props.movie.mpaa_rating,
+                title: props.movie.title,
+                year: props.movie.year,
+                rating: props.movie.mpaa_rating,
                 synopsis: props.movie.synopsis
             };
         } else {
             this.state = {
-                title : '',
-                year : '',
-                rating : '',
+                title: '',
+                year: '',
+                rating: '',
                 synopsis: ''
             };
         }
@@ -41,26 +38,26 @@ class MovieForm extends React.Component {
     }
 
     handleChangeTitle(value) {
-        this.setState(Object.assign({}, this.state, {title: value}));
+        this.setState(Object.assign({}, this.state, { title: value }));
     }
 
     handleChangeYear(value) {
-        this.setState(Object.assign({}, this.state, {year: value}));
+        this.setState(Object.assign({}, this.state, { year: value }));
     }
 
     handleChangeRating(value) {
-        this.setState(Object.assign({}, this.state, {rating: value}));
+        this.setState(Object.assign({}, this.state, { rating: value }));
     }
 
     handleChangeSynopsis(value) {
-        this.setState(Object.assign({}, this.state, {synopsis: value}));
+        this.setState(Object.assign({}, this.state, { synopsis: value }));
     }
 
     handleSubmit(event) {
         event.preventDefault();
 
         let movie = this.props.movie;
-        if(movie == undefined) {
+        if (movie == undefined) {
             movie = {};
         }
 
@@ -76,7 +73,11 @@ class MovieForm extends React.Component {
         return (
             <Page>
                 <Card style={style} className="md-block-centered">
-                    <form className="md-grid" onSubmit={this.handleSubmit} onReset={() => this.props.history.goBack()}>
+                    <form
+                        className="md-grid"
+                        onSubmit={this.handleSubmit}
+                        onReset={() => this.props.history.goBack()}
+                    >
                         <TextField
                             label="Title"
                             id="TitleField"
@@ -85,7 +86,8 @@ class MovieForm extends React.Component {
                             required={true}
                             value={this.state.title}
                             onChange={this.handleChangeTitle}
-                            errorText="Title is required"/>
+                            errorText="Title is required"
+                        />
                         <TextField
                             label="Year"
                             id="YearField"
@@ -95,7 +97,8 @@ class MovieForm extends React.Component {
                             value={this.state.year}
                             onChange={this.handleChangeYear}
                             errorText="Year is required"
-                            maxLength={4}/>
+                            maxLength={4}
+                        />
                         <TextField
                             label="Rating"
                             id="RatingField"
@@ -103,7 +106,8 @@ class MovieForm extends React.Component {
                             className="md-row"
                             required={false}
                             value={this.state.rating}
-                            onChange={this.handleChangeRating}/>
+                            onChange={this.handleChangeRating}
+                        />
                         <TextField
                             label="Synopsis"
                             id="SynopsisField"
@@ -113,13 +117,39 @@ class MovieForm extends React.Component {
                             required={true}
                             value={this.state.synopsis}
                             onChange={this.handleChangeSynopsis}
-                            errorText="Synopsis is required"/>
+                            errorText="Synopsis is required"
+                        />
 
-                        <Button id="submit" type="submit"
-                                disabled={this.state.year.toString().length != 4 || this.state.title == undefined || this.state.title == '' || this.state.year == undefined || this.state.year == '' || this.state.synopsis == undefined || this.state.synopsis == ''}
-                                raised primary className="md-cell md-cell--2">Save</Button>
-                        <Button id="reset" type="reset" raised secondary className="md-cell md-cell--2">Dismiss</Button>
-                        <AlertMessage className="md-row md-full-width" >{this.props.error ? `${this.props.error}` : ''}</AlertMessage>
+                        <Button
+                            id="submit"
+                            type="submit"
+                            disabled={
+                                this.state.year.toString().length != 4 ||
+                                this.state.title == undefined ||
+                                this.state.title == '' ||
+                                this.state.year == undefined ||
+                                this.state.year == '' ||
+                                this.state.synopsis == undefined ||
+                                this.state.synopsis == ''
+                            }
+                            raised
+                            primary
+                            className="md-cell md-cell--2"
+                        >
+                            Save
+                        </Button>
+                        <Button
+                            id="reset"
+                            type="reset"
+                            raised
+                            secondary
+                            className="md-cell md-cell--2"
+                        >
+                            Dismiss
+                        </Button>
+                        <AlertMessage className="md-row md-full-width">
+                            {this.props.error ? `${this.props.error}` : ''}
+                        </AlertMessage>
                     </form>
                 </Card>
             </Page>

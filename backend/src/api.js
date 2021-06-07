@@ -1,14 +1,14 @@
-"use strict";
+'use strict';
 
-const express = require("express");
-const bodyParser = require("body-parser");
-const helmet = require("helmet");
+const express = require('express');
+const bodyParser = require('body-parser');
+const helmet = require('helmet');
 
-const middlewares = require("./middlewares");
+const middlewares = require('./middlewares');
 
-const auth = require("./routes/auth");
-const vehicle = require("./routes/vehicle");
-const user = require("./routes/user");
+const auth = require('./routes/auth');
+const vehicle = require('./routes/vehicle');
+const user = require('./routes/user');
 
 const api = express();
 
@@ -19,15 +19,15 @@ api.use(bodyParser.urlencoded({ extended: false }));
 api.use(middlewares.allowCrossDomain);
 
 // Basic route
-api.get("/", (req, res) => {
-  res.json({
-    name: "MyKfz Backend",
-  });
+api.get('/', (req, res) => {
+    res.json({
+        name: 'MyKfz Backend'
+    });
 });
 
 // API routes
-api.use("/auth", auth);
-api.use("/vehicles", vehicle);
-api.use("/users", user);
+api.use('/auth', auth);
+api.use('/vehicles', vehicle);
+api.use('/users', user);
 
 module.exports = api;

@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 import React from 'react';
 
@@ -6,9 +6,7 @@ import { MovieList } from '../components/MovieList';
 
 import MovieService from '../services/MovieService';
 
-
 export class MovieListView extends React.Component {
-
     constructor(props) {
         super(props);
 
@@ -18,19 +16,21 @@ export class MovieListView extends React.Component {
         };
     }
 
-    componentWillMount(){
+    componentWillMount() {
         this.setState({
             loading: true
         });
 
-        MovieService.getMovies().then((data) => {
-            this.setState({
-                data: [...data],
-                loading: false
+        MovieService.getMovies()
+            .then((data) => {
+                this.setState({
+                    data: [...data],
+                    loading: false
+                });
+            })
+            .catch((e) => {
+                console.error(e);
             });
-        }).catch((e) => {
-            console.error(e);
-        });
     }
 
     async deleteMovie(id) {
@@ -41,25 +41,30 @@ export class MovieListView extends React.Component {
 
         try {
             let ret = await MovieService.deleteMovie(id);
-            let movieIndex = this.state.data.map(movie => movie['_id']).indexOf(id);
+            let movieIndex = this.state.data
+                .map((movie) => movie['_id'])
+                .indexOf(id);
             let movies = this.state.data;
             movies.splice(movieIndex, 1);
             this.setState({
                 data: [...movies],
                 loading: false
             });
-        } catch(err) {
+        } catch (err) {
             console.error(err);
         }
     }
 
     render() {
         if (this.state.loading) {
-            return (<h2>Loading...</h2>);
+            return <h2>Loading...</h2>;
         }
 
         return (
-            <MovieList data={this.state.data} onDelete={(id) => this.deleteMovie(id)}/>
+            <MovieList
+                data={this.state.data}
+                onDelete={(id) => this.deleteMovie(id)}
+            />
         );
     }
 }
