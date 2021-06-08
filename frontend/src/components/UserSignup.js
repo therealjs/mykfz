@@ -147,7 +147,7 @@ class UserSignup extends React.Component {
                                     onChange={this.handleChange}
                                 />
                             </Grid>
-                            <Grid item xs={12}>
+                            <Grid item xs={9}>
                                 <Autocomplete
                                     id="combo-box-demo"
                                     options={this.state.districtOptions}
@@ -195,7 +195,17 @@ class UserSignup extends React.Component {
                                     })}
                                 </Select> */}
                             </Grid>
-
+                            {this.state.district ?
+                                <Grid item xs={3}>
+                                    <Avatar
+                                        //variant="square"
+                                        alt={this.state.district.name}
+                                        src={this.state.district.picture}
+                                    />
+                                </Grid>
+                                : <Grid item xs={3}>
+                                    </Grid>
+                            }
                             <Grid item xs={6}>
                                 <TextField
                                     label="City"
