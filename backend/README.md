@@ -1,23 +1,23 @@
-# sebamaster-movie-backend application
-
-sebamaster-movie-frontend application can be found [here](https://github.com/sebischair/sebamaster-movie-frontend)
+# mykfz-backend application
 
 ## Prerequisites
 
 Both for the back end and front end application check
 
-- nodejs [official website](https://nodejs.org/en/) - nodejs includes [npm](https://www.npmjs.com/) (node package manager)
+-   nodejs [official website](https://nodejs.org/en/) - nodejs includes
+    [npm](https://www.npmjs.com/) (node package manager)
 
 Just for the backend application:
 
-- mongodb [official installation guide](https://docs.mongodb.org/manual/administration/install-community/)
+-   mongodb
+    [official installation guide](https://docs.mongodb.org/manual/administration/install-community/)
 
 ## Setup (before first run)
 
 Go to your project root folder via command line
 
 ```
-cd path/to/workspace/sebamaster-movie-backend
+cd path/to/workspace/prototype/backend
 ```
 
 **Install node dependencies**
@@ -28,14 +28,16 @@ npm install
 
 **Set up your database**
 
-- Create a new directory where your database will be stored (it's a good idea to separate data and business logic - the data directory should be on a different place than your app)
-- Start the database server
+-   Create a new directory where your database will be stored (it's a good idea
+    to separate data and business logic - the data directory should be on a
+    different place than your app)
+-   Start the database server
 
 ```
 mongod --dbpath relative/path/to/database
 ```
 
-- Create all database schemes and import data to begin with
+-   Create all database schemes and import data to begin with
 
 ```
 mongorestore dump/
@@ -49,6 +51,12 @@ This variables are based in your local configuration
 export PORT=3000
 export MONGODB_URI="mongodb://localhost:27017/mykfzdb"
 export JWT_SECRET="very secret secret"
+```
+
+**Add districts to your mongo db**
+
+```bash
+mongoimport --db mykfzdb --collection districts --drop --type json --jsonArray --file "C:\path\to\project\backend\resources\district.json"
 ```
 
 ## Start the project

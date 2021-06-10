@@ -24,9 +24,9 @@ export default class Page extends React.Component {
         return (
             <div>
                 <Header title={this.state.title} />
-                <body style={{ display: 'flex', justifyContent: 'center' }}>
+                <div style={{ display: 'flex', justifyContent: 'center' }}>
                     {this.props.children}
-                </body>
+                </div>
                 <Footer />
             </div>
         );

@@ -22,6 +22,7 @@ import Page from './Page';
 import UserService from '../services/UserService';
 
 const style = { maxWidth: 500 };
+import DistrictService from '../services/DistrictService';
 
 class VehicleRegister extends React.Component {
     constructor(props) {
@@ -34,7 +35,12 @@ class VehicleRegister extends React.Component {
             licensePlate: props.vehicle.licensePlate,
             generalInspectionMonth: props.vehicle.generalInspectionMonth,
             generalInspectionYear: props.vehicle.generalInspectionYear,
-            secCodeII: ''
+            secCodeII: '',
+            districtOptions: [],
+            district: '',
+            letters: '',
+            numbers: '',
+            
         };
 
         this.yearOptions = this.monthOptions = Array(4)
@@ -46,6 +52,26 @@ class VehicleRegister extends React.Component {
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    componentWillMount(props) {
+        this.setState({
+            loading: true
+        });
+
+        (async () => {
+            try {
+                let district = await DistrictService.getDistrict(this.props.user.address.district);
+                console.log(this.props.user)
+                this.setState({
+                    districtOptions: district.kfz[0].split(", "),
+                });
+                console.log(district.kfz)
+                console.log(this.state.districtOptions)
+            } catch (err) {
+                console.error(err+ "X");
+            }
+        })();
     }
 
     handleChange(event) {

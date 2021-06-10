@@ -15,7 +15,7 @@ cd frontend
 npm start
 ```
 
-## run prettier
+## run prettier (only if you want to prettify all files, precommit hook should run automatically on git add .)
 
 ```bash
 prettier --write "**/*.js"

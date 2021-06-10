@@ -1,5 +1,4 @@
-{"districts":[
-
+[
     { "name" : "Städteregion Aachen", "kfz": "AC, MON", "picture" : "https://upload.wikimedia.org/wikipedia/commons/f/fb/DEU_Staedteregion_Aachen_COA.svg"},
     { "name" : "Landkreis Ahrweiler", "kfz": "AW", "picture" : "https://upload.wikimedia.org/wikipedia/commons/2/20/DEU_Kreis_Ahrweiler_COA.svg"},
     { "name" :  "Landkreis Aichach-Friedberg", "kfz": "AIC, FDB", "picture" : "https://upload.wikimedia.org/wikipedia/commons/c/c0/Wappen_Landkreis_Aichach-Friedberg.svg"},
@@ -11,7 +10,7 @@
     { "name" :  "Landkreis Alzey-Worms", "kfz": "AZ", "picture" : "https://upload.wikimedia.org/wikipedia/commons/0/0d/DEU_Landkreis_Alzey-Worms_COA.svg"},
     { "name" :  "Stadt Amberg", "kfz": "AM", "picture" : "https://upload.wikimedia.org/wikipedia/commons/6/6b/DEU_Amberg_COA.svg/81px-DEU_Amberg_COA.svg.png"},
     { "name" :  "Landkreis Amberg-Sulzbach", "kfz": "AS, BUL, ESB, NAB, SUL", "picture" : "https://upload.wikimedia.org/wikipedia/commons/5/53/Wappen_des_Landkreises_Amberg-Sulzbach.svg"},
-    { "name" :  "Landkreis Ammerland", "kfz": "WST (Westerstede)", "picture" : "https://upload.wikimedia.org/wikipedia/commons/4/40/Wappen_Landkreis_Ammerland.svg"},
+    { "name" :  "Landkreis Ammerland", "kfz": "WST", "picture" : "https://upload.wikimedia.org/wikipedia/commons/4/40/Wappen_Landkreis_Ammerland.svg"},
     { "name" :  "Landkreis Anhalt-Bitterfeld", "kfz": "ABI, AZE, BTF, KÖT, ZE", "picture" : "https://upload.wikimedia.org/wikipedia/commons/6/68/Wappen_Landkreis_Anhalt-Bitterfeld.svg"},
     { "name" :  "Stadt Ansbach", "kfz": "AN", "picture" : "https://upload.wikimedia.org/wikipedia/commons/2/29/Wappen_von_Ansbach.svg"},
     { "name" :  "Landkreis Ansbach", "kfz": "AN, DKB, FEU, ROT", "picture" : "https://upload.wikimedia.org/wikipedia/commons/e/e0/Wappen_des_Landkreises_Ansbach.svg"},
@@ -95,7 +94,7 @@
      {"name" : "Landkreis Emmendingen", "kfz": "EM", "picture" : "https://upload.wikimedia.org/wikipedia/commons/b/b7/Wappen_Landkreis_Emmendingen.svg"},
      {"name" : "Landkreis Emsland", "kfz": "EL", "picture" : "https://upload.wikimedia.org/wikipedia/commons/2/2a/Wappen_Landkreis_Emsland.svg"},
      {"name" : "Ennepe-Ruhr-Kreis", "kfz": "EN, WIT", "picture" : "https://upload.wikimedia.org/wikipedia/commons/f/f7/DEU_Ennepe-Ruhr-Kreis_COA.svg"},
-     {"name" : "Enzkreis", "kfz": "PF (Pforzheim)", "picture" : "https://upload.wikimedia.org/wikipedia/commons/7/76/Wappen_Enzkreis.svg"},
+     {"name" : "Enzkreis", "kfz": "PF", "picture" : "https://upload.wikimedia.org/wikipedia/commons/7/76/Wappen_Enzkreis.svg"},
      {"name" : "Landkreis Erding", "kfz": "ED", "picture" : "https://upload.wikimedia.org/wikipedia/commons/5/5e/DEU_Landkreis_Erding_COA.svg"},
      {"name" : "Stadt Erfurt", "kfz": "EF", "picture" : "https://upload.wikimedia.org/wikipedia/commons/2/20/DEU_Erfurt_COA.svg"},
      {"name" : "Stadt Erlangen", "kfz": "ER", "picture" : "https://upload.wikimedia.org/wikipedia/commons/8/87/Wappen_Erlangen.svg"},
@@ -197,7 +196,7 @@
      {"name" :"Kyffhäuserkreis", "kfz": "KYF, ART, SDH", "picture" : "https://upload.wikimedia.org/wikipedia/commons/e/e6/Wappen_Kyffh%C3%A4userkreis.svg"},
  
  
-     {"name" :"Lahn-Dill-Kreis", "kfz": "LDK, DIL, (WZ)", "picture" : "https://upload.wikimedia.org/wikipedia/commons/c/c3/Wappen_Lahn-Dill-Kreis.svg"},
+     {"name" :"Lahn-Dill-Kreis", "kfz": "LDK, DIL, WZ", "picture" : "https://upload.wikimedia.org/wikipedia/commons/c/c3/Wappen_Lahn-Dill-Kreis.svg"},
      {"name" :"Stadt Landau in der Pfalz", "kfz": "LD", "picture" : "https://upload.wikimedia.org/wikipedia/commons/7/75/DEU_Landau_in_der_Pfalz_COA.svg"},
      {"name" :"Landkreis Landsberg am Lech", "kfz": "LL", "picture" : "https://upload.wikimedia.org/wikipedia/commons/f/fa/Wappen_Landkreis_Landsberg_am_Lech.png"},
      {"name" :"Stadt Landshut", "kfz": "LA", "picture" : "https://upload.wikimedia.org/wikipedia/commons/7/72/DEU_Landshut_COA.svg"},
@@ -261,7 +260,7 @@
      {"name" :"Kreis Nordfriesland", "kfz": "NF", "picture" : "https://upload.wikimedia.org/wikipedia/commons/8/8d/DEU_Kreis_Nordfriesland_COA.svg"},
      {"name" :"Landkreis Nordhausen", "kfz": "NDH", "picture" : "https://upload.wikimedia.org/wikipedia/commons/e/ed/Wappen_Landkreis_Nordhausen.svg"},
      {"name" :"Landkreis Nordsachsen (Torgau)", "kfz": "TDO, DZ, EB, OZ, TG, TO", "picture" : "https://upload.wikimedia.org/wikipedia/commons/c/c6/Wappen_vom_Landkreis_Nordsachsen.svg"},
-     {"name" :"Landkreis Nordwestmecklenburg", "kfz": "NWM, GDB, GVM, WIS, (HWI)", "picture" : "https://upload.wikimedia.org/wikipedia/commons/7/7a/DEU_Nordwestmecklenburg_COA.svg"},
+     {"name" :"Landkreis Nordwestmecklenburg", "kfz": "NWM, GDB, GVM, WIS, HWI", "picture" : "https://upload.wikimedia.org/wikipedia/commons/7/7a/DEU_Nordwestmecklenburg_COA.svg"},
      {"name" :"Landkreis Northeim", "kfz": "NOM, EIN, GAN", "picture" : "https://upload.wikimedia.org/wikipedia/commons/f/f5/Wappen_Landkreis_Northeim.svg"},
      {"name" :"Stadt Nürnberg", "kfz": "N", "picture" : "https://upload.wikimedia.org/wikipedia/commons/1/1f/Wappen_von_N%C3%BCrnberg.svg"},
  
@@ -292,7 +291,7 @@
      {"name" : "Landkreis Peine", "kfz": "PE", "picture" : "https://upload.wikimedia.org/wikipedia/commons/9/91/Wappen_Landkreis_Peine.svg"},
      {"name" : "Landkreis Pfaffenhofen an der Ilm", "kfz": "PAF", "picture" : "https://upload.wikimedia.org/wikipedia/commons/6/6b/Wappen_Landkreis_Pfaffenhofen_an_der_Ilm.svg"},
      {"name" : "Stadt Pforzheim", "kfz": "PF", "picture" : "https://upload.wikimedia.org/wikipedia/commons/7/7a/Wappen_Pforzheim.svg"},
-     {"name" : "Kreis Pinneberg - Helgoland", "kfz": "PI - AG", "picture" : "https://upload.wikimedia.org/wikipedia/commons/4/49/DEU_Kreis_Pinneberg_COA.svg"},
+     {"name" : "Kreis Pinneberg - Helgoland", "kfz": "PI, AG", "picture" : "https://upload.wikimedia.org/wikipedia/commons/4/49/DEU_Kreis_Pinneberg_COA.svg"},
      {"name" : "Stadt Pirmasens", "kfz": "PS", "picture" : "https://upload.wikimedia.org/wikipedia/commons/2/2f/Wappen_Pirmasens.svg"},
      {"name" : "Kreis Plön", "kfz": "PLÖ", "picture" : "https://upload.wikimedia.org/wikipedia/commons/a/a5/Wappen_Kreis_Ploen.svg"},
      {"name" : "Stadt Potsdam", "kfz": "P", "picture" : "https://upload.wikimedia.org/wikipedia/commons/8/8b/DEU_Potsdam_COA.svg"},
@@ -332,9 +331,9 @@
      {"name" : "Saale-Holzland-Kreis", "kfz": "SHK, EIS, SRO", "picture" : "https://upload.wikimedia.org/wikipedia/commons/c/c4/Wappen_Saale-Holzland-Kreis.svg"},
      {"name" : "Saale-Orla-Kreis", "kfz": "SOK, LBS, PN, SCZ", "picture" : "https://upload.wikimedia.org/wikipedia/commons/e/e3/Wappen_Saale-Orla-Kreis.svg"},
      {"name" : "Landkreis Saalfeld-Rudolstadt", "kfz": "SLF, RU", "picture" : "https://upload.wikimedia.org/wikipedia/commons/1/1f/Wappen_Landkreis_Saalfeld-Rudolstadt.svg"},
-     {"name" : "Regionalverband Saarbrücken", "kfz": "SB, (VK)", "picture" : "https://upload.wikimedia.org/wikipedia/commons/a/ab/Wappen_Stadtverband_Saarbruecken.svg"},
+     {"name" : "Regionalverband Saarbrücken", "kfz": "SB, VK", "picture" : "https://upload.wikimedia.org/wikipedia/commons/a/ab/Wappen_Stadtverband_Saarbruecken.svg"},
      {"name" : "Landkreis Saarlouis", "kfz": "SLS", "picture" : "https://upload.wikimedia.org/wikipedia/commons/2/2c/Wappen_Landkreis_Saarlouis.svg"},
-     {"name" : "Saarpfalz-Kreis (Homburg)", "kfz": "HOM, (IGB)", "picture" : "https://upload.wikimedia.org/wikipedia/commons/9/9e/Wappen_Saarpfalz-Kreis.svg"},
+     {"name" : "Saarpfalz-Kreis (Homburg)", "kfz": "HOM, IGB", "picture" : "https://upload.wikimedia.org/wikipedia/commons/9/9e/Wappen_Saarpfalz-Kreis.svg"},
      {"name" : "Landkreis Sächsische Schweiz-Osterzgebirge (Pirna)", "kfz": "PIR, DW, FTL, SEB", "picture" : "https://upload.wikimedia.org/wikipedia/commons/b/b8/Wappen_Landkreis_Saechsische_Schweiz-Osterzgebirge.svg"},
      {"name" : "Stadt Salzgitter", "kfz": "SZ", "picture" : "https://upload.wikimedia.org/wikipedia/commons/c/c7/Coat_of_arms_of_Salzgitter.svg"},
      {"name" : "Salzlandkreis", "kfz": "SLK, ASL, BBG, SBK, SFT", "picture" : "https://upload.wikimedia.org/wikipedia/commons/5/5d/Wappen_Salzlandkreis.svg"},
@@ -391,8 +390,8 @@
      {"name" : "Kreis Viersen", "kfz": "VIE, KK", "picture" : "https://upload.wikimedia.org/wikipedia/commons/3/3e/DEU_Kreis_Viersen_COA.svg"},
      {"name" : "Vogelsbergkreis", "kfz": "VB", "picture" : "https://upload.wikimedia.org/wikipedia/commons/5/5a/Wappen_Vogelsbergkreis.svg"},
      {"name" : "Vogtlandkreis", "kfz": "V, AE, OVL, PL, RC", "picture" : "https://upload.wikimedia.org/wikipedia/commons/4/4d/Wappen_Vogtlandkreis.svg"},
-     {"name" : "Landkreis Vorpommern-Greifswald", "kfz": "VG, ANK, GW, PW, SBG, UEM, WLG, (HGW)", "picture" : "https://upload.wikimedia.org/wikipedia/commons/5/57/Wappen_Landkreis_Vorpommern-Greifswald.svg"},
-     {"name" : "Landkreis Vorpommern-Rügen", "kfz": "VR, GMN, NVP, RDG, RÜG, (HST)", "picture" : "https://upload.wikimedia.org/wikipedia/commons/1/11/Wappen_des_Landkreises_Vorpommern-R%C3%BCgen.svg"},
+     {"name" : "Landkreis Vorpommern-Greifswald", "kfz": "VG, ANK, GW, PW, SBG, UEM, WLG, HGW", "picture" : "https://upload.wikimedia.org/wikipedia/commons/5/57/Wappen_Landkreis_Vorpommern-Greifswald.svg"},
+     {"name" : "Landkreis Vorpommern-Rügen", "kfz": "VR, GMN, NVP, RDG, RÜG, HST", "picture" : "https://upload.wikimedia.org/wikipedia/commons/1/11/Wappen_des_Landkreises_Vorpommern-R%C3%BCgen.svg"},
      {"name" : "Landkreis Vulkaneifel (Daun)", "kfz": "DAU", "picture" : "https://upload.wikimedia.org/wikipedia/commons/3/3d/DEU_Landkreis_Vulkaneifel_COA.svg"},
  
      {"name" : "Landkreis Waldeck-Frankenberg (Korbach)", "kfz": "KB, FKB, WA", "picture" : "https://upload.wikimedia.org/wikipedia/commons/8/86/Wappen_Landkreis_Waldeck-Frankenberg.svg"},
@@ -424,8 +423,5 @@
      {"name" : "Zollernalbkreis (Balingen)", "kfz": "BL, HCH", "picture" : "https://upload.wikimedia.org/wikipedia/commons/d/d0/Wappen_Zollernalbkreis.svg"},
      {"name" : "Stadt Zweibrücken", "kfz": "ZW", "picture" : "https://upload.wikimedia.org/wikipedia/commons/8/8f/Wappen_Zweibruecken.jpg"},
      {"name" : "Landkreis Zwickau", "kfz": "Z, GC, HOT, WDA", "picture" : "https://upload.wikimedia.org/wikipedia/commons/7/79/Wappen_vom_Landkreis_Zwickau.svg"}
- 
  ]
- }
- 
  

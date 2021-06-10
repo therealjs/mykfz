@@ -8,7 +8,9 @@ const middlewares = require('./middlewares');
 
 const auth = require('./routes/auth');
 const vehicle = require('./routes/vehicle');
+const plateReservation = require('./routes/plateReservation');
 const user = require('./routes/user');
+const districts = require('./routes/district');
 
 const api = express();
 
@@ -28,6 +30,8 @@ api.get('/', (req, res) => {
 // API routes
 api.use('/auth', auth);
 api.use('/vehicles', vehicle);
+api.use('/plateReservations', plateReservation);
 api.use('/users', user);
+api.use('/districts', districts);
 
 module.exports = api;

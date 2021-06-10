@@ -5,7 +5,6 @@ import {
     Grid,
     Card,
     TextField,
-    Select,
     ListItemAvatar,
     Avatar,
     ListItemText,
@@ -14,8 +13,9 @@ import {
     Button,
     Typography
 } from '@material-ui/core';
-
+import Autocomplete from '@material-ui/lab/Autocomplete';
 import { withRouter, Link } from 'react-router-dom';
+import DistrictService from '../services/DistrictService';
 
 import Page from './Page';
 
@@ -35,18 +35,29 @@ class UserSignup extends React.Component {
             zipCode: '',
             street: '',
             houseNumber: '',
-            idId: ''
+            idId: '',
+            districtOptions: [{ name: '' }]
         };
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleDistrictChange = this.handleDistrictChange.bind(this);
 
-        // ToDo Use the new District Json for this
-        this.districtOptions = ['Munich (City)', 'Dachau', 'Miltenberg'];
+        DistrictService.getDistricts()
+            .then((data) => {
+                this.setState({ districtOptions: data });
+            })
+            .catch((e) => {
+                console.error(e);
+            });
     }
 
     handleChange(event) {
         this.setState({ [event.target.name]: event.target.value });
+    }
+
+    handleDistrictChange(event, value) {
+        this.setState({ district: value });
     }
 
     handleSubmit(event) {
@@ -136,9 +147,24 @@ class UserSignup extends React.Component {
                                     onChange={this.handleChange}
                                 />
                             </Grid>
-                            <Grid item xs={12}>
-                                <InputLabel>District</InputLabel>
-                                <Select
+                            <Grid item xs={9}>
+                                <Autocomplete
+                                    id="combo-box-demo"
+                                    options={this.state.districtOptions}
+                                    getOptionLabel={(option) => option.name}
+                                    style={{ width: 300 }}
+                                    name="district"
+                                    required={true}
+                                    fullWidth
+                                    onChange={this.handleDistrictChange}
+                                    renderInput={(params) => (
+                                        <TextField
+                                            {...params}
+                                            label="District"
+                                        />
+                                    )}
+                                />
+                                {/* <Select
                                     label="District"
                                     value={this.state.district}
                                     required={true}
@@ -167,9 +193,19 @@ class UserSignup extends React.Component {
                                             </MenuItem>
                                         );
                                     })}
-                                </Select>
+                                </Select> */}
                             </Grid>
-
+                            {this.state.district ?
+                                <Grid item xs={3}>
+                                    <Avatar
+                                        //variant="square"
+                                        alt={this.state.district.name}
+                                        src={this.state.district.picture}
+                                    />
+                                </Grid>
+                                : <Grid item xs={3}>
+                                    </Grid>
+                            }
                             <Grid item xs={6}>
                                 <TextField
                                     label="City"
@@ -178,7 +214,7 @@ class UserSignup extends React.Component {
                                     required={true}
                                     value={this.state.city}
                                     onChange={this.handleChange}
-                                    errorText="City is required"
+                                    errortext="City is required"
                                 />
                             </Grid>
                             <Grid item xs={6}>
@@ -242,7 +278,7 @@ class UserSignup extends React.Component {
                                 </Button>
                                 <Button
                                     component={Link}
-                                    to={'/register'}
+                                    to={'/login'}
                                     style={{ float: 'right' }}
                                     variant="contained"
                                     type="reset"

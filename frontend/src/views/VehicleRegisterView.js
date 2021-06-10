@@ -5,6 +5,7 @@ import React from 'react';
 import VehicleRegister from '../components/VehicleRegister';
 
 import VehicleService from '../services/VehicleService';
+import UserService from '../services/UserService';
 
 export class VehicleRegisterView extends React.Component {
     constructor(props) {
@@ -35,17 +36,19 @@ export class VehicleRegisterView extends React.Component {
 
             let id = this.props.match.params.id;
 
-            VehicleService.getVehicle(id)
-                .then((data) => {
+            (async () => {
+                try {
+                    let vehicle = await VehicleService.getVehicle(id);
+                    let user = await UserService.getUserDetails();
                     this.setState({
-                        vehicle: data,
+                        vehicle: vehicle,
                         loading: false,
-                        error: undefined
+                        user: user
                     });
-                })
-                .catch((e) => {
-                    console.error(e);
-                });
+                } catch (err) {
+                    console.error(err);
+                }
+            })();
         }
     }
 
@@ -85,6 +88,7 @@ export class VehicleRegisterView extends React.Component {
         return (
             <VehicleRegister
                 vehicle={this.state.vehicle}
+                user={this.state.user}
                 onSubmit={(vehicle) => this.updateVehicle(vehicle)}
                 error={this.state.error}
             />
