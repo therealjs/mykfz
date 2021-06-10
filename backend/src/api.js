@@ -8,6 +8,7 @@ const middlewares = require('./middlewares');
 
 const auth = require('./routes/auth');
 const vehicle = require('./routes/vehicle');
+// const plate = require('./routes/plate');
 const user = require('./routes/user');
 const districts = require('./routes/district');
 
@@ -29,6 +30,7 @@ api.get('/', (req, res) => {
 // API routes
 api.use('/auth', auth);
 api.use('/vehicles', vehicle);
+// api.use('/plates', plate);
 api.use('/users', user);
 api.use('/districts', districts);
 

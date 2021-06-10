@@ -56,7 +56,7 @@ export JWT_SECRET="very secret secret"
 **Add districts to your mongo db**
 
 ```bash
-mongoimport --db mykfz --collection districts --drop --type json --jsonArray --file "C:\path\to\project\backend\resources\district.json"
+mongoimport --db mykfzdb --collection districts --drop --type json --jsonArray --file "C:\path\to\project\backend\resources\district.json"
 ```
 
 ## Start the project

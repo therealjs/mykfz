@@ -6,8 +6,8 @@ const router = express.Router();
 const middlewares = require('../middlewares');
 const DistrictController = require('../controllers/district');
 
-router.get('/', DistrictController.list); // List all vehicles
-router.get('/:districtId', DistrictController.read); // Read a vehicle by Id
+router.get('/', DistrictController.list); // List all districts
+router.get('/:districtId', DistrictController.read); // Read a district by Id
 router.put(
     '/:districtId',
     middlewares.checkAuthentication,
