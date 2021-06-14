@@ -3,8 +3,9 @@
 const mongoose = require('mongoose');
 
 const AddressSchema = mongoose.Schema({
-    district: {
-        type: String,
+    district: {  
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'District',
         required: true
     },
     zipCode: String,

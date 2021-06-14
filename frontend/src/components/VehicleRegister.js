@@ -58,16 +58,14 @@ class VehicleRegister extends React.Component {
         this.setState({
             loading: true
         });
-
         (async () => {
+            
             try {
                 let district = await DistrictService.getDistrict(this.props.user.address.district);
-                console.log(this.props.user)
+                console.log(district);
                 this.setState({
-                    districtOptions: district.kfz[0].split(", "),
+                    districtOptions: district.areaCode
                 });
-                console.log(district.kfz)
-                console.log(this.state.districtOptions)
             } catch (err) {
                 console.error(err+ "X");
             }

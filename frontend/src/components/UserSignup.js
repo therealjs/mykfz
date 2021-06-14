@@ -57,7 +57,7 @@ class UserSignup extends React.Component {
     }
 
     handleDistrictChange(event, value) {
-        this.setState({ district: value });
+        this.setState({ district: value._id });
     }
 
     handleSubmit(event) {
