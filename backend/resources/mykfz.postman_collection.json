@@ -15,7 +15,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\": \"mike12\",\n    \"password\": \"pass\",\n    \"lastName\": \"Effzett\",\n    \"firstName\": \"Mike\",\n    \"address\": {\n        \"district\": \"Munich\",\n        \"zipCode\": \"80999\"\n    },\n    \"identityDocument\": {\n        \"idId\": \"LF30\",\n        \"expirationDate\": \"2025-04-01\"\n    }\n}",
+							"raw": "{\n    \"username\": \"mike12\",\n    \"password\": \"pass\",\n    \"lastName\": \"Effzett\",\n    \"firstName\": \"Mike\",\n    \"address\": {\n        \"district\": \"Munich\",\n        \"zipCode\": \"80999\"\n    },\n    \"identityDocument\": {\n        \"idId\": \"LF30\",\n        \"expirationDate\": \"2025-04-01\"\n    }\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -93,7 +93,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:3000/vehicles?owner=60afb4db11661e59d8b5e81f",
+							"raw": "localhost:3000/vehicles?owner=60b9afdadad5b31be63de066",
 							"host": [
 								"localhost"
 							],
@@ -104,7 +104,7 @@
 							"query": [
 								{
 									"key": "owner",
-									"value": "60afb4db11661e59d8b5e81f"
+									"value": "60b9afdadad5b31be63de066"
 								}
 							]
 						}
@@ -140,13 +140,13 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwYWZiNGRiMTE2NjFlNTlkOGI1ZTgxZiIsInVzZXJuYW1lIjoidXNlciIsImlhdCI6MTYyMjE4MzEyMywiZXhwIjoxNjIyMjY5NTIzfQ.6Evnz00DcYpENJrWHfp2nk0YMRY7ZLXH_73PZmEunZ8",
+								"value": "JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwYjlhZmRhZGFkNWIzMWJlNjNkZTA2NiIsInVzZXJuYW1lIjoidGVzdCIsImlhdCI6MTYyMjc4MzA5MCwiZXhwIjoxNjIyODY5NDkwfQ.hIK8sgxmWHNYFyTmzH0rrdz_z3rfsJzYsL1ruQDUgbc",
 								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"vin\": \"vin1234\",\n    \"licensePlate\": \"M - MD 10020\",\n    \"owner\": \"60afb4db11661e59d8b5e81f\",\n    \"state\": \"NEW\",\n    \"generalInspection\": \"2021-05-28\",\n    \"processes\": [\n        {\n            \"processType\": \"DEREGISTRATION\",\n            \"state\": \"completed\",\n            \"info\": {\n                \"plate-code\": \"XYZ\"\n            }\n        },\n        {\n            \"processType\": \"DEREGISTRATION\",\n            \"state\": \"completed\",\n            \"info\": {\n                \"plate-code\": \"XYZ\"\n            }\n        }\n    ]\n}",
+							"raw": "{\n    \"owner\": \"60c5b66cb32d3d3a1d3ed33f\",\n    \"vin\": \"WP0CB29906S769518\",\n    \"make\": \"PORSCHE\",\n    \"model\": \"911\",\n    \"licensePlate\": null,\n    \"state\": \"NEW\",\n    \"generalInspectionMonth\": 4,\n    \"generalInspectionYear\": 2023\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -177,7 +177,7 @@
 							{
 								"key": "Authorization",
 								"type": "text",
-								"value": "JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwYWU2M2YwODY3ZTYyYWMxYWYyNzE5NiIsInVzZXJuYW1lIjoiamFuaWsiLCJpYXQiOjE2MjIwNDE1ODQsImV4cCI6MTYyMjEyNzk4NH0.e-J0eJint6VmOLFf0PdlLtho-GiCHS-I8wUQnbh7vRo"
+								"value": "JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwYWZiNGRiMTE2NjFlNTlkOGI1ZTgxZiIsInVzZXJuYW1lIjoidXNlciIsImlhdCI6MTYyMjE4MzEyMywiZXhwIjoxNjIyMjY5NTIzfQ.6Evnz00DcYpENJrWHfp2nk0YMRY7ZLXH_73PZmEunZ8"
 							}
 						],
 						"body": {
@@ -190,14 +190,14 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:3000/vehicles/60ae5431b7ae3d973818ba70",
+							"raw": "localhost:3000/vehicles/60c203b04b15f9b66b3c3293",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
 								"vehicles",
-								"60ae5431b7ae3d973818ba70"
+								"60c203b04b15f9b66b3c3293"
 							]
 						}
 					},
@@ -273,6 +273,214 @@
 								"60b0f476b6d28417d04cb590",
 								"processes",
 								"60b0f476b6d28417d04cb591"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "Get All Users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/users",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/users/60b9afdadad5b31be63de066",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users",
+								"60b9afdadad5b31be63de066"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "district",
+			"item": [
+				{
+					"name": "Get All Districts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/districts",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"districts"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "plateReservation",
+			"item": [
+				{
+					"name": "Get All Plate Reservations",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/plateReservations",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"plateReservations"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Plate Reservations Of Owner",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/plateReservations",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"plateReservations"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Plate Reservation By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/plateReservations/60c5b04af29f5d32446c9ed2",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"plateReservations",
+								"60c5b04af29f5d32446c9ed2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Plate Reservation",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"district\": \"60c20db80271fcbb053ad4aa\",\n    \"owner\": \"60b9afdadad5b31be63de066\",\n    \"combination\": \"M-MM 126\",\n    \"expiration\": \"2021-12-24\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/plateReservations",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"plateReservations"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Plate Reservation",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"combination\": \"M-MM 123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/plateReservations/60c5b0c0f29f5d32446c9ed3",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"plateReservations",
+								"60c5b0c0f29f5d32446c9ed3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Plate Reservation",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/plateReservations/60c5b04af29f5d32446c9ed2",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"plateReservations",
+								"60c5b04af29f5d32446c9ed2"
 							]
 						}
 					},
