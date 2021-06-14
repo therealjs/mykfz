@@ -37,8 +37,8 @@ class VehicleRegister extends React.Component {
             generalInspectionMonth: props.vehicle.generalInspectionMonth,
             generalInspectionYear: props.vehicle.generalInspectionYear,
             secCodeII: '',
-            districtOptions: [],
-            district: '',
+            areaCodeOptions: [],
+            areaCode: '',
             letters: '',
             numbers: '',
             
@@ -65,7 +65,7 @@ class VehicleRegister extends React.Component {
                 let district = await DistrictService.getDistrict(this.props.user.address.district);
                 console.log(district);
                 this.setState({
-                    districtOptions: district.areaCode
+                    areaCodeOptions: district.areaCode
                 });
             } catch (err) {
                 console.error(err+ "X");
@@ -136,17 +136,17 @@ class VehicleRegister extends React.Component {
                             
                 
                             <Select
-                                    value={this.state.district}
+                                    value={this.state.areaCode}
                                     required={true}
-                                    name="district"
+                                    name="areaCode"
                                     onChange={this.handleChange}
                                 >
 
 
-                                        {(this.state.districtOptions).map((district) => {
+                                        {(this.state.areaCodeOptions).map((areaCode) => {
                                         return (
-                                            <MenuItem value={district}>
-                                                {district}
+                                            <MenuItem value={areaCode}>
+                                                {areaCode}
                                             </MenuItem>
                                         );
                                     }
