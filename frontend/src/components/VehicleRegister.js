@@ -13,6 +13,7 @@ import {
     Typography,
     FormControl,
     FormControlLabel,
+    FormHelperText,
     FormGroup,
     FormLabel
 } from '@material-ui/core';
@@ -102,7 +103,8 @@ class VehicleRegister extends React.Component {
     render() {
         return (
             <Page>
-                <Card style={{ padding: '20px', maxWidth: '500px' }}>
+                <Card style={{ padding: '20px', maxWidth: '500px'
+                    }}>
                     <form
                         onSubmit={this.handleSubmit}
                         onReset={() => this.props.history.goBack()}
@@ -122,17 +124,60 @@ class VehicleRegister extends React.Component {
                             justify="center"
                             spacing={3}
                         >
-                            <Grid item xs={12}>
-                                <TextField
-                                    label="License Plate"
+                        <Grid item xs={12}>
+                        <FormGroup row style={{justifyContent: "space-between", padding: "20px", paddingLeft: "20%",
+                                height: "120px",
+                                backgroundImage: `url(${"https://t3.ftcdn.net/jpg/00/11/79/08/240_F_11790850_Gi4UC9cwGMUMGWtZhSP4yKpFg3tqlPis.jpg"})`,
+                                backgroundSize: "contain", backgroundRepeat: "no-repeat"}}> 
+                            <FormControl style={{width: "80px"}}>
+                            <InputLabel >
+                             {String("District")}
+                            </InputLabel>
+                            
+                
+                            <Select
+                                    value={this.state.district}
                                     required={true}
-                                    fullWidth
-                                    name="licensePlate"
-                                    value={this.state.licensePlate}
+                                    name="district"
                                     onChange={this.handleChange}
-                                    maxLength={12}
+                                >
+
+
+                                        {(this.state.districtOptions).map((district) => {
+                                        return (
+                                            <MenuItem value={district}>
+                                                {district}
+                                            </MenuItem>
+                                        );
+                                    }
+                                    
+                                    )};
+                                </Select>
+                            </FormControl >
+                            <FormControl style={{width: "80px"}}>
+                                <TextField
+                                    label="Letters"
+                                    required={true}
+                                    name="letters"
+                                    value={this.state.letters}
+                                    // ToDo add regex
+                                    onChange={this.handleChange}
+                                    inputProps={{ maxLength: 2}}
                                 />
-                            </Grid>
+                            </FormControl>
+                            <FormControl style={{width: "80px"}}>
+                                <TextField
+                                    label="Numbers"
+                                    required={true}
+                                    name="numbers"
+                                    type="number"
+                                    value={this.state.numbers}
+                                    onChange={this.handleChange}
+                                    inputProps={{ maxLength: 3}}
+                                />
+                            </FormControl>
+                        </FormGroup>
+                        </Grid>
                             <Grid item xs={12}>
                                 <TextField
                                     label="VIN"
