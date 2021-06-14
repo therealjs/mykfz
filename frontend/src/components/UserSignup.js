@@ -164,36 +164,6 @@ class UserSignup extends React.Component {
                                         />
                                     )}
                                 />
-                                {/* <Select
-                                    label="District"
-                                    value={this.state.district}
-                                    required={true}
-                                    fullWidth
-                                    name="district"
-                                    onChange={this.handleChange}
-                                >
-                                    {this.districtOptions.map((district) => {
-                                        return (
-                                            <MenuItem
-                                                style={{ display: 'flex' }}
-                                                value={district}
-                                            >
-                                                <ListItemAvatar>
-                                                    <Avatar
-                                                        alt={district}
-                                                        src="https://upload.wikimedia.org/wikipedia/commons/1/17/Muenchen_Kleines_Stadtwappen.svg"
-                                                    />
-                                                </ListItemAvatar>
-                                                <ListItemText
-                                                    style={{
-                                                        maerginTop: '8px'
-                                                    }}
-                                                    primary={district}
-                                                />
-                                            </MenuItem>
-                                        );
-                                    })}
-                                </Select> */}
                             </Grid>
                             {this.state.district ?
                                 <Grid item xs={3}>

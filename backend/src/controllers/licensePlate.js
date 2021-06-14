@@ -1,6 +1,6 @@
 'use strict';
 
-const PlateReservationModel = require('../models/plateReservation');
+const LicensePlateModel = require('../models/licensePlate');
 
 const create = async (req, res) => {
     if (Object.keys(req.body).length === 0)
@@ -10,9 +10,9 @@ const create = async (req, res) => {
         });
 
     try {
-        let plateReservation = await PlateReservationModel.create(req.body);
+        let licensePlate = await LicensePlateModel.create(req.body);
 
-        return res.status(201).json(plateReservation);
+        return res.status(201).json(licensePlate);
     } catch (err) {
         return res.status(500).json({
             error: 'Internal server error',
@@ -23,17 +23,17 @@ const create = async (req, res) => {
 
 const read = async (req, res) => {
     try {
-        let plateReservation = await PlateReservationModel.findById(
-            req.params.plateReservationId
+        let licensePlate = await LicensePlateModel.findById(
+            req.params.licensePlateId
         ).exec();
 
-        if (!plateReservation)
+        if (!licensePlate)
             return res.status(404).json({
                 error: 'Not Found',
-                message: `PlateReservation not found`
+                message: `licensePlate not found`
             });
 
-        return res.status(200).json(plateReservation);
+        return res.status(200).json(licensePlate);
     } catch (err) {
         return res.status(500).json({
             error: 'Internal Server Error',
@@ -51,8 +51,8 @@ const update = async (req, res) => {
     }
 
     try {
-        let plateReservation = await PlateReservationModel.findByIdAndUpdate(
-            req.params.plateReservationId,
+        let licensePlate = await LicensePlateModel.findByIdAndUpdate(
+            req.params.licensePlateId,
             req.body,
             {
                 new: true,
@@ -60,7 +60,7 @@ const update = async (req, res) => {
             }
         ).exec();
 
-        return res.status(200).json(plateReservation);
+        return res.status(200).json(licensePlate);
     } catch (err) {
         return res.status(500).json({
             error: 'Internal server error',
@@ -71,12 +71,12 @@ const update = async (req, res) => {
 
 const remove = async (req, res) => {
     try {
-        await PlateReservationModel.findByIdAndRemove(
-            req.params.plateReservationId
+        await LicensePlateModel.findByIdAndRemove(
+            req.params.licensePlateId
         ).exec();
 
         return res.status(200).json({
-            message: `PlateReservation with plateReservationId ${req.params.plateReservationId} was deleted`
+            message: `licensePlate with licensePlateId ${req.params.licensePlateId} was deleted`
         });
     } catch (err) {
         return res.status(500).json({
@@ -90,9 +90,9 @@ const list = async (req, res) => {
     try {
         let filter = req.query; // e.g. { district: '60c20db80271fcbb053ad4aa', owner: '60b9afdadad5b31be63de066' }
 
-        let plateReservations = await PlateReservationModel.find(filter).exec();
+        let licensePlates = await LicensePlateModel.find(filter).exec();
 
-        return res.status(200).json(plateReservations);
+        return res.status(200).json(licensePlates);
     } catch (err) {
         return res.status(500).json({
             error: 'Internal server error',

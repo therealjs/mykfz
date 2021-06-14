@@ -3,18 +3,18 @@
 import HttpService from './HttpService';
 import DistrictService from './DistrictService';
 
-export default class PlateReservationService {
+export default class LicensePlateService {
     constructor() {}
 
     static baseURL() {
-        return 'http://localhost:3000/plateReservations';
+        return 'http://localhost:3000/licensePlates';
     }
 
     static getFreePlatesForPrefix(prefix) {
         return [];
     }
 
-    static getPlateReservations() {
+    static getLicensePlates() {
         return new Promise((resolve, reject) => {
             HttpService.get(
                 this.baseURL(),
@@ -29,10 +29,10 @@ export default class PlateReservationService {
     }
 
     // TODO
-    static getPlateReservationsForUser(user_id) {
+    static getLicensePlatesForUser(user_id) {
         return new Promise((resolve, reject) => {
             HttpService.get(
-                `${PlateReservationService.baseURL()}?owner=${user_id}`,
+                `${LicensePlateService.baseURL()}?owner=${user_id}`,
                 function (data) {
                     resolve(data);
                 },
@@ -43,10 +43,10 @@ export default class PlateReservationService {
         });
     }
 
-    static getPlateReservation(id) {
+    static getLicensePlate(id) {
         return new Promise((resolve, reject) => {
             HttpService.get(
-                `${PlateReservationService.baseURL()}/${id}`,
+                `${LicensePlateService.baseURL()}/${id}`,
                 function (data) {
                     if (data != undefined || Object.keys(data).length !== 0) {
                         resolve(data);
@@ -61,10 +61,10 @@ export default class PlateReservationService {
         });
     }
 
-    static deletePlateReservation(id) {
+    static deleteLicensePlate(id) {
         return new Promise((resolve, reject) => {
             HttpService.remove(
-                `${PlateReservationService.baseURL()}/${id}`,
+                `${LicensePlateService.baseURL()}/${id}`,
                 function (data) {
                     if (data.message != undefined) {
                         resolve(data.message);
@@ -79,7 +79,7 @@ export default class PlateReservationService {
         });
     }
 
-    static updatePlateReservation(vehicle) {
+    static updateLicensePlate(vehicle) {
         return new Promise((resolve, reject) => {
             HttpService.put(
                 `${this.baseURL()}/${vehicle._id}`,
@@ -94,10 +94,10 @@ export default class PlateReservationService {
         });
     }
 
-    static createPlateReservation(vehicle) {
+    static createLicensePlate(vehicle) {
         return new Promise((resolve, reject) => {
             HttpService.post(
-                PlateReservationService.baseURL(),
+                LicensePlateService.baseURL(),
                 vehicle,
                 function (data) {
                     resolve(data);
