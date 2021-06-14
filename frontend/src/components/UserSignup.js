@@ -165,7 +165,7 @@ class UserSignup extends React.Component {
                                     )}
                                 />
                             </Grid>
-                            {this.state.district ?
+                            {this.state.district ? (
                                 <Grid item xs={3}>
                                     <Avatar
                                         //variant="square"
@@ -173,9 +173,9 @@ class UserSignup extends React.Component {
                                         src={this.state.district.picture}
                                     />
                                 </Grid>
-                                : <Grid item xs={3}>
-                                    </Grid>
-                            }
+                            ) : (
+                                <Grid item xs={3}></Grid>
+                            )}
                             <Grid item xs={6}>
                                 <TextField
                                     label="City"

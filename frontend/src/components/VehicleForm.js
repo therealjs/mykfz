@@ -78,12 +78,10 @@ class VehicleForm extends React.Component {
     async handleChangeVIN(event) {
         const vin = event.target.value;
         this.setState({ vin: vin });
-        //console.log(`vin is ${vin}`);
         if (vin.length == 17) {
             const result = await VINService.getVehicleInfo(vin);
             const make_value = result.Make;
             const model_value = result.Model;
-            //console.log(`make is ${make_value}, model is ${model_value}`);
             if (make_value) {
                 this.setState({ make: make_value });
             }

@@ -1,7 +1,6 @@
 'use strict';
 
 import HttpService from './HttpService';
-import DistrictService from './DistrictService';
 
 export default class LicensePlateService {
     constructor() {}
@@ -51,7 +50,7 @@ export default class LicensePlateService {
                     if (data != undefined || Object.keys(data).length !== 0) {
                         resolve(data);
                     } else {
-                        reject('Error while retrieving vehicle');
+                        reject('Error while retrieving licensePlate');
                     }
                 },
                 function (textStatus) {
@@ -79,11 +78,11 @@ export default class LicensePlateService {
         });
     }
 
-    static updateLicensePlate(vehicle) {
+    static updateLicensePlate(licensePlate) {
         return new Promise((resolve, reject) => {
             HttpService.put(
-                `${this.baseURL()}/${vehicle._id}`,
-                vehicle,
+                `${this.baseURL()}/${licensePlate._id}`,
+                licensePlate,
                 function (data) {
                     resolve(data);
                 },
@@ -94,11 +93,11 @@ export default class LicensePlateService {
         });
     }
 
-    static createLicensePlate(vehicle) {
+    static createLicensePlate(licensePlate) {
         return new Promise((resolve, reject) => {
             HttpService.post(
                 LicensePlateService.baseURL(),
-                vehicle,
+                licensePlate,
                 function (data) {
                     resolve(data);
                 },
@@ -164,6 +163,6 @@ export default class LicensePlateService {
         )
             .then((response) => response.text())
             .then((result) => console.log(result))
-            .catch((error) => console.log('error', error));
+            .catch((error) => console.error('error', error));
     }
 }

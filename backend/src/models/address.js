@@ -3,7 +3,7 @@
 const mongoose = require('mongoose');
 
 const AddressSchema = mongoose.Schema({
-    district: {  
+    district: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'District',
         required: true
@@ -14,4 +14,4 @@ const AddressSchema = mongoose.Schema({
     houseNumber: String
 });
 
-module.exports = { AddressSchema }
+module.exports = { AddressSchema };

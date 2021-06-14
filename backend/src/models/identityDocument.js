@@ -11,4 +11,4 @@ const IdentityDocumentSchema = mongoose.Schema({
     expirationDate: Date // todo should be required
 });
 
-module.exports = { IdentityDocumentSchema }
+module.exports = { IdentityDocumentSchema };

@@ -115,7 +115,7 @@ const createProcess = async (req, res) => {
             },
             { safe: true, upsert: true, new: true },
             function (err, model) {
-                console.log(err);
+                console.error(err);
             }
         );
 
