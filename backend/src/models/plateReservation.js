@@ -16,7 +16,7 @@ const PlateReservationSchema = new mongoose.Schema({
     },
     combination: {
         type: String,
-        validate: /^[A-Z]{1,3}-[A-Z]{1,2} [0-9]{1,4}$/,
+        // validate: /^[A-Z]{1,3}-[A-Z]{1,2} [0-9]{1,4}$/,
         required: true,
         unique: true
     },

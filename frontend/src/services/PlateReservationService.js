@@ -1,9 +1,113 @@
 'use strict';
 
 import HttpService from './HttpService';
+import DistrictService from './DistrictService';
 
 export default class PlateReservationService {
     constructor() {}
+
+    static baseURL() {
+        return 'http://localhost:3000/plateReservations';
+    }
+
+    static getFreePlatesForPrefix(prefix) {
+        return [];
+    }
+
+    static getPlateReservations() {
+        return new Promise((resolve, reject) => {
+            HttpService.get(
+                this.baseURL(),
+                function (data) {
+                    resolve(data);
+                },
+                function (textStatus) {
+                    reject(textStatus);
+                }
+            );
+        });
+    }
+
+    // TODO
+    static getPlateReservationsForUser(user_id) {
+        return new Promise((resolve, reject) => {
+            HttpService.get(
+                `${PlateReservationService.baseURL()}?owner=${user_id}`,
+                function (data) {
+                    resolve(data);
+                },
+                function (textStatus) {
+                    reject(textStatus);
+                }
+            );
+        });
+    }
+
+    static getPlateReservation(id) {
+        return new Promise((resolve, reject) => {
+            HttpService.get(
+                `${PlateReservationService.baseURL()}/${id}`,
+                function (data) {
+                    if (data != undefined || Object.keys(data).length !== 0) {
+                        resolve(data);
+                    } else {
+                        reject('Error while retrieving vehicle');
+                    }
+                },
+                function (textStatus) {
+                    reject(textStatus);
+                }
+            );
+        });
+    }
+
+    static deletePlateReservation(id) {
+        return new Promise((resolve, reject) => {
+            HttpService.remove(
+                `${PlateReservationService.baseURL()}/${id}`,
+                function (data) {
+                    if (data.message != undefined) {
+                        resolve(data.message);
+                    } else {
+                        reject('Error while deleting');
+                    }
+                },
+                function (textStatus) {
+                    reject(textStatus);
+                }
+            );
+        });
+    }
+
+    static updatePlateReservation(vehicle) {
+        return new Promise((resolve, reject) => {
+            HttpService.put(
+                `${this.baseURL()}/${vehicle._id}`,
+                vehicle,
+                function (data) {
+                    resolve(data);
+                },
+                function (textStatus) {
+                    reject(textStatus);
+                }
+            );
+        });
+    }
+
+    static createPlateReservation(vehicle) {
+        return new Promise((resolve, reject) => {
+            HttpService.post(
+                PlateReservationService.baseURL(),
+                vehicle,
+                function (data) {
+                    resolve(data);
+                },
+                function (textStatus) {
+                    reject(textStatus);
+                }
+            );
+        });
+    }
 
     static async getFreePlates() {
         var myHeaders = new Headers();

@@ -84,21 +84,7 @@ const remove = async (req, res) => {
 
 const list = async (req, res) => {
     try {
-        let filter = {};
-
-        let owner = req.query.owner; // query parameter called owner, e.g., .../vehicles?owner=1234
-
-        if (owner) {
-            if (!owner.match(/^[0-9a-fA-F]{24}$/)) {
-                return res.status(400).json({
-                    error: 'Bad Request',
-                    message: `Owner ${owner} is not a valid ObjectId`
-                });
-            } else {
-                console.log(`querying for vehicles of owner ${owner}`);
-                filter = { owner: owner };
-            }
-        }
+        let filter = req.query;
 
         let vehicles = await VehicleModel.find(filter).exec();
 

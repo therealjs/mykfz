@@ -90,6 +90,7 @@ export default class VehicleService {
     }
 
     static createVehicle(vehicle) {
+        console.log(vehicle);
         return new Promise((resolve, reject) => {
             HttpService.post(
                 VehicleService.baseURL(),
