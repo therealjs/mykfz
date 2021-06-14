@@ -23,8 +23,8 @@ const VehicleSchema = new mongoose.Schema({
         required: false
     },
     licensePlate: {
-        type: String,
-        // validate: /^[A-Z]{1,3}-[A-Z]{1,2} [0-9]{1,4}$/,
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'LicensePlate',
         required: false
     },
     state: {
