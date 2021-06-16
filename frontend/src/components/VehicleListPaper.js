@@ -13,15 +13,36 @@ import EditIcon from '@material-ui/icons/Edit';
 import Grid from '@material-ui/core/Grid';
 import LicensePlate from './LicensePlate';
 
-import UserService from '../services/UserService';
+import LicensePlateService from '../services/LicensePlateService';
 import { CardMedia } from '@material-ui/core';
 
 export class VehicleListPaper extends React.Component {
     constructor(props) {
         super(props);
+
+        this.state = {
+            licensePlate: '',
+        };
+    }
+
+    componentWillMount(props) {
+        (async () => {
+            try {
+                let licensePlate = await LicensePlateService.getLicensePlate(
+                    this.props.vehicle.licensePlate
+                );
+                this.setState({
+                    licensePlate: licensePlate.areaCode + " - " +  licensePlate.letters + " " + licensePlate.digits
+                });
+                console.log(this.state.licensePlate)
+            } catch (err) {
+                console.error(err);
+            }
+        })();
     }
 
     render() {
+        console.log(this.props.vehicle.licensePlate)
         return (
             <Grid item xs={12} sm={6} md={4}>
                 <Card>
@@ -47,7 +68,10 @@ export class VehicleListPaper extends React.Component {
                         }
                         subheader={this.props.vehicle.vin}
                     />
-                    <LicensePlate />
+                    {this.props.vehicle.licensePlate ?
+                        <LicensePlate licensePlate = {this.state.licensePlate}/>
+                        : []
+                    }
                     <CardActions
                         disableSpacing
                         style={{ justifyContent: 'center', padding: '15px' }}

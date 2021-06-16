@@ -138,7 +138,7 @@ class VehicleForm extends React.Component {
                             component="h5"
                             variant="h5"
                         >
-                            Add vehicle
+                            Vehicle
                         </Typography>
                         <Grid
                             justify="space-between"
