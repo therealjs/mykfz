@@ -1,6 +1,7 @@
 'use strict';
 
 const LicensePlateModel = require('../models/licensePlate');
+const LicensePlateService = require('../libs/licensePlateService');
 
 const create = async (req, res) => {
     if (Object.keys(req.body).length === 0)
@@ -101,10 +102,31 @@ const list = async (req, res) => {
     }
 };
 
+const listAvailable = (req, res) => {
+    let { areaCode, letters, digits } = req.query;
+    if (!(areaCode && letters && digits)) {
+        return res.status(400).json({
+            error: 'Bad Request',
+            message:
+                'areaCode, letters, digits are required as query parameters'
+        });
+    }
+
+    const allPlateCombinations =
+        LicensePlateService.generatePlatesMatchingPattern(
+            areaCode,
+            letters,
+            digits
+        );
+
+    return res.status(200).json(allPlateCombinations);
+};
+
 module.exports = {
     create,
     read,
     update,
     remove,
-    list
+    list,
+    listAvailable
 };
