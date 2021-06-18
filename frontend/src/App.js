@@ -84,7 +84,17 @@ export default class App extends React.Component {
                             return <Redirect to={'/login'} />;
                         }
                     },
-                    path: '/add'
+                    path: '/addVehicle'
+                },
+                {
+                    render: (props) => {
+                        if (UserService.isAuthenticated()) {
+                            return <LicensePlateReservationView {...props} />;
+                        } else {
+                            return <Redirect to={'/login'} />;
+                        }
+                    },
+                    path: '/addLicensePlateReservation'
                 },
                 { component: UserLoginView, path: '/login' },
                 { component: UserSignupView, path: '/register' }
