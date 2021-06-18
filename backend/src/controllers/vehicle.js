@@ -97,7 +97,7 @@ const list = async (req, res) => {
     }
 };
 
-const createProcess = async (req, res) => {
+const createProcess = (req, res) => {
     if (Object.keys(req.body).length === 0)
         return res.status(400).json({
             error: 'Bad Request',
@@ -109,18 +109,25 @@ const createProcess = async (req, res) => {
         let processToAdd = req.body;
 
         // for some reason this is executed twice; addToSet avoids duplicates
-        let result = await VehicleModel.findByIdAndUpdate(
+        VehicleModel.findByIdAndUpdate(
             vehicleId,
             {
                 $addToSet: { processes: processToAdd }
             },
             { safe: true, upsert: true, new: true },
             function (err, model) {
-                console.error(err);
+                if (err) {
+                    console.err(err);
+                    return res.status(500).json({
+                        error: 'Internal server error',
+                        message: err.message
+                    });
+                } else {
+                    console.log('added process successfully');
+                    return res.status(201).json(model);
+                }
             }
         );
-
-        return res.status(201).json(result);
     } catch (err) {
         return res.status(500).json({
             error: 'Internal server error',

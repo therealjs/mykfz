@@ -105,7 +105,7 @@ const listLicensePlateReservations = async (req, res) => {
                 message: `User not found`
             });
 
-        return res.status(200).json(user.listLicensePlateReservations);
+        return res.status(200).json(user.licensePlateReservations);
     } catch (err) {
         return res.status(500).json({
             error: 'Internal server error',
@@ -131,7 +131,7 @@ const createLicensePlateReservation = (req, res) => {
         UserModel.findByIdAndUpdate(
             userId,
             {
-                $addToSet: { listLicensePlateReservations: reservationToAdd }
+                $addToSet: { licensePlateReservations: reservationToAdd }
             },
             { safe: true, upsert: true, new: true },
             function (err, model) {
