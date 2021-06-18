@@ -108,10 +108,11 @@ const createProcess = async (req, res) => {
         let { vehicleId } = req.params;
         let processToAdd = req.body;
 
+        // for some reason this is executed twice; addToSet avoids duplicates
         let result = await VehicleModel.findByIdAndUpdate(
             vehicleId,
             {
-                $push: { processes: processToAdd }
+                $addToSet: { processes: processToAdd }
             },
             { safe: true, upsert: true, new: true },
             function (err, model) {
