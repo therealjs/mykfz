@@ -16,6 +16,8 @@ import LicensePlate from './LicensePlate';
 import LicensePlateService from '../services/LicensePlateService';
 import { CardMedia } from '@material-ui/core';
 
+const makeLogos = require('../../resources/carLogos')
+
 export class VehicleListPaper extends React.Component {
     constructor(props) {
         super(props);
@@ -34,7 +36,6 @@ export class VehicleListPaper extends React.Component {
                 this.setState({
                     licensePlate: licensePlate.areaCode + " - " +  licensePlate.letters + " " + licensePlate.digits
                 });
-                console.log(this.state.licensePlate)
             } catch (err) {
                 console.error(err);
             }
@@ -42,15 +43,15 @@ export class VehicleListPaper extends React.Component {
     }
 
     render() {
-        console.log(this.props.vehicle.licensePlate)
         return (
             <Grid item xs={12} sm={6} md={4}>
-                <Card>
+                <Card style={{minHeight: "200px"}}>
                     <CardHeader
                         avatar={
                             <Avatar
+                                //variant="square"
                                 aria-label="make"
-                                src="https://upload.wikimedia.org/wikipedia/commons/4/44/BMW.svg"
+                                src={makeLogos[this.props.vehicle.make]}
                             />
                         }
                         action={

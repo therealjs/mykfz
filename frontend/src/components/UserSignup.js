@@ -58,6 +58,7 @@ class UserSignup extends React.Component {
 
     handleDistrictChange(event, value) {
         this.setState({ district: value._id });
+        this.setState({ districtLogo: value.picture});
     }
 
     handleSubmit(event) {
@@ -168,9 +169,9 @@ class UserSignup extends React.Component {
                             {this.state.district ? (
                                 <Grid item xs={3}>
                                     <Avatar
-                                        //variant="square"
-                                        alt={this.state.district.name}
-                                        src={this.state.district.picture}
+                                        variant="square"
+                                        alt={"District"}
+                                        src={this.state.districtLogo}
                                     />
                                 </Grid>
                             ) : (
