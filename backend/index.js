@@ -17,7 +17,7 @@ mongoose
     .connect(config.mongoURI, { useFindAndModify: false })
     .then(() => server.listen(config.port))
     .catch((err) => {
-        console.log('Error connecting to the database', err.message);
+        console.error('Error connecting to the database', err.message);
         process.exit(err.statusCode);
     });
 
@@ -26,6 +26,6 @@ server.on('listening', () => {
 });
 
 server.on('error', (err) => {
-    console.log('Error in the server', err.message);
+    console.error('Error in the server', err.message);
     process.exit(err.statusCode);
 });

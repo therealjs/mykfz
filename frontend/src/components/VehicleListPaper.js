@@ -13,24 +13,45 @@ import EditIcon from '@material-ui/icons/Edit';
 import Grid from '@material-ui/core/Grid';
 import LicensePlate from './LicensePlate';
 
-import UserService from '../services/UserService';
+import LicensePlateService from '../services/LicensePlateService';
 import { CardMedia } from '@material-ui/core';
+
+const makeLogos = require('../../resources/carLogos')
 
 export class VehicleListPaper extends React.Component {
     constructor(props) {
         super(props);
+
+        this.state = {
+            licensePlate: '',
+        };
+    }
+
+    componentWillMount(props) {
+        (async () => {
+            try {
+                let licensePlate = await LicensePlateService.getLicensePlate(
+                    this.props.vehicle.licensePlate
+                );
+                this.setState({
+                    licensePlate: licensePlate.areaCode + " - " +  licensePlate.letters + " " + licensePlate.digits
+                });
+            } catch (err) {
+                console.error(err);
+            }
+        })();
     }
 
     render() {
-        console.log(this.props);
         return (
             <Grid item xs={12} sm={6} md={4}>
-                <Card>
+                <Card style={{minHeight: "200px"}}>
                     <CardHeader
                         avatar={
                             <Avatar
+                                //variant="square"
                                 aria-label="make"
-                                src="https://upload.wikimedia.org/wikipedia/commons/4/44/BMW.svg"
+                                src={makeLogos[this.props.vehicle.make]}
                             />
                         }
                         action={
@@ -48,7 +69,10 @@ export class VehicleListPaper extends React.Component {
                         }
                         subheader={this.props.vehicle.vin}
                     />
-                    <LicensePlate />
+                    {this.props.vehicle.licensePlate ?
+                        <LicensePlate licensePlate = {this.state.licensePlate}/>
+                        : []
+                    }
                     <CardActions
                         disableSpacing
                         style={{ justifyContent: 'center', padding: '15px' }}

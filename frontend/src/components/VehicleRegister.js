@@ -13,6 +13,7 @@ import {
     Typography,
     FormControl,
     FormControlLabel,
+    FormHelperText,
     FormGroup,
     FormLabel
 } from '@material-ui/core';
@@ -23,6 +24,7 @@ import UserService from '../services/UserService';
 
 const style = { maxWidth: 500 };
 import DistrictService from '../services/DistrictService';
+import LicensePlateService from '../services/LicensePlateService';
 
 class VehicleRegister extends React.Component {
     constructor(props) {
@@ -36,11 +38,10 @@ class VehicleRegister extends React.Component {
             generalInspectionMonth: props.vehicle.generalInspectionMonth,
             generalInspectionYear: props.vehicle.generalInspectionYear,
             secCodeII: '',
-            districtOptions: [],
-            district: '',
+            areaCodeOptions: [],
+            areaCode: '',
             letters: '',
-            numbers: '',
-            
+            digits: ''
         };
 
         this.yearOptions = this.monthOptions = Array(4)
@@ -58,18 +59,16 @@ class VehicleRegister extends React.Component {
         this.setState({
             loading: true
         });
-
         (async () => {
             try {
-                let district = await DistrictService.getDistrict(this.props.user.address.district);
-                console.log(this.props.user)
+                let district = await DistrictService.getDistrict(
+                    this.props.user.address.district
+                );
                 this.setState({
-                    districtOptions: district.kfz[0].split(", "),
+                    areaCodeOptions: district.areaCode
                 });
-                console.log(district.kfz)
-                console.log(this.state.districtOptions)
             } catch (err) {
-                console.error(err+ "X");
+                console.error(err + 'X');
             }
         })();
     }
@@ -80,25 +79,42 @@ class VehicleRegister extends React.Component {
 
     handleSubmit(event) {
         event.preventDefault();
+        const licensePlate = {
+            areaCode: this.state.areaCode,
+            digits: this.state.digits,
+            letters: this.state.letters
+        };
 
-        let vehicle = this.props.vehicle;
-
-        vehicle.licensePlate = this.state.licensePlate;
-        vehicle.state = 'REGISTERED';
-        vehicle.generalInspectionMonth = this.state.generalInspectionMonth;
-        vehicle.generalInspectionYear = this.state.generalInspectionYear;
-        vehicle.processes.push({
-            processType: 'REGISTRATION',
-            date: Date(),
-            state: 'NEW',
-            info: {
-                eVB: this.state.evb,
-                secCodeII: this.state.secCodeII,
-                iban: this.state.iban
+        (async () => {
+            try {
+                const validatedPlate =
+                    await LicensePlateService.createLicensePlate(licensePlate);
+                this.setState({
+                    licensePlate: validatedPlate._id
+                });
+            } catch (err) {
+                console.error(err);
             }
-        });
+        })().then(() => {
+            let vehicle = this.props.vehicle;
 
-        this.props.onSubmit(vehicle);
+            vehicle.licensePlate = this.state.licensePlate;
+            vehicle.state = 'REGISTERED';
+            vehicle.generalInspectionMonth = this.state.generalInspectionMonth;
+            vehicle.generalInspectionYear = this.state.generalInspectionYear;
+            vehicle.processes.push({
+                processType: 'REGISTRATION',
+                date: Date(),
+                state: 'NEW',
+                info: {
+                    eVB: this.state.evb,
+                    secCodeII: this.state.secCodeII,
+                    iban: this.state.iban
+                }
+            });
+
+            this.props.onSubmit(vehicle);
+        });
     }
 
     render() {
@@ -125,15 +141,66 @@ class VehicleRegister extends React.Component {
                             spacing={3}
                         >
                             <Grid item xs={12}>
-                                <TextField
-                                    label="License Plate"
-                                    required={true}
-                                    fullWidth
-                                    name="licensePlate"
-                                    value={this.state.licensePlate}
-                                    onChange={this.handleChange}
-                                    maxLength={12}
-                                />
+                                <FormGroup
+                                    row
+                                    style={{
+                                        justifyContent: 'space-between',
+                                        padding: '20px',
+                                        paddingLeft: '20%',
+                                        height: '120px',
+                                        backgroundImage: `url(${'https://t3.ftcdn.net/jpg/00/11/79/08/240_F_11790850_Gi4UC9cwGMUMGWtZhSP4yKpFg3tqlPis.jpg'})`,
+                                        backgroundSize: 'contain',
+                                        backgroundRepeat: 'no-repeat'
+                                    }}
+                                >
+                                    <FormControl style={{ width: '80px' }}>
+                                        <InputLabel>
+                                            {String('District')}
+                                        </InputLabel>
+
+                                        <Select
+                                            value={this.state.areaCode}
+                                            required={true}
+                                            name="areaCode"
+                                            onChange={this.handleChange}
+                                        >
+                                            {this.state.areaCodeOptions.map(
+                                                (areaCode) => {
+                                                    return (
+                                                        <MenuItem
+                                                            value={areaCode}
+                                                        >
+                                                            {areaCode}
+                                                        </MenuItem>
+                                                    );
+                                                }
+                                            )}
+                                            ;
+                                        </Select>
+                                    </FormControl>
+                                    <FormControl style={{ width: '80px' }}>
+                                        <TextField
+                                            label="Letters"
+                                            required={true}
+                                            name="letters"
+                                            value={this.state.letters}
+                                            // ToDo add regex
+                                            onChange={this.handleChange}
+                                            inputProps={{ maxLength: 2 }}
+                                        />
+                                    </FormControl>
+                                    <FormControl style={{ width: '80px' }}>
+                                        <TextField
+                                            label="digits"
+                                            required={true}
+                                            name="digits"
+                                            type="number"
+                                            value={this.state.digits}
+                                            onChange={this.handleChange}
+                                            inputProps={{ maxLength: 3 }}
+                                        />
+                                    </FormControl>
+                                </FormGroup>
                             </Grid>
                             <Grid item xs={12}>
                                 <TextField

@@ -84,21 +84,7 @@ const remove = async (req, res) => {
 
 const list = async (req, res) => {
     try {
-        let filter = {};
-
-        let owner = req.query.owner; // query parameter called owner, e.g., .../vehicles?owner=1234
-
-        if (owner) {
-            if (!owner.match(/^[0-9a-fA-F]{24}$/)) {
-                return res.status(400).json({
-                    error: 'Bad Request',
-                    message: `Owner ${owner} is not a valid ObjectId`
-                });
-            } else {
-                console.log(`querying for vehicles of owner ${owner}`);
-                filter = { owner: owner };
-            }
-        }
+        let filter = req.query;
 
         let vehicles = await VehicleModel.find(filter).exec();
 
@@ -111,7 +97,7 @@ const list = async (req, res) => {
     }
 };
 
-const createProcess = async (req, res) => {
+const createProcess = (req, res) => {
     if (Object.keys(req.body).length === 0)
         return res.status(400).json({
             error: 'Bad Request',
@@ -122,18 +108,26 @@ const createProcess = async (req, res) => {
         let { vehicleId } = req.params;
         let processToAdd = req.body;
 
-        let result = await VehicleModel.findByIdAndUpdate(
+        // for some reason this is executed twice; addToSet avoids duplicates
+        VehicleModel.findByIdAndUpdate(
             vehicleId,
             {
-                $push: { processes: processToAdd }
+                $addToSet: { processes: processToAdd }
             },
             { safe: true, upsert: true, new: true },
             function (err, model) {
-                console.log(err);
+                if (err) {
+                    console.err(err);
+                    return res.status(500).json({
+                        error: 'Internal server error',
+                        message: err.message
+                    });
+                } else {
+                    console.log('added process successfully');
+                    return res.status(201).json(model);
+                }
             }
         );
-
-        return res.status(201).json(result);
     } catch (err) {
         return res.status(500).json({
             error: 'Internal server error',

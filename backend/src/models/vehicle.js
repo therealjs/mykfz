@@ -23,7 +23,9 @@ const VehicleSchema = new mongoose.Schema({
         required: false
     },
     licensePlate: {
-        type: String
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'LicensePlate',
+        required: false
     },
     state: {
         type: String,

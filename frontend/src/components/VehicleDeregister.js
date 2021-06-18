@@ -21,6 +21,7 @@ import { withRouter } from 'react-router-dom';
 import { AlertMessage } from './AlertMessage';
 import Page from './Page';
 import UserService from '../services/UserService';
+import LicensePlateService from '../services/LicensePlateService';
 
 const style = { maxWidth: 500 };
 
@@ -54,7 +55,16 @@ class VehicleDeregister extends React.Component {
 
         let vehicle = this.props.vehicle;
 
-        vehicle.licensePlate = '';
+        (async () => {
+
+            try {
+                let del = await LicensePlateService.deleteLicensePlate(vehicle.licensePlate);
+            } catch (err) {
+                console.error(err);
+            }
+        })().then(() => {
+
+        vehicle.licensePlate = null;
         vehicle.state = 'DEREGISTERED';
         vehicle.processes.push({
             processType: 'DEREGISTRATION',
@@ -67,6 +77,7 @@ class VehicleDeregister extends React.Component {
         });
 
         this.props.onSubmit(vehicle);
+        });
     }
 
     render() {

@@ -1,26 +1,8 @@
 'use strict';
+const AddressSchema = require('./address');
+const IdentityDocumentSchema = require('./identityDocument');
 
 const mongoose = require('mongoose');
-
-const AddressSchema = mongoose.Schema({
-    district: {
-        type: String,
-        required: true
-    },
-    zipCode: String,
-    city: String,
-    street: String,
-    houseNumber: String
-});
-
-const IdentityDocumentSchema = mongoose.Schema({
-    nfcId: String,
-    idId: {
-        type: String,
-        required: true
-    }, // e.g., LF3033PHJ
-    expirationDate: Date // todo should be required
-});
 
 // Define the user schema
 const UserSchema = new mongoose.Schema({
@@ -48,7 +30,17 @@ const UserSchema = new mongoose.Schema({
     identityDocument: {
         type: IdentityDocumentSchema,
         required: true
-    }
+    },
+    licensePlateReservations: [
+        {
+            licensePlate: {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: 'LicensePlate',
+                required: true
+            },
+            expiryDate: Date
+        }
+    ]
 });
 
 UserSchema.set('versionKey', false);

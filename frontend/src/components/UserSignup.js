@@ -57,7 +57,8 @@ class UserSignup extends React.Component {
     }
 
     handleDistrictChange(event, value) {
-        this.setState({ district: value });
+        this.setState({ district: value._id });
+        this.setState({ districtLogo: value.picture});
     }
 
     handleSubmit(event) {
@@ -164,48 +165,18 @@ class UserSignup extends React.Component {
                                         />
                                     )}
                                 />
-                                {/* <Select
-                                    label="District"
-                                    value={this.state.district}
-                                    required={true}
-                                    fullWidth
-                                    name="district"
-                                    onChange={this.handleChange}
-                                >
-                                    {this.districtOptions.map((district) => {
-                                        return (
-                                            <MenuItem
-                                                style={{ display: 'flex' }}
-                                                value={district}
-                                            >
-                                                <ListItemAvatar>
-                                                    <Avatar
-                                                        alt={district}
-                                                        src="https://upload.wikimedia.org/wikipedia/commons/1/17/Muenchen_Kleines_Stadtwappen.svg"
-                                                    />
-                                                </ListItemAvatar>
-                                                <ListItemText
-                                                    style={{
-                                                        maerginTop: '8px'
-                                                    }}
-                                                    primary={district}
-                                                />
-                                            </MenuItem>
-                                        );
-                                    })}
-                                </Select> */}
                             </Grid>
-                            {this.state.district ?
+                            {this.state.district ? (
                                 <Grid item xs={3}>
                                     <Avatar
-                                        //variant="square"
-                                        alt={this.state.district.name}
-                                        src={this.state.district.picture}
+                                        variant="square"
+                                        alt={"District"}
+                                        src={this.state.districtLogo}
                                     />
                                 </Grid>
-                                : <Grid item xs={3}>
-                                    </Grid>
-                            }
+                            ) : (
+                                <Grid item xs={3}></Grid>
+                            )}
                             <Grid item xs={6}>
                                 <TextField
                                     label="City"

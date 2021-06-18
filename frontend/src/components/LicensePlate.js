@@ -1,6 +1,6 @@
 import React from 'react';
 
-const LicensePlate = () => {
+const LicensePlate = (licensePlate) => {
     return (
         <div style={{ display: 'flex', justifyContent: 'center' }}>
             <img
@@ -15,7 +15,7 @@ const LicensePlate = () => {
                     fontSize: '20px'
                 }}
             >
-                M - ?? - 187
+                {licensePlate.licensePlate}
             </div>
         </div>
     );

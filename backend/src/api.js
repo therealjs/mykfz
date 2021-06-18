@@ -8,7 +8,7 @@ const middlewares = require('./middlewares');
 
 const auth = require('./routes/auth');
 const vehicle = require('./routes/vehicle');
-const plateReservation = require('./routes/plateReservation');
+const licensePlate = require('./routes/licensePlate');
 const user = require('./routes/user');
 const districts = require('./routes/district');
 
@@ -30,7 +30,7 @@ api.get('/', (req, res) => {
 // API routes
 api.use('/auth', auth);
 api.use('/vehicles', vehicle);
-api.use('/plateReservations', plateReservation);
+api.use('/licensePlates', licensePlate);
 api.use('/users', user);
 api.use('/districts', districts);
 
