@@ -12,10 +12,11 @@ import UserService from './services/UserService';
 import { UserLoginView } from './views/UserLoginView';
 import { UserSignupView } from './views/UserSignupView';
 
-import { VehicleListView } from './views/VehicleListView';
+import { DashboardView } from './views/DashboardView';
 import { VehicleDetailView } from './views/VehicleDetailView';
 import { VehicleRegisterView } from './views/VehicleRegisterView';
 import { VehicleDeregisterView } from './views/VehicleDeregisterView';
+import { LicensePlateReservationView } from './views/LicensePlateReservationView';
 import { VehicleFormView } from './views/VehicleFormView';
 
 export default class App extends React.Component {
@@ -28,7 +29,7 @@ export default class App extends React.Component {
                 {
                     render: (props) => {
                         if (UserService.isAuthenticated()) {
-                            return <VehicleListView {...props} />;
+                            return <DashboardView {...props} />;
                         } else {
                             return <Redirect to={'/login'} />;
                         }
