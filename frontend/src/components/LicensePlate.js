@@ -1,6 +1,6 @@
 import React from 'react';
 
-const LicensePlate = (licensePlate) => {
+const LicensePlate = (props) => {
     return (
         <div style={{ display: 'flex', justifyContent: 'center' }}>
             <img
@@ -15,7 +15,7 @@ const LicensePlate = (licensePlate) => {
                     fontSize: '20px'
                 }}
             >
-                {licensePlate.licensePlate}
+                {props.licensePlate.areaCode + " - " +  props.licensePlate.letters + " " + props.licensePlate.digits}
             </div>
         </div>
     );

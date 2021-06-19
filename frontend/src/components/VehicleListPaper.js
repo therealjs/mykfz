@@ -25,6 +25,7 @@ export class VehicleListPaper extends React.Component {
         this.state = {
             licensePlate: '',
         };
+        console.log(this.props)
     }
 
     componentWillMount(props) {
@@ -34,7 +35,7 @@ export class VehicleListPaper extends React.Component {
                     this.props.vehicle.licensePlate
                 );
                 this.setState({
-                    licensePlate: licensePlate.areaCode + " - " +  licensePlate.letters + " " + licensePlate.digits
+                    licensePlate: licensePlate
                 });
             } catch (err) {
                 console.error(err);
@@ -44,8 +45,8 @@ export class VehicleListPaper extends React.Component {
 
     render() {
         return (
-            <Grid item xs={12} sm={6} md={4}>
-                <Card style={{minHeight: "200px"}}>
+            <Grid item xs={12} sm={6} md={6}>
+                <Card style={{ minHeight: "200px" }}>
                     <CardHeader
                         avatar={
                             <Avatar
@@ -70,7 +71,7 @@ export class VehicleListPaper extends React.Component {
                         subheader={this.props.vehicle.vin}
                     />
                     {this.props.vehicle.licensePlate ?
-                        <LicensePlate licensePlate = {this.state.licensePlate}/>
+                        <LicensePlate licensePlate={this.state.licensePlate} />
                         : []
                     }
                     <CardActions

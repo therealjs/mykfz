@@ -3,7 +3,7 @@
 import HttpService from './HttpService';
 
 export default class UserService {
-    constructor() {}
+    constructor() { }
 
     static baseURL() {
         return 'http://localhost:3000/auth';
@@ -69,6 +69,21 @@ export default class UserService {
         return new Promise((resolve, reject) => {
             HttpService.get(
                 `${UserService.baseURL()}/me`,
+                function (data) {
+                    resolve(data);
+                },
+                function (textStatus) {
+                    reject(textStatus);
+                }
+            );
+        });
+    }
+
+    static updateUser(user) {
+        return new Promise((resolve, reject) => {
+            HttpService.put(
+                `http://localhost:3000/users/${user._id}`,
+                user,
                 function (data) {
                     resolve(data);
                 },
