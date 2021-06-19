@@ -122,7 +122,7 @@ const listAllCombinations = (req, res) => {
     return res.status(200).json(allPlateCombinations);
 };
 
-const listAvailableCombinations = (req, res) => {
+const listAvailableCombinations = async (req, res) => {
     let { areaCode, letters, digits } = req.query;
     if (!(areaCode && letters && digits)) {
         return res.status(400).json({
@@ -133,7 +133,7 @@ const listAvailableCombinations = (req, res) => {
     }
 
     const allPlateCombinations =
-        LicensePlateService.getAvailablePlatesMatchingPattern(
+        await LicensePlateService.getAvailablePlatesMatchingPattern(
             areaCode,
             letters,
             digits

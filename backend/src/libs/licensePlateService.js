@@ -1,5 +1,7 @@
 'use strict';
 
+const LicensePlateModel = require('../models/licensePlate');
+
 const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
 const digits = '0123456789'.split('');
 
@@ -73,11 +75,33 @@ module.exports = class LicensePlateService {
         return result;
     }
 
-    static getAvailablePlatesMatchingPattern(
+    static async getUsedPlates() {
+        return await LicensePlateModel.find().lean().exec();
+    }
+
+    static async getAvailablePlatesMatchingPattern(
         areaCode,
         letterPattern,
         digitPattern
-    ) {}
+    ) {
+        const allPlates = this.generatePlatesMatchingPattern(
+            areaCode,
+            letterPattern,
+            digitPattern
+        );
+        let usedPlates = await this.getUsedPlates();
+        const availablePlates = allPlates.filter(
+            (plate) =>
+                !usedPlates.find(
+                    (usedPlate) =>
+                        plate.areaCode === usedPlate.areaCode &&
+                        plate.letters === usedPlate.letters &&
+                        plate.digits === usedPlate.digits
+                )
+        );
+
+        return availablePlates;
+    }
 
     static matchingNumbers(digitPattern) {
         let res = [];
