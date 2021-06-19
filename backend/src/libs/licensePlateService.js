@@ -73,6 +73,12 @@ module.exports = class LicensePlateService {
         return result;
     }
 
+    static getAvailablePlatesMatchingPattern(
+        areaCode,
+        letterPattern,
+        digitPattern
+    ) {}
+
     static matchingNumbers(digitPattern) {
         let res = [];
         for (let num = 1; num <= 9999; num++) {

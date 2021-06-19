@@ -6,7 +6,8 @@ const router = express.Router();
 const LicensePlateController = require('../controllers/licensePlate');
 
 router.get('/', LicensePlateController.list); // List all licensePlates
-router.get('/available', LicensePlateController.listAvailable); // List all available licensePlates
+router.get('/all', LicensePlateController.listAllCombinations); // List all possible licensePlates
+router.get('/available', LicensePlateController.listAvailableCombinations); // List all available licensePlates
 
 router.post('/', LicensePlateController.create); // Create new licensePlate
 router.get('/:licensePlateId', LicensePlateController.read); // Read a licensePlate by Id
