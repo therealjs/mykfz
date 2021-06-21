@@ -214,14 +214,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:3000/vehicles/60b0f476b6d28417d04cb590/processes",
+							"raw": "localhost:3000/vehicles/60cc36af5ea7e01f23ac9c6b/processes",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
 								"vehicles",
-								"60b0f476b6d28417d04cb590",
+								"60cc36af5ea7e01f23ac9c6b",
 								"processes"
 							]
 						}
@@ -235,7 +235,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "   {\n        \"hello\": \"there\"\n    }",
+							"raw": "   {\n        \"processType\": \"REGISTRATION\"\n    }",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -243,14 +243,14 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:3000/vehicles/60b0f476b6d28417d04cb590/processes",
+							"raw": "localhost:3000/vehicles/60cc36af5ea7e01f23ac9c6b/processes",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
 								"vehicles",
-								"60b0f476b6d28417d04cb590",
+								"60cc36af5ea7e01f23ac9c6b",
 								"processes"
 							]
 						}
@@ -273,6 +273,34 @@
 								"60b0f476b6d28417d04cb590",
 								"processes",
 								"60b0f476b6d28417d04cb591"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Process via Put",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"processes\": []\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/vehicles/60cc36af5ea7e01f23ac9c6b",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"vehicles",
+								"60cc36af5ea7e01f23ac9c6b"
 							]
 						}
 					},
@@ -346,10 +374,10 @@
 			]
 		},
 		{
-			"name": "plateReservation",
+			"name": "licensePlate",
 			"item": [
 				{
-					"name": "Get All Plate Reservations",
+					"name": "Get All Plates",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -361,6 +389,52 @@
 							"port": "3000",
 							"path": [
 								"plateReservations"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Plate",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"areaCode\": \"M\",\n    \"digits\": 29,\n    \"letters\": \"DA\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/licensePlates",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"licensePlates"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Plate",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/licensePlates/60cc491c5e124645d96b137c",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"licensePlates",
+								"60cc491c5e124645d96b137c"
 							]
 						}
 					},
@@ -372,45 +446,28 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:3000/plateReservations",
+							"raw": "localhost:3000/users/60cc36a15ea7e01f23ac9c6a/licensePlateReservations",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
-								"plateReservations"
+								"users",
+								"60cc36a15ea7e01f23ac9c6a",
+								"licensePlateReservations"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Get Plate Reservation By Id",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "localhost:3000/plateReservations/60c5b04af29f5d32446c9ed2",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"plateReservations",
-								"60c5b04af29f5d32446c9ed2"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Create Plate Reservation",
+					"name": "Create Plate Reservation for existing plate",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"district\": \"60c20db80271fcbb053ad4aa\",\n    \"owner\": \"60b9afdadad5b31be63de066\",\n    \"combination\": \"M-MM 126\",\n    \"expiration\": \"2021-12-24\"\n}",
+							"raw": "{\n    \"licensePlate\": \"60cc36e45ea7e01f23ac9c6c\",\n    \"expiryDate\": \"2022-09-09\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -418,13 +475,15 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:3000/plateReservations",
+							"raw": "localhost:3000/users/60cc36a15ea7e01f23ac9c6a/licensePlateReservations",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
-								"plateReservations"
+								"users",
+								"60cc36a15ea7e01f23ac9c6a",
+								"licensePlateReservations"
 							]
 						}
 					},
@@ -473,14 +532,82 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:3000/plateReservations/60c5b04af29f5d32446c9ed2",
+							"raw": "localhost:3000/users/60cc36a15ea7e01f23ac9c6a/licensePlateReservations/60cc36e45ea7e01f23ac9c6c",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
-								"plateReservations",
-								"60c5b04af29f5d32446c9ed2"
+								"users",
+								"60cc36a15ea7e01f23ac9c6a",
+								"licensePlateReservations",
+								"60cc36e45ea7e01f23ac9c6c"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Possible Combinations Matching Pattern",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/licensePlates/all?areaCode=M&letters=D?&digits=?9",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"licensePlates",
+								"all"
+							],
+							"query": [
+								{
+									"key": "areaCode",
+									"value": "M"
+								},
+								{
+									"key": "letters",
+									"value": "D?"
+								},
+								{
+									"key": "digits",
+									"value": "?9"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Available Combinations Matching Pattern Copy",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/licensePlates/available?areaCode=M&letters=D?&digits=?9",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"licensePlates",
+								"available"
+							],
+							"query": [
+								{
+									"key": "areaCode",
+									"value": "M"
+								},
+								{
+									"key": "letters",
+									"value": "D?"
+								},
+								{
+									"key": "digits",
+									"value": "?9"
+								}
 							]
 						}
 					},
