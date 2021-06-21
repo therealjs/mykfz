@@ -10,7 +10,6 @@ import AddIcon from '@material-ui/icons/Add';
 const makeLogos = require('../../resources/carLogos');
 
 export const LicensePlateReservationList = ({ licensePlateReservations }) => {
-
     return (
         <Grid item xs={12} sm={6} md={12}>
             <Card style={{ height: '200px' }}>
