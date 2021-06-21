@@ -80,7 +80,6 @@ class VehicleListPaper extends React.Component {
             {})
         };
         this.handleExpandClick = this.handleExpandClick.bind(this);
-        console.log(this.state.processInfo);
     }
 
     componentWillMount(props) {
