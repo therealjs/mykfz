@@ -18,12 +18,9 @@ import {
 } from '@material-ui/core';
 import { withRouter } from 'react-router-dom';
 
-import { AlertMessage } from './AlertMessage';
 import Page from './Page';
 import UserService from '../services/UserService';
 import LicensePlateService from '../services/LicensePlateService';
-
-const style = { maxWidth: 500 };
 
 class VehicleDeregister extends React.Component {
     constructor(props) {
@@ -33,8 +30,10 @@ class VehicleDeregister extends React.Component {
             vin: props.vehicle.vin,
             licensePlate: props.vehicle.licensePlate,
             generalInspection: props.vehicle.generalInspection,
-            secCodeI: '',
-            plateCode: ''
+            info: this.props.location.state.info || {
+                secCodeI: '',
+                plateCode: ''
+            }
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -68,11 +67,11 @@ class VehicleDeregister extends React.Component {
             vehicle.state = 'DEREGISTERED';
             vehicle.processes.push({
                 processType: 'DEREGISTRATION',
-                date: '2020-05-30',
+                date: new Date(),
                 state: 'NEW',
                 info: {
-                    secCodeI: this.state.secCodeI,
-                    plateCode: this.state.plateCode
+                    secCodeI: this.state.info.secCodeI,
+                    plateCode: this.state.info.plateCode
                 }
             });
 
@@ -127,7 +126,7 @@ class VehicleDeregister extends React.Component {
                                     name="secCodeI"
                                     fullWidth
                                     required={true}
-                                    value={this.state.secCodeI}
+                                    value={this.state.info.secCodeI}
                                     onChange={this.handleChange}
                                     maxLength={7}
                                 />
@@ -138,7 +137,7 @@ class VehicleDeregister extends React.Component {
                                     required={true}
                                     name="plateCode"
                                     fullWidth
-                                    value={this.state.plateCode}
+                                    value={this.state.info.plateCode}
                                     onChange={this.handleChange}
                                     maxLength={3}
                                 />
@@ -169,10 +168,10 @@ class VehicleDeregister extends React.Component {
                                     type="submit"
                                     color="primary"
                                     disabled={
-                                        this.state.plateCode.toString()
+                                        this.state.info.plateCode.toString()
                                             .length != 3 ||
-                                        this.state.secCodeI.toString().length !=
-                                            7
+                                        this.state.info.secCodeI.toString()
+                                            .length != 7
                                     }
                                 >
                                     Save

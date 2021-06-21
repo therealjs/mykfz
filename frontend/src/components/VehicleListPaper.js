@@ -23,7 +23,6 @@ import clsx from 'clsx';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 
@@ -54,9 +53,34 @@ class VehicleListPaper extends React.Component {
                 digits: '  ',
                 letters: '  '
             },
-            expanded: false
+            expanded: false,
+            processInfo: this.props.vehicle.processes.reduce(function (
+                map,
+                process
+            ) {
+                map[process._id] =
+                    process.processType === 'DEREGISTRATION'
+                        ? {
+                              processType: 'deregister',
+                              info: {
+                                  secCodeI: process.info.secCodeI,
+                                  plateCode: process.info.plateCode
+                              }
+                          }
+                        : {
+                              processType: 'register',
+                              info: {
+                                  eVB: process.info.eVB,
+                                  secCodeII: process.info.secCodeII,
+                                  iban: process.info.iban
+                              }
+                          };
+                return map;
+            },
+            {})
         };
         this.handleExpandClick = this.handleExpandClick.bind(this);
+        console.log(this.state.processInfo);
     }
 
     componentWillMount(props) {
@@ -140,24 +164,59 @@ class VehicleListPaper extends React.Component {
                             <ExpandMoreIcon />
                         </IconButton>
                     </CardActions>
-                    <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
+                    <Collapse
+                        in={this.state.expanded}
+                        timeout="auto"
+                        unmountOnExit
+                    >
                         <CardContent>
-                            <Table className={classes.table} aria-label="simple table">
+                            <Table
+                                className={classes.table}
+                                aria-label="simple table"
+                            >
                                 <TableHead>
-                                <TableRow>
-                                    <TableCell>Process type</TableCell>
-                                    <TableCell align="right">Last Update</TableCell>
-                                </TableRow>
+                                    <TableRow>
+                                        <TableCell>Process type</TableCell>
+                                        <TableCell align="right">
+                                            Last Update
+                                        </TableCell>
+                                    </TableRow>
                                 </TableHead>
                                 <TableBody>
-                                {this.props.vehicle.processes.map((process) => (
-                                    <TableRow key={process._id}>
-                                    <TableCell component="th" scope="row">
-                                        {process.processType}
-                                    </TableCell>
-                                    <TableCell align="right">{new Date(Date.parse(process.date)).toUTCString()}</TableCell>
-                                    </TableRow>
-                                ))}
+                                    {this.props.vehicle.processes.map(
+                                        (process) => (
+                                            <TableRow key={process._id}>
+                                                <TableCell
+                                                    component={Link}
+                                                    to={{
+                                                        pathname: `/${
+                                                            this.state
+                                                                .processInfo[
+                                                                process._id
+                                                            ].processType
+                                                        }/${process._id}`,
+                                                        state: {
+                                                            vehicle:
+                                                                this.props
+                                                                    .vehicle,
+                                                            info: this.state
+                                                                .processInfo[
+                                                                process._id
+                                                            ].info
+                                                        }
+                                                    }}
+                                                    scope="row"
+                                                >
+                                                    {process.processType}
+                                                </TableCell>
+                                                <TableCell align="right">
+                                                    {new Date(
+                                                        Date.parse(process.date)
+                                                    ).toUTCString()}
+                                                </TableCell>
+                                            </TableRow>
+                                        )
+                                    )}
                                 </TableBody>
                             </Table>
                         </CardContent>
