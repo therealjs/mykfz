@@ -56,27 +56,27 @@ class VehicleDeregister extends React.Component {
         let vehicle = this.props.vehicle;
 
         (async () => {
-
             try {
-                let del = await LicensePlateService.deleteLicensePlate(vehicle.licensePlate);
+                let del = await LicensePlateService.deleteLicensePlate(
+                    vehicle.licensePlate
+                );
             } catch (err) {
                 console.error(err);
             }
         })().then(() => {
+            vehicle.licensePlate = null;
+            vehicle.state = 'DEREGISTERED';
+            vehicle.processes.push({
+                processType: 'DEREGISTRATION',
+                date: '2020-05-30',
+                state: 'NEW',
+                info: {
+                    secCodeI: this.state.secCodeI,
+                    plateCode: this.state.plateCode
+                }
+            });
 
-        vehicle.licensePlate = null;
-        vehicle.state = 'DEREGISTERED';
-        vehicle.processes.push({
-            processType: 'DEREGISTRATION',
-            date: '2020-05-30',
-            state: 'NEW',
-            info: {
-                secCodeI: this.state.secCodeI,
-                plateCode: this.state.plateCode
-            }
-        });
-
-        this.props.onSubmit(vehicle);
+            this.props.onSubmit(vehicle);
         });
     }
 

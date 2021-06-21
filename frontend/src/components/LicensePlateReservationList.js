@@ -5,11 +5,11 @@ import { Link } from 'react-router-dom';
 
 import { Button, Card, Grid, IconButton } from '@material-ui/core';
 import LicensePlate from './LicensePlate';
-import AddIcon from '@material-ui/icons/Add'
+import AddIcon from '@material-ui/icons/Add';
 
 import LicensePlateService from '../services/LicensePlateService';
 
-const makeLogos = require('../../resources/carLogos')
+const makeLogos = require('../../resources/carLogos');
 
 // const licensePlateReservations = [
 //     {
@@ -39,7 +39,6 @@ const makeLogos = require('../../resources/carLogos')
 // };
 
 export const LicensePlateReservationList = ({ licensePlateReservations }) => {
-
     // componentWillMount(props) {
     //     (async () => {
     //         try {
@@ -55,22 +54,29 @@ export const LicensePlateReservationList = ({ licensePlateReservations }) => {
     //     })();
     // }
 
-    return <Grid item xs={12} sm={6} md={12}>
-        <Card style={{ height: "200px" }}>
-            {licensePlateReservations.length > 0 ? licensePlateReservations.map((plateReservation) => (
-                <div>
-                    <LicensePlate licensePlate={plateReservation.licensePlate} />
-                    {plateReservation.expiryDate}
-                </div>
-            )) : <div>no plate reservations</div>}
-            <IconButton
-                component={Link}
-                to={'/addLicensePlateReservation'}
-                aria-label="addLicensePlateReservation"
-            >
-                <AddIcon />s
-            </IconButton>
-        </Card>
-    </Grid>
-
+    return (
+        <Grid item xs={12} sm={6} md={12}>
+            <Card style={{ height: '200px' }}>
+                {licensePlateReservations.length > 0 ? (
+                    licensePlateReservations.map((plateReservation) => (
+                        <div>
+                            <LicensePlate
+                                licensePlate={plateReservation.licensePlate}
+                            />
+                            {plateReservation.expiryDate}
+                        </div>
+                    ))
+                ) : (
+                    <div>no plate reservations</div>
+                )}
+                <IconButton
+                    component={Link}
+                    to={'/addLicensePlateReservation'}
+                    aria-label="addLicensePlateReservation"
+                >
+                    <AddIcon />s
+                </IconButton>
+            </Card>
+        </Grid>
+    );
 };

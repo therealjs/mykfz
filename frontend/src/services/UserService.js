@@ -3,7 +3,7 @@
 import HttpService from './HttpService';
 
 export default class UserService {
-    constructor() { }
+    constructor() {}
 
     static baseURL() {
         return 'http://localhost:3000/auth';
