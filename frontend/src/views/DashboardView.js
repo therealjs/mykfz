@@ -41,8 +41,6 @@ export class DashboardView extends React.Component {
                     licensePlateReservations[i].licensePlate = plateObject;
                 }
 
-                console.log(licensePlateReservations);
-                console.log(vehicles);
                 this.setState({
                     vehicles: vehicles,
                     licensePlateReservations: licensePlateReservations,
@@ -52,40 +50,7 @@ export class DashboardView extends React.Component {
                 console.error(err);
             }
         })();
-
-        // VehicleService.getVehicles()
-        //   .then((data) => {
-        //     this.setState({
-        //       data: [...data],
-        //       loading: false,
-        //     });
-        //   })
-        //   .catch((e) => {
-        //     console.error(e);
-        //   });
     }
-
-    // async deleteVehicle(id) {
-    //     this.setState({
-    //         data: [...this.state.data],
-    //         loading: true
-    //     });
-
-    //     try {
-    //         let ret = await VehicleService.deleteVehicle(id);
-    //         let vehicleIndex = this.state.data
-    //             .map((vehicle) => vehicle['_id'])
-    //             .indexOf(id);
-    //         let vehicles = this.state.data;
-    //         vehicles.splice(vehicleIndex, 1);
-    //         this.setState({
-    //             data: [...vehicles],
-    //             loading: false
-    //         });
-    //     } catch (err) {
-    //         console.error(err);
-    //     }
-    // }
 
     render() {
         if (this.state.loading) {

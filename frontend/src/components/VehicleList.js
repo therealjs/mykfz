@@ -18,7 +18,7 @@ export const VehicleList = ({ vehicles }) => (
         spacing={3}
     >
         {vehicles.map((vehicle, i) => (
-            <VehicleListPaper key={i} vehicle={vehicle} />
+            <VehicleListPaper key={vehicle._id} vehicle={vehicle} />
         ))}
 
         <Grid item xs={12} sm={6} md={6}>

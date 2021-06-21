@@ -260,9 +260,9 @@ class VehicleForm extends React.Component {
                                     name="generalInspectionMonth"
                                     onChange={this.handleChange}
                                 >
-                                    {this.monthOptions.map((year) => {
+                                    {this.monthOptions.map((year, i) => {
                                         return (
-                                            <MenuItem value={year}>
+                                            <MenuItem value={year} key={i}>
                                                 {year}
                                             </MenuItem>
                                         );
