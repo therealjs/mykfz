@@ -29,7 +29,7 @@ class LicensePlateReservationForm extends React.Component {
             areaCode: '',
             letters: '',
             digits: '',
-            areaCodeOptions: [],
+            areaCodeOptions: []
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -87,7 +87,7 @@ class LicensePlateReservationForm extends React.Component {
         })().then(() => {
             user.licensePlateReservations.push({
                 licensePlate: this.state.newLicensePlate,
-                expiryDate: new Date(),
+                expiryDate: new Date()
             });
             this.props.onSubmit(user);
         });

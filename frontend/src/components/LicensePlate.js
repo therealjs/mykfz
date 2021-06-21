@@ -15,7 +15,11 @@ const LicensePlate = (props) => {
                     fontSize: '20px'
                 }}
             >
-                {props.licensePlate.areaCode + " - " +  props.licensePlate.letters + " " + props.licensePlate.digits}
+                {props.licensePlate.areaCode +
+                    ' - ' +
+                    props.licensePlate.letters +
+                    ' ' +
+                    props.licensePlate.digits}
             </div>
         </div>
     );

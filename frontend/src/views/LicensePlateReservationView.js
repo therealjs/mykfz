@@ -8,7 +8,6 @@ import VehicleService from '../services/VehicleService';
 import LicensePlateReservationForm from '../components/LicensePlateReservationForm';
 import UserService from '../services/UserService';
 
-
 export class LicensePlateReservationView extends React.Component {
     constructor(props) {
         super(props);
