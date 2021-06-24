@@ -30,27 +30,17 @@ class VehicleRegister extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            vin: props.vehicle.vin,
             licensePlate: props.vehicle.licensePlate,
             generalInspectionMonth: props.vehicle.generalInspectionMonth,
             generalInspectionYear: props.vehicle.generalInspectionYear,
-            // TODO: upgrade webpack to v5.40.0 and use optional chaining
-            info: (this.props.location &&
-                this.props.location.state &&
-                this.props.location.state.info) || {
-                secCodeII: '',
-                evb: '',
-                iban: ''
-            },
+            secCodeII: '',
+            evb: '',
+            iban: '',
             areaCodeOptions: [],
             areaCode: '',
             letters: '',
             digits: '',
-            readOnly:
-                (this.props.location &&
-                    this.props.location.state &&
-                    this.props.location.state.readOnly) ||
-                false
+            readOnly: false
         };
 
         this.yearOptions = this.monthOptions = Array(4)
@@ -59,6 +49,17 @@ class VehicleRegister extends React.Component {
         this.monthOptions = Array(12)
             .fill()
             .map((element, index) => index + 1);
+
+        if (
+            this.props.location &&
+            this.props.location.state &&
+            this.props.location.state.info
+        ) {
+            this.state.secCodeII = this.props.location.state.info.secCodeII;
+            this.state.evb = this.props.location.state.info.evb;
+            this.state.iban = this.props.location.state.info.iban;
+            this.state.readOnly = true;
+        }
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -117,9 +118,9 @@ class VehicleRegister extends React.Component {
                 date: Date(),
                 state: 'NEW',
                 info: {
-                    evb: this.state.info.evb,
-                    secCodeII: this.state.info.secCodeII,
-                    iban: this.state.info.iban
+                    evb: this.state.evb,
+                    secCodeII: this.state.secCodeII,
+                    iban: this.state.iban
                 }
             });
 
@@ -221,7 +222,7 @@ class VehicleRegister extends React.Component {
                                     disabled={true}
                                     required={true}
                                     fullWidth
-                                    value={this.state.vin}
+                                    value={this.props.vehicle.vin}
                                 />
                             </Grid>
                             <Grid item xs={12}>
@@ -231,7 +232,7 @@ class VehicleRegister extends React.Component {
                                     required={true}
                                     fullWidth
                                     disabled={this.state.readOnly}
-                                    value={this.state.info.evb}
+                                    value={this.state.evb}
                                     onChange={this.handleChange}
                                     maxLength={7}
                                 />
@@ -243,7 +244,7 @@ class VehicleRegister extends React.Component {
                                     required={true}
                                     fullWidth
                                     disabled={this.state.readOnly}
-                                    value={this.state.info.secCodeII}
+                                    value={this.state.secCodeII}
                                     onChange={this.handleChange}
                                     maxLength={12}
                                 />
@@ -255,7 +256,7 @@ class VehicleRegister extends React.Component {
                                     required={true}
                                     fullWidth
                                     disabled={this.state.readOnly}
-                                    value={this.state.info.iban}
+                                    value={this.state.iban}
                                     onChange={this.handleChange}
                                     maxLength={22}
                                 />
@@ -334,11 +335,11 @@ class VehicleRegister extends React.Component {
                                             color="primary"
                                             disabled={
                                                 //this.state.licensePlate.toString().length != 4 ||
-                                                this.state.info.evb.toString()
+                                                this.state.evb.toString()
                                                     .length != 7 ||
-                                                this.state.info.secCodeII.toString()
+                                                this.state.secCodeII.toString()
                                                     .length != 12 ||
-                                                this.state.info.iban.toString()
+                                                this.state.iban.toString()
                                                     .length != 22
                                             }
                                         >

@@ -28,18 +28,19 @@ class VehicleDeregister extends React.Component {
             vin: props.vehicle.vin,
             licensePlate: props.vehicle.licensePlate,
             generalInspection: props.vehicle.generalInspection,
-            info: (this.props.location &&
-                this.props.location.state &&
-                this.props.location.state.info) || {
-                secCodeI: '',
-                plateCode: ''
-            },
-            readOnly:
-                (this.props.location &&
-                    this.props.location.state &&
-                    this.props.location.state.readOnly) ||
-                false
+            secCodeI: '',
+            plateCode: '',
+            readOnly: false
         };
+        if (
+            this.props.location &&
+            this.props.location.state &&
+            this.props.location.state.info
+        ) {
+            this.state.secCodeI = this.props.location.state.info.secCodeI;
+            this.state.plateCode = this.props.location.state.info.plateCode;
+            this.state.readOnly = true;
+        }
 
         this.handleChange = this.handleChange.bind(this);
         this.handleChangeCheckbox = this.handleChangeCheckbox.bind(this);
@@ -75,8 +76,8 @@ class VehicleDeregister extends React.Component {
                 date: new Date(),
                 state: 'NEW',
                 info: {
-                    secCodeI: this.state.info.secCodeI,
-                    plateCode: this.state.info.plateCode
+                    secCodeI: this.state.secCodeI,
+                    plateCode: this.state.plateCode
                 }
             });
 
@@ -132,7 +133,7 @@ class VehicleDeregister extends React.Component {
                                     fullWidth
                                     required={true}
                                     disabled={this.state.readOnly}
-                                    value={this.state.info.secCodeI}
+                                    value={this.state.secCodeI}
                                     onChange={this.handleChange}
                                     maxLength={7}
                                 />
@@ -144,7 +145,7 @@ class VehicleDeregister extends React.Component {
                                     name="plateCode"
                                     fullWidth
                                     disabled={this.state.readOnly}
-                                    value={this.state.info.plateCode}
+                                    value={this.state.plateCode}
                                     onChange={this.handleChange}
                                     maxLength={3}
                                 />
@@ -191,9 +192,9 @@ class VehicleDeregister extends React.Component {
                                             type="submit"
                                             color="primary"
                                             disabled={
-                                                this.state.info.plateCode.toString()
+                                                this.state.plateCode.toString()
                                                     .length != 3 ||
-                                                this.state.info.secCodeI.toString()
+                                                this.state.secCodeI.toString()
                                                     .length != 7
                                             }
                                         >
