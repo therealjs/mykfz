@@ -18,6 +18,7 @@ import { VehicleRegisterView } from './views/VehicleRegisterView';
 import { VehicleDeregisterView } from './views/VehicleDeregisterView';
 import { LicensePlateReservationView } from './views/LicensePlateReservationView';
 import { VehicleFormView } from './views/VehicleFormView';
+import { PayPalScriptProvider, PayPalButtons } from '@paypal/react-paypal-js';
 
 export default class App extends React.Component {
     constructor(props) {
@@ -109,7 +110,12 @@ export default class App extends React.Component {
 
     render() {
         return (
-            <div>
+            <PayPalScriptProvider
+                options={{
+                    'client-id':
+                        'ATuI28VIncLCJuX7OGrZeGvMtje-hZnJMvYWnUcr_TF89oEoN0wO0D1oMz3cGq9ShUt-sEZhFXuA2lvN'
+                }}
+            >
                 <Router>
                     <Switch>
                         {this.state.routes.map((route, i) => (
@@ -117,7 +123,7 @@ export default class App extends React.Component {
                         ))}
                     </Switch>
                 </Router>
-            </div>
+            </PayPalScriptProvider>
         );
     }
 }

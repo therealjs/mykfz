@@ -1,30 +1,27 @@
 'use strict';
 
-import React from 'react';
 import {
-    Grid,
-    Card,
-    Checkbox,
-    TextField,
-    InputLabel,
-    Select,
-    MenuItem,
     Button,
-    Typography,
+    Card,
     FormControl,
-    FormControlLabel,
-    FormHelperText,
     FormGroup,
-    FormLabel
+    FormLabel,
+    Grid,
+    InputLabel,
+    MenuItem,
+    Select,
+    TextField,
+    Typography
 } from '@material-ui/core';
+import { PayPalButtons } from '@paypal/react-paypal-js';
+import React from 'react';
 import { withRouter } from 'react-router-dom';
-
-import Page from './Page';
-import UserService from '../services/UserService';
-
-const style = { maxWidth: 500 };
 import DistrictService from '../services/DistrictService';
 import LicensePlateService from '../services/LicensePlateService';
+import UserService from '../services/UserService';
+import Page from './Page';
+
+const style = { maxWidth: 500 };
 
 class VehicleRegister extends React.Component {
     constructor(props) {
@@ -41,7 +38,8 @@ class VehicleRegister extends React.Component {
             areaCodeOptions: [],
             areaCode: '',
             letters: '',
-            digits: ''
+            digits: '',
+            isPaid: false
         };
 
         this.yearOptions = this.monthOptions = Array(4)
@@ -59,6 +57,8 @@ class VehicleRegister extends React.Component {
         this.setState({
             loading: true
         });
+
+        // set district area code options
         (async () => {
             try {
                 let district = await DistrictService.getDistrict(
@@ -288,6 +288,11 @@ class VehicleRegister extends React.Component {
                                     })}
                                 </Select>
                             </Grid>
+                            <Grid item xs={12}>
+                                <PayPalButtons
+                                    style={{ layout: 'horizontal' }}
+                                />
+                            </Grid>
 
                             <Grid item xs={12}>
                                 <Button
@@ -317,6 +322,9 @@ class VehicleRegister extends React.Component {
                                 >
                                     Cancel
                                 </Button>
+                                <p>
+                                    Item is paid? {this.state.isPaid.toString()}
+                                </p>
                             </Grid>
                         </Grid>
                     </form>
