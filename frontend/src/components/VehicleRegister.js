@@ -22,7 +22,6 @@ import DistrictService from '../services/DistrictService';
 import LicensePlateService from '../services/LicensePlateService';
 import UserService from '../services/UserService';
 import Page from './Page';
-import CurrencyFormat from 'react-currency-format';
 
 const style = { maxWidth: 500 };
 
@@ -344,12 +343,7 @@ class VehicleRegister extends React.Component {
                             </Grid>
                             <Grid item xs={12}>
                                 <h2>Total:</h2>
-                                <CurrencyFormat
-                                    value={this.state.amount}
-                                    displayType={'text'}
-                                    thousandSeparator={true}
-                                    prefix={'€'}
-                                />
+                                <h1>€{this.state.amount.toFixed(2)}</h1>
                             </Grid>
 
                             <Grid item xs={12}>
