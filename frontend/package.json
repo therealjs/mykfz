@@ -27,11 +27,12 @@
         "@material-ui/icons": "^4.11.2",
         "@material-ui/lab": "^4.0.0-alpha.58",
         "@material-ui/styles": "^4.11.4",
-        "@paypal/react-paypal-js": "^7.0.0",
         "clsx": "^1.1.1",
         "react": "16.8.4",
+        "react-currency-format": "^1.0.0",
         "react-dom": "16.8.4",
         "react-md": "1.2.11",
+        "react-paypal-button-v2": "^2.6.3",
         "react-router-dom": "4.2.2",
         "styled-components": "3.1.6",
         "webfontloader": "1.6.28"
