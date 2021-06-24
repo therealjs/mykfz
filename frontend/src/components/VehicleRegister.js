@@ -35,16 +35,22 @@ class VehicleRegister extends React.Component {
             generalInspectionMonth: props.vehicle.generalInspectionMonth,
             generalInspectionYear: props.vehicle.generalInspectionYear,
             // TODO: upgrade webpack to v5.40.0 and use optional chaining
-            info: this.props.location && this.props.location.state && this.props.location.state.info || {
+            info: (this.props.location &&
+                this.props.location.state &&
+                this.props.location.state.info) || {
                 secCodeII: '',
                 evb: '',
-                iban: '',
+                iban: ''
             },
             areaCodeOptions: [],
             areaCode: '',
             letters: '',
             digits: '',
-            readOnly: this.props.location && this.props.location.state && this.props.location.state.readOnly || false
+            readOnly:
+                (this.props.location &&
+                    this.props.location.state &&
+                    this.props.location.state.readOnly) ||
+                false
         };
 
         this.yearOptions = this.monthOptions = Array(4)
@@ -302,8 +308,7 @@ class VehicleRegister extends React.Component {
                             </Grid>
 
                             <Grid item xs={12}>
-                            {this.state.readOnly ?
-                                (
+                                {this.state.readOnly ? (
                                     <Button
                                         style={{
                                             float: 'right',
@@ -316,37 +321,39 @@ class VehicleRegister extends React.Component {
                                     >
                                         Print confirmation
                                     </Button>
-                                )
-                                : (
+                                ) : (
                                     <div>
-                                <Button
-                                    style={{
-                                        float: 'right',
-                                        marginLeft: '15px'
-                                    }}
-                                    id="submit"
-                                    variant="contained"
-                                    type="submit"
-                                    color="primary"
-                                    disabled={
-                                        //this.state.licensePlate.toString().length != 4 ||
-                                        this.state.info.evb.toString().length != 7 ||
-                                        this.state.info.secCodeII.toString()
-                                            .length != 12 ||
-                                        this.state.info.iban.toString().length != 22
-                                    }
-                                >
-                                    Save
-                                </Button>
-                                <Button
-                                    style={{ float: 'right' }}
-                                    id="reset"
-                                    type="reset"
-                                    color="default"
-                                >
-                                    Cancel
-                                </Button>
-                                </div>)}
+                                        <Button
+                                            style={{
+                                                float: 'right',
+                                                marginLeft: '15px'
+                                            }}
+                                            id="submit"
+                                            variant="contained"
+                                            type="submit"
+                                            color="primary"
+                                            disabled={
+                                                //this.state.licensePlate.toString().length != 4 ||
+                                                this.state.info.evb.toString()
+                                                    .length != 7 ||
+                                                this.state.info.secCodeII.toString()
+                                                    .length != 12 ||
+                                                this.state.info.iban.toString()
+                                                    .length != 22
+                                            }
+                                        >
+                                            Save
+                                        </Button>
+                                        <Button
+                                            style={{ float: 'right' }}
+                                            id="reset"
+                                            type="reset"
+                                            color="default"
+                                        >
+                                            Cancel
+                                        </Button>
+                                    </div>
+                                )}
                             </Grid>
                         </Grid>
                     </form>

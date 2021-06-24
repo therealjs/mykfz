@@ -28,11 +28,17 @@ class VehicleDeregister extends React.Component {
             vin: props.vehicle.vin,
             licensePlate: props.vehicle.licensePlate,
             generalInspection: props.vehicle.generalInspection,
-            info: this.props.location && this.props.location.state && this.props.location.state.info || {
+            info: (this.props.location &&
+                this.props.location.state &&
+                this.props.location.state.info) || {
                 secCodeI: '',
                 plateCode: ''
             },
-            readOnly: this.props.location && this.props.location.state && this.props.location.state.readOnly || false
+            readOnly:
+                (this.props.location &&
+                    this.props.location.state &&
+                    this.props.location.state.readOnly) ||
+                false
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -160,8 +166,7 @@ class VehicleDeregister extends React.Component {
                                 />
                             </Grid>
                             <Grid item xs={12}>
-                                {this.state.readOnly ?
-                                (
+                                {this.state.readOnly ? (
                                     <Button
                                         style={{
                                             float: 'right',
@@ -174,36 +179,36 @@ class VehicleDeregister extends React.Component {
                                     >
                                         Print confirmation
                                     </Button>
-                                )
-                                : (
-                                <div>
-                                    <Button
-                                        style={{
-                                            float: 'right',
-                                            marginLeft: '15px'
-                                        }}
-                                        id="submit"
-                                        variant="contained"
-                                        type="submit"
-                                        color="primary"
-                                        disabled={
-                                            this.state.info.plateCode.toString()
-                                                .length != 3 ||
-                                            this.state.info.secCodeI.toString()
-                                                .length != 7
-                                        }
-                                    >
-                                        Save
-                                    </Button>
-                                    <Button
-                                        style={{ float: 'right' }}
-                                        id="reset"
-                                        type="reset"
-                                        color="default"
-                                    >
-                                        Cancel
-                                    </Button> 
-                                </div> ) }
+                                ) : (
+                                    <div>
+                                        <Button
+                                            style={{
+                                                float: 'right',
+                                                marginLeft: '15px'
+                                            }}
+                                            id="submit"
+                                            variant="contained"
+                                            type="submit"
+                                            color="primary"
+                                            disabled={
+                                                this.state.info.plateCode.toString()
+                                                    .length != 3 ||
+                                                this.state.info.secCodeI.toString()
+                                                    .length != 7
+                                            }
+                                        >
+                                            Save
+                                        </Button>
+                                        <Button
+                                            style={{ float: 'right' }}
+                                            id="reset"
+                                            type="reset"
+                                            color="default"
+                                        >
+                                            Cancel
+                                        </Button>
+                                    </div>
+                                )}
                             </Grid>
                         </Grid>
                     </form>
