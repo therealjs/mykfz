@@ -70,7 +70,7 @@ class VehicleListPaper extends React.Component {
                         : {
                               processType: 'register',
                               info: {
-                                  eVB: process.info.eVB,
+                                  evb: process.info.eVB,
                                   secCodeII: process.info.secCodeII,
                                   iban: process.info.iban
                               }
@@ -80,7 +80,10 @@ class VehicleListPaper extends React.Component {
             {})
         };
         this.handleExpandClick = this.handleExpandClick.bind(this);
+<<<<<<< HEAD
         console.log(this.state.processInfo);
+=======
+>>>>>>> origin/25-process-detail-page
     }
 
     componentWillMount(props) {
@@ -202,7 +205,8 @@ class VehicleListPaper extends React.Component {
                                                             info: this.state
                                                                 .processInfo[
                                                                 process._id
-                                                            ].info
+                                                            ].info,
+                                                            readOnly: true
                                                         }
                                                     }}
                                                     scope="row"

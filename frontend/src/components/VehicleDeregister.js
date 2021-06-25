@@ -19,22 +19,28 @@ import {
 import { withRouter } from 'react-router-dom';
 
 import Page from './Page';
-import UserService from '../services/UserService';
 import LicensePlateService from '../services/LicensePlateService';
 
 class VehicleDeregister extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            user: UserService.getCurrentUser().id,
             vin: props.vehicle.vin,
             licensePlate: props.vehicle.licensePlate,
             generalInspection: props.vehicle.generalInspection,
-            info: this.props.location.state.info || {
-                secCodeI: '',
-                plateCode: ''
-            }
+            secCodeI: '',
+            plateCode: '',
+            readOnly: false
         };
+        if (
+            this.props.location &&
+            this.props.location.state &&
+            this.props.location.state.info
+        ) {
+            this.state.secCodeI = this.props.location.state.info.secCodeI;
+            this.state.plateCode = this.props.location.state.info.plateCode;
+            this.state.readOnly = true;
+        }
 
         this.handleChange = this.handleChange.bind(this);
         this.handleChangeCheckbox = this.handleChangeCheckbox.bind(this);
@@ -70,8 +76,8 @@ class VehicleDeregister extends React.Component {
                 date: new Date(),
                 state: 'NEW',
                 info: {
-                    secCodeI: this.state.info.secCodeI,
-                    plateCode: this.state.info.plateCode
+                    secCodeI: this.state.secCodeI,
+                    plateCode: this.state.plateCode
                 }
             });
 
@@ -126,7 +132,8 @@ class VehicleDeregister extends React.Component {
                                     name="secCodeI"
                                     fullWidth
                                     required={true}
-                                    value={this.state.info.secCodeI}
+                                    disabled={this.state.readOnly}
+                                    value={this.state.secCodeI}
                                     onChange={this.handleChange}
                                     maxLength={7}
                                 />
@@ -137,7 +144,8 @@ class VehicleDeregister extends React.Component {
                                     required={true}
                                     name="plateCode"
                                     fullWidth
-                                    value={this.state.info.plateCode}
+                                    disabled={this.state.readOnly}
+                                    value={this.state.plateCode}
                                     onChange={this.handleChange}
                                     maxLength={3}
                                 />
@@ -149,6 +157,7 @@ class VehicleDeregister extends React.Component {
                                             checked={
                                                 this.state.reserveLicensePlate
                                             }
+                                            disabled={this.state.readOnly}
                                             onChange={this.handleChangeCheckbox}
                                             name="reserveLicensePlate"
                                             color="primary"
@@ -158,32 +167,49 @@ class VehicleDeregister extends React.Component {
                                 />
                             </Grid>
                             <Grid item xs={12}>
-                                <Button
-                                    style={{
-                                        float: 'right',
-                                        marginLeft: '15px'
-                                    }}
-                                    id="submit"
-                                    variant="contained"
-                                    type="submit"
-                                    color="primary"
-                                    disabled={
-                                        this.state.info.plateCode.toString()
-                                            .length != 3 ||
-                                        this.state.info.secCodeI.toString()
-                                            .length != 7
-                                    }
-                                >
-                                    Save
-                                </Button>
-                                <Button
-                                    style={{ float: 'right' }}
-                                    id="reset"
-                                    type="reset"
-                                    color="default"
-                                >
-                                    Cancel
-                                </Button>
+                                {this.state.readOnly ? (
+                                    <Button
+                                        style={{
+                                            float: 'right',
+                                            marginLeft: '15px'
+                                        }}
+                                        id="submit"
+                                        variant="contained"
+                                        type="submit"
+                                        color="primary"
+                                    >
+                                        Print confirmation
+                                    </Button>
+                                ) : (
+                                    <div>
+                                        <Button
+                                            style={{
+                                                float: 'right',
+                                                marginLeft: '15px'
+                                            }}
+                                            id="submit"
+                                            variant="contained"
+                                            type="submit"
+                                            color="primary"
+                                            disabled={
+                                                this.state.plateCode.toString()
+                                                    .length != 3 ||
+                                                this.state.secCodeI.toString()
+                                                    .length != 7
+                                            }
+                                        >
+                                            Save
+                                        </Button>
+                                        <Button
+                                            style={{ float: 'right' }}
+                                            id="reset"
+                                            type="reset"
+                                            color="default"
+                                        >
+                                            Cancel
+                                        </Button>
+                                    </div>
+                                )}
                             </Grid>
                         </Grid>
                     </form>

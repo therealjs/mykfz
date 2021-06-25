@@ -43,16 +43,13 @@ class LicensePlateReservationForm extends React.Component {
         (async () => {
             try {
                 let user = await UserService.getUserDetails();
-                console.log(user);
                 let district = await DistrictService.getDistrict(
                     user.address.district
                 );
-                console.log(district);
                 this.setState({
                     user: user,
                     areaCodeOptions: district.areaCode
                 });
-                console.log(this.state.areaCodeOptions);
             } catch (err) {
                 console.error(err);
             }

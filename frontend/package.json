@@ -4,7 +4,7 @@
     "description": "MyKfz Frontend Application React",
     "private": true,
     "engines": {
-        "node": ">=4.3"
+        "node": ">=14.17.1"
     },
     "devDependencies": {
         "babel-core": "6.25.0",
