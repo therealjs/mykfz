@@ -1,30 +1,32 @@
 'use strict';
 
-import React from 'react';
 import {
-    Grid,
-    Card,
-    Checkbox,
-    TextField,
-    InputLabel,
-    Select,
-    MenuItem,
     Button,
-    Typography,
+    Card,
     FormControl,
-    FormControlLabel,
-    FormHelperText,
     FormGroup,
-    FormLabel
+    FormLabel,
+    Grid,
+    InputLabel,
+    MenuItem,
+    Select,
+    TextField,
+    Typography
 } from '@material-ui/core';
+import Checkbox from '@material-ui/core/Checkbox';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import React from 'react';
+import { PayPalButton } from 'react-paypal-button-v2';
 import { withRouter } from 'react-router-dom';
-
-import Page from './Page';
-import UserService from '../services/UserService';
-
-const style = { maxWidth: 500 };
 import DistrictService from '../services/DistrictService';
 import LicensePlateService from '../services/LicensePlateService';
+import UserService from '../services/UserService';
+import Page from './Page';
+
+const style = { maxWidth: 500 };
+
+const clientId =
+    'ATuI28VIncLCJuX7OGrZeGvMtje-hZnJMvYWnUcr_TF89oEoN0wO0D1oMz3cGq9ShUt-sEZhFXuA2lvN';
 
 class VehicleRegister extends React.Component {
     constructor(props) {
@@ -40,7 +42,11 @@ class VehicleRegister extends React.Component {
             areaCode: '',
             letters: '',
             digits: '',
-            readOnly: false
+            readOnly: false,
+            orderID: 0,
+            isPaid: false,
+            amount: 42.5,
+            usesReservedPlate: false
         };
 
         this.yearOptions = this.monthOptions = Array(4)
@@ -63,12 +69,15 @@ class VehicleRegister extends React.Component {
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.createOrder = this.createOrder.bind(this);
     }
 
     componentWillMount(props) {
         this.setState({
             loading: true
         });
+
+        // set district area code options
         (async () => {
             try {
                 let user = await UserService.getUserDetails();
@@ -85,7 +94,18 @@ class VehicleRegister extends React.Component {
     }
 
     handleChange(event) {
-        this.setState({ [event.target.name]: event.target.value });
+        if (event.target.name === 'usesReservedPlate') {
+            // checkbox field
+            const usesReservedPlate = event.target.checked;
+            this.setState({
+                usesReservedPlate: usesReservedPlate,
+                amount: 42.5 + 12.8 * usesReservedPlate // using a reserved plate costs extra
+            });
+        } else {
+            this.setState({
+                [event.target.name]: event.target.value
+            });
+        }
     }
 
     handleSubmit(event) {
@@ -128,6 +148,23 @@ class VehicleRegister extends React.Component {
         });
     }
 
+    createOrder(data, actions) {
+        return actions.order
+            .create({
+                purchase_units: [
+                    {
+                        amount: {
+                            value: this.state.amount
+                        }
+                    }
+                ]
+            })
+            .then((orderID) => {
+                this.setState({ orderId: orderID });
+                return orderID;
+            });
+    }
+
     render() {
         return (
             <Page>
@@ -143,6 +180,7 @@ class VehicleRegister extends React.Component {
                         >
                             Register
                         </Typography>
+                        TODO license plate should be a separate component
                         <Grid
                             justify="space-between"
                             container
@@ -215,6 +253,21 @@ class VehicleRegister extends React.Component {
                                         />
                                     </FormControl>
                                 </FormGroup>
+                            </Grid>
+                            <Grid item xs={12}>
+                                <FormControlLabel
+                                    control={
+                                        <Checkbox
+                                            checked={
+                                                this.state.usesReservedPlate
+                                            }
+                                            onChange={this.handleChange}
+                                            name="usesReservedPlate"
+                                            color="primary"
+                                        />
+                                    }
+                                    label="is a reserved plate"
+                                />
                             </Grid>
                             <Grid item xs={12}>
                                 <TextField
@@ -307,6 +360,38 @@ class VehicleRegister extends React.Component {
                                     })}
                                 </Select>
                             </Grid>
+                            <Grid item xs={12}>
+                                <h2>Total:</h2>
+                                <h1>€{this.state.amount.toFixed(2)}</h1>
+                            </Grid>
+
+                            <Grid item xs={12}>
+                                <PayPalButton
+                                    amount={this.state.amount}
+                                    // shippingPreference="NO_SHIPPING" // default is "GET_FROM_FILE"
+                                    onSuccess={(details, data) => {
+                                        alert(
+                                            'Transaction completed by ' +
+                                                details.payer.name.given_name
+                                        );
+
+                                        // OPTIONAL: Call your server to save the transaction
+                                        return fetch(
+                                            '/paypal-transaction-complete',
+                                            {
+                                                method: 'post',
+                                                body: JSON.stringify({
+                                                    orderId: data.orderID
+                                                })
+                                            }
+                                        );
+                                    }}
+                                    options={{
+                                        clientId: clientId,
+                                        currency: 'EUR'
+                                    }}
+                                />
+                            </Grid>
 
                             <Grid item xs={12}>
                                 {this.state.readOnly ? (
@@ -355,6 +440,12 @@ class VehicleRegister extends React.Component {
                                         </Button>
                                     </div>
                                 )}
+                                <p>
+                                    Item is paid? {this.state.isPaid.toString()}
+                                </p>
+                                <p>
+                                    OrderID is: {this.state.orderID.toString()}
+                                </p>
                             </Grid>
                         </Grid>
                     </form>
