@@ -12,10 +12,11 @@ import UserService from './services/UserService';
 import { UserLoginView } from './views/UserLoginView';
 import { UserSignupView } from './views/UserSignupView';
 
-import { VehicleListView } from './views/VehicleListView';
+import { DashboardView } from './views/DashboardView';
 import { VehicleDetailView } from './views/VehicleDetailView';
 import { VehicleRegisterView } from './views/VehicleRegisterView';
 import { VehicleDeregisterView } from './views/VehicleDeregisterView';
+import { LicensePlateReservationView } from './views/LicensePlateReservationView';
 import { VehicleFormView } from './views/VehicleFormView';
 
 export default class App extends React.Component {
@@ -28,7 +29,7 @@ export default class App extends React.Component {
                 {
                     render: (props) => {
                         if (UserService.isAuthenticated()) {
-                            return <VehicleListView {...props} />;
+                            return <DashboardView {...props} />;
                         } else {
                             return <Redirect to={'/login'} />;
                         }
@@ -84,7 +85,17 @@ export default class App extends React.Component {
                             return <Redirect to={'/login'} />;
                         }
                     },
-                    path: '/add'
+                    path: '/addVehicle'
+                },
+                {
+                    render: (props) => {
+                        if (UserService.isAuthenticated()) {
+                            return <LicensePlateReservationView {...props} />;
+                        } else {
+                            return <Redirect to={'/login'} />;
+                        }
+                    },
+                    path: '/addLicensePlateReservation'
                 },
                 { component: UserLoginView, path: '/login' },
                 { component: UserSignupView, path: '/register' }
@@ -98,15 +109,13 @@ export default class App extends React.Component {
 
     render() {
         return (
-            <div>
-                <Router>
-                    <Switch>
-                        {this.state.routes.map((route, i) => (
-                            <Route key={i} {...route} />
-                        ))}
-                    </Switch>
-                </Router>
-            </div>
+            <Router>
+                <Switch>
+                    {this.state.routes.map((route, i) => (
+                        <Route key={i} {...route} />
+                    ))}
+                </Switch>
+            </Router>
         );
     }
 }

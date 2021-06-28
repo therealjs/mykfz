@@ -79,6 +79,21 @@ export default class UserService {
         });
     }
 
+    static updateUser(user) {
+        return new Promise((resolve, reject) => {
+            HttpService.put(
+                `http://localhost:3000/users/${user._id}`,
+                user,
+                function (data) {
+                    resolve(data);
+                },
+                function (textStatus) {
+                    reject(textStatus);
+                }
+            );
+        });
+    }
+
     static isAuthenticated() {
         return !!window.localStorage['jwtToken'];
     }

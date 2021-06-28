@@ -1,47 +1,52 @@
 'use strict';
 
-import React from 'react';
 import {
-    Grid,
-    Card,
-    Checkbox,
-    TextField,
-    InputLabel,
-    Select,
-    MenuItem,
     Button,
-    Typography,
+    Card,
     FormControl,
-    FormControlLabel,
-    FormHelperText,
     FormGroup,
-    FormLabel
+    FormLabel,
+    Grid,
+    InputLabel,
+    MenuItem,
+    Select,
+    TextField,
+    Typography
 } from '@material-ui/core';
+import Checkbox from '@material-ui/core/Checkbox';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import React from 'react';
+import { PayPalButton } from 'react-paypal-button-v2';
 import { withRouter } from 'react-router-dom';
-
-import Page from './Page';
-import UserService from '../services/UserService';
-
-const style = { maxWidth: 500 };
 import DistrictService from '../services/DistrictService';
 import LicensePlateService from '../services/LicensePlateService';
+import UserService from '../services/UserService';
+import Page from './Page';
+
+const style = { maxWidth: 500 };
+
+const clientId =
+    'ATuI28VIncLCJuX7OGrZeGvMtje-hZnJMvYWnUcr_TF89oEoN0wO0D1oMz3cGq9ShUt-sEZhFXuA2lvN';
 
 class VehicleRegister extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            owner: UserService.getCurrentUser().id,
-            vin: props.vehicle.vin,
-            evb: '',
-            iban: '',
             licensePlate: props.vehicle.licensePlate,
             generalInspectionMonth: props.vehicle.generalInspectionMonth,
             generalInspectionYear: props.vehicle.generalInspectionYear,
             secCodeII: '',
+            evb: '',
+            iban: '',
             areaCodeOptions: [],
             areaCode: '',
             letters: '',
-            digits: ''
+            digits: '',
+            readOnly: false,
+            orderID: 0,
+            isPaid: false,
+            amount: 42.5,
+            usesReservedPlate: false
         };
 
         this.yearOptions = this.monthOptions = Array(4)
@@ -51,18 +56,33 @@ class VehicleRegister extends React.Component {
             .fill()
             .map((element, index) => index + 1);
 
+        if (
+            this.props.location &&
+            this.props.location.state &&
+            this.props.location.state.info
+        ) {
+            this.state.secCodeII = this.props.location.state.info.secCodeII;
+            this.state.evb = this.props.location.state.info.evb;
+            this.state.iban = this.props.location.state.info.iban;
+            this.state.readOnly = true;
+        }
+
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.createOrder = this.createOrder.bind(this);
     }
 
     componentWillMount(props) {
         this.setState({
             loading: true
         });
+
+        // set district area code options
         (async () => {
             try {
+                let user = await UserService.getUserDetails();
                 let district = await DistrictService.getDistrict(
-                    this.props.user.address.district
+                    user.address.district
                 );
                 this.setState({
                     areaCodeOptions: district.areaCode
@@ -74,7 +94,18 @@ class VehicleRegister extends React.Component {
     }
 
     handleChange(event) {
-        this.setState({ [event.target.name]: event.target.value });
+        if (event.target.name === 'usesReservedPlate') {
+            // checkbox field
+            const usesReservedPlate = event.target.checked;
+            this.setState({
+                usesReservedPlate: usesReservedPlate,
+                amount: 42.5 + 12.8 * usesReservedPlate // using a reserved plate costs extra
+            });
+        } else {
+            this.setState({
+                [event.target.name]: event.target.value
+            });
+        }
     }
 
     handleSubmit(event) {
@@ -107,7 +138,7 @@ class VehicleRegister extends React.Component {
                 date: Date(),
                 state: 'NEW',
                 info: {
-                    eVB: this.state.evb,
+                    evb: this.state.evb,
                     secCodeII: this.state.secCodeII,
                     iban: this.state.iban
                 }
@@ -115,6 +146,23 @@ class VehicleRegister extends React.Component {
 
             this.props.onSubmit(vehicle);
         });
+    }
+
+    createOrder(data, actions) {
+        return actions.order
+            .create({
+                purchase_units: [
+                    {
+                        amount: {
+                            value: this.state.amount
+                        }
+                    }
+                ]
+            })
+            .then((orderID) => {
+                this.setState({ orderId: orderID });
+                return orderID;
+            });
     }
 
     render() {
@@ -132,6 +180,7 @@ class VehicleRegister extends React.Component {
                         >
                             Register
                         </Typography>
+                        TODO license plate should be a separate component
                         <Grid
                             justify="space-between"
                             container
@@ -162,6 +211,7 @@ class VehicleRegister extends React.Component {
                                             value={this.state.areaCode}
                                             required={true}
                                             name="areaCode"
+                                            disabled={this.state.readOnly}
                                             onChange={this.handleChange}
                                         >
                                             {this.state.areaCodeOptions.map(
@@ -183,6 +233,7 @@ class VehicleRegister extends React.Component {
                                             label="Letters"
                                             required={true}
                                             name="letters"
+                                            disabled={this.state.readOnly}
                                             value={this.state.letters}
                                             // ToDo add regex
                                             onChange={this.handleChange}
@@ -195,6 +246,7 @@ class VehicleRegister extends React.Component {
                                             required={true}
                                             name="digits"
                                             type="number"
+                                            disabled={this.state.readOnly}
                                             value={this.state.digits}
                                             onChange={this.handleChange}
                                             inputProps={{ maxLength: 3 }}
@@ -203,12 +255,27 @@ class VehicleRegister extends React.Component {
                                 </FormGroup>
                             </Grid>
                             <Grid item xs={12}>
+                                <FormControlLabel
+                                    control={
+                                        <Checkbox
+                                            checked={
+                                                this.state.usesReservedPlate
+                                            }
+                                            onChange={this.handleChange}
+                                            name="usesReservedPlate"
+                                            color="primary"
+                                        />
+                                    }
+                                    label="is a reserved plate"
+                                />
+                            </Grid>
+                            <Grid item xs={12}>
                                 <TextField
                                     label="VIN"
                                     disabled={true}
                                     required={true}
                                     fullWidth
-                                    value={this.state.vin}
+                                    value={this.props.vehicle.vin}
                                 />
                             </Grid>
                             <Grid item xs={12}>
@@ -217,6 +284,7 @@ class VehicleRegister extends React.Component {
                                     name="evb"
                                     required={true}
                                     fullWidth
+                                    disabled={this.state.readOnly}
                                     value={this.state.evb}
                                     onChange={this.handleChange}
                                     maxLength={7}
@@ -228,6 +296,7 @@ class VehicleRegister extends React.Component {
                                     name="secCodeII"
                                     required={true}
                                     fullWidth
+                                    disabled={this.state.readOnly}
                                     value={this.state.secCodeII}
                                     onChange={this.handleChange}
                                     maxLength={12}
@@ -239,6 +308,7 @@ class VehicleRegister extends React.Component {
                                     name="iban"
                                     required={true}
                                     fullWidth
+                                    disabled={this.state.readOnly}
                                     value={this.state.iban}
                                     onChange={this.handleChange}
                                     maxLength={22}
@@ -257,6 +327,7 @@ class VehicleRegister extends React.Component {
                                     value={this.state.generalInspectionMonth}
                                     required={true}
                                     fullWidth
+                                    disabled={this.state.readOnly}
                                     name="generalInspectionMonth"
                                     onChange={this.handleChange}
                                 >
@@ -276,6 +347,7 @@ class VehicleRegister extends React.Component {
                                     value={this.state.generalInspectionYear}
                                     required={true}
                                     fullWidth
+                                    disabled={this.state.readOnly}
                                     name="generalInspectionYear"
                                     onChange={this.handleChange}
                                 >
@@ -288,35 +360,92 @@ class VehicleRegister extends React.Component {
                                     })}
                                 </Select>
                             </Grid>
+                            <Grid item xs={12}>
+                                <h2>Total:</h2>
+                                <h1>€{this.state.amount.toFixed(2)}</h1>
+                            </Grid>
 
                             <Grid item xs={12}>
-                                <Button
-                                    style={{
-                                        float: 'right',
-                                        marginLeft: '15px'
+                                <PayPalButton
+                                    amount={this.state.amount}
+                                    // shippingPreference="NO_SHIPPING" // default is "GET_FROM_FILE"
+                                    onSuccess={(details, data) => {
+                                        alert(
+                                            'Transaction completed by ' +
+                                                details.payer.name.given_name
+                                        );
+
+                                        // OPTIONAL: Call your server to save the transaction
+                                        return fetch(
+                                            '/paypal-transaction-complete',
+                                            {
+                                                method: 'post',
+                                                body: JSON.stringify({
+                                                    orderId: data.orderID
+                                                })
+                                            }
+                                        );
                                     }}
-                                    id="submit"
-                                    variant="contained"
-                                    type="submit"
-                                    color="primary"
-                                    disabled={
-                                        //this.state.licensePlate.toString().length != 4 ||
-                                        this.state.evb.toString().length != 7 ||
-                                        this.state.secCodeII.toString()
-                                            .length != 12 ||
-                                        this.state.iban.toString().length != 22
-                                    }
-                                >
-                                    Save
-                                </Button>
-                                <Button
-                                    style={{ float: 'right' }}
-                                    id="reset"
-                                    type="reset"
-                                    color="default"
-                                >
-                                    Cancel
-                                </Button>
+                                    options={{
+                                        clientId: clientId,
+                                        currency: 'EUR'
+                                    }}
+                                />
+                            </Grid>
+
+                            <Grid item xs={12}>
+                                {this.state.readOnly ? (
+                                    <Button
+                                        style={{
+                                            float: 'right',
+                                            marginLeft: '15px'
+                                        }}
+                                        id="submit"
+                                        variant="contained"
+                                        type="submit"
+                                        color="primary"
+                                    >
+                                        Print confirmation
+                                    </Button>
+                                ) : (
+                                    <div>
+                                        <Button
+                                            style={{
+                                                float: 'right',
+                                                marginLeft: '15px'
+                                            }}
+                                            id="submit"
+                                            variant="contained"
+                                            type="submit"
+                                            color="primary"
+                                            disabled={
+                                                //this.state.licensePlate.toString().length != 4 ||
+                                                this.state.evb.toString()
+                                                    .length != 7 ||
+                                                this.state.secCodeII.toString()
+                                                    .length != 12 ||
+                                                this.state.iban.toString()
+                                                    .length != 22
+                                            }
+                                        >
+                                            Save
+                                        </Button>
+                                        <Button
+                                            style={{ float: 'right' }}
+                                            id="reset"
+                                            type="reset"
+                                            color="default"
+                                        >
+                                            Cancel
+                                        </Button>
+                                    </div>
+                                )}
+                                <p>
+                                    Item is paid? {this.state.isPaid.toString()}
+                                </p>
+                                <p>
+                                    OrderID is: {this.state.orderID.toString()}
+                                </p>
                             </Grid>
                         </Grid>
                     </form>

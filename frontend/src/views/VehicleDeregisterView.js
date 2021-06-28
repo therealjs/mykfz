@@ -12,7 +12,7 @@ export class VehicleDeregisterView extends React.Component {
     }
 
     componentWillMount() {
-        if (this.props.history.location.pathname == '/add') {
+        if (this.props.history.location.pathname == '/addVehicle') {
             this.setState({
                 loading: false,
                 vehicle: undefined,

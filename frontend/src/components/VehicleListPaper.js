@@ -2,50 +2,122 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-
-import Button from '@material-ui/core/Button';
-import Card from '@material-ui/core/Card';
-import CardHeader from '@material-ui/core/CardHeader';
-import CardActions from '@material-ui/core/CardActions';
+import { withStyles } from '@material-ui/core/styles';
+import PropTypes from 'prop-types';
+import {
+    Button,
+    Card,
+    CardHeader,
+    CardActions,
+    CardContent,
+    Collapse,
+    Grid,
+    IconButton
+} from '@material-ui/core';
 import Avatar from '@material-ui/core/Avatar';
-import IconButton from '@material-ui/core/IconButton';
 import EditIcon from '@material-ui/icons/Edit';
-import Grid from '@material-ui/core/Grid';
 import LicensePlate from './LicensePlate';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import clsx from 'clsx';
+
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
 
 import LicensePlateService from '../services/LicensePlateService';
-import { CardMedia } from '@material-ui/core';
 
-const makeLogos = require('../../resources/carLogos')
+const makeLogos = require('../../resources/carLogos');
 
-export class VehicleListPaper extends React.Component {
+const styles = (theme) => ({
+    expand: {
+        transform: 'rotate(0deg)',
+        marginLeft: 'auto',
+        transition: theme.transitions.create('transform', {
+            duration: theme.transitions.duration.shortest
+        }),
+        willChange: 'transform, box-shadow, z-index'
+    },
+    expandOpen: {
+        transform: 'rotate(180deg)'
+    }
+});
+
+class VehicleListPaper extends React.Component {
     constructor(props) {
         super(props);
-
         this.state = {
-            licensePlate: '',
+            licensePlate: {
+                areaCode: '  ',
+                digits: '  ',
+                letters: '  '
+            },
+            expanded: false,
+            processInfo: this.props.vehicle.processes.reduce(function (
+                map,
+                process
+            ) {
+                map[process._id] =
+                    process.processType === 'DEREGISTRATION'
+                        ? {
+                              processType: 'deregister',
+                              info: {
+                                  secCodeI: process.info.secCodeI,
+                                  plateCode: process.info.plateCode
+                              }
+                          }
+                        : {
+                              processType: 'register',
+                              info: {
+                                  evb: process.info.eVB,
+                                  secCodeII: process.info.secCodeII,
+                                  iban: process.info.iban
+                              }
+                          };
+                return map;
+            },
+            {})
         };
+        this.handleExpandClick = this.handleExpandClick.bind(this);
+        console.log(this.state.processInfo);
     }
 
     componentWillMount(props) {
         (async () => {
             try {
-                let licensePlate = await LicensePlateService.getLicensePlate(
-                    this.props.vehicle.licensePlate
-                );
-                this.setState({
-                    licensePlate: licensePlate.areaCode + " - " +  licensePlate.letters + " " + licensePlate.digits
-                });
+                if (this.props.vehicle.licensePlate) {
+                    let licensePlate =
+                        await LicensePlateService.getLicensePlate(
+                            this.props.vehicle.licensePlate
+                        );
+                    this.setState({
+                        licensePlate: licensePlate
+                    });
+                }
             } catch (err) {
                 console.error(err);
             }
         })();
     }
 
+    handleExpandClick() {
+        this.setState({
+            expanded: !this.state.expanded
+        });
+    }
+
     render() {
+        const { classes } = this.props;
         return (
-            <Grid item xs={12} sm={6} md={4}>
-                <Card style={{minHeight: "200px"}}>
+            <Grid item xs={12} sm={6} md={6}>
+                <Card
+                    style={{
+                        display: 'flex',
+                        justiyContent: 'space-between',
+                        flexDirection: 'column'
+                    }}
+                >
                     <CardHeader
                         avatar={
                             <Avatar
@@ -69,16 +141,87 @@ export class VehicleListPaper extends React.Component {
                         }
                         subheader={this.props.vehicle.vin}
                     />
-                    {this.props.vehicle.licensePlate ?
-                        <LicensePlate licensePlate = {this.state.licensePlate}/>
-                        : []
+                    {
+                        <CardContent>
+                            <LicensePlate
+                                licensePlate={this.state.licensePlate}
+                            />
+                        </CardContent>
                     }
                     <CardActions
                         disableSpacing
-                        style={{ justifyContent: 'center', padding: '15px' }}
+                        style={{ alignContent: 'center' }}
                     >
                         {this.renderProcess(this.props.vehicle.state)}
+                        <IconButton
+                            className={clsx(classes.expand, {
+                                [classes.expandOpen]: this.state.expanded
+                            })}
+                            onClick={this.handleExpandClick}
+                            aria-expanded={this.state.expanded}
+                            aria-label="show more"
+                        >
+                            <ExpandMoreIcon />
+                        </IconButton>
                     </CardActions>
+                    <Collapse
+                        in={this.state.expanded}
+                        timeout="auto"
+                        unmountOnExit
+                    >
+                        <CardContent>
+                            <Table
+                                className={classes.table}
+                                aria-label="simple table"
+                            >
+                                <TableHead>
+                                    <TableRow>
+                                        <TableCell>Process type</TableCell>
+                                        <TableCell align="right">
+                                            Last Update
+                                        </TableCell>
+                                    </TableRow>
+                                </TableHead>
+                                <TableBody>
+                                    {this.props.vehicle.processes.map(
+                                        (process) => (
+                                            <TableRow key={process._id}>
+                                                <TableCell
+                                                    component={Link}
+                                                    to={{
+                                                        pathname: `/${
+                                                            this.state
+                                                                .processInfo[
+                                                                process._id
+                                                            ].processType
+                                                        }/${process._id}`,
+                                                        state: {
+                                                            vehicle:
+                                                                this.props
+                                                                    .vehicle,
+                                                            info: this.state
+                                                                .processInfo[
+                                                                process._id
+                                                            ].info,
+                                                            readOnly: true
+                                                        }
+                                                    }}
+                                                    scope="row"
+                                                >
+                                                    {process.processType}
+                                                </TableCell>
+                                                <TableCell align="right">
+                                                    {new Date(
+                                                        Date.parse(process.date)
+                                                    ).toUTCString()}
+                                                </TableCell>
+                                            </TableRow>
+                                        )
+                                    )}
+                                </TableBody>
+                            </Table>
+                        </CardContent>
+                    </Collapse>
                 </Card>
             </Grid>
         );
@@ -119,3 +262,9 @@ export class VehicleListPaper extends React.Component {
         }
     }
 }
+
+VehicleListPaper.propTypes = {
+    classes: PropTypes.object.isRequired
+};
+
+export default withStyles(styles)(VehicleListPaper);
