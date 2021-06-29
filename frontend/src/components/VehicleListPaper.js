@@ -16,6 +16,7 @@ import {
 } from '@material-ui/core';
 import Avatar from '@material-ui/core/Avatar';
 import EditIcon from '@material-ui/icons/Edit';
+import PrintIcon from '@material-ui/icons/Print';
 import LicensePlate from './LicensePlate';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import clsx from 'clsx';
@@ -27,6 +28,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 
 import LicensePlateService from '../services/LicensePlateService';
+import ProcessService from '../services/ProcessService';
 
 const makeLogos = require('../../resources/carLogos');
 
@@ -53,34 +55,10 @@ class VehicleListPaper extends React.Component {
                 digits: '  ',
                 letters: '  '
             },
-            expanded: false,
-            processInfo: this.props.vehicle.processes.reduce(function (
-                map,
-                process
-            ) {
-                map[process._id] =
-                    process.processType === 'DEREGISTRATION'
-                        ? {
-                              processType: 'deregister',
-                              info: {
-                                  secCodeI: process.info.secCodeI,
-                                  plateCode: process.info.plateCode
-                              }
-                          }
-                        : {
-                              processType: 'register',
-                              info: {
-                                  evb: process.info.eVB,
-                                  secCodeII: process.info.secCodeII,
-                                  iban: process.info.iban
-                              }
-                          };
-                return map;
-            },
-            {})
+            expanded: false
         };
         this.handleExpandClick = this.handleExpandClick.bind(this);
-        console.log(this.state.processInfo);
+        this.createPdfAndDownload = this.createPdfAndDownload.bind(this);
     }
 
     componentWillMount(props) {
@@ -105,6 +83,16 @@ class VehicleListPaper extends React.Component {
         this.setState({
             expanded: !this.state.expanded
         });
+    }
+
+    createPdfAndDownload(processId) {
+        (async () => {
+            try {
+              await ProcessService.generateProcessStatusPDF(this.props.vehicle._id, processId);
+            } catch (err) {
+                console.error(err);
+            }
+          })();
     }
 
     render() {
@@ -180,6 +168,7 @@ class VehicleListPaper extends React.Component {
                                         <TableCell align="right">
                                             Last Update
                                         </TableCell>
+                                        <TableCell>Action</TableCell>
                                     </TableRow>
                                 </TableHead>
                                 <TableBody>
@@ -187,25 +176,7 @@ class VehicleListPaper extends React.Component {
                                         (process) => (
                                             <TableRow key={process._id}>
                                                 <TableCell
-                                                    component={Link}
-                                                    to={{
-                                                        pathname: `/${
-                                                            this.state
-                                                                .processInfo[
-                                                                process._id
-                                                            ].processType
-                                                        }/${process._id}`,
-                                                        state: {
-                                                            vehicle:
-                                                                this.props
-                                                                    .vehicle,
-                                                            info: this.state
-                                                                .processInfo[
-                                                                process._id
-                                                            ].info,
-                                                            readOnly: true
-                                                        }
-                                                    }}
+                                                    
                                                     scope="row"
                                                 >
                                                     {process.processType}
@@ -214,6 +185,12 @@ class VehicleListPaper extends React.Component {
                                                     {new Date(
                                                         Date.parse(process.date)
                                                     ).toUTCString()}
+                                                </TableCell>
+                                                <TableCell>
+                                                    <IconButton
+                                                        onClick={() => this.createPdfAndDownload(process._id)}>
+                                                            <PrintIcon />
+                                                    </IconButton>
                                                 </TableCell>
                                             </TableRow>
                                         )

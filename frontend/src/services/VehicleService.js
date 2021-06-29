@@ -23,7 +23,6 @@ export default class VehicleService {
         });
     }
 
-    // TODO
     static getVehiclesForUser(user_id) {
         return new Promise((resolve, reject) => {
             HttpService.get(
@@ -96,6 +95,24 @@ export default class VehicleService {
                 vehicle,
                 function (data) {
                     resolve(data);
+                },
+                function (textStatus) {
+                    reject(textStatus);
+                }
+            );
+        });
+    }
+
+    static getVehicleProcess(vehicleId, processId) {
+        return new Promise((resolve, reject) => {
+            HttpService.get(
+                `${VehicleService.baseURL()}/${vehicleId}/processes/${processId}`,
+                function (data) {
+                    if (data != undefined || Object.keys(data).length !== 0) {
+                        resolve(data);
+                    } else {
+                        reject('Error while retrieving process of vehicle');
+                    }
                 },
                 function (textStatus) {
                     reject(textStatus);
