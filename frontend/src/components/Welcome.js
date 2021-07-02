@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import { AppBar, Collapse, IconButton, Toolbar } from "@material-ui/core";
-import SortIcon from "@material-ui/icons/Sort";
+import { Collapse, IconButton } from "@material-ui/core";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
 const useStyles = makeStyles((theme) => ({
@@ -52,6 +51,15 @@ const useStyles = makeStyles((theme) => ({
     color: "#0307fc",
     fontSize: "4rem",
   },
+  logos:{
+    minheight: "100vh",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    [theme.breakpoints.down("md")]: {
+      flexDirection: "column",
+    },
+  },
 }));
 
 function Header() {
@@ -79,9 +87,10 @@ function Header() {
             home.
           </h2>
           <h3>In corporation with: </h3>
-          <h4>
+          <h4 className ={classes.logos} >
+            <img src="https://upload.wikimedia.org/wikipedia/commons/c/cd/BMI_Logo.svg" alt="BMI" className={classes.logo} /> 
             <img src="https://upload.wikimedia.org/wikipedia/commons/c/c8/Logo_of_the_Technical_University_of_Munich.svg" alt="TUM" className={classes.logo} />
-            <img src="https://upload.wikimedia.org/wikipedia/commons/c/cd/BMI_Logo.svg" alt="BMI" className={classes.logo} />
+            <img src="https://wwwmatthes.in.tum.de/document/download?id=bv58sfhkoi0q" alt="SEBIS" className={classes.logo} />
           </h4>
             <IconButton>
               <ExpandMoreIcon className={classes.goDown} />
