@@ -32,10 +32,10 @@ export default class App extends React.Component {
                         if (UserService.isAuthenticated()) {
                             return <DashboardView {...props} />;
                         } else {
-                            return <Redirect to={'/login'} />;
+                            return <Redirect to={'/landingPage'} />;
                         }
                     },
-                    path: '/login',
+                    path: '/',
                     exact: true
                 },
                 {
@@ -98,10 +98,10 @@ export default class App extends React.Component {
                     },
                     path: '/addLicensePlateReservation'
                 },
-                { component: LandingPageView, path: '/landingPage' },
-                { component: LandingPageView, path: '/' },
+                
                 { component: UserLoginView, path: '/login' },
-                { component: UserSignupView, path: '/register' }
+                { component: UserSignupView, path: '/register' },
+                { component: LandingPageView, path: '/landingPage' },
             ]
         };
     }
