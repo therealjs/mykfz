@@ -41,6 +41,11 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "2rem",  
     fontFamily: "Nunito",
   },
+  addition: {
+    color: "#d4cbcb",
+    fontSize: "1rem",  
+    fontFamily: "Nunito",
+  },
   container: {
     textAlign: "center",
   },
@@ -86,7 +91,7 @@ function Header() {
             and deregister cars and motorcycles from the comfort of their own
             home.
           </h2>
-          <h3>In corporation with: </h3>
+          <h3 className ={classes.addition}> In corporation with: </h3>
           <h4 className ={classes.logos} >
             <img src="https://upload.wikimedia.org/wikipedia/commons/c/cd/BMI_Logo.svg" alt="BMI" className={classes.logo} /> 
             <img src="https://upload.wikimedia.org/wikipedia/commons/c/c8/Logo_of_the_Technical_University_of_Munich.svg" alt="TUM" className={classes.logo} />

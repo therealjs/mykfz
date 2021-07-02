@@ -6,8 +6,8 @@ import Welcome from "./Welcome";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    minHeight: "100vh",
-
+    height : "110%",
+    width : "100%",
     backgroundImage: `url(${
       "https://media.istockphoto.com/photos/the-gray-and-silver-are-light-black-with-white-the-gradient-is-the-picture-id1257367584?b=1&k=6&m=1257367584&s=170667a&w=0&h=xCJhP9RRYYYx-d2yX0HhFvnsGAuTAQA4EI-LfN9OcQc="
     })`,
