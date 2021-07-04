@@ -92,115 +92,104 @@ class LicensePlateReservationForm extends React.Component {
 
     render() {
         return (
-            <Page>
-                <Card style={{ padding: '20px', maxWidth: '500px' }}>
-                    <form
-                        onSubmit={this.handleSubmit}
-                        onReset={() => this.props.history.goBack()}
+            <Card style={{ padding: '20px', maxWidth: '500px' }}>
+                <form
+                    onSubmit={this.handleSubmit}
+                    onReset={() => this.props.history.goBack()}
+                >
+                    <Grid
+                        justify="space-between"
+                        container
+                        direction="row"
+                        alignItems="center"
+                        justify="center"
+                        spacing={3}
                     >
-                        <Typography
-                            style={{ marginBottom: '10px' }}
-                            component="h5"
-                            variant="h5"
-                        >
-                            New LicensePlateReservation
-                        </Typography>
-                        <Grid
-                            justify="space-between"
-                            container
-                            direction="row"
-                            alignItems="center"
-                            justify="center"
-                            spacing={3}
-                        >
-                            <Grid item xs={12}>
-                                <FormGroup
-                                    row
-                                    style={{
-                                        justifyContent: 'space-between',
-                                        padding: '20px',
-                                        paddingLeft: '20%',
-                                        height: '120px',
-                                        backgroundImage: `url(${'https://t3.ftcdn.net/jpg/00/11/79/08/240_F_11790850_Gi4UC9cwGMUMGWtZhSP4yKpFg3tqlPis.jpg'})`,
-                                        backgroundSize: 'contain',
-                                        backgroundRepeat: 'no-repeat'
-                                    }}
-                                >
-                                    <FormControl style={{ width: '80px' }}>
-                                        <InputLabel>
-                                            {String('District')}
-                                        </InputLabel>
+                        <Grid item xs={12}>
+                            <FormGroup
+                                row
+                                style={{
+                                    justifyContent: 'space-between',
+                                    padding: '20px',
+                                    paddingLeft: '20%',
+                                    height: '120px',
+                                    backgroundImage: `url(${'https://t3.ftcdn.net/jpg/00/11/79/08/240_F_11790850_Gi4UC9cwGMUMGWtZhSP4yKpFg3tqlPis.jpg'})`,
+                                    backgroundSize: 'contain',
+                                    backgroundRepeat: 'no-repeat'
+                                }}
+                            >
+                                <FormControl style={{ width: '80px' }}>
+                                    <InputLabel>
+                                        {String('District')}
+                                    </InputLabel>
 
-                                        <Select
-                                            value={this.state.areaCode}
-                                            required={true}
-                                            name="areaCode"
-                                            onChange={this.handleChange}
-                                        >
-                                            {this.state.areaCodeOptions.map(
-                                                (areaCode) => {
-                                                    return (
-                                                        <MenuItem
-                                                            value={areaCode}
-                                                        >
-                                                            {areaCode}
-                                                        </MenuItem>
-                                                    );
-                                                }
-                                            )}
-                                            ;
-                                        </Select>
-                                    </FormControl>
-                                    <FormControl style={{ width: '80px' }}>
-                                        <TextField
-                                            label="Letters"
-                                            required={true}
-                                            name="letters"
-                                            value={this.state.letters}
-                                            // ToDo add regex
-                                            onChange={this.handleChange}
-                                            inputProps={{ maxLength: 2 }}
-                                        />
-                                    </FormControl>
-                                    <FormControl style={{ width: '80px' }}>
-                                        <TextField
-                                            label="digits"
-                                            required={true}
-                                            name="digits"
-                                            type="number"
-                                            value={this.state.digits}
-                                            onChange={this.handleChange}
-                                            inputProps={{ maxLength: 3 }}
-                                        />
-                                    </FormControl>
-                                </FormGroup>
-                            </Grid>
-                            <Grid item xs={12}>
-                                <Button
-                                    style={{
-                                        float: 'right',
-                                        marginLeft: '15px'
-                                    }}
-                                    id="submit"
-                                    variant="contained"
-                                    type="submit"
-                                    color="primary"
-                                >
-                                    Reserve
-                                </Button>
-                                <Button
-                                    style={{ float: 'right' }}
-                                    id="reset"
-                                    type="reset"
-                                    color="default"
-                                >
-                                    Cancel
-                                </Button>
-                            </Grid>
+                                    <Select
+                                        value={this.state.areaCode}
+                                        required={true}
+                                        name="areaCode"
+                                        onChange={this.handleChange}
+                                    >
+                                        {this.state.areaCodeOptions.map(
+                                            (areaCode) => {
+                                                return (
+                                                    <MenuItem value={areaCode}>
+                                                        {areaCode}
+                                                    </MenuItem>
+                                                );
+                                            }
+                                        )}
+                                        ;
+                                    </Select>
+                                </FormControl>
+                                <FormControl style={{ width: '80px' }}>
+                                    <TextField
+                                        label="Letters"
+                                        required={true}
+                                        name="letters"
+                                        value={this.state.letters}
+                                        // ToDo add regex
+                                        onChange={this.handleChange}
+                                        inputProps={{ maxLength: 2 }}
+                                    />
+                                </FormControl>
+                                <FormControl style={{ width: '80px' }}>
+                                    <TextField
+                                        label="digits"
+                                        required={true}
+                                        name="digits"
+                                        type="number"
+                                        value={this.state.digits}
+                                        onChange={this.handleChange}
+                                        inputProps={{ maxLength: 3 }}
+                                    />
+                                </FormControl>
+                            </FormGroup>
                         </Grid>
-                    </form>
-                </Card>
-            </Page>
+                        <Grid item xs={12}>
+                            <Button
+                                style={{
+                                    float: 'right',
+                                    marginLeft: '15px'
+                                }}
+                                id="submit"
+                                variant="contained"
+                                type="submit"
+                                color="primary"
+                            >
+                                Reserve
+                            </Button>
+                            <Button
+                                style={{ float: 'right' }}
+                                id="reset"
+                                type="reset"
+                                color="default"
+                            >
+                                Cancel
+                            </Button>
+                        </Grid>
+                    </Grid>
+                </form>
+            </Card>
         );
     }
 }

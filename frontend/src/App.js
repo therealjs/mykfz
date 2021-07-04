@@ -18,6 +18,7 @@ import { VehicleRegisterView } from './views/VehicleRegisterView';
 import { VehicleDeregisterView } from './views/VehicleDeregisterView';
 import { LicensePlateReservationView } from './views/LicensePlateReservationView';
 import { VehicleFormView } from './views/VehicleFormView';
+import Dashboard from './components/Dashboard';
 
 export default class App extends React.Component {
     constructor(props) {
@@ -29,7 +30,7 @@ export default class App extends React.Component {
                 {
                     render: (props) => {
                         if (UserService.isAuthenticated()) {
-                            return <DashboardView {...props} />;
+                            return <Redirect to={'/dashboard'} />;
                         } else {
                             return <Redirect to={'/login'} />;
                         }
@@ -40,13 +41,15 @@ export default class App extends React.Component {
                 {
                     render: (props) => {
                         if (UserService.isAuthenticated()) {
-                            return <VehicleDetailView {...props} />;
+                            return <Dashboard />;
                         } else {
                             return <Redirect to={'/login'} />;
                         }
                     },
-                    path: '/show/:id'
+                    path: '/dashboard',
+                    exact: false
                 },
+
                 {
                     render: (props) => {
                         if (UserService.isAuthenticated()) {
