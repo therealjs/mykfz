@@ -19,6 +19,9 @@ import { VehicleRegisterView } from './views/VehicleRegisterView';
 import { VehicleDeregisterView } from './views/VehicleDeregisterView';
 import { LicensePlateReservationView } from './views/LicensePlateReservationView';
 import { VehicleFormView } from './views/VehicleFormView';
+import Dashboard from './components/Dashboard';
+import SignInSide from './components/SignInSide';
+import UserSignup from './components/UserSignup';
 
 export default class App extends React.Component {
     constructor(props) {
@@ -30,7 +33,7 @@ export default class App extends React.Component {
                 {
                     render: (props) => {
                         if (UserService.isAuthenticated()) {
-                            return <DashboardView {...props} />;
+                            return <Redirect to={'/dashboard'} />;
                         } else {
                             return <Redirect to={'/landingPage'} />;
                         }
@@ -41,13 +44,15 @@ export default class App extends React.Component {
                 {
                     render: (props) => {
                         if (UserService.isAuthenticated()) {
-                            return <VehicleDetailView {...props} />;
+                            return <Dashboard />;
                         } else {
                             return <Redirect to={'/login'} />;
                         }
                     },
-                    path: '/show/:id'
+                    path: '/dashboard',
+                    exact: false
                 },
+
                 {
                     render: (props) => {
                         if (UserService.isAuthenticated()) {
@@ -98,10 +103,11 @@ export default class App extends React.Component {
                     },
                     path: '/addLicensePlateReservation'
                 },
-                
+
                 { component: UserLoginView, path: '/login' },
+                { component: SignInSide, path: '/signin' },
                 { component: UserSignupView, path: '/register' },
-                { component: LandingPageView, path: '/landingPage' },
+                { component: LandingPageView, path: '/landingPage' }
             ]
         };
     }

@@ -42,11 +42,11 @@ class VehicleRegister extends React.Component {
             areaCode: '',
             letters: '',
             digits: '',
-            readOnly: false,
             orderID: 0,
             isPaid: false,
             amount: 42.5,
-            usesReservedPlate: false
+            usesReservedPlate: false,
+            readOnly: false
         };
 
         this.yearOptions = this.monthOptions = Array(4)
@@ -376,15 +376,15 @@ class VehicleRegister extends React.Component {
                                         );
 
                                         // OPTIONAL: Call your server to save the transaction
-                                        return fetch(
-                                            '/paypal-transaction-complete',
-                                            {
-                                                method: 'post',
-                                                body: JSON.stringify({
-                                                    orderId: data.orderID
-                                                })
-                                            }
-                                        );
+                                        // return fetch(
+                                        //     '/paypal-transaction-complete',
+                                        //     {
+                                        //         method: 'post',
+                                        //         body: JSON.stringify({
+                                        //             orderId: data.orderID
+                                        //         })
+                                        //     }
+                                        // );
                                     }}
                                     options={{
                                         clientId: clientId,
@@ -438,6 +438,14 @@ class VehicleRegister extends React.Component {
                                         >
                                             Cancel
                                         </Button>
+                                        <p>
+                                            Item is paid?{' '}
+                                            {this.state.isPaid.toString()}
+                                        </p>
+                                        <p>
+                                            OrderID is:{' '}
+                                            {this.state.orderID.toString()}
+                                        </p>
                                     </div>
                                 )}
                                 <p>
