@@ -23,6 +23,7 @@ import { VehicleList } from './VehicleList';
 import UserService from '../services/UserService';
 import VehicleService from '../services/VehicleService';
 import LicensePlateReservationForm from './LicensePlateReservationForm';
+import UserProfile from './UserProfile';
 
 function Copyright() {
     return (
@@ -217,7 +218,7 @@ export default function Dashboard() {
                             <LicensePlateReservationForm />
                         </Route>
                         <Route path="/dashboard/user">
-                            <h2>User here</h2>
+                            <UserProfile user={user} />
                         </Route>
                     </Switch>
                     <Box pt={4}>
