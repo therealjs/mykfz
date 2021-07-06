@@ -448,6 +448,12 @@ class VehicleRegister extends React.Component {
                                         </p>
                                     </div>
                                 )}
+                                <p>
+                                    Item is paid? {this.state.isPaid.toString()}
+                                </p>
+                                <p>
+                                    OrderID is: {this.state.orderID.toString()}
+                                </p>
                             </Grid>
                         </Grid>
                     </form>

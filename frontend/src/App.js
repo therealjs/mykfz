@@ -11,6 +11,7 @@ import {
 import UserService from './services/UserService';
 import { UserLoginView } from './views/UserLoginView';
 import { UserSignupView } from './views/UserSignupView';
+import { LandingPageView } from './views/LandingPageView';
 
 import { DashboardView } from './views/DashboardView';
 import { VehicleDetailView } from './views/VehicleDetailView';
@@ -34,7 +35,7 @@ export default class App extends React.Component {
                         if (UserService.isAuthenticated()) {
                             return <Redirect to={'/dashboard'} />;
                         } else {
-                            return <Redirect to={'/login'} />;
+                            return <Redirect to={'/landingPage'} />;
                         }
                     },
                     path: '/',
@@ -102,10 +103,11 @@ export default class App extends React.Component {
                     },
                     path: '/addLicensePlateReservation'
                 },
+
                 { component: UserLoginView, path: '/login' },
                 { component: SignInSide, path: '/signin' },
-
-                { component: UserSignupView, path: '/register' }
+                { component: UserSignupView, path: '/register' },
+                { component: LandingPageView, path: '/landingPage' }
             ]
         };
     }
