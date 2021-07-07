@@ -13,10 +13,10 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import MenuIcon from '@material-ui/icons/Menu';
-import NotificationsIcon from '@material-ui/icons/Notifications';
 import clsx from 'clsx';
 import React, { useEffect, useState } from 'react';
 import { Route, Switch } from 'react-router';
+import { Link as LinkRouter } from 'react-router-dom';
 import { LicensePlateReservationList } from './LicensePlateReservationList';
 import { mainListItems } from './listItems';
 import { VehicleList } from './VehicleList';
@@ -24,6 +24,7 @@ import UserService from '../services/UserService';
 import VehicleService from '../services/VehicleService';
 import LicensePlateReservationForm from './LicensePlateReservationForm';
 import UserProfile from './UserProfile';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
 function Copyright() {
     return (
@@ -125,6 +126,10 @@ export default function Dashboard() {
     const [user, setUser] = useState({});
     const [vehicles, setVehicles] = useState([]);
 
+    const logout = () => {
+        UserService.logout();
+    };
+
     const handleDrawerOpen = () => {
         setOpen(true);
     };
@@ -175,10 +180,8 @@ export default function Dashboard() {
                     >
                         MyKfz Dashboard
                     </Typography>
-                    <IconButton color="inherit">
-                        <Badge badgeContent={4} color="secondary">
-                            <NotificationsIcon />
-                        </Badge>
+                    <IconButton component={LinkRouter} to="/login" color="inherit">
+                        <ExitToAppIcon color="inherit" onClick={logout} />
                     </IconButton>
                 </Toolbar>
             </AppBar>
