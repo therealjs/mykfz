@@ -1,4 +1,5 @@
 'use strict';
+const path = require('path');
 
 import VehicleService from './VehicleService';
 import UserService from './UserService';
@@ -7,6 +8,7 @@ import DistrictService from './DistrictService';
 import pdfMake from 'pdfmake/build/pdfmake.js';
 import pdfFonts from 'pdfmake/build/vfs_fonts.js';
 
+import { base64MyKfzLogo, base64SebisLogo, base64TUMLogo } from '../../resources/base64Images';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 const labelsForPdf = {
@@ -70,7 +72,28 @@ export default class ProcessService {
         // create document
         let document = {
             content: [
-                { text: processData.processType, fontStyle: 15, lineHeight: 2 }
+                {
+                    columns: [
+                        {
+                            image: base64MyKfzLogo,
+                            fit: [75, 75]
+                        },
+                        {
+                            image: base64SebisLogo,
+                            fit: [200, 250]
+                        },
+                        {
+                            image: base64TUMLogo,
+                            width: 75
+                        }
+                    ]
+                    
+                },
+                {
+                    text: processData.processType,
+                    fontStyle: 15,
+                    lineHeight: 2
+                }
             ],
             info: {
                 title: documentName,
@@ -112,3 +135,5 @@ export default class ProcessService {
         return document;
     }
 }
+
+
