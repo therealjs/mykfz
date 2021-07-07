@@ -386,12 +386,12 @@ class VehicleRegister extends React.Component {
                                         color="primary"
                                         disabled={
                                             //this.state.licensePlate.toString().length != 4 ||
-                                            this.state.evb.toString()
-                                                .length != 7 ||
+                                            this.state.evb.toString().length !=
+                                                7 ||
                                             this.state.secCodeII.toString()
                                                 .length != 12 ||
-                                            this.state.iban.toString()
-                                                .length != 22
+                                            this.state.iban.toString().length !=
+                                                22
                                         }
                                     >
                                         Save
@@ -404,14 +404,14 @@ class VehicleRegister extends React.Component {
                                     >
                                         Cancel
                                     </Button>
-                                        <p>
-                                            Item is paid?{' '}
-                                            {this.state.isPaid.toString()}
-                                        </p>
-                                        <p>
-                                            OrderID is:{' '}
-                                            {this.state.orderID.toString()}
-                                        </p>
+                                    <p>
+                                        Item is paid?{' '}
+                                        {this.state.isPaid.toString()}
+                                    </p>
+                                    <p>
+                                        OrderID is:{' '}
+                                        {this.state.orderID.toString()}
+                                    </p>
                                 </div>
                                 <p>
                                     Item is paid? {this.state.isPaid.toString()}

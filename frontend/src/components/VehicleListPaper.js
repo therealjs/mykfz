@@ -88,11 +88,14 @@ class VehicleListPaper extends React.Component {
     createPdfAndDownload(processId) {
         (async () => {
             try {
-              await ProcessService.generateProcessStatusPDF(this.props.vehicle._id, processId);
+                await ProcessService.generateProcessStatusPDF(
+                    this.props.vehicle._id,
+                    processId
+                );
             } catch (err) {
                 console.error(err);
             }
-          })();
+        })();
     }
 
     render() {
@@ -175,21 +178,25 @@ class VehicleListPaper extends React.Component {
                                     {this.props.vehicle.processes.map(
                                         (process) => (
                                             <TableRow key={process._id}>
-                                                <TableCell
-                                                    
-                                                    scope="row"
-                                                >
+                                                <TableCell scope="row">
                                                     {process.processType}
                                                 </TableCell>
                                                 <TableCell align="right">
                                                     {new Date(
                                                         Date.parse(process.date)
-                                                    ).toUTCString()}
+                                                    ).toLocaleString('de-DE', {
+                                                        timeZone: 'UTC'
+                                                    })}
                                                 </TableCell>
                                                 <TableCell>
                                                     <IconButton
-                                                        onClick={() => this.createPdfAndDownload(process._id)}>
-                                                            <PrintIcon />
+                                                        onClick={() =>
+                                                            this.createPdfAndDownload(
+                                                                process._id
+                                                            )
+                                                        }
+                                                    >
+                                                        <PrintIcon />
                                                     </IconButton>
                                                 </TableCell>
                                             </TableRow>

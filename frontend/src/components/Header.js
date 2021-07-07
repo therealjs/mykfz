@@ -42,10 +42,12 @@ class Header extends React.Component {
                             <div>
                                 <a
                                     href={window.location.origin}
-                                    style={{ fontFamily: "Nunito",
-                                    color: "white",
-                                    fontSize: "1.5rem",
-                                    fontWeight: "900" }}
+                                    style={{
+                                        fontFamily: 'Nunito',
+                                        color: 'white',
+                                        fontSize: '1.5rem',
+                                        fontWeight: '900'
+                                    }}
                                 >
                                     myKFZ
                                 </a>

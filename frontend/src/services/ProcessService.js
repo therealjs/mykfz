@@ -10,50 +10,99 @@ import pdfFonts from 'pdfmake/build/vfs_fonts.js';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 const labelsForPdf = {
-    processType: "Process",
-    date: "Date",
-    state: "Process state",
-    secCodeI: "Security Code I",
-    plateCode: "Plate Code",
-    eVB: "EVB",
-    secCodeII: "Security Code II",
-    iban: "IBAN",
-    firstName: "First name",
-    lastName: "Last name",
-    street: "Street",
-    houseNumber: "House No.",
-    zipCode: "Zip code",
-    city : "City",
-    districtName: "District",
-    idId: "Identity card number"
+    processType: 'Process',
+    date: 'Date',
+    state: 'Process state',
+    secCodeI: 'Security Code I',
+    plateCode: 'Plate Code',
+    eVB: 'EVB',
+    secCodeII: 'Security Code II',
+    iban: 'IBAN',
+    firstName: 'First name',
+    lastName: 'Last name',
+    street: 'Street',
+    houseNumber: 'House No.',
+    zipCode: 'Zip code',
+    city: 'City',
+    districtName: 'District',
+    idId: 'Identity card number'
 };
 
-const dataNotToPrint = ["_id", "username", "password", "licensePlateReservations", "picture", "areaCode", "district"];
+const dataNotToPrint = [
+    '_id',
+    'username',
+    'password',
+    'licensePlateReservations',
+    'picture',
+    'areaCode',
+    'district'
+];
 
 export default class ProcessService {
-    
     static async generateProcessStatusPDF(vehicleId, processId) {
-        let processData = await VehicleService.getVehicleProcess(vehicleId, processId);
+        // get data for document
+        let processData = await VehicleService.getVehicleProcess(
+            vehicleId,
+            processId
+        );
         let userData = await UserService.getUserDetails();
-        let districtData = await DistrictService.getDistrict(userData.address.district);
-        districtData["districtName"] = districtData.name;
-        delete districtData["name"];
-        let document = { content: [{text: processData.processType, fontStyle: 15, lineHeight: 2}] };
-        [userData, districtData, processData].forEach(data => this.flattenObject(document, data));
-        pdfMake.createPdf(document).download();
+        let districtData = await DistrictService.getDistrict(
+            userData.address.district
+        );
+
+        // create doc name
+        const dateString = new Date(
+            Date.parse(processData.date)
+        ).toLocaleString('de-DE', { timeZone: 'UTC' });
+        const documentName =
+            processData.processType +
+            ', ' +
+            userData.firstName +
+            ' ' +
+            userData.lastName +
+            ', ' +
+            dateString;
+
+        // change key of district name
+        districtData['districtName'] = districtData.name;
+        delete districtData['name'];
+
+        // create document
+        let document = {
+            content: [
+                { text: processData.processType, fontStyle: 15, lineHeight: 2 }
+            ],
+            info: {
+                title: documentName,
+                author: 'myKFZ'
+            }
+        };
+
+        // fill doc with data
+        [userData, districtData, processData].forEach((data) =>
+            this.flattenObject(document, data)
+        );
+
+        // download
+        pdfMake.createPdf(document).download(documentName + '.pdf');
     }
 
     static flattenObject(document, objectToFlatten) {
-        Object.keys(objectToFlatten).forEach(key => {
+        Object.keys(objectToFlatten).forEach((key) => {
+            // skip data, e.g. _ids
             if (!dataNotToPrint.includes(key.toString())) {
-                if(typeof objectToFlatten[key] === 'object' && objectToFlatten[key] !== null) {
+                // recursively call method, skip empty data
+                if (
+                    typeof objectToFlatten[key] === 'object' &&
+                    objectToFlatten[key] !== null
+                ) {
                     this.flattenObject(document, objectToFlatten[key]);
-                } else if (objectToFlatten[key] !== null){
+                } else if (objectToFlatten[key] !== null) {
                     document.content.push({
                         columns: [
                             { text: labelsForPdf[key] || key, width: 120 },
                             { text: ':', width: 10 },
-                            { text: objectToFlatten[key], width: 300 },
+                            { text: objectToFlatten[key], width: 300 }
                         ],
                         lineHeight: 2
                     });
