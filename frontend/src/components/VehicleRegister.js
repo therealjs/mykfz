@@ -126,10 +126,12 @@ class VehicleRegister extends React.Component {
                 date: Date(),
                 state: 'NEW',
                 info: {
+                    licensePlate: this.state.licensePlate._id,
                     evb: this.state.evb,
                     secCodeII: this.state.secCodeII,
                     iban: this.state.iban
-                }
+                },
+                processState: 'PAYED'
             });
 
             this.props.onSubmit(vehicle);

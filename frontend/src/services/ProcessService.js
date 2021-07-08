@@ -27,7 +27,8 @@ const labelsForPdf = {
     zipCode: 'Zip code',
     city: 'City',
     districtName: 'District',
-    idId: 'Identity card number'
+    idId: 'Identity card number',
+    processState: "Process state"
 };
 
 const dataNotToPrint = [
@@ -121,6 +122,9 @@ export default class ProcessService {
                 ) {
                     this.flattenObject(document, objectToFlatten[key]);
                 } else if (objectToFlatten[key] !== null) {
+                    if (key === 'date') {
+                        objectToFlatten[key] = new Date(Date.parse(objectToFlatten[key])).toLocaleDateString('de-DE', { timeZone: 'UTC' });
+                    }
                     document.content.push({
                         columns: [
                             { text: labelsForPdf[key] || key, width: 120 },

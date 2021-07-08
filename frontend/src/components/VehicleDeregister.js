@@ -68,7 +68,8 @@ class VehicleDeregister extends React.Component {
                 info: {
                     secCodeI: this.state.secCodeI,
                     plateCode: this.state.plateCode
-                }
+                },
+                processState: 'PAYED'
             });
 
             this.props.onSubmit(vehicle);
