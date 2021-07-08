@@ -8,13 +8,17 @@ import DistrictService from './DistrictService';
 import pdfMake from 'pdfmake/build/pdfmake.js';
 import pdfFonts from 'pdfmake/build/vfs_fonts.js';
 
-import { base64MyKfzLogo, base64SebisLogo, base64TUMLogo } from '../../resources/base64Images';
+import {
+    base64MyKfzLogo,
+    base64SebisLogo,
+    base64TUMLogo
+} from '../../resources/base64Images';
+import LicensePlateService from './LicensePlateService';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 const labelsForPdf = {
     processType: 'Process',
     date: 'Date',
-    state: 'Process state',
     secCodeI: 'Security Code I',
     plateCode: 'Plate Code',
     eVB: 'EVB',
@@ -28,7 +32,7 @@ const labelsForPdf = {
     city: 'City',
     districtName: 'District',
     idId: 'Identity card number',
-    processState: "Process state"
+    processState: 'Process state'
 };
 
 const dataNotToPrint = [
@@ -38,7 +42,10 @@ const dataNotToPrint = [
     'licensePlateReservations',
     'picture',
     'areaCode',
-    'district'
+    'district',
+    'state',
+    // added manually
+    'licensePlate'
 ];
 
 export default class ProcessService {
@@ -88,7 +95,6 @@ export default class ProcessService {
                             width: 75
                         }
                     ]
-                    
                 },
                 {
                     text: processData.processType,
@@ -107,6 +113,29 @@ export default class ProcessService {
             this.flattenObject(document, data)
         );
 
+        let licensePlate;
+        if (processData.info.licensePlate) {
+            licensePlate = await LicensePlateService.getLicensePlate(
+                processData.info.licensePlate
+            );
+            document.content.push({
+                columns: [
+                    { text: 'License Plate', width: 120 },
+                    { text: ':', width: 10 },
+                    {
+                        text:
+                            licensePlate.areaCode +
+                            '-' +
+                            licensePlate.digits +
+                            '-' +
+                            licensePlate.letters,
+                        width: 300
+                    }
+                ],
+                lineHeight: 2
+            });
+        }
+
         // download
         pdfMake.createPdf(document).download(documentName + '.pdf');
     }
@@ -123,7 +152,9 @@ export default class ProcessService {
                     this.flattenObject(document, objectToFlatten[key]);
                 } else if (objectToFlatten[key] !== null) {
                     if (key === 'date') {
-                        objectToFlatten[key] = new Date(Date.parse(objectToFlatten[key])).toLocaleDateString('de-DE', { timeZone: 'UTC' });
+                        objectToFlatten[key] = new Date(
+                            Date.parse(objectToFlatten[key])
+                        ).toLocaleDateString('de-DE', { timeZone: 'UTC' });
                     }
                     document.content.push({
                         columns: [
@@ -139,5 +170,3 @@ export default class ProcessService {
         return document;
     }
 }
-
-

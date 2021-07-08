@@ -126,7 +126,7 @@ class VehicleRegister extends React.Component {
                 date: Date(),
                 state: 'NEW',
                 info: {
-                    licensePlate: this.state.licensePlate._id,
+                    licensePlate: this.state.licensePlate,
                     evb: this.state.evb,
                     secCodeII: this.state.secCodeII,
                     iban: this.state.iban
