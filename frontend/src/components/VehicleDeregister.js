@@ -29,18 +29,8 @@ class VehicleDeregister extends React.Component {
             licensePlate: props.vehicle.licensePlate,
             generalInspection: props.vehicle.generalInspection,
             secCodeI: '',
-            plateCode: '',
-            readOnly: false
+            plateCode: ''
         };
-        if (
-            this.props.location &&
-            this.props.location.state &&
-            this.props.location.state.info
-        ) {
-            this.state.secCodeI = this.props.location.state.info.secCodeI;
-            this.state.plateCode = this.props.location.state.info.plateCode;
-            this.state.readOnly = true;
-        }
 
         this.handleChange = this.handleChange.bind(this);
         this.handleChangeCheckbox = this.handleChangeCheckbox.bind(this);
@@ -78,7 +68,8 @@ class VehicleDeregister extends React.Component {
                 info: {
                     secCodeI: this.state.secCodeI,
                     plateCode: this.state.plateCode
-                }
+                },
+                processState: 'PAYED'
             });
 
             this.props.onSubmit(vehicle);
@@ -132,7 +123,6 @@ class VehicleDeregister extends React.Component {
                                     name="secCodeI"
                                     fullWidth
                                     required={true}
-                                    disabled={this.state.readOnly}
                                     value={this.state.secCodeI}
                                     onChange={this.handleChange}
                                     maxLength={7}
@@ -144,7 +134,6 @@ class VehicleDeregister extends React.Component {
                                     required={true}
                                     name="plateCode"
                                     fullWidth
-                                    disabled={this.state.readOnly}
                                     value={this.state.plateCode}
                                     onChange={this.handleChange}
                                     maxLength={3}
@@ -157,7 +146,6 @@ class VehicleDeregister extends React.Component {
                                             checked={
                                                 this.state.reserveLicensePlate
                                             }
-                                            disabled={this.state.readOnly}
                                             onChange={this.handleChangeCheckbox}
                                             name="reserveLicensePlate"
                                             color="primary"
@@ -167,7 +155,7 @@ class VehicleDeregister extends React.Component {
                                 />
                             </Grid>
                             <Grid item xs={12}>
-                                {this.state.readOnly ? (
+                                <div>
                                     <Button
                                         style={{
                                             float: 'right',
@@ -177,39 +165,24 @@ class VehicleDeregister extends React.Component {
                                         variant="contained"
                                         type="submit"
                                         color="primary"
+                                        disabled={
+                                            this.state.plateCode.toString()
+                                                .length != 3 ||
+                                            this.state.secCodeI.toString()
+                                                .length != 7
+                                        }
                                     >
-                                        Print confirmation
+                                        Save
                                     </Button>
-                                ) : (
-                                    <div>
-                                        <Button
-                                            style={{
-                                                float: 'right',
-                                                marginLeft: '15px'
-                                            }}
-                                            id="submit"
-                                            variant="contained"
-                                            type="submit"
-                                            color="primary"
-                                            disabled={
-                                                this.state.plateCode.toString()
-                                                    .length != 3 ||
-                                                this.state.secCodeI.toString()
-                                                    .length != 7
-                                            }
-                                        >
-                                            Save
-                                        </Button>
-                                        <Button
-                                            style={{ float: 'right' }}
-                                            id="reset"
-                                            type="reset"
-                                            color="default"
-                                        >
-                                            Cancel
-                                        </Button>
-                                    </div>
-                                )}
+                                    <Button
+                                        style={{ float: 'right' }}
+                                        id="reset"
+                                        type="reset"
+                                        color="default"
+                                    >
+                                        Cancel
+                                    </Button>
+                                </div>
                             </Grid>
                         </Grid>
                     </form>

@@ -45,8 +45,7 @@ class VehicleRegister extends React.Component {
             orderID: 0,
             isPaid: false,
             amount: 42.5,
-            usesReservedPlate: false,
-            readOnly: false
+            usesReservedPlate: false
         };
 
         this.yearOptions = this.monthOptions = Array(4)
@@ -55,17 +54,6 @@ class VehicleRegister extends React.Component {
         this.monthOptions = Array(12)
             .fill()
             .map((element, index) => index + 1);
-
-        if (
-            this.props.location &&
-            this.props.location.state &&
-            this.props.location.state.info
-        ) {
-            this.state.secCodeII = this.props.location.state.info.secCodeII;
-            this.state.evb = this.props.location.state.info.evb;
-            this.state.iban = this.props.location.state.info.iban;
-            this.state.readOnly = true;
-        }
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -138,10 +126,12 @@ class VehicleRegister extends React.Component {
                 date: Date(),
                 state: 'NEW',
                 info: {
+                    licensePlate: this.state.licensePlate,
                     evb: this.state.evb,
                     secCodeII: this.state.secCodeII,
                     iban: this.state.iban
-                }
+                },
+                processState: 'PAYED'
             });
 
             this.props.onSubmit(vehicle);
@@ -211,7 +201,6 @@ class VehicleRegister extends React.Component {
                                             value={this.state.areaCode}
                                             required={true}
                                             name="areaCode"
-                                            disabled={this.state.readOnly}
                                             onChange={this.handleChange}
                                         >
                                             {this.state.areaCodeOptions.map(
@@ -233,7 +222,6 @@ class VehicleRegister extends React.Component {
                                             label="Letters"
                                             required={true}
                                             name="letters"
-                                            disabled={this.state.readOnly}
                                             value={this.state.letters}
                                             // ToDo add regex
                                             onChange={this.handleChange}
@@ -246,7 +234,6 @@ class VehicleRegister extends React.Component {
                                             required={true}
                                             name="digits"
                                             type="number"
-                                            disabled={this.state.readOnly}
                                             value={this.state.digits}
                                             onChange={this.handleChange}
                                             inputProps={{ maxLength: 3 }}
@@ -284,7 +271,6 @@ class VehicleRegister extends React.Component {
                                     name="evb"
                                     required={true}
                                     fullWidth
-                                    disabled={this.state.readOnly}
                                     value={this.state.evb}
                                     onChange={this.handleChange}
                                     maxLength={7}
@@ -296,7 +282,6 @@ class VehicleRegister extends React.Component {
                                     name="secCodeII"
                                     required={true}
                                     fullWidth
-                                    disabled={this.state.readOnly}
                                     value={this.state.secCodeII}
                                     onChange={this.handleChange}
                                     maxLength={12}
@@ -308,7 +293,6 @@ class VehicleRegister extends React.Component {
                                     name="iban"
                                     required={true}
                                     fullWidth
-                                    disabled={this.state.readOnly}
                                     value={this.state.iban}
                                     onChange={this.handleChange}
                                     maxLength={22}
@@ -327,7 +311,6 @@ class VehicleRegister extends React.Component {
                                     value={this.state.generalInspectionMonth}
                                     required={true}
                                     fullWidth
-                                    disabled={this.state.readOnly}
                                     name="generalInspectionMonth"
                                     onChange={this.handleChange}
                                 >
@@ -347,7 +330,6 @@ class VehicleRegister extends React.Component {
                                     value={this.state.generalInspectionYear}
                                     required={true}
                                     fullWidth
-                                    disabled={this.state.readOnly}
                                     name="generalInspectionYear"
                                     onChange={this.handleChange}
                                 >
@@ -394,7 +376,7 @@ class VehicleRegister extends React.Component {
                             </Grid>
 
                             <Grid item xs={12}>
-                                {this.state.readOnly ? (
+                                <div>
                                     <Button
                                         style={{
                                             float: 'right',
@@ -404,50 +386,35 @@ class VehicleRegister extends React.Component {
                                         variant="contained"
                                         type="submit"
                                         color="primary"
+                                        disabled={
+                                            //this.state.licensePlate.toString().length != 4 ||
+                                            this.state.evb.toString().length !=
+                                                7 ||
+                                            this.state.secCodeII.toString()
+                                                .length != 12 ||
+                                            this.state.iban.toString().length !=
+                                                22
+                                        }
                                     >
-                                        Print confirmation
+                                        Save
                                     </Button>
-                                ) : (
-                                    <div>
-                                        <Button
-                                            style={{
-                                                float: 'right',
-                                                marginLeft: '15px'
-                                            }}
-                                            id="submit"
-                                            variant="contained"
-                                            type="submit"
-                                            color="primary"
-                                            disabled={
-                                                //this.state.licensePlate.toString().length != 4 ||
-                                                this.state.evb.toString()
-                                                    .length != 7 ||
-                                                this.state.secCodeII.toString()
-                                                    .length != 12 ||
-                                                this.state.iban.toString()
-                                                    .length != 22
-                                            }
-                                        >
-                                            Save
-                                        </Button>
-                                        <Button
-                                            style={{ float: 'right' }}
-                                            id="reset"
-                                            type="reset"
-                                            color="default"
-                                        >
-                                            Cancel
-                                        </Button>
-                                        <p>
-                                            Item is paid?{' '}
-                                            {this.state.isPaid.toString()}
-                                        </p>
-                                        <p>
-                                            OrderID is:{' '}
-                                            {this.state.orderID.toString()}
-                                        </p>
-                                    </div>
-                                )}
+                                    <Button
+                                        style={{ float: 'right' }}
+                                        id="reset"
+                                        type="reset"
+                                        color="default"
+                                    >
+                                        Cancel
+                                    </Button>
+                                    <p>
+                                        Item is paid?{' '}
+                                        {this.state.isPaid.toString()}
+                                    </p>
+                                    <p>
+                                        OrderID is:{' '}
+                                        {this.state.orderID.toString()}
+                                    </p>
+                                </div>
                                 <p>
                                     Item is paid? {this.state.isPaid.toString()}
                                 </p>

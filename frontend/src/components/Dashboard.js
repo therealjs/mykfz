@@ -13,10 +13,10 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import MenuIcon from '@material-ui/icons/Menu';
-import NotificationsIcon from '@material-ui/icons/Notifications';
 import clsx from 'clsx';
 import React, { useEffect, useState } from 'react';
 import { Route, Switch } from 'react-router';
+import { Link as LinkRouter } from 'react-router-dom';
 import { LicensePlateReservationList } from './LicensePlateReservationList';
 import { mainListItems } from './listItems';
 import { VehicleList } from './VehicleList';
@@ -24,6 +24,8 @@ import UserService from '../services/UserService';
 import VehicleService from '../services/VehicleService';
 import LicensePlateReservationForm from './LicensePlateReservationForm';
 import UserProfile from './UserProfile';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import { withRouter } from 'react-router';
 
 function Copyright() {
     return (
@@ -119,11 +121,20 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-export default function Dashboard() {
+function Dashboard(props) {
     const classes = useStyles();
     const [open, setOpen] = useState(true);
     const [user, setUser] = useState({});
     const [vehicles, setVehicles] = useState([]);
+
+    const logout = () => {
+        UserService.logout();
+        if (props.location.pathname != '/') {
+            props.history.push('/');
+        } else {
+            window.location.reload();
+        }
+    };
 
     const handleDrawerOpen = () => {
         setOpen(true);
@@ -176,9 +187,7 @@ export default function Dashboard() {
                         MyKfz Dashboard
                     </Typography>
                     <IconButton color="inherit">
-                        <Badge badgeContent={4} color="secondary">
-                            <NotificationsIcon />
-                        </Badge>
+                        <ExitToAppIcon color="inherit" onClick={logout} />
                     </IconButton>
                 </Toolbar>
             </AppBar>
@@ -229,3 +238,5 @@ export default function Dashboard() {
         </div>
     );
 }
+
+export default withRouter(Dashboard);
