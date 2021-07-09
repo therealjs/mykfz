@@ -25,6 +25,7 @@ import VehicleService from '../services/VehicleService';
 import LicensePlateReservationForm from './LicensePlateReservationForm';
 import UserProfile from './UserProfile';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import { withRouter } from 'react-router';
 
 function Copyright() {
     return (
@@ -120,7 +121,7 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-export default function Dashboard() {
+function Dashboard(props) {
     const classes = useStyles();
     const [open, setOpen] = useState(true);
     const [user, setUser] = useState({});
@@ -128,6 +129,11 @@ export default function Dashboard() {
 
     const logout = () => {
         UserService.logout();
+        if (props.location.pathname != '/') {
+            props.history.push('/');
+        } else {
+            window.location.reload();
+        }
     };
 
     const handleDrawerOpen = () => {
@@ -180,7 +186,7 @@ export default function Dashboard() {
                     >
                         MyKfz Dashboard
                     </Typography>
-                    <IconButton component={LinkRouter} to="/login" color="inherit">
+                    <IconButton color="inherit">
                         <ExitToAppIcon color="inherit" onClick={logout} />
                     </IconButton>
                 </Toolbar>
@@ -232,3 +238,5 @@ export default function Dashboard() {
         </div>
     );
 }
+
+export default withRouter(Dashboard);
