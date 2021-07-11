@@ -45,7 +45,7 @@ export default class App extends React.Component {
                 {
                     render: (props) => {
                         if (UserService.isAuthenticated()) {
-                            return <Dashboard />;
+                            return <DashboardView />;
                         } else {
                             return <Redirect to={'/login'} />;
                         }
