@@ -10,6 +10,7 @@ import {
 
 import UserService from './services/UserService';
 import { UserLoginView } from './views/UserLoginView';
+import { DistrictLoginView } from './views/DistrictLoginView';
 import { UserSignupView } from './views/UserSignupView';
 import { LandingPageView } from './views/LandingPageView';
 
@@ -52,7 +53,6 @@ export default class App extends React.Component {
                     path: '/dashboard',
                     exact: false
                 },
-
                 {
                     render: (props) => {
                         if (UserService.isAuthenticated()) {
@@ -105,6 +105,7 @@ export default class App extends React.Component {
                 },
 
                 { component: UserLoginView, path: '/login' },
+                { component: DistrictLoginView, path: '/districtLogin' },
                 { component: SignInSide, path: '/signin' },
                 { component: UserSignupView, path: '/register' },
                 { component: LandingPageView, path: '/landingPage' }

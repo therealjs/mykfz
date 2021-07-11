@@ -49,6 +49,24 @@ export default class UserService {
         });
     }
 
+    static districtLogin(user, pass) {
+        return new Promise((resolve, reject) => {
+            HttpService.post(
+                `${UserService.baseURL()}/districtLogin`,
+                {
+                    username: user,
+                    password: pass
+                },
+                function (data) {
+                    resolve(data);
+                },
+                function (textStatus) {
+                    reject(textStatus);
+                }
+            );
+        });
+    }
+
     static logout() {
         window.localStorage.removeItem('jwtToken');
     }
@@ -77,6 +95,10 @@ export default class UserService {
                 }
             );
         });
+    }
+
+    static async isDistrictUser() {
+        return await this.getUserDetails().isDistrictUser;
     }
 
     static updateUser(user) {
