@@ -32,6 +32,7 @@ class VehicleRegister extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            userId: '',
             licensePlate: props.vehicle.licensePlate,
             generalInspectionMonth: props.vehicle.generalInspectionMonth,
             generalInspectionYear: props.vehicle.generalInspectionYear,
@@ -46,7 +47,9 @@ class VehicleRegister extends React.Component {
             isPaid: false,
             amount: 42.5,
             usesReservedPlate: false,
-            readOnly: false
+            readOnly: false,
+            reservedPlates: [],
+            selectedReservedPlate: '',
         };
 
         this.yearOptions = this.monthOptions = Array(4)
@@ -70,6 +73,8 @@ class VehicleRegister extends React.Component {
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.createOrder = this.createOrder.bind(this);
+        this.changeReservedPlate = this.changeReservedPlate.bind(this);
+        this.changeUsesReservedPlate = this.changeUsesReservedPlate.bind(this);
     }
 
     componentWillMount(props) {
@@ -80,13 +85,25 @@ class VehicleRegister extends React.Component {
         // set district area code options
         (async () => {
             try {
-                let user = await UserService.getUserDetails();
-                let district = await DistrictService.getDistrict(
+                const user = await UserService.getUserDetails();
+                const district = await DistrictService.getDistrict(
                     user.address.district
                 );
+
+                const userPlateReservations = user.licensePlateReservations;
+                const platePromises = userPlateReservations.map(async plate => {
+                    const licensePlate = await LicensePlateService.getLicensePlate(plate.licensePlate);
+                    return licensePlate;
+                  });
+                
+                const reservedPlates = await Promise.all(platePromises);
+
                 this.setState({
-                    areaCodeOptions: district.areaCode
+                    userId: user._id,
+                    areaCodeOptions: district.areaCode,
+                    reservedPlates: reservedPlates
                 });
+                console.log(this.state);
             } catch (err) {
                 console.error(err + 'X');
             }
@@ -108,14 +125,44 @@ class VehicleRegister extends React.Component {
         }
     }
 
+    changeReservedPlate(event) {
+        let plate = event.target.value
+        console.log(plate)
+        this.setState({
+            areaCode: plate.areaCode,
+            letters: plate.letters,
+            digits: plate.digits, 
+            selectedReservedPlate: String(`${this.state.areaCode}` + ' - ' + `${this.state.letters}` + ' ' + `${this.state.digits}`),
+            licensePlate: plate._id
+        })
+        console.log(this.state.selectedReservedPlate)
+        console.log(this.state.selectedReservedPlate.type)
+    }
+
+    changeUsesReservedPlate(event) {
+        this.setState({
+            usesReservedPlate: event.target.checked
+        });
+        {!(event.target.checked) ? 
+            this.setState({
+                areaCode: '',
+                letters: '',
+                digits: ''
+            })
+            :[]
+        }
+    }
+
     handleSubmit(event) {
         event.preventDefault();
-        const licensePlate = {
-            areaCode: this.state.areaCode,
-            digits: this.state.digits,
-            letters: this.state.letters
-        };
 
+        (async () => {if (!(this.state.usesReservedPlate)) {
+            console.log("NO Reservation");
+            const licensePlate = {
+                areaCode: this.state.areaCode,
+                digits: this.state.digits,
+                letters: this.state.letters
+            };
         (async () => {
             try {
                 const validatedPlate =
@@ -126,7 +173,20 @@ class VehicleRegister extends React.Component {
             } catch (err) {
                 console.error(err);
             }
-        })().then(() => {
+        })()
+        } else {
+            console.log(this.state);
+            console.log(this.state.userId);
+            // delete the reservation
+            (async () => {
+                try {
+                    const validatedPlate =
+                        await LicensePlateService.deleteLicensePlateReservation(this.state.userId, this.state.licensePlate)
+                } catch (err) {
+                    console.error(err);
+                }
+            })()
+        }})().then(() => {
             let vehicle = this.props.vehicle;
 
             vehicle.licensePlate = this.state.licensePlate;
@@ -211,7 +271,7 @@ class VehicleRegister extends React.Component {
                                             value={this.state.areaCode}
                                             required={true}
                                             name="areaCode"
-                                            disabled={this.state.readOnly}
+                                            disabled={this.state.usesReservedPlate}
                                             onChange={this.handleChange}
                                         >
                                             {this.state.areaCodeOptions.map(
@@ -233,7 +293,7 @@ class VehicleRegister extends React.Component {
                                             label="Letters"
                                             required={true}
                                             name="letters"
-                                            disabled={this.state.readOnly}
+                                            disabled={this.state.usesReservedPlate}
                                             value={this.state.letters}
                                             // ToDo add regex
                                             onChange={this.handleChange}
@@ -246,7 +306,7 @@ class VehicleRegister extends React.Component {
                                             required={true}
                                             name="digits"
                                             type="number"
-                                            disabled={this.state.readOnly}
+                                            disabled={this.state.usesReservedPlate}
                                             value={this.state.digits}
                                             onChange={this.handleChange}
                                             inputProps={{ maxLength: 3 }}
@@ -254,21 +314,49 @@ class VehicleRegister extends React.Component {
                                     </FormControl>
                                 </FormGroup>
                             </Grid>
-                            <Grid item xs={12}>
+                            <Grid item xs={3}>
                                 <FormControlLabel
                                     control={
                                         <Checkbox
                                             checked={
                                                 this.state.usesReservedPlate
                                             }
-                                            onChange={this.handleChange}
+                                            onChange={this.changeUsesReservedPlate}
                                             name="usesReservedPlate"
                                             color="primary"
                                         />
                                     }
-                                    label="is a reserved plate"
+                                    label="use reserved plate"
                                 />
                             </Grid>
+                            <Grid item xs={9}>
+                                {this.state.usesReservedPlate ? 
+                                <div>
+                                <InputLabel>Reserved Plate</InputLabel>
+                                <Select
+                                    label="Reserved Plate"
+                                    value={this.state.selectedReservedPlate}
+                                    defaultValue=""
+                                    required={true}
+                                    fullWidth
+                                    disabled={this.state.readOnly}
+                                    name="selectedReservedPlate"
+                                    onChange={this.changeReservedPlate}
+                                >
+                                    {this.state.reservedPlates.map((plate) => {
+                                        console.log(plate)
+                                        return (
+                                            <MenuItem value={plate}>
+                                                {`${plate.areaCode}` + ' - ' + `${plate.letters}` + ' ' + `${plate.digits}`}
+                                            </MenuItem>
+                                        );
+                                    })}
+                                </Select>
+                                </div>
+                            : []
+                            }
+                            </Grid>
+                            
                             <Grid item xs={12}>
                                 <TextField
                                     label="VIN"

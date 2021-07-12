@@ -17,12 +17,12 @@ import NotificationsIcon from '@material-ui/icons/Notifications';
 import clsx from 'clsx';
 import React, { useEffect, useState } from 'react';
 import { Route, Switch } from 'react-router';
-import { LicensePlateReservationList } from './LicensePlateReservationList';
+import LicensePlateReservationList from './LicensePlateReservationList';
+import LicensePlateReservationForm from './LicensePlateReservationForm';
 import { mainListItems } from './listItems';
 import { VehicleList } from './VehicleList';
 import UserService from '../services/UserService';
 import VehicleService from '../services/VehicleService';
-import LicensePlateReservationForm from './LicensePlateReservationForm';
 
 function Copyright() {
     return (
@@ -204,17 +204,13 @@ export default function Dashboard() {
                 <Container maxWidth="lg" className={classes.container}>
                     <Switch>
                         <Route path="/dashboard/vehicles">
-                            <VehicleList vehicles={vehicles} />
+                            <VehicleList vehicles={vehicles}/>
                         </Route>
                         <Route path="/dashboard/plates">
-                            <LicensePlateReservationList
-                                licensePlateReservations={
-                                    user.licensePlateReservations
-                                }
-                            />
+                            <LicensePlateReservationList user={user}/>
                         </Route>
                         <Route path="/dashboard/reservation">
-                            <LicensePlateReservationForm />
+                            <LicensePlateReservationForm/>
                         </Route>
                         <Route path="/dashboard/user">
                             <h2>User here</h2>

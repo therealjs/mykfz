@@ -93,6 +93,44 @@ export default class UserService {
             );
         });
     }
+    
+    static createLicensePlateReservation(userId, plateId, days) {
+        var expiryDate = new Date();
+        expiryDate.setDate(expiryDate.getDate() + days);
+        return new Promise((resolve, reject) => {
+                HttpService.post(
+                    `http://localhost:3000/users/${userId}/licensePlateReservations`,
+                    {
+                        licensePlate: plateId,
+                        expiryDate: expiryDate
+                    },
+                    function (data) {
+                        resolve(data);
+                    },
+                    function (textStatus) {
+                        reject(textStatus);
+                    }
+            );
+        });
+    }
+
+    static deleteLicensePlateReservation(userId, plateId) {
+        return new Promise((resolve, reject) => {
+            HttpService.remove(
+                `http://localhost:3000/users/${userId}/licensePlateReservations/${plateId}`,
+                function (data) {
+                    if (data.message != undefined) {
+                        resolve(data.message);
+                    } else {
+                        reject('Error while deleting');
+                    }
+                },
+                function (textStatus) {
+                    reject(textStatus);
+                }
+            );
+        });
+    }
 
     static isAuthenticated() {
         return !!window.localStorage['jwtToken'];

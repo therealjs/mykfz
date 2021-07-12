@@ -30,7 +30,8 @@ class VehicleDeregister extends React.Component {
             generalInspection: props.vehicle.generalInspection,
             secCodeI: '',
             plateCode: '',
-            readOnly: false
+            readOnly: false,
+            reserveLicensePlate: false
         };
         if (
             this.props.location &&
@@ -57,16 +58,21 @@ class VehicleDeregister extends React.Component {
 
     handleSubmit(event) {
         event.preventDefault();
-
+        
         let vehicle = this.props.vehicle;
 
         (async () => {
             try {
-                let del = await LicensePlateService.deleteLicensePlate(
-                    vehicle.licensePlate
+                let del = await LicensePlateService.createLicensePlateReservation(
+                    this.props.user._id,
+                    vehicle.licensePlate,
+                    90
                 );
             } catch (err) {
                 console.error(err);
+            }
+            if (this.state.reserveLicensePlate) {
+                const licensePlate = 0
             }
         })().then(() => {
             vehicle.licensePlate = null;
@@ -86,6 +92,7 @@ class VehicleDeregister extends React.Component {
     }
 
     render() {
+        console.log(this.props)
         return (
             <Page>
                 <Card style={{ padding: '20px', maxWidth: '500px' }}>
