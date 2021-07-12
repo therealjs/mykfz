@@ -43,7 +43,6 @@ export default class LicensePlateService {
     }
 
     static getLicensePlate(id) {
-        console.log("aha")
         return new Promise((resolve, reject) => {
             HttpService.get(
                 `${LicensePlateService.baseURL()}/${id}`,

@@ -142,8 +142,8 @@ class LicensePlateReservationForm extends React.Component {
                 console.error(err);
             }
         })().then(async() => {
-            const reservation = await LicensePlateService.createLicensePlateReservation(user._id, this.state.newLicensePlate)
-            this.props.history.goBack()  
+            const reservation = await UserService.createLicensePlateReservation(user._id, this.state.newLicensePlate, 30);
+            this.props.history.goBack();  
         });
     }
 
