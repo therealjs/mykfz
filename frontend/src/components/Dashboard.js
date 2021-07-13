@@ -19,7 +19,8 @@ import React, { useEffect, useState } from 'react';
 import { Route, Switch } from 'react-router';
 import LicensePlateReservationList from './LicensePlateReservationList';
 import LicensePlateReservationForm from './LicensePlateReservationForm';
-import { VehicleFormView } from '../views/VehicleFormView';
+import UserDetail from './UserDetail';
+import VehicleForm from '../components/VehicleForm';
 import { mainListItems } from './listItems';
 import { VehicleList } from './VehicleList';
 import UserService from '../services/UserService';
@@ -208,7 +209,7 @@ export default function Dashboard() {
                             <VehicleList vehicles={vehicles}/>
                         </Route>
                         <Route path="/dashboard/add">
-                            <VehicleFormView />
+                            <VehicleForm />
                         </Route>
                         <Route path="/dashboard/plates">
                             <LicensePlateReservationList />
@@ -217,7 +218,7 @@ export default function Dashboard() {
                             <LicensePlateReservationForm/>
                         </Route>
                         <Route path="/dashboard/user">
-                            <h2>User here</h2>
+                            <UserDetail />
                         </Route>
                     </Switch>
                     <Box pt={4}>

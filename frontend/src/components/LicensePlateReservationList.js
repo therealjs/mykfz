@@ -91,7 +91,7 @@ class LicensePlateReservationList extends React.Component {
                         </TableRow>
                     ))}
                     </TableBody>
-                    <caption style={{textAlign: "center"}}>Reservations always expire at 12:00 AM of the corresponding date.</caption>
+                    <caption style={{textAlign: "center"}}>Reservations always expire at 12:00 AM on the corresponding date.</caption>
                 </Table>
                 </TableContainer>) 
                 // : (

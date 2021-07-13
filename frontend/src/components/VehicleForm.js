@@ -127,7 +127,14 @@ class VehicleForm extends React.Component {
 
     render() {
         return (
-            <Page>
+            <Grid
+                justify="space-between"
+                container
+                direction="column"
+                alignItems="center"
+                justify="center"
+                spacing={3}>
+                <Grid item xs={12}>
                 <Card style={{ padding: '20px', maxWidth: '500px' }}>
                     <form
                         onSubmit={this.handleSubmit}
@@ -335,7 +342,8 @@ class VehicleForm extends React.Component {
                         </Grid>
                     </form>
                 </Card>
-            </Page>
+                </Grid>
+                </Grid>
         );
     }
 }
