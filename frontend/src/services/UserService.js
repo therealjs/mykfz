@@ -97,6 +97,7 @@ export default class UserService {
     static createLicensePlateReservation(userId, plateId, days) {
         var expiryDate = new Date();
         expiryDate.setDate(expiryDate.getDate() + days);
+        expiryDate.setHours(24,0,0,0);
         return new Promise((resolve, reject) => {
                 HttpService.post(
                     `http://localhost:3000/users/${userId}/licensePlateReservations`,
