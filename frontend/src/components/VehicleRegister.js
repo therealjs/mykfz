@@ -25,18 +25,23 @@ import DistrictService from '../services/DistrictService';
 import LicensePlateService from '../services/LicensePlateService';
 import UserService from '../services/UserService';
 import Page from './Page';
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/styles';
+import { fontFamily, minWidth, width } from '@material-ui/system';
 
 const style = { maxWidth: 500 };
 
-const styles = (theme) => ({
+const LightTooltip = withStyles((theme) => ({
     tooltip: {
-        backgroundColor: theme.palette.common.white,
-        color: 'rgba(0, 0, 0, 0.87)',
-        boxShadow: theme.shadows[1],
-        fontSize: 15
+        backgroundColor: '#878381',
+        color: 'white',
+        //boxShadow: theme.shadows[1],
+        fontSize: 14,
+        fontFamily: 'Nunito'
+        //maxWidth: 400
+        //minWidth: '400'
+        //width: 400
     }
-});
+}))(Tooltip);
 
 const clientId =
     'ATuI28VIncLCJuX7OGrZeGvMtje-hZnJMvYWnUcr_TF89oEoN0wO0D1oMz3cGq9ShUt-sEZhFXuA2lvN';
@@ -169,7 +174,25 @@ class VehicleRegister extends React.Component {
     }
 
     render() {
-        const { classes } = this.props;
+        const imgTxt = (
+            <div>
+                <Grid container>
+                    <Grid item>
+                        <label>
+                            This is an example for a tooltip including a picture{' '}
+                        </label>
+                    </Grid>
+                    <Grid item>
+                        <img
+                            width="275"
+                            src="https://www.bmvi.de/SharedDocs/DE/Bilder/VerkehrUndMobilitaet/Strasse/fahrzeugzulassung-online-5.jpg?__blob=normal"
+                            alt=""
+                        ></img>
+                    </Grid>
+                </Grid>
+            </div>
+        );
+
         return (
             <Page>
                 <Card style={{ padding: '20px', maxWidth: '500px' }}>
@@ -279,15 +302,14 @@ class VehicleRegister extends React.Component {
                                     value={this.props.vehicle.vin}
                                     InputProps={{
                                         endAdornment: (
-                                            <Tooltip
-                                                title="Vehicle Identifcation Number"
+                                            <LightTooltip
+                                                title="Vehicle Identifcation Number - a unique identification number for every vehicle"
                                                 placement="right"
-                                                className={classes.tooltip}
                                             >
                                                 <InputAdornment position="end">
                                                     <InfoIcon />
                                                 </InputAdornment>
-                                            </Tooltip>
+                                            </LightTooltip>
                                         )
                                     }}
                                 />
@@ -303,19 +325,14 @@ class VehicleRegister extends React.Component {
                                     maxLength={7}
                                     InputProps={{
                                         endAdornment: (
-                                            <Tooltip
-                                                title={
-                                                    <img
-                                                        src="https://www.bmvi.de/SharedDocs/DE/Bilder/VerkehrUndMobilitaet/Strasse/fahrzeugzulassung-online-5.jpg?__blob=normal"
-                                                        width="350"
-                                                    />
-                                                }
+                                            <LightTooltip
+                                                title={imgTxt}
                                                 placement="right"
                                             >
                                                 <InputAdornment position="end">
                                                     <InfoIcon />
                                                 </InputAdornment>
-                                            </Tooltip>
+                                            </LightTooltip>
                                         )
                                     }}
                                 />
@@ -331,14 +348,14 @@ class VehicleRegister extends React.Component {
                                     maxLength={12}
                                     InputProps={{
                                         endAdornment: (
-                                            <Tooltip
-                                                title="Vehicle Identifcation Number"
+                                            <LightTooltip
+                                                title="Security Code II can be found somewhere on your papers you got when buying the car"
                                                 placement="right"
                                             >
                                                 <InputAdornment position="end">
                                                     <InfoIcon />
                                                 </InputAdornment>
-                                            </Tooltip>
+                                            </LightTooltip>
                                         )
                                     }}
                                 />
@@ -354,30 +371,39 @@ class VehicleRegister extends React.Component {
                                     maxLength={22}
                                     InputProps={{
                                         endAdornment: (
-                                            <Tooltip
-                                                title="Vehicle Identifcation Number"
+                                            <LightTooltip
+                                                title="IBAN you know"
                                                 placement="right"
                                             >
                                                 <InputAdornment position="end">
                                                     <InfoIcon />
                                                 </InputAdornment>
-                                            </Tooltip>
+                                            </LightTooltip>
                                         )
                                     }}
                                 />
                             </Grid>
-                            <Grid item xs={12}>
-                                <FormLabel component="legend">
-                                    General Inspection
-                                </FormLabel>
-                                <Tooltip
-                                    title="Vehicle Identifcation Number"
-                                    placement="right"
-                                >
-                                    <InfoIcon />
-                                </Tooltip>
+                            <Grid
+                                item
+                                xs={12}
+                                container
+                                direction="row"
+                                justify="space-between"
+                            >
+                                <Grid item>
+                                    <FormLabel component="legend">
+                                        General Inspection
+                                    </FormLabel>
+                                </Grid>
+                                <Grid item alignContent="flex-end">
+                                    <Tooltip
+                                        title="Provide the expiration date of the general inspection of your vehicle"
+                                        placement="right"
+                                    >
+                                        <InfoIcon />
+                                    </Tooltip>
+                                </Grid>
                             </Grid>
-
                             <Grid item xs={6}>
                                 <InputLabel>Month</InputLabel>
                                 <Select
@@ -504,4 +530,4 @@ class VehicleRegister extends React.Component {
     }
 }
 
-export default withRouter(withStyles(styles)(VehicleRegister));
+export default withRouter(VehicleRegister);
