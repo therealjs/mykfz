@@ -19,7 +19,8 @@ export default class UserService {
                     firstName: user.firstName,
                     lastName: user.lastName,
                     address: user.address,
-                    identityDocument: user.identityDocument
+                    identityDocument: user.identityDocument,
+                    isDistrictUser: user.isDistrictUser
                 },
                 function (data) {
                     resolve(data);
