@@ -179,13 +179,15 @@ class VehicleRegister extends React.Component {
                 <Grid container>
                     <Grid item>
                         <label>
-                            This is an example for a tooltip including a picture{' '}
+                            Security Code II can be found on the acceptance
+                            paper part 2 of your vehicle.
                         </label>
                     </Grid>
                     <Grid item>
                         <img
-                            width="275"
-                            src="https://www.bmvi.de/SharedDocs/DE/Bilder/VerkehrUndMobilitaet/Strasse/fahrzeugzulassung-online-5.jpg?__blob=normal"
+                            width="285"
+                            height="350"
+                            src="https://www.bmvi.de/SharedDocs/DE/Bilder/VerkehrUndMobilitaet/Strasse/fahrzeugzulassung-online-3.png?__blob=normal"
                             alt=""
                         ></img>
                     </Grid>
@@ -303,8 +305,8 @@ class VehicleRegister extends React.Component {
                                     InputProps={{
                                         endAdornment: (
                                             <LightTooltip
-                                                title="Vehicle Identifcation Number - the vehicle identification number provides an unique identify for your vehicle and can be found 
-                                                on the acceptance paper part 1 and part 2. "
+                                                title="Vehicle Identifcation Number. The vehicle identification number provides an unique identify for your vehicle and can be found 
+                                                on the acceptance paper part 1 and part 2 of your vehicle. "
                                                 placement="right"
                                             >
                                                 <InputAdornment position="end">
@@ -327,7 +329,7 @@ class VehicleRegister extends React.Component {
                                     InputProps={{
                                         endAdornment: (
                                             <LightTooltip
-                                                title={imgTxt}
+                                                title="Electronic confirmation of insurance coverage. The eVB number has to be requested from your auto insurer."
                                                 placement="right"
                                             >
                                                 <InputAdornment position="end">
@@ -350,7 +352,7 @@ class VehicleRegister extends React.Component {
                                     InputProps={{
                                         endAdornment: (
                                             <LightTooltip
-                                                title="Security Code II can be found on your acceptance paper part 2."
+                                                title={imgTxt}
                                                 placement="right"
                                             >
                                                 <InputAdornment position="end">
