@@ -303,7 +303,8 @@ class VehicleRegister extends React.Component {
                                     InputProps={{
                                         endAdornment: (
                                             <LightTooltip
-                                                title="Vehicle Identifcation Number - a unique identification number for every vehicle"
+                                                title="Vehicle Identifcation Number - the vehicle identification number provides an unique identify for your vehicle and can be found 
+                                                on the acceptance paper part 1 and part 2. "
                                                 placement="right"
                                             >
                                                 <InputAdornment position="end">
@@ -349,7 +350,7 @@ class VehicleRegister extends React.Component {
                                     InputProps={{
                                         endAdornment: (
                                             <LightTooltip
-                                                title="Security Code II can be found somewhere on your papers you got when buying the car"
+                                                title="Security Code II can be found on your acceptance paper part 2."
                                                 placement="right"
                                             >
                                                 <InputAdornment position="end">
@@ -372,7 +373,7 @@ class VehicleRegister extends React.Component {
                                     InputProps={{
                                         endAdornment: (
                                             <LightTooltip
-                                                title="IBAN you know"
+                                                title="The IBAN is required for the reccurrent payment of the vehicle tax."
                                                 placement="right"
                                             >
                                                 <InputAdornment position="end">
@@ -396,12 +397,12 @@ class VehicleRegister extends React.Component {
                                     </FormLabel>
                                 </Grid>
                                 <Grid item alignContent="flex-end">
-                                    <Tooltip
-                                        title="Provide the expiration date of the general inspection of your vehicle"
+                                    <LightTooltip
+                                        title="Provide the expiration date of the general inspection of your vehicle."
                                         placement="right"
                                     >
                                         <InfoIcon />
-                                    </Tooltip>
+                                    </LightTooltip>
                                 </Grid>
                             </Grid>
                             <Grid item xs={6}>
