@@ -26,6 +26,7 @@ import LicensePlateReservationForm from './LicensePlateReservationForm';
 import UserProfile from './UserProfile';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import { withRouter } from 'react-router';
+import DistrictService from '../services/DistrictService';
 
 function Copyright() {
     return (
@@ -126,6 +127,7 @@ function Dashboard(props) {
     const [open, setOpen] = useState(true);
     const [user, setUser] = useState({});
     const [vehicles, setVehicles] = useState([]);
+    const [district, setDistrict] = useState({});
 
     const logout = () => {
         UserService.logout();
@@ -186,8 +188,8 @@ function Dashboard(props) {
                     >
                         MyKfz Dashboard
                     </Typography>
-                    <IconButton color="inherit">
-                        <ExitToAppIcon color="inherit" onClick={logout} />
+                    <IconButton color="inherit" onClick={logout}>
+                        <ExitToAppIcon color="inherit" />
                     </IconButton>
                 </Toolbar>
             </AppBar>
@@ -227,7 +229,7 @@ function Dashboard(props) {
                             <LicensePlateReservationForm />
                         </Route>
                         <Route path="/dashboard/user">
-                            <UserProfile user={user} />
+                            <UserProfile />
                         </Route>
                     </Switch>
                     <Box pt={4}>
