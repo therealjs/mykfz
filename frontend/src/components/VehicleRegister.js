@@ -347,7 +347,7 @@ class VehicleRegister extends React.Component {
                                     InputProps={{
                                         endAdornment: (
                                             <LightTooltip
-                                                title={TooltipImgTxt}
+                                                title={tooltipImgTxt}
                                                 placement="right"
                                             >
                                                 <InputAdornment position="end">
