@@ -26,20 +26,15 @@ import LicensePlateService from '../services/LicensePlateService';
 import UserService from '../services/UserService';
 import Page from './Page';
 import { withStyles } from '@material-ui/styles';
-import { fontFamily, minWidth, width } from '@material-ui/system';
 
 const style = { maxWidth: 500 };
 
-const LightTooltip = withStyles((theme) => ({
+const LightTooltip = withStyles(() => ({
     tooltip: {
         backgroundColor: '#878381',
         color: 'white',
-        //boxShadow: theme.shadows[1],
         fontSize: 14,
         fontFamily: 'Nunito'
-        //maxWidth: 400
-        //minWidth: '400'
-        //width: 400
     }
 }))(Tooltip);
 
@@ -174,7 +169,7 @@ class VehicleRegister extends React.Component {
     }
 
     render() {
-        const imgTxt = (
+        const tooltipImgTxt = (
             <div>
                 <Grid container>
                     <Grid item>
@@ -352,7 +347,7 @@ class VehicleRegister extends React.Component {
                                     InputProps={{
                                         endAdornment: (
                                             <LightTooltip
-                                                title={imgTxt}
+                                                title={TooltipImgTxt}
                                                 placement="right"
                                             >
                                                 <InputAdornment position="end">
@@ -398,7 +393,7 @@ class VehicleRegister extends React.Component {
                                         General Inspection
                                     </FormLabel>
                                 </Grid>
-                                <Grid item alignContent="flex-end">
+                                <Grid item>
                                     <LightTooltip
                                         title="Provide the expiration date of the general inspection of your vehicle."
                                         placement="right"
