@@ -305,13 +305,8 @@ class VehicleRegister extends React.Component {
                                     InputProps={{
                                         endAdornment: (
                                             <LightTooltip
-<<<<<<< HEAD
                                                 title="Vehicle Identifcation Number. The vehicle identification number provides an unique identify for your vehicle and can be found 
                                                 on the acceptance paper part 1 and part 2 of your vehicle. "
-=======
-                                                title="Vehicle Identifcation Number - the vehicle identification number provides an unique identify for your vehicle and can be found 
-                                                on the acceptance paper part 1 and part 2. "
->>>>>>> 949f15f (tolltips have all the same format)
                                                 placement="right"
                                             >
                                                 <InputAdornment position="end">
@@ -357,11 +352,7 @@ class VehicleRegister extends React.Component {
                                     InputProps={{
                                         endAdornment: (
                                             <LightTooltip
-<<<<<<< HEAD
                                                 title={imgTxt}
-=======
-                                                title="Security Code II can be found on your acceptance paper part 2."
->>>>>>> 949f15f (tolltips have all the same format)
                                                 placement="right"
                                             >
                                                 <InputAdornment position="end">
