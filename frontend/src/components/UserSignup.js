@@ -69,6 +69,7 @@ class UserSignup extends React.Component {
             password: this.state.password,
             firstName: this.state.firstName,
             lastName: this.state.lastName,
+            isDistrictUser: false,
             address: {
                 district: this.state.district,
                 zipCode: this.state.zipCode,
