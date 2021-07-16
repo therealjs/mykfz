@@ -1,6 +1,7 @@
 'use strict';
 
 const UserModel = require('../models/user');
+const bcrypt = require('bcryptjs');
 
 const create = async (req, res) => {
     if (Object.keys(req.body).length === 0)
@@ -9,10 +10,14 @@ const create = async (req, res) => {
             message: 'The request body is empty'
         });
 
-    try {
-        let user = await UserModel.create(req.body);
+    let user = Object.assign(req.body, {
+        password: bcrypt.hashSync(req.body.password, 8)
+    });
 
-        return res.status(201).json(user);
+    try {
+        let retUser = await UserModel.create(req.body);
+
+        return res.status(201).json(retUser);
     } catch (err) {
         return res.status(500).json({
             error: 'Internal server error',

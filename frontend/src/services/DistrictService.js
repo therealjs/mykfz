@@ -55,4 +55,9 @@ export default class DistrictService {
             );
         });
     }
+
+    static getProcesses(districtId) {
+        console.log(`getting processes of district ${districtId}`);
+        return [];
+    }
 }
