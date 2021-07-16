@@ -26,15 +26,17 @@ export default function UserProfile() {
         fetchUserProfileData();
     }, []);
     return (
-        <Card style={{ padding: '20px', maxWidth: '700px' }}>
+        <Card style={{ padding: '20px', maxWidth: '500px' }}>
             <CardContent>
                 <Grid container spacing={1}>
                     <Grid item xs={12}>
-                        <Avatar>{avatarLetters[0] + avatarLetters[1]}</Avatar>
+                        <Avatar variant="square">
+                            {avatarLetters[0] + avatarLetters[1]}
+                        </Avatar>
                     </Grid>
                     <Grid item xs={4}>
                         <Typography gutterBottom variant="subtitle1">
-                            User name
+                            User name:
                         </Typography>
                     </Grid>
                     <Grid item xs={8}>
@@ -44,7 +46,7 @@ export default function UserProfile() {
                     </Grid>
                     <Grid item xs={4}>
                         <Typography gutterBottom variant="subtitle1">
-                            Name
+                            Name:
                         </Typography>
                     </Grid>
                     <Grid item xs={8}>
@@ -54,20 +56,37 @@ export default function UserProfile() {
                     </Grid>
                     <Grid item xs={4}>
                         <Typography gutterBottom variant="subtitle1">
-                            Address
+                            Address:
                         </Typography>
                     </Grid>
-                    <Grid item xs={8}>
+                    <Grid item xs={4}>
                         <Typography gutterBottom variant="subtitle1">
                             {user.address
                                 ? user.address.street +
                                   ' ' +
-                                  user.address.houseNumber +
-                                  ',\n' +
-                                  user.address.zipCode +
-                                  ' ' +
-                                  user.address.city
+                                  user.address.houseNumber
+                                : []}{' '}
+                            <br />
+                            {user.address
+                                ? user.address.zipCode + ' ' + user.address.city
                                 : []}
+                        </Typography>
+                    </Grid>
+                    <Grid item xs={1}>
+                        <Avatar src={district.picture}>
+                            {avatarLetters[0] + avatarLetters[1]}
+                        </Avatar>
+                    </Grid>
+                    <Grid item xs={4}>
+                        <Typography gutterBottom variant="subtitle1">
+                            ID number:
+                        </Typography>
+                    </Grid>
+                    <Grid item xs={8}>
+                        <Typography gutterBottom variant="subtitle1">
+                            {user.identityDocument
+                                ? user.identityDocument.idId
+                                : ''}
                         </Typography>
                     </Grid>
                 </Grid>
