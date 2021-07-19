@@ -135,7 +135,7 @@ class LicensePlateReservationForm extends React.Component {
                 this.state.newLicensePlate,
                 30
             );
-            this.props.history.goBack();
+            this.props.history.push('/dashboard/plates');
         });
     }
 
