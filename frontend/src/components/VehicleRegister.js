@@ -7,14 +7,17 @@ import {
     FormGroup,
     FormLabel,
     Grid,
+    InputAdornment,
     InputLabel,
     MenuItem,
     Select,
     TextField,
+    Tooltip,
     Typography
 } from '@material-ui/core';
 import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
+import InfoIcon from '@material-ui/icons/Info';
 import React from 'react';
 import { PayPalButton } from 'react-paypal-button-v2';
 import { withRouter } from 'react-router-dom';
@@ -22,8 +25,18 @@ import DistrictService from '../services/DistrictService';
 import LicensePlateService from '../services/LicensePlateService';
 import UserService from '../services/UserService';
 import Page from './Page';
+import { withStyles } from '@material-ui/styles';
 
 const style = { maxWidth: 500 };
+
+const LightTooltip = withStyles(() => ({
+    tooltip: {
+        backgroundColor: '#878381',
+        color: 'white',
+        fontSize: 14,
+        fontFamily: 'Nunito'
+    }
+}))(Tooltip);
 
 const clientId =
     'ATuI28VIncLCJuX7OGrZeGvMtje-hZnJMvYWnUcr_TF89oEoN0wO0D1oMz3cGq9ShUt-sEZhFXuA2lvN';
@@ -156,6 +169,27 @@ class VehicleRegister extends React.Component {
     }
 
     render() {
+        const tooltipImgTxt = (
+            <div>
+                <Grid container>
+                    <Grid item>
+                        <label>
+                            Security Code II can be found on the acceptance
+                            paper part 2 of your vehicle.
+                        </label>
+                    </Grid>
+                    <Grid item>
+                        <img
+                            width="285"
+                            height="350"
+                            src="https://www.bmvi.de/SharedDocs/DE/Bilder/VerkehrUndMobilitaet/Strasse/fahrzeugzulassung-online-3.png?__blob=normal"
+                            alt=""
+                        ></img>
+                    </Grid>
+                </Grid>
+            </div>
+        );
+
         return (
             <Page>
                 <Card style={{ padding: '20px', maxWidth: '500px' }}>
@@ -263,6 +297,19 @@ class VehicleRegister extends React.Component {
                                     required={true}
                                     fullWidth
                                     value={this.props.vehicle.vin}
+                                    InputProps={{
+                                        endAdornment: (
+                                            <LightTooltip
+                                                title="Vehicle Identifcation Number. The vehicle identification number provides a unique identifier for your vehicle and can be found 
+                                                on the acceptance paper part 1 and 2 of your vehicle. "
+                                                placement="right"
+                                            >
+                                                <InputAdornment position="end">
+                                                    <InfoIcon />
+                                                </InputAdornment>
+                                            </LightTooltip>
+                                        )
+                                    }}
                                 />
                             </Grid>
                             <Grid item xs={12}>
@@ -274,6 +321,18 @@ class VehicleRegister extends React.Component {
                                     value={this.state.evb}
                                     onChange={this.handleChange}
                                     maxLength={7}
+                                    InputProps={{
+                                        endAdornment: (
+                                            <LightTooltip
+                                                title="Electronic confirmation of insurance coverage. The eVB number has to be requested from your auto insurer."
+                                                placement="right"
+                                            >
+                                                <InputAdornment position="end">
+                                                    <InfoIcon />
+                                                </InputAdornment>
+                                            </LightTooltip>
+                                        )
+                                    }}
                                 />
                             </Grid>
                             <Grid item xs={12}>
@@ -285,6 +344,18 @@ class VehicleRegister extends React.Component {
                                     value={this.state.secCodeII}
                                     onChange={this.handleChange}
                                     maxLength={12}
+                                    InputProps={{
+                                        endAdornment: (
+                                            <LightTooltip
+                                                title={tooltipImgTxt}
+                                                placement="right"
+                                            >
+                                                <InputAdornment position="end">
+                                                    <InfoIcon />
+                                                </InputAdornment>
+                                            </LightTooltip>
+                                        )
+                                    }}
                                 />
                             </Grid>
                             <Grid item xs={12}>
@@ -296,14 +367,41 @@ class VehicleRegister extends React.Component {
                                     value={this.state.iban}
                                     onChange={this.handleChange}
                                     maxLength={22}
+                                    InputProps={{
+                                        endAdornment: (
+                                            <LightTooltip
+                                                title="The IBAN is required for the recurrent payment of the vehicle tax."
+                                                placement="right"
+                                            >
+                                                <InputAdornment position="end">
+                                                    <InfoIcon />
+                                                </InputAdornment>
+                                            </LightTooltip>
+                                        )
+                                    }}
                                 />
                             </Grid>
-                            <Grid item xs={12}>
-                                <FormLabel component="legend">
-                                    General Inspection
-                                </FormLabel>
+                            <Grid
+                                item
+                                xs={12}
+                                container
+                                direction="row"
+                                justify="space-between"
+                            >
+                                <Grid item>
+                                    <FormLabel component="legend">
+                                        General Inspection
+                                    </FormLabel>
+                                </Grid>
+                                <Grid item>
+                                    <LightTooltip
+                                        title="Provide the expiration date of the general inspection of your vehicle."
+                                        placement="right"
+                                    >
+                                        <InfoIcon />
+                                    </LightTooltip>
+                                </Grid>
                             </Grid>
-
                             <Grid item xs={6}>
                                 <InputLabel>Month</InputLabel>
                                 <Select
