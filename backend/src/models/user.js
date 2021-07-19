@@ -15,21 +15,30 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    isDistrictUser: {
+        type: Boolean,
+        required: true
+    },
+    district: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'District',
+        required: false
+    },
     lastName: {
         type: String,
-        required: true
+        required: false
     },
     firstName: {
         type: String,
-        required: true
+        required: false
     },
     address: {
         type: AddressSchema,
-        required: true
+        required: false
     },
     identityDocument: {
         type: IdentityDocumentSchema,
-        required: true
+        required: false
     },
     licensePlateReservations: [
         {

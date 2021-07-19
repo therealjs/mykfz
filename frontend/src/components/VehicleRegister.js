@@ -7,14 +7,17 @@ import {
     FormGroup,
     FormLabel,
     Grid,
+    InputAdornment,
     InputLabel,
     MenuItem,
     Select,
     TextField,
+    Tooltip,
     Typography
 } from '@material-ui/core';
 import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
+import InfoIcon from '@material-ui/icons/Info';
 import React from 'react';
 import { PayPalButton } from 'react-paypal-button-v2';
 import { withRouter } from 'react-router-dom';
@@ -22,8 +25,18 @@ import DistrictService from '../services/DistrictService';
 import LicensePlateService from '../services/LicensePlateService';
 import UserService from '../services/UserService';
 import Page from './Page';
+import { withStyles } from '@material-ui/styles';
 
 const style = { maxWidth: 500 };
+
+const LightTooltip = withStyles(() => ({
+    tooltip: {
+        backgroundColor: '#878381',
+        color: 'white',
+        fontSize: 14,
+        fontFamily: 'Nunito'
+    }
+}))(Tooltip);
 
 const clientId =
     'ATuI28VIncLCJuX7OGrZeGvMtje-hZnJMvYWnUcr_TF89oEoN0wO0D1oMz3cGq9ShUt-sEZhFXuA2lvN';
@@ -47,9 +60,8 @@ class VehicleRegister extends React.Component {
             isPaid: false,
             amount: 42.5,
             usesReservedPlate: false,
-            readOnly: false,
             reservedPlates: [],
-            selectedReservedPlate: '',
+            selectedReservedPlate: ''
         };
 
         this.yearOptions = this.monthOptions = Array(4)
@@ -58,17 +70,6 @@ class VehicleRegister extends React.Component {
         this.monthOptions = Array(12)
             .fill()
             .map((element, index) => index + 1);
-
-        if (
-            this.props.location &&
-            this.props.location.state &&
-            this.props.location.state.info
-        ) {
-            this.state.secCodeII = this.props.location.state.info.secCodeII;
-            this.state.evb = this.props.location.state.info.evb;
-            this.state.iban = this.props.location.state.info.iban;
-            this.state.readOnly = true;
-        }
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -91,11 +92,16 @@ class VehicleRegister extends React.Component {
                 );
 
                 const userPlateReservations = user.licensePlateReservations;
-                const platePromises = userPlateReservations.map(async plate => {
-                    const licensePlate = await LicensePlateService.getLicensePlate(plate.licensePlate);
-                    return licensePlate;
-                  });
-                
+                const platePromises = userPlateReservations.map(
+                    async (plate) => {
+                        const licensePlate =
+                            await LicensePlateService.getLicensePlate(
+                                plate.licensePlate
+                            );
+                        return licensePlate;
+                    }
+                );
+
                 const reservedPlates = await Promise.all(platePromises);
 
                 this.setState({
@@ -126,67 +132,81 @@ class VehicleRegister extends React.Component {
     }
 
     changeReservedPlate(event) {
-        let plate = event.target.value
-        console.log(plate)
+        let plate = event.target.value;
+        console.log(plate);
         this.setState({
             areaCode: plate.areaCode,
             letters: plate.letters,
-            digits: plate.digits, 
-            selectedReservedPlate: String(`${this.state.areaCode}` + ' - ' + `${this.state.letters}` + ' ' + `${this.state.digits}`),
+            digits: plate.digits,
+            selectedReservedPlate: String(
+                `${this.state.areaCode}` +
+                    ' - ' +
+                    `${this.state.letters}` +
+                    ' ' +
+                    `${this.state.digits}`
+            ),
             licensePlate: plate._id
-        })
-        console.log(this.state.selectedReservedPlate)
-        console.log(this.state.selectedReservedPlate.type)
+        });
+        console.log(this.state.selectedReservedPlate);
+        console.log(this.state.selectedReservedPlate.type);
     }
 
     changeUsesReservedPlate(event) {
         this.setState({
             usesReservedPlate: event.target.checked
         });
-        {!(event.target.checked) ? 
-            this.setState({
-                areaCode: '',
-                letters: '',
-                digits: ''
-            })
-            :[]
+        {
+            !event.target.checked
+                ? this.setState({
+                      areaCode: '',
+                      letters: '',
+                      digits: ''
+                  })
+                : [];
         }
     }
 
     handleSubmit(event) {
         event.preventDefault();
 
-        (async () => {if (!(this.state.usesReservedPlate)) {
-            console.log("NO Reservation");
-            const licensePlate = {
-                areaCode: this.state.areaCode,
-                digits: this.state.digits,
-                letters: this.state.letters
-            };
         (async () => {
-            try {
-                const validatedPlate =
-                    await LicensePlateService.createLicensePlate(licensePlate);
-                this.setState({
-                    licensePlate: validatedPlate._id
-                });
-            } catch (err) {
-                console.error(err);
+            if (!this.state.usesReservedPlate) {
+                console.log('NO Reservation');
+                const licensePlate = {
+                    areaCode: this.state.areaCode,
+                    digits: this.state.digits,
+                    letters: this.state.letters
+                };
+                (async () => {
+                    try {
+                        const validatedPlate =
+                            await LicensePlateService.createLicensePlate(
+                                licensePlate
+                            );
+                        this.setState({
+                            licensePlate: validatedPlate._id
+                        });
+                    } catch (err) {
+                        console.error(err);
+                    }
+                })();
+            } else {
+                console.log(this.state);
+                console.log(this.state.userId);
+                // delete the reservation
+                (async () => {
+                    try {
+                        const validatedPlate =
+                            await LicensePlateService.deleteLicensePlateReservation(
+                                this.state.userId,
+                                this.state.licensePlate
+                            );
+                    } catch (err) {
+                        console.error(err);
+                    }
+                })();
             }
-        })()
-        } else {
-            console.log(this.state);
-            console.log(this.state.userId);
-            // delete the reservation
-            (async () => {
-                try {
-                    const validatedPlate =
-                        await LicensePlateService.deleteLicensePlateReservation(this.state.userId, this.state.licensePlate)
-                } catch (err) {
-                    console.error(err);
-                }
-            })()
-        }})().then(() => {
+        })().then(() => {
             let vehicle = this.props.vehicle;
 
             vehicle.licensePlate = this.state.licensePlate;
@@ -198,10 +218,12 @@ class VehicleRegister extends React.Component {
                 date: Date(),
                 state: 'NEW',
                 info: {
+                    licensePlate: this.state.licensePlate,
                     evb: this.state.evb,
                     secCodeII: this.state.secCodeII,
                     iban: this.state.iban
-                }
+                },
+                processState: 'PAYED'
             });
 
             this.props.onSubmit(vehicle);
@@ -226,6 +248,27 @@ class VehicleRegister extends React.Component {
     }
 
     render() {
+        const tooltipImgTxt = (
+            <div>
+                <Grid container>
+                    <Grid item>
+                        <label>
+                            Security Code II can be found on the acceptance
+                            paper part 2 of your vehicle.
+                        </label>
+                    </Grid>
+                    <Grid item>
+                        <img
+                            width="285"
+                            height="350"
+                            src="https://www.bmvi.de/SharedDocs/DE/Bilder/VerkehrUndMobilitaet/Strasse/fahrzeugzulassung-online-3.png?__blob=normal"
+                            alt=""
+                        ></img>
+                    </Grid>
+                </Grid>
+            </div>
+        );
+
         return (
             <Page>
                 <Card style={{ padding: '20px', maxWidth: '500px' }}>
@@ -271,7 +314,6 @@ class VehicleRegister extends React.Component {
                                             value={this.state.areaCode}
                                             required={true}
                                             name="areaCode"
-                                            disabled={this.state.usesReservedPlate}
                                             onChange={this.handleChange}
                                         >
                                             {this.state.areaCodeOptions.map(
@@ -293,7 +335,6 @@ class VehicleRegister extends React.Component {
                                             label="Letters"
                                             required={true}
                                             name="letters"
-                                            disabled={this.state.usesReservedPlate}
                                             value={this.state.letters}
                                             // ToDo add regex
                                             onChange={this.handleChange}
@@ -306,7 +347,6 @@ class VehicleRegister extends React.Component {
                                             required={true}
                                             name="digits"
                                             type="number"
-                                            disabled={this.state.usesReservedPlate}
                                             value={this.state.digits}
                                             onChange={this.handleChange}
                                             inputProps={{ maxLength: 3 }}
@@ -321,7 +361,9 @@ class VehicleRegister extends React.Component {
                                             checked={
                                                 this.state.usesReservedPlate
                                             }
-                                            onChange={this.changeUsesReservedPlate}
+                                            onChange={
+                                                this.changeUsesReservedPlate
+                                            }
                                             name="usesReservedPlate"
                                             color="primary"
                                         />
@@ -330,33 +372,42 @@ class VehicleRegister extends React.Component {
                                 />
                             </Grid>
                             <Grid item xs={9}>
-                                {this.state.usesReservedPlate ? 
-                                <div>
-                                <InputLabel>Reserved Plate</InputLabel>
-                                <Select
-                                    label="Reserved Plate"
-                                    value={this.state.selectedReservedPlate}
-                                    defaultValue=""
-                                    required={true}
-                                    fullWidth
-                                    disabled={this.state.readOnly}
-                                    name="selectedReservedPlate"
-                                    onChange={this.changeReservedPlate}
-                                >
-                                    {this.state.reservedPlates.map((plate) => {
-                                        console.log(plate)
-                                        return (
-                                            <MenuItem value={plate}>
-                                                {`${plate.areaCode}` + ' - ' + `${plate.letters}` + ' ' + `${plate.digits}`}
-                                            </MenuItem>
-                                        );
-                                    })}
-                                </Select>
-                                </div>
-                            : []
-                            }
+                                {this.state.usesReservedPlate ? (
+                                    <div>
+                                        <InputLabel>Reserved Plate</InputLabel>
+                                        <Select
+                                            label="Reserved Plate"
+                                            value={
+                                                this.state.selectedReservedPlate
+                                            }
+                                            defaultValue=""
+                                            required={true}
+                                            fullWidth
+                                            disabled={this.state.readOnly}
+                                            name="selectedReservedPlate"
+                                            onChange={this.changeReservedPlate}
+                                        >
+                                            {this.state.reservedPlates.map(
+                                                (plate) => {
+                                                    console.log(plate);
+                                                    return (
+                                                        <MenuItem value={plate}>
+                                                            {`${plate.areaCode}` +
+                                                                ' - ' +
+                                                                `${plate.letters}` +
+                                                                ' ' +
+                                                                `${plate.digits}`}
+                                                        </MenuItem>
+                                                    );
+                                                }
+                                            )}
+                                        </Select>
+                                    </div>
+                                ) : (
+                                    []
+                                )}
                             </Grid>
-                            
+
                             <Grid item xs={12}>
                                 <TextField
                                     label="VIN"
@@ -364,6 +415,19 @@ class VehicleRegister extends React.Component {
                                     required={true}
                                     fullWidth
                                     value={this.props.vehicle.vin}
+                                    InputProps={{
+                                        endAdornment: (
+                                            <LightTooltip
+                                                title="Vehicle Identifcation Number. The vehicle identification number provides a unique identifier for your vehicle and can be found 
+                                                on the acceptance paper part 1 and 2 of your vehicle. "
+                                                placement="right"
+                                            >
+                                                <InputAdornment position="end">
+                                                    <InfoIcon />
+                                                </InputAdornment>
+                                            </LightTooltip>
+                                        )
+                                    }}
                                 />
                             </Grid>
                             <Grid item xs={12}>
@@ -372,10 +436,21 @@ class VehicleRegister extends React.Component {
                                     name="evb"
                                     required={true}
                                     fullWidth
-                                    disabled={this.state.readOnly}
                                     value={this.state.evb}
                                     onChange={this.handleChange}
                                     maxLength={7}
+                                    InputProps={{
+                                        endAdornment: (
+                                            <LightTooltip
+                                                title="Electronic confirmation of insurance coverage. The eVB number has to be requested from your auto insurer."
+                                                placement="right"
+                                            >
+                                                <InputAdornment position="end">
+                                                    <InfoIcon />
+                                                </InputAdornment>
+                                            </LightTooltip>
+                                        )
+                                    }}
                                 />
                             </Grid>
                             <Grid item xs={12}>
@@ -384,10 +459,21 @@ class VehicleRegister extends React.Component {
                                     name="secCodeII"
                                     required={true}
                                     fullWidth
-                                    disabled={this.state.readOnly}
                                     value={this.state.secCodeII}
                                     onChange={this.handleChange}
                                     maxLength={12}
+                                    InputProps={{
+                                        endAdornment: (
+                                            <LightTooltip
+                                                title={tooltipImgTxt}
+                                                placement="right"
+                                            >
+                                                <InputAdornment position="end">
+                                                    <InfoIcon />
+                                                </InputAdornment>
+                                            </LightTooltip>
+                                        )
+                                    }}
                                 />
                             </Grid>
                             <Grid item xs={12}>
@@ -396,18 +482,44 @@ class VehicleRegister extends React.Component {
                                     name="iban"
                                     required={true}
                                     fullWidth
-                                    disabled={this.state.readOnly}
                                     value={this.state.iban}
                                     onChange={this.handleChange}
                                     maxLength={22}
+                                    InputProps={{
+                                        endAdornment: (
+                                            <LightTooltip
+                                                title="The IBAN is required for the recurrent payment of the vehicle tax."
+                                                placement="right"
+                                            >
+                                                <InputAdornment position="end">
+                                                    <InfoIcon />
+                                                </InputAdornment>
+                                            </LightTooltip>
+                                        )
+                                    }}
                                 />
                             </Grid>
-                            <Grid item xs={12}>
-                                <FormLabel component="legend">
-                                    General Inspection
-                                </FormLabel>
+                            <Grid
+                                item
+                                xs={12}
+                                container
+                                direction="row"
+                                justify="space-between"
+                            >
+                                <Grid item>
+                                    <FormLabel component="legend">
+                                        General Inspection
+                                    </FormLabel>
+                                </Grid>
+                                <Grid item>
+                                    <LightTooltip
+                                        title="Provide the expiration date of the general inspection of your vehicle."
+                                        placement="right"
+                                    >
+                                        <InfoIcon />
+                                    </LightTooltip>
+                                </Grid>
                             </Grid>
-
                             <Grid item xs={6}>
                                 <InputLabel>Month</InputLabel>
                                 <Select
@@ -415,7 +527,6 @@ class VehicleRegister extends React.Component {
                                     value={this.state.generalInspectionMonth}
                                     required={true}
                                     fullWidth
-                                    disabled={this.state.readOnly}
                                     name="generalInspectionMonth"
                                     onChange={this.handleChange}
                                 >
@@ -435,7 +546,6 @@ class VehicleRegister extends React.Component {
                                     value={this.state.generalInspectionYear}
                                     required={true}
                                     fullWidth
-                                    disabled={this.state.readOnly}
                                     name="generalInspectionYear"
                                     onChange={this.handleChange}
                                 >
@@ -482,7 +592,7 @@ class VehicleRegister extends React.Component {
                             </Grid>
 
                             <Grid item xs={12}>
-                                {this.state.readOnly ? (
+                                <div>
                                     <Button
                                         style={{
                                             float: 'right',
@@ -492,50 +602,41 @@ class VehicleRegister extends React.Component {
                                         variant="contained"
                                         type="submit"
                                         color="primary"
+                                        disabled={
+                                            //this.state.licensePlate.toString().length != 4 ||
+                                            this.state.evb.toString().length !=
+                                                7 ||
+                                            this.state.secCodeII.toString()
+                                                .length != 12 ||
+                                            this.state.iban.toString().length !=
+                                                22
+                                        }
                                     >
-                                        Print confirmation
+                                        Save
                                     </Button>
-                                ) : (
-                                    <div>
-                                        <Button
-                                            style={{
-                                                float: 'right',
-                                                marginLeft: '15px'
-                                            }}
-                                            id="submit"
-                                            variant="contained"
-                                            type="submit"
-                                            color="primary"
-                                            disabled={
-                                                //this.state.licensePlate.toString().length != 4 ||
-                                                this.state.evb.toString()
-                                                    .length != 7 ||
-                                                this.state.secCodeII.toString()
-                                                    .length != 12 ||
-                                                this.state.iban.toString()
-                                                    .length != 22
-                                            }
-                                        >
-                                            Save
-                                        </Button>
-                                        <Button
-                                            style={{ float: 'right' }}
-                                            id="reset"
-                                            type="reset"
-                                            color="default"
-                                        >
-                                            Cancel
-                                        </Button>
-                                        <p>
-                                            Item is paid?{' '}
-                                            {this.state.isPaid.toString()}
-                                        </p>
-                                        <p>
-                                            OrderID is:{' '}
-                                            {this.state.orderID.toString()}
-                                        </p>
-                                    </div>
-                                )}
+                                    <Button
+                                        style={{ float: 'right' }}
+                                        id="reset"
+                                        type="reset"
+                                        color="default"
+                                    >
+                                        Cancel
+                                    </Button>
+                                    <p>
+                                        Item is paid?{' '}
+                                        {this.state.isPaid.toString()}
+                                    </p>
+                                    <p>
+                                        OrderID is:{' '}
+                                        {this.state.orderID.toString()}
+                                    </p>
+                                </div>
+                                <p>
+                                    Item is paid? {this.state.isPaid.toString()}
+                                </p>
+                                <p>
+                                    OrderID is: {this.state.orderID.toString()}
+                                </p>
                             </Grid>
                         </Grid>
                     </form>

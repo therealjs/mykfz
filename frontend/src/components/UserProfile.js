@@ -1,0 +1,96 @@
+'use strict';
+import { Avatar, Card, CardContent, Grid, Typography } from '@material-ui/core';
+
+import React, { useEffect, useState } from 'react';
+import UserService from '../services/UserService';
+import DistrictService from '../services/DistrictService';
+
+export default function UserProfile() {
+    const [user, setUser] = useState({});
+    const [district, setDistrict] = useState({});
+    const [avatarLetters, setAvatarLetters] = useState([]);
+    useEffect(() => {
+        const fetchUserProfileData = async () => {
+            let userResult = await UserService.getUserDetails();
+            let districtResult = await DistrictService.getDistrict(
+                userResult.address.district
+            );
+            setUser(userResult);
+            setDistrict(districtResult);
+            setAvatarLetters([
+                userResult.firstName.charAt(0),
+                userResult.lastName.charAt(0)
+            ]);
+        };
+
+        fetchUserProfileData();
+    }, []);
+    return (
+        <Card style={{ padding: '20px', maxWidth: '500px' }}>
+            <CardContent>
+                <Grid container spacing={1}>
+                    <Grid item xs={12}>
+                        <Avatar variant="square">
+                            {avatarLetters[0] + avatarLetters[1]}
+                        </Avatar>
+                    </Grid>
+                    <Grid item xs={4}>
+                        <Typography gutterBottom variant="subtitle1">
+                            User name:
+                        </Typography>
+                    </Grid>
+                    <Grid item xs={8}>
+                        <Typography gutterBottom variant="subtitle1">
+                            {user.username}
+                        </Typography>
+                    </Grid>
+                    <Grid item xs={4}>
+                        <Typography gutterBottom variant="subtitle1">
+                            Name:
+                        </Typography>
+                    </Grid>
+                    <Grid item xs={8}>
+                        <Typography gutterBottom variant="subtitle1">
+                            {user.firstName + ' ' + user.lastName}
+                        </Typography>
+                    </Grid>
+                    <Grid item xs={4}>
+                        <Typography gutterBottom variant="subtitle1">
+                            Address:
+                        </Typography>
+                    </Grid>
+                    <Grid item xs={4}>
+                        <Typography gutterBottom variant="subtitle1">
+                            {user.address
+                                ? user.address.street +
+                                  ' ' +
+                                  user.address.houseNumber
+                                : []}{' '}
+                            <br />
+                            {user.address
+                                ? user.address.zipCode + ' ' + user.address.city
+                                : []}
+                        </Typography>
+                    </Grid>
+                    <Grid item xs={1}>
+                        <Avatar src={district.picture}>
+                            {avatarLetters[0] + avatarLetters[1]}
+                        </Avatar>
+                    </Grid>
+                    <Grid item xs={4}>
+                        <Typography gutterBottom variant="subtitle1">
+                            ID number:
+                        </Typography>
+                    </Grid>
+                    <Grid item xs={8}>
+                        <Typography gutterBottom variant="subtitle1">
+                            {user.identityDocument
+                                ? user.identityDocument.idId
+                                : ''}
+                        </Typography>
+                    </Grid>
+                </Grid>
+            </CardContent>
+        </Card>
+    );
+}

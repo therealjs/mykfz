@@ -1,5 +1,4 @@
 import AppBar from '@material-ui/core/AppBar';
-import Badge from '@material-ui/core/Badge';
 import Box from '@material-ui/core/Box';
 import Container from '@material-ui/core/Container';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -12,21 +11,14 @@ import { makeStyles } from '@material-ui/core/styles';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import MenuIcon from '@material-ui/icons/Menu';
 import clsx from 'clsx';
 import React, { useEffect, useState } from 'react';
-import { Route, Switch } from 'react-router';
-import LicensePlateReservationList from './LicensePlateReservationList';
-import LicensePlateReservationForm from './LicensePlateReservationForm';
-import VehicleForm from '../components/VehicleForm';
-import { mainListItems } from './listItems';
-import { VehicleList } from './VehicleList';
-import UserService from '../services/UserService';
-import VehicleService from '../services/VehicleService';
-import UserProfile from './UserProfile';
-import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import { withRouter } from 'react-router';
 import DistrictService from '../services/DistrictService';
+import UserService from '../services/UserService';
+import ProcessesTable from './ProcessesTable';
 
 function Copyright() {
     return (
@@ -122,12 +114,12 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-function Dashboard(props) {
+function DistrictDashboard(props) {
     const classes = useStyles();
     const [open, setOpen] = useState(true);
     const [user, setUser] = useState({});
-    const [vehicles, setVehicles] = useState([]);
     const [district, setDistrict] = useState({});
+    const [processes, setProcesses] = useState([]);
 
     const logout = () => {
         UserService.logout();
@@ -149,11 +141,14 @@ function Dashboard(props) {
     useEffect(() => {
         const fetchData = async () => {
             let userResult = await UserService.getUserDetails();
-            let vehiclesResult = await VehicleService.getVehiclesForUser(
-                userResult._id
+            const districtId = userResult.district;
+            let districtResult = await DistrictService.getDistrict(districtId);
+            let processesResult = await DistrictService.getProcesses(
+                districtId
             );
             setUser(userResult);
-            setVehicles(vehiclesResult);
+            setDistrict(districtResult);
+            setProcesses(processesResult);
         };
 
         fetchData();
@@ -186,10 +181,10 @@ function Dashboard(props) {
                         noWrap
                         className={classes.title}
                     >
-                        MyKfz Dashboard
+                        MyKfz District Dashboard for {district.name}
                     </Typography>
-                    <IconButton color="inherit" onClick={logout}>
-                        <ExitToAppIcon color="inherit" />
+                    <IconButton color="inherit">
+                        <ExitToAppIcon color="inherit" onClick={logout} />
                     </IconButton>
                 </Toolbar>
             </AppBar>
@@ -209,25 +204,12 @@ function Dashboard(props) {
                     </IconButton>
                 </div>
                 <Divider />
-                <List>{mainListItems}</List>
+                <List></List>
             </Drawer>
             <main className={classes.content}>
                 <div className={classes.appBarSpacer} />
                 <Container maxWidth="lg" className={classes.container}>
-                    <Switch>
-                        <Route path="/dashboard/vehicles">
-                            <VehicleList vehicles={vehicles} />
-                        </Route>
-                        <Route path="/dashboard/add">
-                            <VehicleForm />
-                        </Route>
-                        <Route path="/dashboard/plates">
-                            <LicensePlateReservationList />
-                        </Route>
-                        <Route path="/dashboard/reservation">
-                            <LicensePlateReservationForm />
-                        </Route>
-                    </Switch>
+                    <ProcessesTable processes={processes} />
                     <Box pt={4}>
                         <Copyright />
                     </Box>
@@ -237,4 +219,4 @@ function Dashboard(props) {
     );
 }
 
-export default withRouter(Dashboard);
+export default withRouter(DistrictDashboard);

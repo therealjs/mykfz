@@ -10,7 +10,9 @@ import {
 
 import UserService from './services/UserService';
 import { UserLoginView } from './views/UserLoginView';
+import { DistrictLoginView } from './views/DistrictLoginView';
 import { UserSignupView } from './views/UserSignupView';
+import { LandingPageView } from './views/LandingPageView';
 
 import { DashboardView } from './views/DashboardView';
 import { VehicleDetailView } from './views/VehicleDetailView';
@@ -19,6 +21,8 @@ import { VehicleDeregisterView } from './views/VehicleDeregisterView';
 import { LicensePlateReservationView } from './views/LicensePlateReservationView';
 import { VehicleFormView } from './views/VehicleFormView';
 import Dashboard from './components/Dashboard';
+import SignInSide from './components/SignInSide';
+import UserSignup from './components/UserSignup';
 
 export default class App extends React.Component {
     constructor(props) {
@@ -32,7 +36,7 @@ export default class App extends React.Component {
                         if (UserService.isAuthenticated()) {
                             return <Redirect to={'/dashboard'} />;
                         } else {
-                            return <Redirect to={'/login'} />;
+                            return <Redirect to={'/landingPage'} />;
                         }
                     },
                     path: '/',
@@ -41,7 +45,7 @@ export default class App extends React.Component {
                 {
                     render: (props) => {
                         if (UserService.isAuthenticated()) {
-                            return <Dashboard />;
+                            return <DashboardView />;
                         } else {
                             return <Redirect to={'/login'} />;
                         }
@@ -49,7 +53,6 @@ export default class App extends React.Component {
                     path: '/dashboard',
                     exact: false
                 },
-
                 {
                     render: (props) => {
                         if (UserService.isAuthenticated()) {
@@ -100,8 +103,12 @@ export default class App extends React.Component {
                     },
                     path: '/addLicensePlateReservation'
                 },
+
                 { component: UserLoginView, path: '/login' },
-                { component: UserSignupView, path: '/register' }
+                { component: DistrictLoginView, path: '/districtLogin' },
+                { component: SignInSide, path: '/signin' },
+                { component: UserSignupView, path: '/register' },
+                { component: LandingPageView, path: '/landingPage' }
             ]
         };
     }

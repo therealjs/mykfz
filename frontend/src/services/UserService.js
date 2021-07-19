@@ -19,7 +19,8 @@ export default class UserService {
                     firstName: user.firstName,
                     lastName: user.lastName,
                     address: user.address,
-                    identityDocument: user.identityDocument
+                    identityDocument: user.identityDocument,
+                    isDistrictUser: user.isDistrictUser
                 },
                 function (data) {
                     resolve(data);
@@ -35,6 +36,24 @@ export default class UserService {
         return new Promise((resolve, reject) => {
             HttpService.post(
                 `${UserService.baseURL()}/login`,
+                {
+                    username: user,
+                    password: pass
+                },
+                function (data) {
+                    resolve(data);
+                },
+                function (textStatus) {
+                    reject(textStatus);
+                }
+            );
+        });
+    }
+
+    static districtLogin(user, pass) {
+        return new Promise((resolve, reject) => {
+            HttpService.post(
+                `${UserService.baseURL()}/districtLogin`,
                 {
                     username: user,
                     password: pass
@@ -79,6 +98,10 @@ export default class UserService {
         });
     }
 
+    static async isDistrictUser() {
+        return await this.getUserDetails().isDistrictUser;
+    }
+
     static updateUser(user) {
         return new Promise((resolve, reject) => {
             HttpService.put(
@@ -93,24 +116,24 @@ export default class UserService {
             );
         });
     }
-    
+
     static createLicensePlateReservation(userId, plateId, days) {
         var expiryDate = new Date();
         expiryDate.setDate(expiryDate.getDate() + days);
-        expiryDate.setHours(24,0,0,0);
+        expiryDate.setHours(24, 0, 0, 0);
         return new Promise((resolve, reject) => {
-                HttpService.post(
-                    `http://localhost:3000/users/${userId}/licensePlateReservations`,
-                    {
-                        licensePlate: plateId,
-                        expiryDate: expiryDate
-                    },
-                    function (data) {
-                        resolve(data);
-                    },
-                    function (textStatus) {
-                        reject(textStatus);
-                    }
+            HttpService.post(
+                `http://localhost:3000/users/${userId}/licensePlateReservations`,
+                {
+                    licensePlate: plateId,
+                    expiryDate: expiryDate
+                },
+                function (data) {
+                    resolve(data);
+                },
+                function (textStatus) {
+                    reject(textStatus);
+                }
             );
         });
     }
