@@ -227,6 +227,9 @@ function Dashboard(props) {
                         <Route path="/dashboard/reservation">
                             <LicensePlateReservationForm />
                         </Route>
+                        <Route path="/dashboard/user">
+                            <UserProfile />
+                        </Route>
                     </Switch>
                     <Box pt={4}>
                         <Copyright />

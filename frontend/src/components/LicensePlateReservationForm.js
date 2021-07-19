@@ -17,11 +17,10 @@ import {
     TableRow,
     TableCell,
     TablePagination,
-    Radio,
+    Radio
 } from '@material-ui/core';
 
 import LicensePlate from './LicensePlate';
-
 
 import Pagination from '@material-ui/lab/Pagination';
 
@@ -43,7 +42,7 @@ class LicensePlateReservationForm extends React.Component {
             rowsPerPage: 10,
             areaCodeOptions: [],
             queriedLicensePlates: [],
-            selectedPlate: null,
+            selectedPlate: null
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -80,45 +79,36 @@ class LicensePlateReservationForm extends React.Component {
 
     handleChangePage(event) {
         this.setState({ page: event.target.value });
-    };
+    }
 
     handleChangeRowsPerPage(event) {
-        this.setState({ rowsPerPage : event.target.value,
-                        page: 0 });
-      };
+        this.setState({ rowsPerPage: event.target.value, page: 0 });
+    }
 
     handleChangeSelection(event) {
         this.setState({ selectedPlate: event.target.value });
         console.log(this.state.queriedLicensePlates);
         let id = this.state.selectedPlate;
-        console.log(id);
-        console.log(this.state.queriedLicensePlates[id])
     }
 
     handleSearch(event) {
         event.preventDefault();
-
-        console.log(this.state);
         const query = {
             areaCode: this.state.areaCode,
             letters: this.state.letters,
-            digits: this.state.digits,
+            digits: this.state.digits
         };
-        console.log(query);
         (async () => {
             try {
                 const queriedPlates =
                     await LicensePlateService.getAvailableLicensePlates(query);
-                    console.log(queriedPlates)
-                console.log(queriedPlates);
                 this.setState({
                     queriedLicensePlates: queriedPlates
                 });
             } catch (err) {
-                console.error("No License Plates found");
+                console.error('No License Plates found');
             }
-        })()
-
+        })();
     }
 
     handleSubmit(event) {
@@ -136,38 +126,41 @@ class LicensePlateReservationForm extends React.Component {
                 this.setState({
                     newLicensePlate: validatedPlate._id
                 });
-
-                console.log(this.state)
             } catch (err) {
                 console.error(err);
             }
-        })().then(async() => {
-            const reservation = await UserService.createLicensePlateReservation(user._id, this.state.newLicensePlate, 30);
-            this.props.history.goBack();  
+        })().then(async () => {
+            const reservation = await UserService.createLicensePlateReservation(
+                user._id,
+                this.state.newLicensePlate,
+                30
+            );
+            this.props.history.goBack();
         });
     }
 
     render() {
-        return ( 
-                <Grid
-                    justify="space-between"
-                    container
-                    direction="column"
-                    alignItems="center"
-                    justify="center"
-                    spacing={3}>
-                    <Grid item xs={12}>
-                    <form                            
+        return (
+            <Grid
+                justify="space-between"
+                container
+                direction="column"
+                alignItems="center"
+                justify="center"
+                spacing={3}
+            >
+                <Grid item xs={12}>
+                    <form
                         onSubmit={this.handleSearch}
                         onReset={() => this.props.history.goBack()}
-                    >             
-                    <Card style={{ padding: '20px', maxWidth: '500px' }}>
+                    >
+                        <Card style={{ padding: '20px', maxWidth: '500px' }}>
                             <Typography
                                 style={{ marginBottom: '10px' }}
                                 component="h5"
                                 variant="h5"
                             >
-                                New LicensePlateReservation
+                                New Licenseplate Reservation
                             </Typography>
                             <Grid
                                 justify="space-between"
@@ -224,7 +217,13 @@ class LicensePlateReservationForm extends React.Component {
                                                 // ToDo add regex
 
                                                 onChange={this.handleChange}
-                                                inputProps={{ maxLength: 2, style: {textTransform: 'uppercase'}}}
+                                                inputProps={{
+                                                    maxLength: 2,
+                                                    style: {
+                                                        textTransform:
+                                                            'uppercase'
+                                                    }
+                                                }}
                                             />
                                         </FormControl>
                                         <FormControl style={{ width: '80px' }}>
@@ -262,50 +261,74 @@ class LicensePlateReservationForm extends React.Component {
                                     </Button>
                                 </Grid>
                             </Grid>
-                    </Card>
+                        </Card>
                     </form>
-                    </Grid>
-                    {this.state.queriedLicensePlates ?
-                    <Grid item xs={12}>
-                    <Card>
-                        <TableBody>
-                            {this.state.queriedLicensePlates.map((plate, index) => (
-                            <TableRow>
-                                <TableCell padding="checkbox">
-                                <Radio
-                                    value={index}
-                                    defaultSelected={false}
-                                    checked={index != this.state.selectedPlate ? false : true}
-                                    onChange={this.handleChangeSelection}
-                                    />
-                                </TableCell>
-                                <TableCell>
-                                <LicensePlate licensePlate={plate} />
-                                </TableCell>
-                            </TableRow>
-                            ))}
-                        </TableBody>
-                        <TableFooter>
-                            <TableRow>
-                                <TablePagination
-                                    rowsPerPageOptions={[5, 10, 25, { label: 'All', value: -1 }]}
-                                    colSpan={3}
-                                    count={this.state.queriedLicensePlates.length}
-                                    rowsPerPage={this.state.rowsPerPage}
-                                    page={this.state.page}
-                                    onChangePage={this.handleChangePage}
-                                    onChangeRowsPerPage={this.handleChangeRowsPerPage}
-                                    //ActionsComponent={TablePaginationActions}
-                                />
-                            </TableRow>
-                        </TableFooter>
-                        <Button type="submit" onClick={this.handleSubmit}>
-                            Reserve
-                        </Button>
-                    </Card>
-                    </Grid>
-                    : []}
                 </Grid>
+                {this.state.queriedLicensePlates ? (
+                    <Grid item xs={12}>
+                        <Card>
+                            <TableBody>
+                                {this.state.queriedLicensePlates.map(
+                                    (plate, index) => (
+                                        <TableRow>
+                                            <TableCell padding="checkbox">
+                                                <Radio
+                                                    value={index}
+                                                    defaultSelected={false}
+                                                    checked={
+                                                        index !=
+                                                        this.state.selectedPlate
+                                                            ? false
+                                                            : true
+                                                    }
+                                                    onChange={
+                                                        this
+                                                            .handleChangeSelection
+                                                    }
+                                                />
+                                            </TableCell>
+                                            <TableCell>
+                                                <LicensePlate
+                                                    licensePlate={plate}
+                                                />
+                                            </TableCell>
+                                        </TableRow>
+                                    )
+                                )}
+                            </TableBody>
+                            <TableFooter>
+                                <TableRow>
+                                    <TablePagination
+                                        rowsPerPageOptions={[
+                                            5,
+                                            10,
+                                            25,
+                                            { label: 'All', value: -1 }
+                                        ]}
+                                        colSpan={3}
+                                        count={
+                                            this.state.queriedLicensePlates
+                                                .length
+                                        }
+                                        rowsPerPage={this.state.rowsPerPage}
+                                        page={this.state.page}
+                                        onChangePage={this.handleChangePage}
+                                        onChangeRowsPerPage={
+                                            this.handleChangeRowsPerPage
+                                        }
+                                        //ActionsComponent={TablePaginationActions}
+                                    />
+                                </TableRow>
+                            </TableFooter>
+                            <Button type="submit" onClick={this.handleSubmit}>
+                                Reserve
+                            </Button>
+                        </Card>
+                    </Grid>
+                ) : (
+                    []
+                )}
+            </Grid>
         );
     }
 }

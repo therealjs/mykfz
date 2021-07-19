@@ -84,7 +84,6 @@ class VehicleDeregister extends React.Component {
     }
 
     render() {
-        console.log(this.props);
         return (
             <Page>
                 <Card style={{ padding: '20px', maxWidth: '500px' }}>

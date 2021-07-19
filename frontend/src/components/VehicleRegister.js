@@ -109,7 +109,6 @@ class VehicleRegister extends React.Component {
                     areaCodeOptions: district.areaCode,
                     reservedPlates: reservedPlates
                 });
-                console.log(this.state);
             } catch (err) {
                 console.error(err + 'X');
             }
@@ -133,7 +132,6 @@ class VehicleRegister extends React.Component {
 
     changeReservedPlate(event) {
         let plate = event.target.value;
-        console.log(plate);
         this.setState({
             areaCode: plate.areaCode,
             letters: plate.letters,
@@ -147,8 +145,6 @@ class VehicleRegister extends React.Component {
             ),
             licensePlate: plate._id
         });
-        console.log(this.state.selectedReservedPlate);
-        console.log(this.state.selectedReservedPlate.type);
     }
 
     changeUsesReservedPlate(event) {
@@ -171,7 +167,6 @@ class VehicleRegister extends React.Component {
 
         (async () => {
             if (!this.state.usesReservedPlate) {
-                console.log('NO Reservation');
                 const licensePlate = {
                     areaCode: this.state.areaCode,
                     digits: this.state.digits,
@@ -191,8 +186,6 @@ class VehicleRegister extends React.Component {
                     }
                 })();
             } else {
-                console.log(this.state);
-                console.log(this.state.userId);
                 // delete the reservation
                 (async () => {
                     try {
@@ -389,7 +382,6 @@ class VehicleRegister extends React.Component {
                                         >
                                             {this.state.reservedPlates.map(
                                                 (plate) => {
-                                                    console.log(plate);
                                                     return (
                                                         <MenuItem value={plate}>
                                                             {`${plate.areaCode}` +

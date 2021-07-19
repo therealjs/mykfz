@@ -15,44 +15,35 @@ import {
     Switch,
     Typography
 } from '@material-ui/core';
-import Webcam from "react-webcam";
+import Webcam from 'react-webcam';
 import Tesseract from 'tesseract.js';
-
-
 
 const WebcamCapture = () => {
     const webcamRef = React.useRef(null);
     const [imageSrc, setImageSrc] = useState(null);
     const [imageBuffer, setImageBuffer] = useState(null);
 
-    const capture = React.useCallback(
-      () => {
+    const capture = React.useCallback(() => {
         const imageSrc = webcamRef.current.getScreenshot();
-        let imageSrcNoPrefix = imageSrc.replace(/^data:image\/[a-z]+;base64,/, "");
-        const imageBuffer = Buffer.from(imageSrcNoPrefix, "base64");
+        let imageSrcNoPrefix = imageSrc.replace(
+            /^data:image\/[a-z]+;base64,/,
+            ''
+        );
+        const imageBuffer = Buffer.from(imageSrcNoPrefix, 'base64');
         setImageSrc(imageSrc);
-        console.log(imageSrcNoPrefix);
         setImageBuffer(imageSrc);
-      },
-      [webcamRef]
-    );
+    }, [webcamRef]);
 
-    const log = React.useCallback(
-        () => {
-            console.log(imageSrc);
-        },
-      );
-
+    const log = React.useCallback(() => {
+        console.log(imageSrc);
+    });
 
     function recognize() {
-
-        Tesseract.recognize(
-            imageBuffer,
-            'eng',
-            { logger: m => console.log(m) }
-          ).then((data) => {
+        Tesseract.recognize(imageBuffer, 'eng', {
+            logger: (m) => console.log(m)
+        }).then((data) => {
             console.log(data);
-          })
+        });
     }
     // function recognize() {
     //     (async () => {
@@ -65,30 +56,27 @@ const WebcamCapture = () => {
     //       })();
     // };
 
-
-
     return (
-      <div>
-        <Webcam
-          audio={false}
-          height={720}
-          ref={webcamRef}
-          screenshotFormat="image/jpeg"
-          width={1280}
-          //videoConstraints={videoConstraints}
-        />
-        <Button onClick={capture}>Capture photo</Button>
-        <Button onClick={log}>Log</Button>
-        <Button onClick={recognize}>Recognize</Button>
-      </div>
+        <div>
+            <Webcam
+                audio={false}
+                height={720}
+                ref={webcamRef}
+                screenshotFormat="image/jpeg"
+                width={1280}
+                //videoConstraints={videoConstraints}
+            />
+            <Button onClick={capture}>Capture photo</Button>
+            <Button onClick={log}>Log</Button>
+            <Button onClick={recognize}>Recognize</Button>
+        </div>
     );
-  };
-
+};
 
 export default function UserVerification() {
-    return(
+    return (
         <div>
-            <WebcamCapture/>
+            <WebcamCapture />
         </div>
     );
 }
