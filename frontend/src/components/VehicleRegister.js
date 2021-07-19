@@ -300,8 +300,8 @@ class VehicleRegister extends React.Component {
                                     InputProps={{
                                         endAdornment: (
                                             <LightTooltip
-                                                title="Vehicle Identifcation Number. The vehicle identification number provides an unique identify for your vehicle and can be found 
-                                                on the acceptance paper part 1 and part 2 of your vehicle. "
+                                                title="Vehicle Identifcation Number. The vehicle identification number provides a unique identifier for your vehicle and can be found 
+                                                on the acceptance paper part 1 and 2 of your vehicle. "
                                                 placement="right"
                                             >
                                                 <InputAdornment position="end">
@@ -370,7 +370,7 @@ class VehicleRegister extends React.Component {
                                     InputProps={{
                                         endAdornment: (
                                             <LightTooltip
-                                                title="The IBAN is required for the reccurrent payment of the vehicle tax."
+                                                title="The IBAN is required for the recurrent payment of the vehicle tax."
                                                 placement="right"
                                             >
                                                 <InputAdornment position="end">
