@@ -122,6 +122,7 @@ class VehicleForm extends React.Component {
         vehicle.generalInspectionMonth = this.state.generalInspectionMonth;
         vehicle.generalInspectionYear = this.state.generalInspectionYear;
 
+        // TODO: create new vehicle instead
         this.props.onSubmit(vehicle);
     }
 
