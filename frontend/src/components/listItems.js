@@ -1,6 +1,7 @@
 import DashboardIcon from '@material-ui/icons/Dashboard';
 import DirectionsCarIcon from '@material-ui/icons/DirectionsCar';
 import DescriptionIcon from '@material-ui/icons/Description';
+import AddCircleIcon from '@material-ui/icons/AddCircle';
 import CreateIcon from '@material-ui/icons/Create';
 import PersonIcon from '@material-ui/icons/Person';
 import React from 'react';
@@ -12,6 +13,11 @@ export const mainListItems = (
             icon={<DirectionsCarIcon />}
             text="Vehicles"
             url="/dashboard/vehicles"
+        />
+        <ListItemLink
+            icon={<AddCircleIcon />}
+            text="Add Vehicle"
+            url="/dashboard/add"
         />
         <ListItemLink
             icon={<DescriptionIcon />}

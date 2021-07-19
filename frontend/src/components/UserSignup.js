@@ -79,7 +79,8 @@ class UserSignup extends React.Component {
             },
             identityDocument: {
                 idId: this.state.idId
-            }
+            },
+            licensePlateReservations: []
         };
 
         this.props.onSubmit(user);

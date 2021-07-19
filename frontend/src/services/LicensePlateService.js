@@ -60,6 +60,24 @@ export default class LicensePlateService {
         });
     }
 
+    static getAvailableLicensePlates(query) {
+        return new Promise((resolve, reject) => {
+            HttpService.get(
+                `${LicensePlateService.baseURL()}/available?areaCode=${query.areaCode}&letters=${query.letters}&digits=${query.digits}`,
+                function (data) {
+                    if (data != undefined || Object.keys(data).length !== 0) {
+                        resolve(data);
+                    } else {
+                        reject('Error while retrieving licensePlate');
+                    }
+                },
+                function (textStatus) {
+                    reject(textStatus);
+                }
+            );
+        });
+    }
+
     static deleteLicensePlate(id) {
         return new Promise((resolve, reject) => {
             HttpService.remove(

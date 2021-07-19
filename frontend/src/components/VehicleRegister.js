@@ -45,6 +45,7 @@ class VehicleRegister extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            userId: '',
             licensePlate: props.vehicle.licensePlate,
             generalInspectionMonth: props.vehicle.generalInspectionMonth,
             generalInspectionYear: props.vehicle.generalInspectionYear,
@@ -58,7 +59,9 @@ class VehicleRegister extends React.Component {
             orderID: 0,
             isPaid: false,
             amount: 42.5,
-            usesReservedPlate: false
+            usesReservedPlate: false,
+            reservedPlates: [],
+            selectedReservedPlate: ''
         };
 
         this.yearOptions = this.monthOptions = Array(4)
@@ -71,6 +74,8 @@ class VehicleRegister extends React.Component {
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.createOrder = this.createOrder.bind(this);
+        this.changeReservedPlate = this.changeReservedPlate.bind(this);
+        this.changeUsesReservedPlate = this.changeUsesReservedPlate.bind(this);
     }
 
     componentWillMount(props) {
@@ -81,12 +86,28 @@ class VehicleRegister extends React.Component {
         // set district area code options
         (async () => {
             try {
-                let user = await UserService.getUserDetails();
-                let district = await DistrictService.getDistrict(
+                const user = await UserService.getUserDetails();
+                const district = await DistrictService.getDistrict(
                     user.address.district
                 );
+
+                const userPlateReservations = user.licensePlateReservations;
+                const platePromises = userPlateReservations.map(
+                    async (plate) => {
+                        const licensePlate =
+                            await LicensePlateService.getLicensePlate(
+                                plate.licensePlate
+                            );
+                        return licensePlate;
+                    }
+                );
+
+                const reservedPlates = await Promise.all(platePromises);
+
                 this.setState({
-                    areaCodeOptions: district.areaCode
+                    userId: user._id,
+                    areaCodeOptions: district.areaCode,
+                    reservedPlates: reservedPlates
                 });
             } catch (err) {
                 console.error(err + 'X');
@@ -109,23 +130,74 @@ class VehicleRegister extends React.Component {
         }
     }
 
+    changeReservedPlate(event) {
+        let plate = event.target.value;
+        this.setState({
+            areaCode: plate.areaCode,
+            letters: plate.letters,
+            digits: plate.digits,
+            selectedReservedPlate: String(
+                `${this.state.areaCode}` +
+                    ' - ' +
+                    `${this.state.letters}` +
+                    ' ' +
+                    `${this.state.digits}`
+            ),
+            licensePlate: plate._id
+        });
+    }
+
+    changeUsesReservedPlate(event) {
+        this.setState({
+            usesReservedPlate: event.target.checked
+        });
+        {
+            !event.target.checked
+                ? this.setState({
+                      areaCode: '',
+                      letters: '',
+                      digits: ''
+                  })
+                : [];
+        }
+    }
+
     handleSubmit(event) {
         event.preventDefault();
-        const licensePlate = {
-            areaCode: this.state.areaCode,
-            digits: this.state.digits,
-            letters: this.state.letters
-        };
 
         (async () => {
-            try {
-                const validatedPlate =
-                    await LicensePlateService.createLicensePlate(licensePlate);
-                this.setState({
-                    licensePlate: validatedPlate._id
-                });
-            } catch (err) {
-                console.error(err);
+            if (!this.state.usesReservedPlate) {
+                const licensePlate = {
+                    areaCode: this.state.areaCode,
+                    digits: this.state.digits,
+                    letters: this.state.letters
+                };
+                (async () => {
+                    try {
+                        const validatedPlate =
+                            await LicensePlateService.createLicensePlate(
+                                licensePlate
+                            );
+                        this.setState({
+                            licensePlate: validatedPlate._id
+                        });
+                    } catch (err) {
+                        console.error(err);
+                    }
+                })();
+            } else {
+                // delete the reservation
+                (async () => {
+                    try {
+                        const validatedPlate =
+                            await LicensePlateService.deleteLicensePlateReservation(
+                                this.state.userId,
+                                this.state.licensePlate
+                            );
+                    } catch (err) {
+                        console.error(err);
+                    }
+                })();
             }
         })().then(() => {
             let vehicle = this.props.vehicle;
@@ -275,21 +347,59 @@ class VehicleRegister extends React.Component {
                                     </FormControl>
                                 </FormGroup>
                             </Grid>
-                            <Grid item xs={12}>
+                            <Grid item xs={3}>
                                 <FormControlLabel
                                     control={
                                         <Checkbox
                                             checked={
                                                 this.state.usesReservedPlate
                                             }
-                                            onChange={this.handleChange}
+                                            onChange={
+                                                this.changeUsesReservedPlate
+                                            }
                                             name="usesReservedPlate"
                                             color="primary"
                                         />
                                     }
-                                    label="is a reserved plate"
+                                    label="use reserved plate"
                                 />
                             </Grid>
+                            <Grid item xs={9}>
+                                {this.state.usesReservedPlate ? (
+                                    <div>
+                                        <InputLabel>Reserved Plate</InputLabel>
+                                        <Select
+                                            label="Reserved Plate"
+                                            value={
+                                                this.state.selectedReservedPlate
+                                            }
+                                            defaultValue=""
+                                            required={true}
+                                            fullWidth
+                                            disabled={this.state.readOnly}
+                                            name="selectedReservedPlate"
+                                            onChange={this.changeReservedPlate}
+                                        >
+                                            {this.state.reservedPlates.map(
+                                                (plate) => {
+                                                    return (
+                                                        <MenuItem value={plate}>
+                                                            {`${plate.areaCode}` +
+                                                                ' - ' +
+                                                                `${plate.letters}` +
+                                                                ' ' +
+                                                                `${plate.digits}`}
+                                                        </MenuItem>
+                                                    );
+                                                }
+                                            )}
+                                        </Select>
+                                    </div>
+                                ) : (
+                                    []
+                                )}
+                            </Grid>
+
                             <Grid item xs={12}>
                                 <TextField
                                     label="VIN"

@@ -16,13 +16,13 @@ import MenuIcon from '@material-ui/icons/Menu';
 import clsx from 'clsx';
 import React, { useEffect, useState } from 'react';
 import { Route, Switch } from 'react-router';
-import { Link as LinkRouter } from 'react-router-dom';
-import { LicensePlateReservationList } from './LicensePlateReservationList';
+import LicensePlateReservationList from './LicensePlateReservationList';
+import LicensePlateReservationForm from './LicensePlateReservationForm';
+import VehicleForm from '../components/VehicleForm';
 import { mainListItems } from './listItems';
 import { VehicleList } from './VehicleList';
 import UserService from '../services/UserService';
 import VehicleService from '../services/VehicleService';
-import LicensePlateReservationForm from './LicensePlateReservationForm';
 import UserProfile from './UserProfile';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import { withRouter } from 'react-router';
@@ -218,12 +218,11 @@ function Dashboard(props) {
                         <Route path="/dashboard/vehicles">
                             <VehicleList vehicles={vehicles} />
                         </Route>
+                        <Route path="/dashboard/add">
+                            <VehicleForm />
+                        </Route>
                         <Route path="/dashboard/plates">
-                            <LicensePlateReservationList
-                                licensePlateReservations={
-                                    user.licensePlateReservations
-                                }
-                            />
+                            <LicensePlateReservationList />
                         </Route>
                         <Route path="/dashboard/reservation">
                             <LicensePlateReservationForm />

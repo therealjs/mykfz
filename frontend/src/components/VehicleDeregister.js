@@ -29,7 +29,8 @@ class VehicleDeregister extends React.Component {
             licensePlate: props.vehicle.licensePlate,
             generalInspection: props.vehicle.generalInspection,
             secCodeI: '',
-            plateCode: ''
+            plateCode: '',
+            reserveLicensePlate: false
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -52,11 +53,17 @@ class VehicleDeregister extends React.Component {
 
         (async () => {
             try {
-                let del = await LicensePlateService.deleteLicensePlate(
-                    vehicle.licensePlate
-                );
+                let del =
+                    await LicensePlateService.createLicensePlateReservation(
+                        this.props.user._id,
+                        vehicle.licensePlate,
+                        90
+                    );
             } catch (err) {
                 console.error(err);
+            }
+            if (this.state.reserveLicensePlate) {
+                const licensePlate = 0;
             }
         })().then(() => {
             vehicle.licensePlate = null;
