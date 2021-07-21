@@ -55,7 +55,9 @@ export default class ProcessService {
             vehicleId,
             processId
         );
-        let userData = await UserService.getUserDetails();
+        const vehicle = await VehicleService.getVehicle(vehicleId);
+        const owner = vehicle.owner;
+        let userData = await UserService.getUser(owner);
         let districtData = await DistrictService.getDistrict(
             userData.address.district
         );

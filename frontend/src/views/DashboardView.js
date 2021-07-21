@@ -10,10 +10,8 @@ export class DashboardView extends React.Component {
         let isDistrictUser = UserService.isDistrictUser();
 
         if (isDistrictUser) {
-            console.log('district user logged in');
             return <DistrictDashboard />;
         }
-        console.log('normal user logged in');
         return <Dashboard />;
     }
 }

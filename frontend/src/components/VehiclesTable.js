@@ -17,8 +17,10 @@ import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import React, { useEffect, useState } from 'react';
 import LicensePlateService from '../services/LicensePlateService';
 import UserService from '../services/UserService';
+import ProcessService from '../services/ProcessService';
 import Button from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
+import PrintIcon from '@material-ui/icons/Print';
 
 const VehiclesTableRow = ({ vehicle }) => {
     const [owner, setOwner] = useState({});
@@ -81,12 +83,16 @@ const VehiclesTableRow = ({ vehicle }) => {
                     />
                 </TableCell>
             </TableRow>
-            <CollapsibleRow processes={vehicle.processes} open={open} />
+            <CollapsibleRow
+                vehicleId={vehicle._id}
+                processes={vehicle.processes}
+                open={open}
+            />
         </React.Fragment>
     );
 };
 
-const CollapsibleRow = ({ processes, open }) => {
+const CollapsibleRow = ({ vehicleId, processes, open }) => {
     return (
         <TableRow>
             <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
@@ -95,7 +101,10 @@ const CollapsibleRow = ({ processes, open }) => {
                         <Typography variant="h6" gutterBottom component="div">
                             Processes
                         </Typography>
-                        <ProcessesTable processes={processes} />
+                        <ProcessesTable
+                            vehicleId={vehicleId}
+                            processes={processes}
+                        />
                     </Box>
                 </Collapse>
             </TableCell>
@@ -103,7 +112,7 @@ const CollapsibleRow = ({ processes, open }) => {
     );
 };
 
-const ProcessesTable = ({ processes }) => {
+const ProcessesTable = ({ vehicleId, processes }) => {
     console.log(processes);
 
     return (
@@ -118,14 +127,17 @@ const ProcessesTable = ({ processes }) => {
             </TableHead>
             <TableBody>
                 {processes.map((process) => (
-                    <ProcessesTableRow process={process} />
+                    <ProcessesTableRow
+                        vehicleId={vehicleId}
+                        process={process}
+                    />
                 ))}
             </TableBody>
         </Table>
     );
 };
 
-const ProcessesTableRow = ({ process }) => {
+const ProcessesTableRow = ({ vehicleId, process }) => {
     return (
         <TableRow key={process._id}>
             <TableCell component="th" scope="row">
@@ -133,7 +145,7 @@ const ProcessesTableRow = ({ process }) => {
             </TableCell>
             <TableCell>{process.date}</TableCell>
             <TableCell align="right">
-                <ProcessDetailsCell process={process} />
+                <ProcessDetailsCell vehicleId={vehicleId} process={process} />
             </TableCell>
             <TableCell align="right">
                 {process.state == 'NEW' ? (
@@ -149,8 +161,25 @@ const ProcessesTableRow = ({ process }) => {
     );
 };
 
-const ProcessDetailsCell = ({ process }) => {
-    return <span>details here</span>;
+const ProcessDetailsCell = ({ vehicleId, process }) => {
+    const createPdfAndDownload = () => {
+        (async () => {
+            try {
+                await ProcessService.generateProcessStatusPDF(
+                    vehicleId,
+                    process._id
+                );
+            } catch (err) {
+                console.error(err);
+            }
+        })();
+    };
+
+    return (
+        <IconButton onClick={createPdfAndDownload}>
+            <PrintIcon />
+        </IconButton>
+    );
 };
 
 export default function VehiclesTable({ vehicles }) {
