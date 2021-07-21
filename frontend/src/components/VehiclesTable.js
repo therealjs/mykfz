@@ -1,8 +1,6 @@
 'use strict';
 
 import Box from '@material-ui/core/Box';
-import Button from '@material-ui/core/Button';
-import ButtonGroup from '@material-ui/core/ButtonGroup';
 import Chip from '@material-ui/core/Chip';
 import Collapse from '@material-ui/core/Collapse';
 import IconButton from '@material-ui/core/IconButton';
@@ -16,11 +14,11 @@ import TableRow from '@material-ui/core/TableRow';
 import Typography from '@material-ui/core/Typography';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
-import PrintIcon from '@material-ui/icons/Print';
 import React, { useEffect, useState } from 'react';
 import LicensePlateService from '../services/LicensePlateService';
-import ProcessService from '../services/ProcessService';
 import UserService from '../services/UserService';
+import Button from '@material-ui/core/Button';
+import ButtonGroup from '@material-ui/core/ButtonGroup';
 
 const VehiclesTableRow = ({ vehicle }) => {
     const [owner, setOwner] = useState({});
@@ -83,16 +81,12 @@ const VehiclesTableRow = ({ vehicle }) => {
                     />
                 </TableCell>
             </TableRow>
-            <CollapsibleRow
-                vehicleId={vehicle._id}
-                processes={vehicle.processes}
-                open={open}
-            />
+            <CollapsibleRow processes={vehicle.processes} open={open} />
         </React.Fragment>
     );
 };
 
-const CollapsibleRow = ({ vehicleId, processes, open }) => {
+const CollapsibleRow = ({ processes, open }) => {
     return (
         <TableRow>
             <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
@@ -101,10 +95,7 @@ const CollapsibleRow = ({ vehicleId, processes, open }) => {
                         <Typography variant="h6" gutterBottom component="div">
                             Processes
                         </Typography>
-                        <ProcessesTable
-                            vehicleId={vehicleId}
-                            processes={processes}
-                        />
+                        <ProcessesTable processes={processes} />
                     </Box>
                 </Collapse>
             </TableCell>
@@ -112,7 +103,7 @@ const CollapsibleRow = ({ vehicleId, processes, open }) => {
     );
 };
 
-const ProcessesTable = ({ vehicleId, processes }) => {
+const ProcessesTable = ({ processes }) => {
     console.log(processes);
 
     return (
@@ -127,29 +118,14 @@ const ProcessesTable = ({ vehicleId, processes }) => {
             </TableHead>
             <TableBody>
                 {processes.map((process) => (
-                    <ProcessesTableRow
-                        vehicleId={vehicleId}
-                        process={process}
-                    />
+                    <ProcessesTableRow process={process} />
                 ))}
             </TableBody>
         </Table>
     );
 };
 
-const ProcessesTableRow = ({ vehicleId, process }) => {
-    const createPdfAndDownload = (vehicleId, processId) => {
-        (async () => {
-            try {
-                await ProcessService.generateProcessStatusPDF(
-                    vehicleId,
-                    processId
-                );
-            } catch (err) {
-                console.error(err);
-            }
-        })();
-    };
+const ProcessesTableRow = ({ process }) => {
     return (
         <TableRow key={process._id}>
             <TableCell component="th" scope="row">
@@ -157,20 +133,24 @@ const ProcessesTableRow = ({ vehicleId, process }) => {
             </TableCell>
             <TableCell>{process.date}</TableCell>
             <TableCell align="right">
-                <IconButton
-                    onClick={() => createPdfAndDownload(vehicleId, process._id)}
-                >
-                    <PrintIcon />
-                </IconButton>
+                <ProcessDetailsCell process={process} />
             </TableCell>
             <TableCell align="right">
-                <ButtonGroup variant="contained">
-                    <Button>ACCEPT</Button>
-                    <Button>REJECT</Button>
-                </ButtonGroup>
+                {process.state == 'NEW' ? (
+                    <ButtonGroup variant="contained">
+                        <Button>ACCEPT</Button>
+                        <Button>REJECT</Button>
+                    </ButtonGroup>
+                ) : (
+                    <Chip label={process.state} />
+                )}
             </TableCell>
         </TableRow>
     );
+};
+
+const ProcessDetailsCell = ({ process }) => {
+    return <span>details here</span>;
 };
 
 export default function VehiclesTable({ vehicles }) {

@@ -32,5 +32,6 @@ router.post(
     VehicleController.createProcess
 ); // Create a new process for specified vehicle
 router.get('/:vehicleId/processes/:processId', VehicleController.readProcess); // Read a specific process by vehicleId and processId
+router.put('/:vehicleId/processes/:processId', VehicleController.updateProcess); // Update a specific process by vehicleId and processId
 
 module.exports = router;

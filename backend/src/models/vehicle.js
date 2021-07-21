@@ -47,7 +47,7 @@ const VehicleSchema = new mongoose.Schema({
             processState: {
                 type: String,
                 enum: ['PAYED', 'APPROVED', 'REJECTED'],
-                required: true
+                required: false
             }
         }
     ]
