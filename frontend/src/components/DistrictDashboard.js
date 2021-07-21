@@ -18,7 +18,7 @@ import React, { useEffect, useState } from 'react';
 import { withRouter } from 'react-router';
 import DistrictService from '../services/DistrictService';
 import UserService from '../services/UserService';
-import ProcessesTable from './ProcessesTable';
+import VehiclesTable from './VehiclesTable';
 
 function Copyright() {
     return (
@@ -119,7 +119,7 @@ function DistrictDashboard(props) {
     const [open, setOpen] = useState(true);
     const [user, setUser] = useState({});
     const [district, setDistrict] = useState({});
-    const [processes, setProcesses] = useState([]);
+    const [vehicles, setVehicles] = useState([]);
 
     const logout = () => {
         UserService.logout();
@@ -143,12 +143,10 @@ function DistrictDashboard(props) {
             let userResult = await UserService.getUserDetails();
             const districtId = userResult.district;
             let districtResult = await DistrictService.getDistrict(districtId);
-            let processesResult = await DistrictService.getProcesses(
-                districtId
-            );
+            let vehiclesResult = await DistrictService.getVehicles(districtId);
             setUser(userResult);
             setDistrict(districtResult);
-            setProcesses(processesResult);
+            setVehicles(vehiclesResult);
         };
 
         fetchData();
@@ -181,7 +179,8 @@ function DistrictDashboard(props) {
                         noWrap
                         className={classes.title}
                     >
-                        MyKfz District Dashboard for {district.name}
+                        MyKfz District Dashboard for {district.name} (
+                        {district._id})
                     </Typography>
                     <IconButton color="inherit">
                         <ExitToAppIcon color="inherit" onClick={logout} />
@@ -209,7 +208,7 @@ function DistrictDashboard(props) {
             <main className={classes.content}>
                 <div className={classes.appBarSpacer} />
                 <Container maxWidth="lg" className={classes.container}>
-                    <ProcessesTable processes={processes} />
+                    <VehiclesTable vehicles={vehicles} />
                     <Box pt={4}>
                         <Copyright />
                     </Box>

@@ -56,8 +56,21 @@ export default class DistrictService {
         });
     }
 
-    static getProcesses(districtId) {
-        console.log(`getting processes of district ${districtId}`);
-        return [];
+    static getVehicles(districtId) {
+        return new Promise((resolve, reject) => {
+            HttpService.get(
+                `${DistrictService.baseURL()}/${districtId}/vehicles`,
+                function (data) {
+                    if (data != undefined || Object.keys(data).length !== 0) {
+                        resolve(data);
+                    } else {
+                        reject('Error while retrieving district');
+                    }
+                },
+                function (textStatus) {
+                    reject(textStatus);
+                }
+            );
+        });
     }
 }

@@ -6,21 +6,14 @@ import Dashboard from '../components/Dashboard';
 import DistrictDashboard from '../components/DistrictDashboard';
 
 export class DashboardView extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {};
-    }
-
-    componentWillMount() {
-        UserService.isDistrictUser().then((isDistrictUser) =>
-            this.setState({ isDistrictUser: isDistrictUser })
-        );
-    }
-
     render() {
-        if (this.state.isDistrictUser) {
+        let isDistrictUser = UserService.isDistrictUser();
+
+        if (isDistrictUser) {
+            console.log('district user logged in');
             return <DistrictDashboard />;
         }
+        console.log('normal user logged in');
         return <Dashboard />;
     }
 }

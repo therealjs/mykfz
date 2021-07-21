@@ -84,6 +84,20 @@ export default class UserService {
         };
     }
 
+    static getUser(userId) {
+        return new Promise((resolve, reject) => {
+            HttpService.get(
+                `http://localhost:3000/users/${userId}`,
+                function (data) {
+                    resolve(data);
+                },
+                function (textStatus) {
+                    reject(textStatus);
+                }
+            );
+        });
+    }
+
     static getUserDetails() {
         return new Promise((resolve, reject) => {
             HttpService.get(
