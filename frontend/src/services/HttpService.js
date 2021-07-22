@@ -115,7 +115,7 @@ export default class HttpService {
 
             if (this.checkIfUnauthorized(resp)) {
                 window.location = '/#login';
-                return;
+                onError(resp.error);
             } else {
                 resp = await resp.json();
             }
