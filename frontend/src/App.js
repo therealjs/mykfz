@@ -14,7 +14,7 @@ import { DistrictLoginView } from './views/DistrictLoginView';
 import { UserSignupView } from './views/UserSignupView';
 import { LandingPageView } from './views/LandingPageView';
 
-import { DashboardView } from './views/DashboardView';
+import DashboardView from './views/DashboardView';
 import { VehicleDetailView } from './views/VehicleDetailView';
 import { VehicleRegisterView } from './views/VehicleRegisterView';
 import { VehicleDeregisterView } from './views/VehicleDeregisterView';

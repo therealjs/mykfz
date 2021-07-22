@@ -113,7 +113,9 @@ export default class UserService {
     }
 
     static async isDistrictUser() {
-        return await this.getUserDetails().isDistrictUser;
+        const user = await this.getUserDetails();
+        console.log(user);
+        return user.isDistrictUser;
     }
 
     static updateUser(user) {
