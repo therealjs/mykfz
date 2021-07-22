@@ -14,13 +14,14 @@ import TableRow from '@material-ui/core/TableRow';
 import Typography from '@material-ui/core/Typography';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import LicensePlateService from '../services/LicensePlateService';
 import UserService from '../services/UserService';
 import ProcessService from '../services/ProcessService';
 import Button from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import PrintIcon from '@material-ui/icons/Print';
+import VehicleService from '../services/VehicleService';
 
 const VehiclesTableRow = ({ vehicle }) => {
     const [owner, setOwner] = useState({});
@@ -138,6 +139,50 @@ const ProcessesTable = ({ vehicleId, processes }) => {
 };
 
 const ProcessesTableRow = ({ vehicleId, process }) => {
+    const [isSending, setIsSending] = useState(false);
+    const [processState, setProcessState] = useState(process.state);
+
+    const acceptProcess = useCallback(async () => {
+        if (isSending) return;
+        setIsSending(true);
+        await ProcessService.accceptProcess(vehicleId, process._id);
+
+        const newProcess = await VehicleService.getVehicleProcess(
+            vehicleId,
+            process._id
+        );
+        setProcessState(newProcess.state);
+        // setProcessState('ACCEPTED');
+
+        setIsSending(false);
+    }, [isSending]);
+
+    const rejectProcess = useCallback(async () => {
+        if (isSending) return;
+        setIsSending(true);
+        await ProcessService.rejectProcess(vehicleId, process._id);
+        const newProcess = await VehicleService.getVehicleProcess(
+            vehicleId,
+            process._id
+        );
+        setProcessState(newProcess.state);
+        // setProcessState('REJECTED');
+        setIsSending(false);
+    }, [isSending]);
+
+    // const acceptProcess = async () => {
+    //     await ProcessService.accceptProcess(vehicleId, process._id);
+    // };
+
+    // const rejectProcess = async () => {
+    //     await ProcessService.rejectProcess(vehicleId, process._id);
+    // };
+
+    const state_colors = {
+        ACCEPTED: 'lightgreen',
+        REJECTED: 'lightsalmon'
+    };
+
     return (
         <TableRow key={process._id}>
             <TableCell component="th" scope="row">
@@ -148,13 +193,20 @@ const ProcessesTableRow = ({ vehicleId, process }) => {
                 <ProcessDetailsCell vehicleId={vehicleId} process={process} />
             </TableCell>
             <TableCell align="right">
-                {process.state == 'NEW' ? (
+                {processState == 'NEW' ? (
                     <ButtonGroup variant="contained">
-                        <Button>ACCEPT</Button>
-                        <Button>REJECT</Button>
+                        <Button disabled={isSending} onClick={acceptProcess}>
+                            ACCEPT
+                        </Button>
+                        <Button disabled={isSending} onClick={rejectProcess}>
+                            REJECT
+                        </Button>
                     </ButtonGroup>
                 ) : (
-                    <Chip label={process.state} />
+                    <Chip
+                        style={{ backgroundColor: state_colors[processState] }}
+                        label={processState}
+                    />
                 )}
             </TableCell>
         </TableRow>
