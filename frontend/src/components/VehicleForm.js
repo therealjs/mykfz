@@ -25,6 +25,9 @@ import VehicleService from '../services/VehicleService';
 import UserService from '../services/UserService';
 import VINService from '../services/VINService';
 import { withStyles } from '@material-ui/styles';
+import Alert from '@material-ui/lab/Alert';
+import Snackbar from '@material-ui/core/Snackbar';
+import MuiAlert from '@material-ui/lab/Alert';
 
 const LightTooltip = withStyles(() => ({
     tooltip: {
@@ -138,7 +141,15 @@ class VehicleForm extends React.Component {
         (vehicle._id
             ? VehicleService.updateVehicle(vehicle)
             : VehicleService.createVehicle(vehicle)
-        ).then(() => this.props.history.push('/dashboard/vehicles'));
+        )
+            .then((data) => {
+                this.props.history.push('/dashboard/vehicles');
+            })
+            .catch((error) => {
+                this.setState({
+                    error: 'A server error occured. Please confirm your input!'
+                });
+            });
     }
 
     render() {
@@ -392,6 +403,13 @@ class VehicleForm extends React.Component {
                                         Cancel
                                     </Button>
                                 </Grid>
+                                {this.state.error && (
+                                    <Grid item xs={12}>
+                                        <Alert severity="error">
+                                            {this.state.error}
+                                        </Alert>
+                                    </Grid>
+                                )}
                             </Grid>
                         </form>
                     </Card>

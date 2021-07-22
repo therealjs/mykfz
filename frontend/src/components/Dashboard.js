@@ -25,6 +25,7 @@ import UserProfile from './UserProfile';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import { withRouter } from 'react-router';
 import Copyright from './Copyright';
+import VehicleRegisterForm from './VehicleRegisterForm';
 
 const drawerWidth = 240;
 
@@ -111,6 +112,7 @@ function Dashboard(props) {
     const classes = useStyles();
     const [open, setOpen] = useState(true);
     const [user, setUser] = useState({});
+    const [loading, setLoading] = useState(true);
 
     const logout = () => {
         UserService.logout();
@@ -133,10 +135,36 @@ function Dashboard(props) {
         const fetchData = async () => {
             let userResult = await UserService.getUserDetails();
             setUser(userResult);
+            setLoading(false);
         };
 
         fetchData();
     }, []);
+
+    const containerContent = loading ? (
+        <h2>Loading</h2>
+    ) : (
+        <Switch>
+            <Route exact="true" path="/dashboard/vehicles">
+                <VehicleList user={user} />
+            </Route>
+            <Route path="/dashboard/vehicles/:vehicleId/register">
+                <VehicleRegisterForm user={user} />
+            </Route>
+            <Route path="/dashboard/add">
+                <VehicleForm />
+            </Route>
+            <Route path="/dashboard/plates">
+                <LicensePlateReservationList />
+            </Route>
+            <Route path="/dashboard/reservation">
+                <LicensePlateReservationForm />
+            </Route>
+            <Route path="/dashboard/user">
+                <UserProfile />
+            </Route>
+        </Switch>
+    );
 
     return (
         <div className={classes.root}>
@@ -193,23 +221,7 @@ function Dashboard(props) {
             <main className={classes.content}>
                 <div className={classes.appBarSpacer} />
                 <Container maxWidth="lg" className={classes.container}>
-                    <Switch>
-                        <Route path="/dashboard/vehicles">
-                            <VehicleList user={user} />
-                        </Route>
-                        <Route path="/dashboard/add">
-                            <VehicleForm />
-                        </Route>
-                        <Route path="/dashboard/plates">
-                            <LicensePlateReservationList />
-                        </Route>
-                        <Route path="/dashboard/reservation">
-                            <LicensePlateReservationForm />
-                        </Route>
-                        <Route path="/dashboard/user">
-                            <UserProfile />
-                        </Route>
-                    </Switch>
+                    {containerContent}
                     <Box pt={4}>
                         <Copyright />
                     </Box>

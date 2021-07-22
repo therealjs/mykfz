@@ -218,7 +218,7 @@ class VehicleListPaper extends React.Component {
                     <Button
                         variant="contained"
                         component={Link}
-                        to={`/register/${this.props.vehicle._id}`}
+                        to={`/dashboard/vehicles/${this.props.vehicle._id}/register`}
                     >
                         Register
                     </Button>
@@ -228,7 +228,7 @@ class VehicleListPaper extends React.Component {
                     <Button
                         variant="contained"
                         component={Link}
-                        to={`/deregister/${this.props.vehicle._id}`}
+                        to={`/dashboard/vehicles/${this.props.vehicle._id}/deregister`}
                     >
                         Deregister
                     </Button>
