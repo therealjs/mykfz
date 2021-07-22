@@ -56,14 +56,6 @@ const useStyles = makeStyles((theme) => ({
             duration: theme.transitions.duration.leavingScreen
         })
     },
-    appBarShift: {
-        marginLeft: drawerWidth,
-        width: `calc(100% - ${drawerWidth}px)`,
-        transition: theme.transitions.create(['width', 'margin'], {
-            easing: theme.transitions.easing.sharp,
-            duration: theme.transitions.duration.enteringScreen
-        })
-    },
     menuButton: {
         marginRight: 36
     },
@@ -155,7 +147,11 @@ function DistrictDashboard(props) {
     return (
         <div className={classes.root}>
             <CssBaseline />
-            <AppBar position="absolute" className={clsx(classes.appBar)}>
+            <AppBar
+                color="secondary"
+                position="absolute"
+                className={clsx(classes.appBar)}
+            >
                 <Toolbar className={classes.toolbar}>
                     <IconButton
                         edge="start"
