@@ -1,22 +1,14 @@
 'use strict';
 
-import React, { useRef, useState, useCallback, createRef } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import {
     Grid,
-    Card,
-    TextField,
-    InputLabel,
-    Select,
-    MenuItem,
     Button,
-    FormControlLabel,
-    RadioGroup,
-    Radio,
-    Switch,
     Typography,
     Fab,
-    CircularProgress
+    CircularProgress,
+    Slider
 } from '@material-ui/core';
 import { green, red } from '@material-ui/core/colors';
 import Webcam from 'react-webcam';
@@ -25,7 +17,9 @@ import CheckIcon from '@material-ui/icons/Check';
 import ClearIcon from '@material-ui/icons/Clear';
 import PhotoIcon from '@material-ui/icons/PhotoCamera';
 import LoopIcon from '@material-ui/icons/Loop';
-import fx from "glfx";
+import AddIcon from '@material-ui/icons/Add';
+import RemoveIcon from '@material-ui/icons/Remove';
+import UserService from '../services/UserService';
 
 const useStyles = makeStyles((theme) => ({
     buttonSuccess: {
@@ -40,16 +34,30 @@ const useStyles = makeStyles((theme) => ({
           backgroundColor: red[700],
         },
       },
+    slider: {
+        width: 200,
+      },
   }));
 
 
 const WebcamCapture = () => {
     const classes = useStyles();
-    const webcamRef = React.useRef(null);
+    const webcamRef = useRef(null);
     const [imageSrc, setImageSrc] = useState(null);
-    const [imageBuffer, setImageBuffer] = useState(null);
+    const [monochrome, setMonochrome] = useState(null);
     const [running, setRunning] = useState(false);
+    const [dropOff, setValue] = useState(320);
     const [verified, setVerified] = useState(0);
+    const [user, setUser] = useState(null);
+
+    useEffect(() => {
+        const fetchUserProfileData = async () => {
+            const userResult = await UserService.getUserDetails();
+            setUser(userResult);
+            console.log(userResult);
+        };
+        fetchUserProfileData();
+    }, []);
 
     // verified states
     // -1: verification failed
@@ -58,10 +66,7 @@ const WebcamCapture = () => {
     // 2: verification
     // 3: verification successful
 
-    const capture = React.useCallback(() => {
-        setVerified(0);
-        const imageSrc = webcamRef.current.getScreenshot({width: 1000, height: 500});
-
+    function updateMonochrome(src) {
         const canvas = document.createElement('canvas');
         const ctx = canvas.getContext("2d");
         const image = new Image();
@@ -75,9 +80,7 @@ const WebcamCapture = () => {
 
             var imageData = context.getImageData(0, 0, canvas.width, canvas.height);
 
-            //console.log(imageData.data);
             for (var i = 0; i < imageData.data.length; i += 4) {
-                //console.log(imageData.data[i], imageData.data[i+1], imageData.data[i+2])
                 // var grayscale = imageData.data[i] * .3 + imageData.data[i+1] * .59 + imageData.data[i+2] * .11;
                 //     imageData.data[i  ] = grayscale;
                 //     imageData.data[i+1] = grayscale;
@@ -85,7 +88,7 @@ const WebcamCapture = () => {
 
                     let count = imageData.data[i] + imageData.data[i + 1] + imageData.data[i + 2];
                     let colour = 0;
-                    if (count > 325) colour = 255;
+                    if (count > dropOff) colour = 255;
                     
                     imageData.data[i] = colour;
                     imageData.data[i + 1] = colour;
@@ -93,48 +96,50 @@ const WebcamCapture = () => {
                 }
             
             context.putImageData(imageData, 0, 0);
-            //console.log(context.getImageData(0, 0, canvas.width, canvas.height));
             var newbase64 = canvas.toDataURL("image/jpeg");
-            //console.log(newbase64);
-            setImageSrc(newbase64);
-            setImageBuffer(newbase64);
+            setMonochrome(newbase64);
           };
-        image.src = imageSrc;
-          
-        // ctx.putImageData(imageData, 0, 0);
-        // var newbase64 = canvas.toDataURL("image/jpeg");
-        // // var newbase64 = canvas.toDataURL("image/jpeg");
-        // console.log(newbase64);
+        image.src = src;
+    }
 
-        // console.log("texture created")
-        // let imageSrcNoPrefix = imageSrc.replace(
-        //     /^data:image\/[a-z]+;base64,/,
-        //     ''
-        // );
-        // const imageBuffer = Buffer.from(imageSrcNoPrefix, 'base64');
-        // //setImageSrc(imageSrc);
-        // setImageSrc(newbase64);
-        // setImageBuffer(imageSrc);
-        console.log("New Image captured")
+    function matchesUser(text) {
+        text = text.replace(/\s/g, '');
+        text = text.toUpperCase();
+        console.log(user)
+        const lastName = user.lastName.toUpperCase();
+        const firstName = user.firstName.toUpperCase();
+        const id = user.identityDocument.idId;
+
+        if (text.includes(firstName) || text.includes(lastName) || text.includes(id)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    const capture = React.useCallback(() => {
+        setVerified(0);
+        const imageSrc = webcamRef.current.getScreenshot({width: 1000, height: 500});
+        setImageSrc(imageSrc);
+        updateMonochrome(imageSrc);
+        console.log(user);
     }, [webcamRef]);
 
-    const log = React.useCallback(() => {
-        console.log(imageSrc);
-    });
+    const handleChange = (event, newValue) => {
+        setValue(newValue);
+        updateMonochrome(imageSrc);
+      };
 
     function recognize() {
         console.log("Start recognize")
         setRunning(true);
-        Tesseract.recognize(imageBuffer, 'eng', {
+        Tesseract.recognize(monochrome, 'eng', {
             logger: (m) => console.log(m)
         }).then((data) => {
             console.log(data);
             let decision = 0;
 
-            if (data.text.includes("22.10.97") || data.text.includes("Janik")) {
-                decision = 1;
-            }
-            if (decision > 0.5) {
+            if (matchesUser(data.text)) {
                 setVerified(3);
             } else {
                 setVerified(-1);
@@ -183,56 +188,84 @@ const WebcamCapture = () => {
                 );
         }
       }
-    // function recognize() {
-    //     (async () => {
-    //         await worker.load();
-    //         await worker.loadLanguage('eng');
-    //         await worker.initialize('eng');
-    //         const { data: { text } } = await worker.recognize('https://tesseract.projectnaptha.com/img/eng_bw.png');
-    //         console.log(text);
-    //         await worker.terminate();
-    //       })();
-    // };
 
     return (
-        <div>
-            <Webcam
-                imageSmoothing={false}
-                audio={false}
-                height={500}
-                ref={webcamRef}
-                screenshotFormat="image/jpeg"
-                width={1000}
-                screenshotQuality={1}
-                //videoConstraints={videoConstraints}
-            />
-            {
-                imageSrc != null ?
-                <div>
-                <img style={{width: "200px"}} src={imageSrc} alt="Red dot" />
-                </div> : []
-            }
-            <Grid container alignItems="center">
-                <Grid item xs={3}>
+        <Grid container spacing={2} alignItems="center" justify="center">
+            <Grid item xs={12} lg={6}>
+                <Grid container direction="column" spacing={2} justifyContent="center" alignItems="center">
+                    <Grid item>
+                        <Webcam
+                            imageSmoothing={false}
+                            audio={false}
+                            height={300}
+                            ref={webcamRef}
+                            screenshotFormat="image/jpeg"
+                            width={600}
+                            screenshotQuality={1}
+                        />
+
+                    </Grid>
+                    <Grid item>
                     <Button onClick={capture} variant="contained"
                             color="primary" startIcon={<PhotoIcon />}>Capture</Button>
                 </Grid>
-                <Grid item xs={3}>
-                    <Button onClick={recognize} variant="contained"
-                            color="primary" startIcon={<LoopIcon />}>Recognize</Button>
-                </Grid>
-                <Grid item xs={3}>
-                    {
-                        running ? 
-                        <div>
-                            {<CircularProgress size={56}/>}
-                        </div> :[]
-                    }
-                    <Decision/>
                 </Grid>
             </Grid>
-            
-        </div>
+
+            {
+                monochrome != null ?
+                <Grid item xs={12} lg={6}>
+                    <Grid container direction="column" spacing={2} justifyContent="center" alignItems="center">
+                        <Grid item>
+                            <img style={{width: "500px"}} src={monochrome} alt="Image" />
+                        </Grid>
+                        <Grid item>
+                            <div className={classes.slider}>
+                                <Typography id="continuous-slider" gutterBottom>
+                                    Brightness
+                                </Typography>
+                                <Grid container spacing={2}>
+                                    <Grid item>
+                                    <RemoveIcon />
+                                    </Grid>
+                                    <Grid item xs>
+                                    <Slider
+                                        step={5}
+                                        value={dropOff}
+                                        onChange={handleChange}
+                                        min={200}
+                                        max={450}
+                                    />
+                                    </Grid>
+                                    <Grid item>
+                                    <AddIcon />
+                                    </Grid>
+                                </Grid>
+                            </div>
+                        </Grid>
+                        <Grid item>
+                            <Button onClick={recognize} variant="contained"
+                                    color="primary" startIcon={<LoopIcon />}>Recognize</Button>
+                        </Grid>
+
+                    </Grid>
+                </Grid>
+
+                 : []
+            }
+            {
+                running ? 
+                <Grid item >
+                    {<CircularProgress size={56}/>}
+                    
+                </Grid> 
+                :[]
+            }
+            <Grid item >
+                <Decision/>
+                    
+            </Grid> 
+        </Grid>
     );
 };
 
