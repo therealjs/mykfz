@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -12,6 +12,8 @@ import Grid from '@material-ui/core/Grid';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
+import UserService from '../services/UserService';
+import { useHistory } from "react-router-dom";
 
 function Copyright() {
     return (
@@ -60,8 +62,33 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-export default function SignInSide() {
+export default function SignInSide(props) {
+    let history = useHistory();
     const classes = useStyles();
+    const [account, setAccount] = useState({
+        username: '',
+        password: ''
+      });
+    
+    const handleChange = (e) => {
+        let name = e.target.name;
+        let value = e.target.value;
+        account[name] = value;
+        setAccount(account);
+      }
+
+    const login = (e) => {
+        e.preventDefault();
+        try {
+            UserService.login(account.username, account.password).then(() => {
+                history.push("/");
+            });
+            console.log(history)
+        } catch (err) {
+            console.error(err);
+        }
+      }
+    
 
     return (
         <Grid container component="main" className={classes.root}>
@@ -89,11 +116,12 @@ export default function SignInSide() {
                             margin="normal"
                             required
                             fullWidth
-                            id="email"
+                            id="username"
                             label="Email Address"
-                            name="email"
+                            name="username"
                             autoComplete="email"
                             autoFocus
+                            onChange={handleChange}
                         />
                         <TextField
                             variant="outlined"
@@ -105,12 +133,7 @@ export default function SignInSide() {
                             type="password"
                             id="password"
                             autoComplete="current-password"
-                        />
-                        <FormControlLabel
-                            control={
-                                <Checkbox value="remember" color="primary" />
-                            }
-                            label="Remember me"
+                            onChange={handleChange}
                         />
                         <Button
                             type="submit"
@@ -118,17 +141,15 @@ export default function SignInSide() {
                             variant="contained"
                             color="primary"
                             className={classes.submit}
+                            onClick={login}
                         >
-                            Sign In
+                            Login
                         </Button>
                         <Grid container>
                             <Grid item xs>
-                                <Link href="#" variant="body2">
-                                    Forgot password?
-                                </Link>
                             </Grid>
                             <Grid item>
-                                <Link href="#" variant="body2">
+                                <Link href="/#/register" variant="body2">
                                     {"Don't have an account? Sign Up"}
                                 </Link>
                             </Grid>
