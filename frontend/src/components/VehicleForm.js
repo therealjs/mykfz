@@ -5,6 +5,7 @@ import {
     Grid,
     Card,
     TextField,
+    InputAdornment,
     InputLabel,
     Select,
     MenuItem,
@@ -13,14 +14,26 @@ import {
     RadioGroup,
     Radio,
     Switch,
+    Tooltip,
     Typography
 } from '@material-ui/core';
+import InfoIcon from '@material-ui/icons/Info';
 
 import { withRouter } from 'react-router-dom';
 
 import VehicleService from '../services/VehicleService';
 import UserService from '../services/UserService';
 import VINService from '../services/VINService';
+import { withStyles } from '@material-ui/styles';
+
+const LightTooltip = withStyles(() => ({
+    tooltip: {
+        backgroundColor: '#175B8E',
+        color: 'white',
+        fontSize: 14,
+        fontFamily: 'Nunito'
+    }
+}))(Tooltip);
 
 class VehicleForm extends React.Component {
     constructor(props) {
@@ -180,6 +193,19 @@ class VehicleForm extends React.Component {
                                         required={true}
                                         value={this.state.vin}
                                         onChange={this.handleChangeVIN}
+                                        InputProps={{
+                                            endAdornment: (
+                                                <LightTooltip
+                                                    title="The vehicle identification number provides a unique identifier for your vehicle and can be found 
+                                                    on the acceptance paper part 1 and 2 of your vehicle. "
+                                                    placement="right"
+                                                >
+                                                    <InputAdornment position="end">
+                                                        <InfoIcon />
+                                                    </InputAdornment>
+                                                </LightTooltip>
+                                            )
+                                        }}
                                     />
                                 </Grid>
                                 <Grid item xs={12} sm={6}>

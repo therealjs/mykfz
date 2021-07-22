@@ -6,6 +6,7 @@ import {
     Card,
     TextField,
     Checkbox,
+    InputAdornment,
     InputLabel,
     NativeSelect,
     MenuItem,
@@ -14,12 +15,24 @@ import {
     RadioGroup,
     Radio,
     Switch,
+    Tooltip,
     Typography
 } from '@material-ui/core';
+import InfoIcon from '@material-ui/icons/Info';
 import { withRouter } from 'react-router-dom';
 
 import Page from './Page';
 import LicensePlateService from '../services/LicensePlateService';
+import { withStyles } from '@material-ui/styles';
+
+const LightTooltip = withStyles(() => ({
+    tooltip: {
+        backgroundColor: '#175B8E',
+        color: 'white',
+        fontSize: 14,
+        fontFamily: 'Nunito'
+    }
+}))(Tooltip);
 
 class VehicleDeregister extends React.Component {
     constructor(props) {
@@ -84,6 +97,50 @@ class VehicleDeregister extends React.Component {
     }
 
     render() {
+        const tooltipPlateCode = (
+            <div>
+                <Grid container>
+                    <Grid item>
+                        <label>
+                            The plate code can be found on the license plate
+                            associated to your vehicle. On the license plate,
+                            you need to remove the seal form the badge to expose
+                            the code. <b>Attention!</b> With the removal of the
+                            seal, the validity of the license plate extingushes.
+                        </label>
+                    </Grid>
+                    <Grid item>
+                        <img
+                            width="285"
+                            height="165"
+                            src="https://www.bmvi.de/SharedDocs/DE/Bilder/VerkehrUndMobilitaet/Strasse/fahrzeugzulassung-online-5.jpg?__blob=normal"
+                            alt=""
+                        ></img>
+                    </Grid>
+                </Grid>
+            </div>
+        );
+        const tooltipSecurityCode = (
+            <div>
+                <Grid container>
+                    <Grid item>
+                        <label>
+                            The security code I can be found on the acceptance
+                            paper part 1 of your vehicle. You need to uncover
+                            the respective field to see the code.
+                        </label>
+                    </Grid>
+                    <Grid item>
+                        <img
+                            width="285"
+                            height="365"
+                            src="https://www.bmvi.de/SharedDocs/DE/Bilder/VerkehrUndMobilitaet/Strasse/fahrzeugzulassung-online-3.png?__blob=normal"
+                            alt=""
+                        ></img>
+                    </Grid>
+                </Grid>
+            </div>
+        );
         return (
             <Page>
                 <Card style={{ padding: '20px', maxWidth: '500px' }}>
@@ -133,6 +190,18 @@ class VehicleDeregister extends React.Component {
                                     value={this.state.secCodeI}
                                     onChange={this.handleChange}
                                     maxLength={7}
+                                    InputProps={{
+                                        endAdornment: (
+                                            <LightTooltip
+                                                title={tooltipSecurityCode}
+                                                placement="right"
+                                            >
+                                                <InputAdornment position="end">
+                                                    <InfoIcon />
+                                                </InputAdornment>
+                                            </LightTooltip>
+                                        )
+                                    }}
                                 />
                             </Grid>
                             <Grid item xs={12}>
@@ -144,6 +213,18 @@ class VehicleDeregister extends React.Component {
                                     value={this.state.plateCode}
                                     onChange={this.handleChange}
                                     maxLength={3}
+                                    InputProps={{
+                                        endAdornment: (
+                                            <LightTooltip
+                                                title={tooltipPlateCode}
+                                                placement="right"
+                                            >
+                                                <InputAdornment position="end">
+                                                    <InfoIcon />
+                                                </InputAdornment>
+                                            </LightTooltip>
+                                        )
+                                    }}
                                 />
                             </Grid>
                             <Grid item xs={12}>

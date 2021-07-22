@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Collapse, IconButton } from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import { Link } from 'react-scroll';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -109,9 +110,11 @@ function Header() {
                             className={classes.logo}
                         />
                     </h4>
+                    <Link to="pricing" spy={true} smooth={true}>
                     <IconButton>
                         <ExpandMoreIcon className={classes.goDown} />
                     </IconButton>
+                    </Link>
                 </div>
             </Collapse>
         </div>
