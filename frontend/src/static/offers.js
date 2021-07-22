@@ -18,7 +18,7 @@ const offers = [
         title: 'Vehicle Deregistration',
         description: 'Deregister your vehicle effortless and fast.',
         imageUrl:
-            'https://lh3.googleusercontent.com/proxy/k2KB4rT78TUFHnoDJoRZ9pp-KPLi-gtJtl4YzAHEmMl4P9Z0LuaPdyZqVQpAg-PQk5YxT2qx2-uS7PGEWgthpIsr1EqjC371YuQqcksl5l3vN_Jp4YReCMgFR7-AEQNkx2FdvgFJ0pnoGuvjkd7dMA',
+            'http://online-zulassung.info/wp-content/uploads/2017/11/01_abmeldung_schaben_plakette.jpg',
         time: 1500
     },
     {

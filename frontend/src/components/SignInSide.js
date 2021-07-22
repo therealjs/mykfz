@@ -13,20 +13,8 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import UserService from '../services/UserService';
-import { useHistory } from "react-router-dom";
-
-function Copyright() {
-    return (
-        <Typography variant="body2" color="textSecondary" align="center">
-            {'Copyright © '}
-            <Link color="inherit" href="https://youtu.be/dQw4w9WgXcQ">
-                MyKfz
-            </Link>{' '}
-            {new Date().getFullYear()}
-            {'.'}
-        </Typography>
-    );
-}
+import { useHistory } from 'react-router-dom';
+import Copyright from './Copyright';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -68,27 +56,26 @@ export default function SignInSide(props) {
     const [account, setAccount] = useState({
         username: '',
         password: ''
-      });
-    
+    });
+
     const handleChange = (e) => {
         let name = e.target.name;
         let value = e.target.value;
         account[name] = value;
         setAccount(account);
-      }
+    };
 
     const login = (e) => {
         e.preventDefault();
         try {
             UserService.login(account.username, account.password).then(() => {
-                history.push("/");
+                history.push('/');
             });
-            console.log(history)
+            console.log(history);
         } catch (err) {
             console.error(err);
         }
-      }
-    
+    };
 
     return (
         <Grid container component="main" className={classes.root}>
@@ -146,8 +133,7 @@ export default function SignInSide(props) {
                             Login
                         </Button>
                         <Grid container>
-                            <Grid item xs>
-                            </Grid>
+                            <Grid item xs></Grid>
                             <Grid item>
                                 <Link href="/#/register" variant="body2">
                                     {"Don't have an account? Sign Up"}

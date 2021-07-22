@@ -18,20 +18,8 @@ import React, { useEffect, useState } from 'react';
 import { withRouter } from 'react-router';
 import DistrictService from '../services/DistrictService';
 import UserService from '../services/UserService';
-import ProcessesTable from './ProcessesTable';
-
-function Copyright() {
-    return (
-        <Typography variant="body2" color="textSecondary" align="center">
-            {'Copyright © '}
-            <Link color="inherit" href="https://youtu.be/dQw4w9WgXcQ">
-                MyKfz
-            </Link>{' '}
-            {new Date().getFullYear()}
-            {'.'}
-        </Typography>
-    );
-}
+import VehiclesTable from './VehiclesTable';
+import Copyright from './Copyright';
 
 const drawerWidth = 240;
 
@@ -54,14 +42,6 @@ const useStyles = makeStyles((theme) => ({
         transition: theme.transitions.create(['width', 'margin'], {
             easing: theme.transitions.easing.sharp,
             duration: theme.transitions.duration.leavingScreen
-        })
-    },
-    appBarShift: {
-        marginLeft: drawerWidth,
-        width: `calc(100% - ${drawerWidth}px)`,
-        transition: theme.transitions.create(['width', 'margin'], {
-            easing: theme.transitions.easing.sharp,
-            duration: theme.transitions.duration.enteringScreen
         })
     },
     menuButton: {
@@ -119,9 +99,10 @@ function DistrictDashboard(props) {
     const [open, setOpen] = useState(true);
     const [user, setUser] = useState({});
     const [district, setDistrict] = useState({});
-    const [processes, setProcesses] = useState([]);
+    const [vehicles, setVehicles] = useState([]);
 
     const logout = () => {
+        console.log('logging out user');
         UserService.logout();
         if (props.location.pathname != '/') {
             props.history.push('/');
@@ -143,12 +124,10 @@ function DistrictDashboard(props) {
             let userResult = await UserService.getUserDetails();
             const districtId = userResult.district;
             let districtResult = await DistrictService.getDistrict(districtId);
-            let processesResult = await DistrictService.getProcesses(
-                districtId
-            );
+            let vehiclesResult = await DistrictService.getVehicles(districtId);
             setUser(userResult);
             setDistrict(districtResult);
-            setProcesses(processesResult);
+            setVehicles(vehiclesResult);
         };
 
         fetchData();
@@ -158,8 +137,9 @@ function DistrictDashboard(props) {
         <div className={classes.root}>
             <CssBaseline />
             <AppBar
+                color="secondary"
                 position="absolute"
-                className={clsx(classes.appBar, open && classes.appBarShift)}
+                className={clsx(classes.appBar)}
             >
                 <Toolbar className={classes.toolbar}>
                     <IconButton
@@ -181,35 +161,18 @@ function DistrictDashboard(props) {
                         noWrap
                         className={classes.title}
                     >
-                        MyKfz District Dashboard for {district.name}
+                        MyKfz District Dashboard for {district.name} (
+                        {district._id})
                     </Typography>
                     <IconButton color="inherit">
                         <ExitToAppIcon color="inherit" onClick={logout} />
                     </IconButton>
                 </Toolbar>
             </AppBar>
-            <Drawer
-                variant="permanent"
-                classes={{
-                    paper: clsx(
-                        classes.drawerPaper,
-                        !open && classes.drawerPaperClose
-                    )
-                }}
-                open={open}
-            >
-                <div className={classes.toolbarIcon}>
-                    <IconButton onClick={handleDrawerClose}>
-                        <ChevronLeftIcon />
-                    </IconButton>
-                </div>
-                <Divider />
-                <List></List>
-            </Drawer>
             <main className={classes.content}>
                 <div className={classes.appBarSpacer} />
                 <Container maxWidth="lg" className={classes.container}>
-                    <ProcessesTable processes={processes} />
+                    <VehiclesTable vehicles={vehicles} />
                     <Box pt={4}>
                         <Copyright />
                     </Box>

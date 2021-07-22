@@ -6,7 +6,7 @@ export default class VehicleService {
     constructor() {}
 
     static baseURL() {
-        return 'http://localhost:3000/vehicles';
+        return `http://${location.hostname}:3000/vehicles`;
     }
 
     static getVehicles() {

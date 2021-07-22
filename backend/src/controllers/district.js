@@ -1,6 +1,8 @@
 'use strict';
 
 const DistrictModel = require('../models/district');
+const UserModel = require('../models/user');
+const VehicleModel = require('../models/vehicle');
 
 const read = async (req, res) => {
     try {
@@ -63,8 +65,77 @@ const list = async (req, res) => {
     }
 };
 
+const getUsers = async (districtId) => {
+    return await UserModel.find({
+        $or: [
+            { 'address.district': districtId, isDistrictUser: false },
+            { 'address.district': districtId, isDistrictUser: null }
+        ]
+    });
+};
+
+const readUsers = async (req, res) => {
+    try {
+        const users = await getUsers(req.params.districtId);
+
+        return res.status(200).json(users);
+    } catch (err) {
+        return res.status(500).json({
+            error: 'Internal Server Error',
+            message: err.message
+        });
+    }
+};
+
+const getAllVehiclesForUsers = async (users) => {
+    let res = [];
+
+    for (const user of users) {
+        const userId = user._id;
+        const vehiclesOfUser = await VehicleModel.find({ owner: userId });
+        res.push(...vehiclesOfUser);
+    }
+
+    return res;
+};
+
+const readVehicles = async (req, res) => {
+    try {
+        const users = await getUsers(req.params.districtId);
+        const vehicles = await getAllVehiclesForUsers(users);
+        return res.status(200).json(vehicles);
+    } catch (err) {
+        return res.status(500).json({
+            error: 'Internal Server Error',
+            message: err.message
+        });
+    }
+};
+
+const readProcesses = async (req, res) => {
+    try {
+        const users = await getUsers(req.params.districtId);
+        const vehicles = await getAllVehiclesForUsers(users);
+        console.log(vehicles);
+
+        const processes = vehicles.map((vehicle) => vehicle.processes).flat();
+
+        console.log(processes);
+
+        return res.status(200).json(processes);
+    } catch (err) {
+        return res.status(500).json({
+            error: 'Internal Server Error',
+            message: err.message
+        });
+    }
+};
+
 module.exports = {
     read,
     update,
-    list
+    list,
+    readProcesses,
+    readUsers,
+    readVehicles
 };

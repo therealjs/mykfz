@@ -1,26 +1,37 @@
 'use strict';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import UserService from '../services/UserService';
 import Dashboard from '../components/Dashboard';
 import DistrictDashboard from '../components/DistrictDashboard';
+import { withRouter } from 'react-router';
+import LoadingView from './LoadingView';
 
-export class DashboardView extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {};
+function DashboardView() {
+    const [loading, setLoading] = useState(true);
+    const [user, setUser] = useState({});
+
+    useEffect(() => {
+        const fetchData = async () => {
+            let userResult = await UserService.getUserDetails();
+            setUser(userResult);
+            setLoading(false);
+        };
+
+        fetchData();
+    }, []);
+
+    if (loading) {
+        return <LoadingView />;
     }
 
-    componentWillMount() {
-        UserService.isDistrictUser().then((isDistrictUser) =>
-            this.setState({ isDistrictUser: isDistrictUser })
-        );
+    if (user.isDistrictUser) {
+        console.log(`logged in as district user`);
+        return <DistrictDashboard />;
     }
+    console.log(`logged in as regular user`);
 
-    render() {
-        if (this.state.isDistrictUser) {
-            return <DistrictDashboard />;
-        }
-        return <Dashboard />;
-    }
+    return <Dashboard />;
 }
+
+export default withRouter(DashboardView);

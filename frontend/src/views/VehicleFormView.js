@@ -85,7 +85,6 @@ export class VehicleFormView extends React.Component {
         return (
             <VehicleForm
                 vehicle={this.state.vehicle}
-                onSubmit={(vehicle) => this.updateVehicle(vehicle)}
                 error={this.state.error}
             />
         );

@@ -6,11 +6,15 @@ export default class LicensePlateService {
     constructor() {}
 
     static baseURL() {
-        return 'http://localhost:3000/licensePlates';
+        return `http://${location.hostname}:3000/licensePlates`;
     }
 
     static getFreePlatesForPrefix(prefix) {
         return [];
+    }
+
+    static asString(licensePlateObj) {
+        return `${licensePlateObj.areaCode} – ${licensePlateObj.letters} ${licensePlateObj.digits}`;
     }
 
     static getLicensePlates() {
@@ -63,7 +67,9 @@ export default class LicensePlateService {
     static getAvailableLicensePlates(query) {
         return new Promise((resolve, reject) => {
             HttpService.get(
-                `${LicensePlateService.baseURL()}/available?areaCode=${query.areaCode}&letters=${query.letters}&digits=${query.digits}`,
+                `${LicensePlateService.baseURL()}/available?areaCode=${
+                    query.areaCode
+                }&letters=${query.letters}&digits=${query.digits}`,
                 function (data) {
                     if (data != undefined || Object.keys(data).length !== 0) {
                         resolve(data);

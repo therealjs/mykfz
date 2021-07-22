@@ -31,7 +31,7 @@ const style = { maxWidth: 500 };
 
 const LightTooltip = withStyles(() => ({
     tooltip: {
-        backgroundColor: '#878381',
+        backgroundColor: '#175B8E',
         color: 'white',
         fontSize: 14,
         fontFamily: 'Nunito'
