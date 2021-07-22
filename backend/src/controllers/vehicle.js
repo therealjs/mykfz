@@ -167,6 +167,67 @@ const readProcess = async (req, res) => {
     }
 };
 
+const updatedProcess = (oldProcess, newProcess) => {
+    for (const key in newProcess) {
+        if (key in oldProcess) {
+            oldProcess[key] = newProcess[key];
+        }
+    }
+    return oldProcess;
+};
+
+const updateProcess = async (req, res) => {
+    try {
+        let { vehicleId, processId } = req.params;
+
+        let processUpdate = req.body;
+
+        const vehicle = await VehicleModel.findById(vehicleId).exec();
+
+        if (!vehicle) {
+            return res.status(404).json({
+                error: 'Not Found',
+                message: `Vehicle not found`
+            });
+        }
+
+        const process = vehicle.processes.find((p) => p._id == processId);
+
+        if (!process) {
+            return res.status(404).json({
+                error: 'Not Found',
+                message: `Process not found`
+            });
+        }
+
+        const newProcess = updatedProcess(process, processUpdate);
+
+        VehicleModel.findById(vehicleId).then((vehicle) => {
+            const process = vehicle.processes.id(processId);
+            process.set(newProcess);
+            return vehicle.save();
+        });
+
+        // let newProcess = await VehicleModel.findByIdAndUpdate(
+        //     processId,
+        //     req.body,
+        //     {
+        //         new: true,
+        //         runValidators: true
+        //     }
+        // ).exec();
+
+        // console.log(newProcess);
+
+        return res.status(200).json(newProcess);
+    } catch (err) {
+        return res.status(500).json({
+            error: 'Internal Server Error',
+            message: err.message
+        });
+    }
+};
+
 const listProcesses = async (req, res) => {
     try {
         let vehicle = await VehicleModel.findById(req.params.vehicleId).exec();
@@ -194,5 +255,6 @@ module.exports = {
     list,
     createProcess,
     readProcess,
+    updateProcess,
     listProcesses
 };
