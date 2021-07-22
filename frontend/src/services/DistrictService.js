@@ -6,7 +6,7 @@ export default class DistrictService {
     constructor() {}
 
     static baseURL() {
-        return 'http://localhost:3000/districts';
+        return `http://${location.hostname}:3000/districts`;
     }
 
     static getDistricts() {

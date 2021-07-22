@@ -6,7 +6,7 @@ export default class UserService {
     constructor() {}
 
     static baseURL() {
-        return 'http://localhost:3000/auth';
+        return `http://${location.hostname}:3000/auth`;
     }
 
     static register(user) {
@@ -69,7 +69,21 @@ export default class UserService {
     }
 
     static logout() {
+        this.unverify();
+        console.log(window.localStorage.verified);
         window.localStorage.removeItem('jwtToken');
+    }
+
+    static verify() {
+        window.localStorage.verified = true;
+    }
+
+    static unverify() {
+        window.localStorage.removeItem('verified');
+    }
+
+    static isVerified() {
+        return !!window.localStorage.verified;
     }
 
     static getCurrentUser() {
@@ -121,7 +135,7 @@ export default class UserService {
     static updateUser(user) {
         return new Promise((resolve, reject) => {
             HttpService.put(
-                `http://localhost:3000/users/${user._id}`,
+                `http://${location.hostname}:3000/users/${user._id}`,
                 user,
                 function (data) {
                     resolve(data);
@@ -157,7 +171,7 @@ export default class UserService {
     static deleteLicensePlateReservation(userId, plateId) {
         return new Promise((resolve, reject) => {
             HttpService.remove(
-                `http://localhost:3000/users/${userId}/licensePlateReservations/${plateId}`,
+                `http://${location.hostname}:3000/users/${userId}/licensePlateReservations/${plateId}`,
                 function (data) {
                     if (data.message != undefined) {
                         resolve(data.message);

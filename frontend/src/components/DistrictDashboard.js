@@ -114,6 +114,7 @@ function DistrictDashboard(props) {
     const [vehicles, setVehicles] = useState([]);
 
     const logout = () => {
+        console.log('logging out user');
         UserService.logout();
         if (props.location.pathname != '/') {
             props.history.push('/');
