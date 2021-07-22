@@ -211,4 +211,12 @@ export default class ProcessService {
             );
         });
     }
+
+    static calculatePrice(process) {
+        let res = process.processType == 'REGISTRATION' ? 27.0 : 7.5;
+        if (process.usesReservedPlate) {
+            res += 10.2;
+        }
+        return res;
+    }
 }

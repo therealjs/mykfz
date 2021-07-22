@@ -143,7 +143,7 @@ class VehicleForm extends React.Component {
             : VehicleService.createVehicle(vehicle)
         )
             .then((data) => {
-                this.props.history.push('/dashboard/vehicles');
+                this.props.history.push('/dashboard');
             })
             .catch((error) => {
                 this.setState({

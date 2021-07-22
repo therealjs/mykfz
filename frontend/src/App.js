@@ -35,7 +35,7 @@ export default class App extends React.Component {
                 {
                     render: (props) => {
                         if (UserService.isAuthenticated()) {
-                            return <Redirect to={'/dashboard/vehicles'} />;
+                            return <Redirect to={'/dashboard'} />;
                         } else {
                             return <Redirect to={'/landingPage'} />;
                         }

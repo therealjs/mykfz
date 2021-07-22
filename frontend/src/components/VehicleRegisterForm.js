@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { withRouter } from 'react-router';
 
@@ -12,7 +12,7 @@ import StepLabel from '@material-ui/core/StepLabel';
 import Button from '@material-ui/core/Button';
 import Link from '@material-ui/core/Link';
 import Typography from '@material-ui/core/Typography';
-import AddressForm from './AddressForm';
+import ProcessDetailsForm from './ProcessDetailsForm';
 import PaymentForm from './PaymentForm';
 import Review from './Review';
 import Copyright from './Copyright';
@@ -54,24 +54,30 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-const steps = ['Shipping address', 'Payment details', 'Review your order'];
-
-function getStepContent(step) {
-    switch (step) {
-        case 0:
-            return <AddressForm />;
-        case 1:
-            return <PaymentForm />;
-        case 2:
-            return <Review />;
-        default:
-            throw new Error('Unknown step');
-    }
-}
+const steps = [
+    'Process details',
+    'Payment details',
+    'Review your registration'
+];
 
 function VehicleRegisterForm() {
     const classes = useStyles();
-    const [activeStep, setActiveStep] = React.useState(0);
+    const [activeStep, setActiveStep] = useState(0);
+    const [process, setProcess] = useState({
+        processType: 'REGISTRATION',
+        usesReservedPlate: false,
+        iban: '',
+        evb: '',
+        secCodeII: ''
+    });
+
+    const onProcessChange = (e) => {
+        const { name, value } = e.target;
+        setProcess((prevState) => ({
+            ...prevState,
+            [name]: value
+        }));
+    };
 
     const handleNext = () => {
         setActiveStep(activeStep + 1);
@@ -81,12 +87,30 @@ function VehicleRegisterForm() {
         setActiveStep(activeStep - 1);
     };
 
+    const getStepContent = (step) => {
+        switch (step) {
+            case 0:
+                return (
+                    <ProcessDetailsForm
+                        process={process}
+                        onProcessChange={onProcessChange}
+                    />
+                );
+            case 1:
+                return <PaymentForm process={process} />;
+            case 2:
+                return <Review />;
+            default:
+                throw new Error('Unknown step');
+        }
+    };
+
     return (
         <React.Fragment>
             <main className={classes.layout}>
                 <Paper className={classes.paper}>
                     <Typography component="h1" variant="h4" align="center">
-                        Register
+                        Register Vehicle
                     </Typography>
                     <Stepper
                         activeStep={activeStep}
@@ -105,11 +129,11 @@ function VehicleRegisterForm() {
                                     Thank you for your order.
                                 </Typography>
                                 <Typography variant="subtitle1">
-                                    Your order number is #2001539. We have
-                                    emailed your order confirmation, and will
-                                    send you an update when your order has
-                                    shipped.
+                                    Your process number is #2001539. An employee
+                                    will review your information. You can see
+                                    the state of your process on the dashboard.
                                 </Typography>
+                                <Button>Return To Dashboard</Button>
                             </React.Fragment>
                         ) : (
                             <React.Fragment>
@@ -130,7 +154,7 @@ function VehicleRegisterForm() {
                                         className={classes.button}
                                     >
                                         {activeStep === steps.length - 1
-                                            ? 'Place order'
+                                            ? 'Complete Registration'
                                             : 'Next'}
                                     </Button>
                                 </div>

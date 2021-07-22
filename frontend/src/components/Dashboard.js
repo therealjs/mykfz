@@ -14,7 +14,7 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import MenuIcon from '@material-ui/icons/Menu';
 import clsx from 'clsx';
 import React, { useEffect, useState } from 'react';
-import { Route, Switch } from 'react-router';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import LicensePlateReservationList from './LicensePlateReservationList';
 import LicensePlateReservationForm from './LicensePlateReservationForm';
 import VehicleForm from '../components/VehicleForm';
@@ -145,7 +145,10 @@ function Dashboard(props) {
         <h2>Loading</h2>
     ) : (
         <Switch>
-            <Route exact="true" path="/dashboard/vehicles">
+            <Route exact={true} path="/dashboard">
+                <Redirect to={'/dashboard/vehicles'} />
+            </Route>
+            <Route exact={true} path="/dashboard/vehicles">
                 <VehicleList user={user} />
             </Route>
             <Route path="/dashboard/vehicles/:vehicleId/register">
