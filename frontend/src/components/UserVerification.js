@@ -24,7 +24,8 @@ const WebcamCapture = () => {
     const [imageBuffer, setImageBuffer] = useState(null);
 
     const capture = React.useCallback(() => {
-        const imageSrc = webcamRef.current.getScreenshot();
+        const imageSrc = webcamRef.current.getScreenshot({width: 1920, height: 1080});;
+
         let imageSrcNoPrefix = imageSrc.replace(
             /^data:image\/[a-z]+;base64,/,
             ''
@@ -32,6 +33,7 @@ const WebcamCapture = () => {
         const imageBuffer = Buffer.from(imageSrcNoPrefix, 'base64');
         setImageSrc(imageSrc);
         setImageBuffer(imageSrc);
+        console.log("New Image captured")
     }, [webcamRef]);
 
     const log = React.useCallback(() => {
@@ -59,11 +61,13 @@ const WebcamCapture = () => {
     return (
         <div>
             <Webcam
+                imageSmoothing={false}
                 audio={false}
-                height={720}
+                height={540}
                 ref={webcamRef}
                 screenshotFormat="image/jpeg"
-                width={1280}
+                width={960}
+                screenshotQuality={1}
                 //videoConstraints={videoConstraints}
             />
             <Button onClick={capture}>Capture photo</Button>
