@@ -135,7 +135,7 @@ class LicensePlateReservationForm extends React.Component {
                 this.state.newLicensePlate,
                 30
             );
-            this.props.history.goBack();
+            this.props.history.push('/dashboard/plates');
         });
     }
 
@@ -183,7 +183,10 @@ class LicensePlateReservationForm extends React.Component {
                                             backgroundRepeat: 'no-repeat'
                                         }}
                                     >
-                                        <FormControl variant="outlined" style={{ width: '80px' }}>
+                                        <FormControl
+                                            variant="outlined"
+                                            style={{ width: '80px' }}
+                                        >
                                             <InputLabel>
                                                 {String('Area')}
                                             </InputLabel>

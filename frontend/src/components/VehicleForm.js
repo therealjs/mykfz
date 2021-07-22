@@ -21,7 +21,7 @@ import InfoIcon from '@material-ui/icons/Info';
 
 import { withRouter } from 'react-router-dom';
 
-import Page from './Page';
+import VehicleService from '../services/VehicleService';
 import UserService from '../services/UserService';
 import VINService from '../services/VINService';
 import { withStyles } from '@material-ui/styles';
@@ -135,8 +135,10 @@ class VehicleForm extends React.Component {
         vehicle.generalInspectionMonth = this.state.generalInspectionMonth;
         vehicle.generalInspectionYear = this.state.generalInspectionYear;
 
-        // TODO: create new vehicle instead
-        this.props.onSubmit(vehicle);
+        (vehicle._id
+            ? VehicleService.updateVehicle(vehicle)
+            : VehicleService.createVehicle(vehicle)
+        ).then(() => this.props.history.push('/dashboard/vehicles'));
     }
 
     render() {
@@ -172,6 +174,7 @@ class VehicleForm extends React.Component {
                             >
                                 <Grid item xs={12}>
                                     <TextField
+                                        variant="outlined"
                                         label="Owner"
                                         name="owner"
                                         id="OwnerField"
@@ -182,6 +185,7 @@ class VehicleForm extends React.Component {
                                 </Grid>
                                 <Grid item xs={12}>
                                     <TextField
+                                        variant="outlined"
                                         label="VIN (17)"
                                         id="VINField"
                                         name="vin"
@@ -206,6 +210,7 @@ class VehicleForm extends React.Component {
                                 </Grid>
                                 <Grid item xs={12} sm={6}>
                                     <TextField
+                                        variant="outlined"
                                         label="Make"
                                         required={true}
                                         fullWidth
@@ -216,6 +221,7 @@ class VehicleForm extends React.Component {
                                 </Grid>
                                 <Grid item xs={12} sm={6}>
                                     <TextField
+                                        variant="outlined"
                                         label="Model"
                                         required={true}
                                         fullWidth
@@ -254,6 +260,7 @@ class VehicleForm extends React.Component {
                                 {this.state.state == 'REGISTERED' ? (
                                     <Grid item xs={12}>
                                         <TextField
+                                            variant="outlined"
                                             label="License Plate"
                                             fullWidth
                                             value={this.state.licensePlate}
@@ -285,8 +292,11 @@ class VehicleForm extends React.Component {
                                     />
                                 </Grid>
                                 <Grid item xs={6} sm={3}>
-                                    <InputLabel>Month</InputLabel>
+                                    <InputLabel variant="outlined">
+                                        Month
+                                    </InputLabel>
                                     <Select
+                                        variant="outlined"
                                         label="Month"
                                         labelId="StateField"
                                         value={
@@ -312,8 +322,11 @@ class VehicleForm extends React.Component {
                                     </Select>
                                 </Grid>
                                 <Grid item xs={6} sm={3}>
-                                    <InputLabel>Year</InputLabel>
+                                    <InputLabel variant="outlined">
+                                        Year
+                                    </InputLabel>
                                     <Select
+                                        variant="outlined"
                                         label="Year"
                                         labelId="StateField"
                                         value={this.state.generalInspectionYear}
