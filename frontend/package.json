@@ -30,8 +30,10 @@
         "@material-ui/lab": "^4.0.0-alpha.58",
         "@material-ui/styles": "^4.11.4",
         "clsx": "^1.1.1",
+        "nfc-react-web": "^0.0.2",
         "pdfmake": "^0.1.71",
         "react": "16.8.4",
+        "react-checkmark": "^1.4.0",
         "react-currency-format": "^1.0.0",
         "react-dom": "16.8.4",
         "react-md": "1.2.11",
@@ -47,6 +49,6 @@
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "build": "webpack --config webpack.prod.js",
-        "start": "webpack-dev-server --host 0.0.0.0 --open chrome --config webpack.dev.js"
+        "start": "webpack-dev-server --open chrome --config webpack.dev.js"
     }
 }

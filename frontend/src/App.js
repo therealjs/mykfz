@@ -112,13 +112,7 @@ export default class App extends React.Component {
                 {
                     render: (props) => {
                         if (UserService.isAuthenticated()) {
-                            if (UserService.isVerified()) {
-                                // district users don't have to be verified
-                                return <Redirect to={'/dashboard'} />;
-                            } else {
-                                // unverified regular user --> needs to verify first
-                                return <UserVerificationView />;
-                            }
+                            return <UserVerificationView />;
                         } else {
                             return <Redirect to={'/login'} />;
                         }

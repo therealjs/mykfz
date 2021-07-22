@@ -19,19 +19,7 @@ import { withRouter } from 'react-router';
 import DistrictService from '../services/DistrictService';
 import UserService from '../services/UserService';
 import VehiclesTable from './VehiclesTable';
-
-function Copyright() {
-    return (
-        <Typography variant="body2" color="textSecondary" align="center">
-            {'Copyright © '}
-            <Link color="inherit" href="https://youtu.be/dQw4w9WgXcQ">
-                MyKfz
-            </Link>{' '}
-            {new Date().getFullYear()}
-            {'.'}
-        </Typography>
-    );
-}
+import Copyright from './Copyright';
 
 const drawerWidth = 240;
 
