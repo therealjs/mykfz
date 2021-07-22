@@ -27,18 +27,22 @@ const useStyles = makeStyles((theme) => ({
     },
     heroContent: {
         padding: theme.spacing(8, 0, 6)
-    }
+    },
+    cardHeader: {
+        backgroundColor:
+          theme.palette.type === 'light' ? theme.palette.grey[200] : theme.palette.grey[700],
+          height: 100
+      },
 }));
 
 const tiers = [
     {
         title: 'Registration & Deregistration',
-        price: 'xy',
+        price:'7,80€ - 27€', // 10,40€',
         description: [
             '10 users included',
             '2 GB of storage',
             'Help center access',
-            'Email support'
         ],
         buttonText: 'Sign up for free',
         buttonVariant: 'outlined'
@@ -50,8 +54,7 @@ const tiers = [
         description: [
             'Additional services:',
             'Vehicle administration',
-            'Process overview',
-            'License plate monitoring'
+            'Customer service'
         ],
         buttonText: 'Get started',
         buttonVariant: 'contained'
@@ -62,10 +65,9 @@ const tiers = [
         description: [
             '50 users included',
             '30 GB of storage',
-            'Help center access',
-            'If used 1.5'
+            '',
         ],
-        buttonText: 'Contact us',
+        buttonText: 'Sign up for free',
         buttonVariant: 'outlined'
     }
 ];
@@ -85,7 +87,7 @@ export default function LandingPage({ offer }) {
             <Offering></Offering>
             <div id="pricing">
                 <Container
-                    maxWidth="sm"
+                    maxWidth="md"
                     component="main"
                     className={classes.heroContent}
                 >
@@ -103,11 +105,12 @@ export default function LandingPage({ offer }) {
                         align="center"
                         color="textSecondary"
                         component="p"
+                        maxwidth= "sm"
                     >
                         All myKFZ-specific services are provided for free.
                         Processes offered together with the respective districts
-                        cost the same amount as if you would do them at the
-                        district office.
+                        cost the same amount as if you would initiate them at the
+                        district office. 
                     </Typography>
                 </Container>
                 <Container maxWidth="md" component="main">
@@ -118,7 +121,7 @@ export default function LandingPage({ offer }) {
                                 item
                                 key={tier.title}
                                 xs={12}
-                                sm={tier.title === 'Enterprise' ? 12 : 6}
+                                //sm={tier.title === 'License plate reservation' ? 12 : 6}
                                 md={4}
                             >
                                 <Card>
@@ -131,21 +134,17 @@ export default function LandingPage({ offer }) {
                                         subheaderTypographyProps={{
                                             align: 'center'
                                         }}
-                                        action={
-                                            tier.title === 'Pro' ? (
-                                                <StarIcon />
-                                            ) : null
-                                        }
                                         className={classes.cardHeader}
                                     />
                                     <CardContent>
                                         <div className={classes.cardPricing}>
                                             <Typography
                                                 component="h2"
-                                                variant="h3"
+                                                variant="h6"
                                                 color="textPrimary"
+                                                align="center"
                                             >
-                                                ${tier.price}
+                                                {tier.price}
                                             </Typography>
                                             <Typography
                                                 variant="h6"
@@ -178,8 +177,20 @@ export default function LandingPage({ offer }) {
                             </Grid>
                         ))}
                     </Grid>
+                    <Container
+                maxWidth="md"
+                component="main"
+                align="center"
+                className={classes.heroContent}>
+                <Button
+                                                            variant="contained"
+                                                            color="primary"        
+                                        >
+                                            GET Started now
+                                        </Button>
+                                        </Container>
                 </Container>
-            </div>
+               </div>
         </div>
     );
 }
