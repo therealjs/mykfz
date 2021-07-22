@@ -14,7 +14,8 @@ import { DistrictLoginView } from './views/DistrictLoginView';
 import { UserSignupView } from './views/UserSignupView';
 import { LandingPageView } from './views/LandingPageView';
 
-import { DashboardView } from './views/DashboardView';
+import DashboardView from './views/DashboardView';
+import UserVerificationView from './views/UserVerificationView';
 import { VehicleDetailView } from './views/VehicleDetailView';
 import { VehicleRegisterView } from './views/VehicleRegisterView';
 import { VehicleDeregisterView } from './views/VehicleDeregisterView';
@@ -45,7 +46,12 @@ export default class App extends React.Component {
                 {
                     render: (props) => {
                         if (UserService.isAuthenticated()) {
-                            return <DashboardView />;
+                            if (UserService.isVerified()) {
+                                return <DashboardView />;
+                            } else {
+                                // unverified regular user --> needs to verify first
+                                return <Redirect to={'/verification'} />;
+                            }
                         } else {
                             return <Redirect to={'/login'} />;
                         }
@@ -102,6 +108,16 @@ export default class App extends React.Component {
                         }
                     },
                     path: '/addLicensePlateReservation'
+                },
+                {
+                    render: (props) => {
+                        if (UserService.isAuthenticated()) {
+                            return <UserVerificationView />;
+                        } else {
+                            return <Redirect to={'/login'} />;
+                        }
+                    },
+                    path: '/verification'
                 },
 
                 //{ component: UserLoginView, path: '/login' },

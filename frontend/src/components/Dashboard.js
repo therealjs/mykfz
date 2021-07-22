@@ -24,19 +24,7 @@ import UserService from '../services/UserService';
 import UserProfile from './UserProfile';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import { withRouter } from 'react-router';
-
-function Copyright() {
-    return (
-        <Typography variant="body2" color="textSecondary" align="center">
-            {'Copyright © '}
-            <Link color="inherit" href="https://youtu.be/dQw4w9WgXcQ">
-                MyKfz
-            </Link>{' '}
-            {new Date().getFullYear()}
-            {'.'}
-        </Typography>
-    );
-}
+import Copyright from './Copyright';
 
 const drawerWidth = 240;
 

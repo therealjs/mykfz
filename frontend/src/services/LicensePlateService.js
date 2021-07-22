@@ -6,7 +6,7 @@ export default class LicensePlateService {
     constructor() {}
 
     static baseURL() {
-        return 'http://localhost:3000/licensePlates';
+        return `http://${location.hostname}:3000/licensePlates`;
     }
 
     static getFreePlatesForPrefix(prefix) {

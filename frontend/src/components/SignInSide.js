@@ -14,19 +14,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import UserService from '../services/UserService';
 import { useHistory } from 'react-router-dom';
-
-function Copyright() {
-    return (
-        <Typography variant="body2" color="textSecondary" align="center">
-            {'Copyright © '}
-            <Link color="inherit" href="https://youtu.be/dQw4w9WgXcQ">
-                MyKfz
-            </Link>{' '}
-            {new Date().getFullYear()}
-            {'.'}
-        </Typography>
-    );
-}
+import Copyright from './Copyright';
 
 const useStyles = makeStyles((theme) => ({
     root: {
