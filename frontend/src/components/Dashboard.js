@@ -1,5 +1,4 @@
 import AppBar from '@material-ui/core/AppBar';
-import Badge from '@material-ui/core/Badge';
 import Box from '@material-ui/core/Box';
 import Container from '@material-ui/core/Container';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -20,13 +19,11 @@ import LicensePlateReservationList from './LicensePlateReservationList';
 import LicensePlateReservationForm from './LicensePlateReservationForm';
 import VehicleForm from '../components/VehicleForm';
 import { mainListItems } from './listItems';
-import { VehicleList } from './VehicleList';
+import VehicleList from './VehicleList';
 import UserService from '../services/UserService';
-import VehicleService from '../services/VehicleService';
 import UserProfile from './UserProfile';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import { withRouter } from 'react-router';
-import DistrictService from '../services/DistrictService';
 
 function Copyright() {
     return (
@@ -126,8 +123,6 @@ function Dashboard(props) {
     const classes = useStyles();
     const [open, setOpen] = useState(true);
     const [user, setUser] = useState({});
-    const [vehicles, setVehicles] = useState([]);
-    const [district, setDistrict] = useState({});
 
     const logout = () => {
         UserService.logout();
@@ -149,11 +144,7 @@ function Dashboard(props) {
     useEffect(() => {
         const fetchData = async () => {
             let userResult = await UserService.getUserDetails();
-            let vehiclesResult = await VehicleService.getVehiclesForUser(
-                userResult._id
-            );
             setUser(userResult);
-            setVehicles(vehiclesResult);
         };
 
         fetchData();
@@ -216,7 +207,7 @@ function Dashboard(props) {
                 <Container maxWidth="lg" className={classes.container}>
                     <Switch>
                         <Route path="/dashboard/vehicles">
-                            <VehicleList vehicles={vehicles} />
+                            <VehicleList user={user} />
                         </Route>
                         <Route path="/dashboard/add">
                             <VehicleForm />
