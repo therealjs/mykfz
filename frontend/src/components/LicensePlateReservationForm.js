@@ -183,9 +183,9 @@ class LicensePlateReservationForm extends React.Component {
                                             backgroundRepeat: 'no-repeat'
                                         }}
                                     >
-                                        <FormControl style={{ width: '80px' }}>
+                                        <FormControl variant="outlined" style={{ width: '80px' }}>
                                             <InputLabel>
-                                                {String('District')}
+                                                {String('Area')}
                                             </InputLabel>
 
                                             <Select
@@ -210,6 +210,7 @@ class LicensePlateReservationForm extends React.Component {
                                         </FormControl>
                                         <FormControl style={{ width: '80px' }}>
                                             <TextField
+                                                variant="outlined"
                                                 label="Letters"
                                                 required={true}
                                                 name="letters"
@@ -228,6 +229,7 @@ class LicensePlateReservationForm extends React.Component {
                                         </FormControl>
                                         <FormControl style={{ width: '80px' }}>
                                             <TextField
+                                                variant="outlined"
                                                 label="Digits"
                                                 required={true}
                                                 name="digits"
