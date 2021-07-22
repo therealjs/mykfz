@@ -1,19 +1,20 @@
 'use strict';
 const path = require('path');
 
-import VehicleService from './VehicleService';
-import UserService from './UserService';
-import DistrictService from './DistrictService';
 //import pdfmake
 import pdfMake from 'pdfmake/build/pdfmake.js';
 import pdfFonts from 'pdfmake/build/vfs_fonts.js';
-
 import {
     base64MyKfzLogo,
     base64SebisLogo,
     base64TUMLogo
 } from '../../resources/base64Images';
+import DistrictService from './DistrictService';
+import HttpService from './HttpService';
 import LicensePlateService from './LicensePlateService';
+import UserService from './UserService';
+import VehicleService from './VehicleService';
+
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 const labelsForPdf = {
@@ -49,13 +50,19 @@ const dataNotToPrint = [
 ];
 
 export default class ProcessService {
+    static baseURL() {
+        return 'http://localhost:3000';
+    }
+
     static async generateProcessStatusPDF(vehicleId, processId) {
         // get data for document
         let processData = await VehicleService.getVehicleProcess(
             vehicleId,
             processId
         );
-        let userData = await UserService.getUserDetails();
+        const vehicle = await VehicleService.getVehicle(vehicleId);
+        const owner = vehicle.owner;
+        let userData = await UserService.getUser(owner);
         let districtData = await DistrictService.getDistrict(
             userData.address.district
         );
@@ -168,5 +175,40 @@ export default class ProcessService {
             }
         });
         return document;
+    }
+
+    static async accceptProcess(vehicleId, processId) {
+        const processUpdate = {
+            _id: processId,
+            state: 'ACCEPTED'
+        };
+        let res = await this.updateProcess(vehicleId, processUpdate);
+        return res;
+    }
+
+    static async rejectProcess(vehicleId, processId) {
+        const processUpdate = {
+            _id: processId,
+            state: 'REJECTED'
+        };
+        let res = await this.updateProcess(vehicleId, processUpdate);
+        return res;
+    }
+
+    static updateProcess(vehicleId, process) {
+        return new Promise((resolve, reject) => {
+            HttpService.put(
+                `${this.baseURL()}/vehicles/${vehicleId}/processes/${
+                    process._id
+                }`,
+                process,
+                function (data) {
+                    resolve(data);
+                },
+                function (textStatus) {
+                    reject(textStatus);
+                }
+            );
+        });
     }
 }
