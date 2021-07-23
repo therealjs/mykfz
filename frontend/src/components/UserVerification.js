@@ -13,6 +13,7 @@ import {
 import { green, red } from '@material-ui/core/colors';
 import Webcam from 'react-webcam';
 import Tesseract from 'tesseract.js';
+import { Link } from 'react-router-dom';
 import CheckIcon from '@material-ui/icons/Check';
 import ClearIcon from '@material-ui/icons/Clear';
 import PhotoIcon from '@material-ui/icons/PhotoCamera';
@@ -20,6 +21,7 @@ import LoopIcon from '@material-ui/icons/Loop';
 import AddIcon from '@material-ui/icons/Add';
 import RemoveIcon from '@material-ui/icons/Remove';
 import UserService from '../services/UserService';
+import { Checkmark } from 'react-checkmark';
 
 const useStyles = makeStyles((theme) => ({
     buttonSuccess: {
@@ -37,6 +39,10 @@ const useStyles = makeStyles((theme) => ({
     slider: {
         width: 200,
       },
+    
+    submit: {
+        margin: theme.spacing(3, 0, 2)
+    },
   }));
 
 
@@ -56,8 +62,13 @@ const WebcamCapture = () => {
             setUser(userResult);
             console.log(userResult);
         };
+
         fetchUserProfileData();
     }, []);
+
+    function verifyUser() {
+        UserService.verify();
+    }
 
     // verified states
     // -1: verification failed
@@ -131,6 +142,7 @@ const WebcamCapture = () => {
       };
 
     function recognize() {
+        setVerified(0);
         console.log("Start recognize")
         setRunning(true);
         Tesseract.recognize(monochrome, 'eng', {
@@ -141,6 +153,7 @@ const WebcamCapture = () => {
 
             if (matchesUser(data.text)) {
                 setVerified(3);
+                verifyUser();
             } else {
                 setVerified(-1);
             }
@@ -171,100 +184,106 @@ const WebcamCapture = () => {
                 );
             case 3:
                 return (
-                    <div>
-                        <Fab
-                            color="primary"
-                            className={classes.buttonSuccess}
-                            >
-                            <CheckIcon />
-                        </Fab>
-                        <Button
-                        color="primary"
-                        className={classes.buttonSuccess}
-                        variant="contained"
-                            
-                        onClick={console.log("Go to Dashboard")}>Continue to Dashboard</Button>
-                    </div>
-                );
-        }
-      }
-
-    return (
-        <Grid container spacing={2} alignItems="center" justify="center">
-            <Grid item xs={12} lg={6}>
-                <Grid container direction="column" spacing={2} justifyContent="center" alignItems="center">
-                    <Grid item>
-                        <Webcam
-                            imageSmoothing={false}
-                            audio={false}
-                            height={300}
-                            ref={webcamRef}
-                            screenshotFormat="image/jpeg"
-                            width={600}
-                            screenshotQuality={1}
-                        />
-
-                    </Grid>
-                    <Grid item>
-                    <Button onClick={capture} variant="contained"
-                            color="primary" startIcon={<PhotoIcon />}>Capture</Button>
-                </Grid>
-                </Grid>
-            </Grid>
-
-            {
-                monochrome != null ?
-                <Grid item xs={12} lg={6}>
                     <Grid container direction="column" spacing={2} justifyContent="center" alignItems="center">
                         <Grid item>
-                            <img style={{width: "500px"}} src={monochrome} alt="Image" />
+                            <Checkmark size="96px" className={classes.submit} />
                         </Grid>
                         <Grid item>
-                            <div className={classes.slider}>
-                                <Typography id="continuous-slider" gutterBottom>
-                                    Brightness
-                                </Typography>
-                                <Grid container spacing={2}>
-                                    <Grid item>
-                                    <RemoveIcon />
-                                    </Grid>
-                                    <Grid item xs>
-                                    <Slider
-                                        step={5}
-                                        value={dropOff}
-                                        onChange={handleChange}
-                                        min={200}
-                                        max={450}
-                                    />
-                                    </Grid>
-                                    <Grid item>
-                                    <AddIcon />
-                                    </Grid>
-                                </Grid>
-                            </div>
+                            <Button
+                                color="primary"
+                                component={Link}
+                                to="/dashboard"
+                                variant="contained"
+                                className={classes.buttonSuccess}
+                            >
+                                Continue To Dashboard
+                            </Button>
                         </Grid>
-                        <Grid item>
-                            <Button onClick={recognize} variant="contained"
-                                    color="primary" startIcon={<LoopIcon />}>Recognize</Button>
-                        </Grid>
+                    </Grid>
+                );
+            }
+        }
 
+    return (
+        <Grid container direction="column" spacing={2} justify="center" alignItems="center">
+            <Grid item>
+            <Grid container spacing={2} alignItems="flex-start" justify="center">
+                <Grid item>
+                    <Grid container direction="column" spacing={2} justify="center" alignItems="center">
+                        <Grid item>
+                            <Webcam
+                                imageSmoothing={false}
+                                audio={false}
+                                height={300}
+                                ref={webcamRef}
+                                screenshotFormat="image/jpeg"
+                                width={600}
+                                screenshotQuality={1}
+                            />
+
+                        </Grid>
+                        <Grid item>
+                        <Button onClick={capture} variant="contained"
+                                color="primary" startIcon={<PhotoIcon />}>Capture</Button>
+                    </Grid>
                     </Grid>
                 </Grid>
 
-                 : []
-            }
-            {
-                running ? 
+                {
+                    monochrome != null ?
+                    <Grid item>
+                        <Grid container direction="column" spacing={2} justify="center" alignItems="center">
+                            <Grid item>
+                                <img style={{width: "450px"}} src={monochrome} alt="Image" />
+                            </Grid>
+                            <Grid item>
+                                <div className={classes.slider}>
+                                    <Typography id="continuous-slider" gutterBottom>
+                                        Brightness
+                                    </Typography>
+                                    <Grid container spacing={2}>
+                                        <Grid item>
+                                        <RemoveIcon />
+                                        </Grid>
+                                        <Grid item xs>
+                                        <Slider
+                                            step={5}
+                                            value={dropOff}
+                                            onChange={handleChange}
+                                            min={200}
+                                            max={450}
+                                        />
+                                        </Grid>
+                                        <Grid item>
+                                        <AddIcon />
+                                        </Grid>
+                                    </Grid>
+                                </div>
+                            </Grid>
+                            <Grid item>
+                                <Button onClick={recognize} variant="contained"
+                                        color="primary" startIcon={<LoopIcon />}>Recognize</Button>
+                            </Grid>
+
+                        </Grid>
+                    </Grid>
+
+                    : []
+                }
+            </Grid>
+            </Grid>
+                {
+                    running ? 
+                    <Grid item xs>
+                        {<CircularProgress size={56}/>}
+                        
+                    </Grid> 
+                    :[]
+                }
                 <Grid item >
-                    {<CircularProgress size={56}/>}
-                    
+                    <Decision/>
+                        
                 </Grid> 
-                :[]
-            }
-            <Grid item >
-                <Decision/>
-                    
-            </Grid> 
         </Grid>
     );
 };
