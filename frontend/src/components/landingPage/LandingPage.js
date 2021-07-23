@@ -62,8 +62,7 @@ const tiers = [
         title: 'Deregistration',
         price:'5,70€',
         description: [
-            'Possible for cars licensed after 2015',
-            'Use the security code on your plate',
+            'Possible for cars licensed after 2015 that feature the new security code',
             'Cheaper than on site',
         ],
     },
@@ -79,8 +78,8 @@ const tiers = [
         title: 'License plate reservation',
         price: '10,20€',
         description: [
+            'Only pay fee after using the plate during registration, otherwise it is free',
             'Reserve up to 5 plates for 30 days',
-            'Only pay fee after using the plate during registration',
         ]
     }
 ];
@@ -130,9 +129,13 @@ export default function LandingPage({ offer }) {
                     </Typography>
                 </Container>
             </div>
-            <div>
+            <Container
+                    maxWidth="xl"
+                    component="main"
+                    className={classes.heroContent}
+                >
                 <Offering className={classes.offering}/>
-            </div>
+            </Container>
             <div id="pricing">
                 <Container
                     maxWidth="md"
@@ -161,7 +164,7 @@ export default function LandingPage({ offer }) {
                         district office. 
                     </Typography>
                 </Container>
-                <Container maxWidth="md" component="main">
+                <Container maxWidth="xl" component="main">
                     <Grid container spacing={5} alignItems="flex-end">
                         {tiers.map((tier) => (
                             <Grid
