@@ -1,5 +1,6 @@
 'use strict';
 
+const mongoose = require('mongoose');
 const UserModel = require('../models/user');
 const bcrypt = require('bcryptjs');
 
@@ -160,6 +161,41 @@ const createLicensePlateReservation = (req, res) => {
     }
 };
 
+const deleteLicensePlateReservation = (req, res) => {
+    try {
+        const userId = req.params.userId;
+        const reservationId = mongoose.mongo.ObjectID(
+            req.params.plateReservationId
+        );
+
+        console.log(`deleting reservation`);
+
+        UserModel.findByIdAndUpdate(
+            userId,
+            {
+                $pull: { licensePlateReservations: { _id: reservationId } }
+            },
+            function (err, model) {
+                if (err) {
+                    console.err(err);
+                    return res.status(500).json({
+                        error: 'Internal server error',
+                        message: err.message
+                    });
+                } else {
+                    console.log('deleted reservation successfully');
+                    return res.status(200).json(model);
+                }
+            }
+        );
+    } catch (err) {
+        return res.status(500).json({
+            error: 'Internal server error',
+            message: err.message
+        });
+    }
+};
+
 module.exports = {
     create,
     read,
@@ -167,5 +203,6 @@ module.exports = {
     remove,
     list,
     listLicensePlateReservations,
-    createLicensePlateReservation
+    createLicensePlateReservation,
+    deleteLicensePlateReservation
 };
