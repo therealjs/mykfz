@@ -22,6 +22,7 @@ import { VehicleDeregisterView } from './views/VehicleDeregisterView';
 import { LicensePlateReservationView } from './views/LicensePlateReservationView';
 import { VehicleFormView } from './views/VehicleFormView';
 import Dashboard from './components/Dashboard';
+import DistrictSignInSide from './components/DistrictSignInSide';
 import SignInSide from './components/SignInSide';
 import SignUpSide from './components/SignUpSide';
 import UserSignup from './components/UserSignup';
@@ -47,7 +48,7 @@ export default class App extends React.Component {
                 {
                     render: (props) => {
                         if (UserService.isAuthenticated()) {
-                            if (UserService.isVerified()) {
+                            if (UserService.isVerified() || UserService.isDistrictUser()) {
                                 return <DashboardView />;
                             } else {
                                 // unverified regular user --> needs to verify first
@@ -122,7 +123,7 @@ export default class App extends React.Component {
                 },
 
                 //{ component: UserLoginView, path: '/login' },
-                { component: DistrictLoginView, path: '/districtLogin' },
+                { component: DistrictSignInSide, path: '/districtLogin' },
                 { component: SignInSide, path: '/login' },
                 { component: SignUpSide, path: '/register' },
                 //TODO Remove this
