@@ -132,10 +132,10 @@ export default class ProcessService {
                     {
                         text:
                             licensePlate.areaCode +
-                            '-' +
-                            licensePlate.digits +
-                            '-' +
-                            licensePlate.letters,
+                            ' - ' +
+                            licensePlate.letters.toUpperCase() +
+                            ' ' +
+                            licensePlate.digits,
                         width: 300
                     }
                 ],

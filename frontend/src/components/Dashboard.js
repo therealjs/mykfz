@@ -26,6 +26,7 @@ import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import { withRouter } from 'react-router';
 import Copyright from './Copyright';
 import VehicleRegisterForm from './VehicleRegisterForm';
+import VehicleDeregisterForm from './VehicleDeregisterForm';
 
 const drawerWidth = 240;
 
@@ -153,6 +154,9 @@ function Dashboard(props) {
             </Route>
             <Route path="/dashboard/vehicles/:vehicleId/register">
                 <VehicleRegisterForm user={user} />
+            </Route>
+            <Route path="/dashboard/vehicles/:vehicleId/deregister">
+                <VehicleDeregisterForm user={user} />
             </Route>
             <Route path="/dashboard/add">
                 <VehicleForm />

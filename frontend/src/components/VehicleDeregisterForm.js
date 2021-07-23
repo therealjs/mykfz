@@ -57,7 +57,7 @@ const steps = [
     'Review your registration'
 ];
 
-function VehicleRegisterForm({ user }) {
+function VehicleDeregisterForm({ user }) {
     const classes = useStyles();
     let { vehicleId } = useParams();
     const history = useHistory();
@@ -66,14 +66,12 @@ function VehicleRegisterForm({ user }) {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [activeStep, setActiveStep] = useState(0);
     const [process, setProcess] = useState({
-        processType: 'REGISTRATION',
+        processType: 'DEREGISTRATION',
         date: Date(),
         state: 'PENDING',
         info: {
-            licensePlate: '',
-            iban: '',
-            evb: '',
-            secCodeII: ''
+            secCodeI: '',
+            plateCode: ''
         },
         isPaid: false
     });
@@ -147,23 +145,7 @@ function VehicleRegisterForm({ user }) {
             await VehicleService.createProcess(vehicleId, process);
             setIsSubmitting(false);
             setActiveStep(activeStep + 1);
-            // timer.current = window.setTimeout(() => {
-            //     setSuccess(true);
-            //     setLoading(false);
-            // }, 2000);
         }
-
-        // // delete used plate
-        // // TODO what to do if process is rejected?
-        // setIsSubmitting(true);
-        // // await LicensePlateService.deleteLicensePlateReservation(
-        // //     user._id,
-        // //     process.licensePlate
-        // // );
-
-        // await VehicleService.createProcess(vehicleId, process);
-        // setIsSubmitting(false);
-        // setActiveStep(activeStep + 1);
     };
 
     const isProcessComplete = (process) => {
@@ -231,7 +213,7 @@ function VehicleRegisterForm({ user }) {
             <main className={classes.layout}>
                 <Paper className={classes.paper}>
                     <Typography component="h1" variant="h4" align="center">
-                        Register Vehicle
+                        Deregister Vehicle
                     </Typography>
                     <Stepper
                         activeStep={activeStep}
@@ -279,16 +261,6 @@ function VehicleRegisterForm({ user }) {
                                         </Button>
                                     )}
                                     {getStepButton(activeStep)}
-                                    {/* <Button
-                                        variant="contained"
-                                        color="primary"
-                                        onClick={handleNext}
-                                        className={classes.button}
-                                    >
-                                        {activeStep === steps.length - 1
-                                            ? 'Complete Registration'
-                                            : 'Next'}
-                                    </Button> */}
                                 </div>
                             </React.Fragment>
                         )}
@@ -299,4 +271,4 @@ function VehicleRegisterForm({ user }) {
     );
 }
 
-export default withRouter(VehicleRegisterForm);
+export default withRouter(VehicleDeregisterForm);

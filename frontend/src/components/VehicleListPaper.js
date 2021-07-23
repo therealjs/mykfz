@@ -110,6 +110,13 @@ class VehicleListPaper extends React.Component {
             ) : (
                 <LicensePlate vehicleState={vehicle.state} />
             );
+
+        const state_colors = {
+            PENDING: 'yellow',
+            ACCEPTED: 'lightgreen',
+            REJECTED: 'lightsalmon'
+        };
+
         return (
             <Grid item xs={12} sm={6} md={6}>
                 <Card
@@ -171,7 +178,10 @@ class VehicleListPaper extends React.Component {
                                         <TableCell align="right">
                                             Last Update
                                         </TableCell>
-                                        <TableCell>Action</TableCell>
+                                        <TableCell align="right">
+                                            State
+                                        </TableCell>
+                                        <TableCell>Print</TableCell>
                                     </TableRow>
                                 </TableHead>
                                 <TableBody>
@@ -186,6 +196,17 @@ class VehicleListPaper extends React.Component {
                                                 ).toLocaleString('de-DE', {
                                                     timeZone: 'UTC'
                                                 })}
+                                            </TableCell>
+                                            <TableCell>
+                                                <Chip
+                                                    style={{
+                                                        backgroundColor:
+                                                            state_colors[
+                                                                process.state
+                                                            ]
+                                                    }}
+                                                    label={process.state}
+                                                />
                                             </TableCell>
                                             <TableCell>
                                                 <IconButton
@@ -236,7 +257,7 @@ class VehicleListPaper extends React.Component {
                     <Button
                         variant="contained"
                         component={Link}
-                        to={`/register/${this.props.vehicle._id}`}
+                        to={`/dashboard/vehicles/${this.props.vehicle._id}/register`}
                     >
                         Reregister
                     </Button>

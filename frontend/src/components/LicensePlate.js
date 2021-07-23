@@ -2,7 +2,7 @@ import React from 'react';
 
 const LicensePlate = ({ vehicleState, licensePlate }) => {
     const plateText =
-        vehicleState == 'REGISTERED'
+        !vehicleState || vehicleState == 'REGISTERED'
             ? licensePlate.areaCode +
               ' - ' +
               licensePlate.letters.toUpperCase() +
