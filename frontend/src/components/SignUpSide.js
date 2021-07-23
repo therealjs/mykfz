@@ -231,7 +231,7 @@ export default function SignUpSide(props) {
     return (
         <Grid container component="main" className={classes.root}>
             <CssBaseline />
-            <Grid item sm={false} md={7} className={classes.image} />
+            <Grid item xs={false} sm={4} md={7} className={classes.image} />
             <Grid
                 item
                 sm={12}

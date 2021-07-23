@@ -5,7 +5,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Divider from '@material-ui/core/Divider';
 import Drawer from '@material-ui/core/Drawer';
 import IconButton from '@material-ui/core/IconButton';
-import Link from '@material-ui/core/Link';
+import Grid from '@material-ui/core/Grid';
 import List from '@material-ui/core/List';
 import { makeStyles } from '@material-ui/core/styles';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -26,6 +26,7 @@ import UserVerification from './UserVerification';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import { withRouter } from 'react-router';
 import Copyright from './Copyright';
+import logo from '../../resources/logo_small.png';
 
 const drawerWidth = 240;
 
@@ -65,7 +66,7 @@ const useStyles = makeStyles((theme) => ({
         display: 'none'
     },
     title: {
-        flexGrow: 1
+        marginBottom: "5px"
     },
     drawerPaper: {
         position: 'relative',
@@ -159,15 +160,23 @@ function Dashboard(props) {
                     >
                         <MenuIcon />
                     </IconButton>
-                    <Typography
-                        component="h1"
-                        variant="h6"
-                        color="inherit"
-                        noWrap
-                        className={classes.title}
-                    >
-                        MyKfz Dashboard
-                    </Typography>
+                    <Grid container style={{marginRight: "auto"}} alignItems="center" spacing={1}>
+                        <Grid item>
+                            <img src={logo} style={{height: "35px"}} alt="logo"/>
+                        </Grid>
+                        <Grid item>
+                            <Typography
+                            component="h1"
+                            variant="h6"
+                            color="inherit"
+                            noWrap
+                            className={classes.title}
+                            >
+                            Dashboard
+                            </Typography>
+                        </Grid>
+                    </Grid>
+                    
                     <IconButton color="inherit" onClick={logout}>
                         <ExitToAppIcon color="inherit" />
                     </IconButton>
