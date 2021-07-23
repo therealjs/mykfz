@@ -1,6 +1,15 @@
 import React from 'react';
 
-const LicensePlate = (props) => {
+const LicensePlate = ({ vehicleState, licensePlate }) => {
+    const plateText =
+        vehicleState == 'REGISTERED'
+            ? licensePlate.areaCode +
+              ' - ' +
+              licensePlate.letters.toUpperCase() +
+              ' ' +
+              licensePlate.digits
+            : vehicleState;
+
     return (
         <div
             style={{
@@ -21,11 +30,7 @@ const LicensePlate = (props) => {
                     fontSize: '20px'
                 }}
             >
-                {props.licensePlate.areaCode +
-                    ' - ' +
-                    props.licensePlate.letters.toUpperCase() +
-                    ' ' +
-                    props.licensePlate.digits}
+                {plateText}
             </div>
         </div>
     );

@@ -193,7 +193,7 @@ const ProcessesTableRow = ({ vehicleId, process }) => {
                 <ProcessDetailsCell vehicleId={vehicleId} process={process} />
             </TableCell>
             <TableCell align="right">
-                {processState == 'NEW' ? (
+                {processState == 'NEW' || processState == 'PENDING' ? (
                     <ButtonGroup variant="contained">
                         <Button disabled={isSending} onClick={acceptProcess}>
                             ACCEPT

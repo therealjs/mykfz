@@ -29,6 +29,7 @@ import TableRow from '@material-ui/core/TableRow';
 
 import LicensePlateService from '../services/LicensePlateService';
 import ProcessService from '../services/ProcessService';
+import Chip from '@material-ui/core/Chip';
 
 const makeLogos = require('../../resources/carLogos');
 
@@ -99,7 +100,16 @@ class VehicleListPaper extends React.Component {
     }
 
     render() {
-        const { classes } = this.props;
+        const { classes, vehicle } = this.props;
+        const cardContent =
+            vehicle.state == 'REGISTERED' ? (
+                <LicensePlate
+                    vehicleState={vehicle.state}
+                    licensePlate={this.state.licensePlate}
+                />
+            ) : (
+                <LicensePlate vehicleState={vehicle.state} />
+            );
         return (
             <Grid item xs={12} sm={6} md={6}>
                 <Card
@@ -114,36 +124,26 @@ class VehicleListPaper extends React.Component {
                             <Avatar
                                 //variant="square"
                                 aria-label="make"
-                                src={makeLogos[this.props.vehicle.make]}
+                                src={makeLogos[vehicle.make]}
                             />
                         }
                         action={
                             <IconButton
                                 component={Link}
-                                to={`/edit/${this.props.vehicle._id}`}
+                                to={`/edit/${vehicle._id}`}
                             >
                                 <EditIcon />
                             </IconButton>
                         }
-                        title={
-                            this.props.vehicle.make +
-                            ' ' +
-                            this.props.vehicle.model
-                        }
-                        subheader={this.props.vehicle.vin}
+                        title={vehicle.make + ' ' + vehicle.model}
+                        subheader={vehicle.vin}
                     />
-                    {
-                        <CardContent>
-                            <LicensePlate
-                                licensePlate={this.state.licensePlate}
-                            />
-                        </CardContent>
-                    }
+                    {<CardContent>{cardContent}</CardContent>}
                     <CardActions
                         disableSpacing
                         style={{ alignContent: 'center' }}
                     >
-                        {this.renderProcess(this.props.vehicle.state)}
+                        {this.renderProcess(vehicle.state)}
                         <IconButton
                             className={clsx(classes.expand, {
                                 [classes.expandOpen]: this.state.expanded
@@ -175,33 +175,31 @@ class VehicleListPaper extends React.Component {
                                     </TableRow>
                                 </TableHead>
                                 <TableBody>
-                                    {this.props.vehicle.processes.map(
-                                        (process) => (
-                                            <TableRow key={process._id}>
-                                                <TableCell scope="row">
-                                                    {process.processType}
-                                                </TableCell>
-                                                <TableCell align="right">
-                                                    {new Date(
-                                                        Date.parse(process.date)
-                                                    ).toLocaleString('de-DE', {
-                                                        timeZone: 'UTC'
-                                                    })}
-                                                </TableCell>
-                                                <TableCell>
-                                                    <IconButton
-                                                        onClick={() =>
-                                                            this.createPdfAndDownload(
-                                                                process._id
-                                                            )
-                                                        }
-                                                    >
-                                                        <PrintIcon />
-                                                    </IconButton>
-                                                </TableCell>
-                                            </TableRow>
-                                        )
-                                    )}
+                                    {vehicle.processes.map((process) => (
+                                        <TableRow key={process._id}>
+                                            <TableCell scope="row">
+                                                {process.processType}
+                                            </TableCell>
+                                            <TableCell align="right">
+                                                {new Date(
+                                                    Date.parse(process.date)
+                                                ).toLocaleString('de-DE', {
+                                                    timeZone: 'UTC'
+                                                })}
+                                            </TableCell>
+                                            <TableCell>
+                                                <IconButton
+                                                    onClick={() =>
+                                                        this.createPdfAndDownload(
+                                                            process._id
+                                                        )
+                                                    }
+                                                >
+                                                    <PrintIcon />
+                                                </IconButton>
+                                            </TableCell>
+                                        </TableRow>
+                                    ))}
                                 </TableBody>
                             </Table>
                         </CardContent>

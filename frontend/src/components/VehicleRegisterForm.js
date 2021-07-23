@@ -6,7 +6,7 @@ import Stepper from '@material-ui/core/Stepper';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import React, { useState, useEffect } from 'react';
-import { withRouter } from 'react-router';
+import { withRouter, Link } from 'react-router';
 import { useParams } from 'react-router-dom';
 import PaymentForm from './PaymentForm';
 import ProcessDetailsForm from './ProcessDetailsForm';
@@ -62,13 +62,18 @@ function VehicleRegisterForm() {
     let { vehicleId } = useParams();
 
     const [loading, setLoading] = useState(true);
+    const [isSubmitting, setIsSubmitting] = useState(false);
     const [activeStep, setActiveStep] = useState(0);
     const [process, setProcess] = useState({
         processType: 'REGISTRATION',
-        licensePlate: '',
-        iban: '',
-        evb: '',
-        secCodeII: '',
+        date: Date(),
+        state: 'PENDING',
+        info: {
+            licensePlate: '',
+            iban: '',
+            evb: '',
+            secCodeII: ''
+        },
         isPaid: false
     });
 
@@ -95,9 +100,11 @@ function VehicleRegisterForm() {
 
     const onProcessChange = (e) => {
         const { name, value } = e.target;
+        const processInfo = process.info;
+        processInfo[name] = value;
         setProcess((prevState) => ({
             ...prevState,
-            [name]: value
+            ['info']: processInfo
         }));
     };
 
@@ -135,22 +142,42 @@ function VehicleRegisterForm() {
     };
 
     const handleSubmit = async () => {
-        // delete used plate
-        // TODO what to do if process is rejected?
-        const deletedPlateReservation =
-            await LicensePlateService.deleteLicensePlateReservation(
-                user._id,
-                process.licensePlate
-            );
+        if (!isSubmitting) {
+            // delete used plate
+            // TODO what to do if process is rejected?
+            setIsSubmitting(true);
+            await VehicleService.createProcess(vehicleId, process);
+            setIsSubmitting(false);
+            setActiveStep(activeStep + 1);
+            // timer.current = window.setTimeout(() => {
+            //     setSuccess(true);
+            //     setLoading(false);
+            // }, 2000);
+        }
+
+        // // delete used plate
+        // // TODO what to do if process is rejected?
+        // setIsSubmitting(true);
+        // // await LicensePlateService.deleteLicensePlateReservation(
+        // //     user._id,
+        // //     process.licensePlate
+        // // );
+
+        // await VehicleService.createProcess(vehicleId, process);
+        // setIsSubmitting(false);
+        // setActiveStep(activeStep + 1);
     };
 
     const isProcessComplete = (process) => {
         return (
-            process.processType &&
-            process.licensePlate &&
-            process.evb &&
-            process.iban &&
-            process.secCodeII
+            (process.processType == 'REGISTRATION' &&
+                process.info.licensePlate &&
+                process.info.evb &&
+                process.info.iban &&
+                process.info.secCodeII) ||
+            (process.processType == 'DEREGISTRATION' &&
+                process.info.secCodeI &&
+                process.info.plateCode)
         );
     };
 
@@ -185,6 +212,7 @@ function VehicleRegisterForm() {
                     <Button
                         variant="contained"
                         color="primary"
+                        disabled={isSubmitting}
                         onClick={handleSubmit}
                         className={classes.button}
                     >
@@ -221,14 +249,23 @@ function VehicleRegisterForm() {
                         {activeStep === steps.length ? (
                             <React.Fragment>
                                 <Typography variant="h5" gutterBottom>
-                                    Thank you for your order.
+                                    Thank you for your request.
                                 </Typography>
                                 <Typography variant="subtitle1">
-                                    Your process number is #2001539. An employee
-                                    will review your information. You can see
-                                    the state of your process on the dashboard.
+                                    An employee will review your information.
+                                    You can see the state of your process on the
+                                    dashboard.
                                 </Typography>
-                                <Button>Return To Dashboard</Button>
+                                <Button
+                                    style={{ marginTop: '1em' }}
+                                    fullWidth
+                                    variant="contained"
+                                    color="primary"
+                                    component={Link}
+                                    to={'/dashboard'}
+                                >
+                                    Return To Dashboard
+                                </Button>
                             </React.Fragment>
                         ) : (
                             <React.Fragment>
