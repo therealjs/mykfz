@@ -27,6 +27,7 @@ import { withRouter } from 'react-router';
 import Copyright from './Copyright';
 import VehicleRegisterForm from './VehicleRegisterForm';
 import VehicleDeregisterForm from './VehicleDeregisterForm';
+import { VehicleFormView } from '../views/VehicleFormView';
 
 const drawerWidth = 240;
 
@@ -157,6 +158,9 @@ function Dashboard(props) {
             </Route>
             <Route path="/dashboard/vehicles/:vehicleId/deregister">
                 <VehicleDeregisterForm user={user} />
+            </Route>
+            <Route path="/dashboard/vehicles/:vehicleId/edit">
+                <VehicleForm />
             </Route>
             <Route path="/dashboard/add">
                 <VehicleForm />

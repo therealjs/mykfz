@@ -36,7 +36,6 @@ const makeLogos = require('../../resources/carLogos');
 const styles = (theme) => ({
     expand: {
         transform: 'rotate(0deg)',
-        marginLeft: 'auto',
         transition: theme.transitions.create('transform', {
             duration: theme.transitions.duration.shortest
         }),
@@ -99,6 +98,20 @@ class VehicleListPaper extends React.Component {
         })();
     }
 
+    hasPendingProcesses(vehicle) {
+        return vehicle.processes.some((p) => p.state == 'PENDING');
+    }
+
+    hasValidGeneralInspection(vehicle) {
+        return (
+            vehicle.generalInspectionYear &&
+            vehicle.generalInspectionYear &&
+            (vehicle.generalInspectionYear > new Date().getFullYear() || // größeres Jahr
+                (vehicle.generalInspectionYear == new Date().getFullYear() &&
+                    vehicle.generalInspectionMonth >= new Date().getMonth())) // gleiches Jahr und minestens gleicher Monat
+        );
+    }
+
     render() {
         const { classes, vehicle } = this.props;
         const cardContent =
@@ -116,6 +129,56 @@ class VehicleListPaper extends React.Component {
             ACCEPTED: 'lightgreen',
             REJECTED: 'lightsalmon'
         };
+
+        const deregisterButton = (
+            <Button
+                style={{ marginLeft: 'auto' }}
+                variant="contained"
+                component={Link}
+                to={`/dashboard/vehicles/${this.props.vehicle._id}/deregister`}
+            >
+                Deregister
+            </Button>
+        );
+
+        const registerButton = (
+            <Button
+                style={{ marginLeft: 'auto' }}
+                variant="contained"
+                component={Link}
+                to={`/dashboard/vehicles/${this.props.vehicle._id}/deregister`}
+            >
+                Deregister
+            </Button>
+        );
+
+        const giInvalidButton = (
+            <Button
+                style={{ marginLeft: 'auto' }}
+                variant="contained"
+                disabled={true}
+            >
+                General Inspection Invalid
+            </Button>
+        );
+
+        const processPendingButton = (
+            <Button
+                style={{ marginLeft: 'auto' }}
+                variant="contained"
+                disabled={true}
+            >
+                Process Pending
+            </Button>
+        );
+
+        const processButton = this.hasPendingProcesses(vehicle)
+            ? processPendingButton
+            : vehicle.state == 'REGISTERED'
+            ? deregisterButton
+            : this.hasValidGeneralInspection(vehicle)
+            ? registerButton
+            : giInvalidButton;
 
         return (
             <Grid item xs={12} sm={6} md={6}>
@@ -145,12 +208,32 @@ class VehicleListPaper extends React.Component {
                         title={vehicle.make + ' ' + vehicle.model}
                         subheader={vehicle.vin}
                     />
-                    {<CardContent>{cardContent}</CardContent>}
+                    <CardContent
+                        style={{
+                            display: 'flex',
+                            flexDirection: 'column',
+                            alignItems: 'center'
+                        }}
+                    >
+                        {cardContent}
+                        <Chip
+                            style={{ marginTop: '1em', width: '200px' }}
+                            color={
+                                this.hasValidGeneralInspection(vehicle)
+                                    ? 'primary'
+                                    : 'secondary'
+                            }
+                            size="large"
+                            label={`${vehicle.generalInspectionMonth} / ${vehicle.generalInspectionYear}`}
+                            avatar={
+                                <Avatar src="https://www.kues-fahrzeugueberwachung.de/wordpress/wp-content/uploads/2018/09/hu-plakette-gelb.png" />
+                            }
+                        />
+                    </CardContent>
                     <CardActions
                         disableSpacing
                         style={{ alignContent: 'center' }}
                     >
-                        {this.renderProcess(vehicle.state)}
                         <IconButton
                             className={clsx(classes.expand, {
                                 [classes.expandOpen]: this.state.expanded
@@ -161,6 +244,7 @@ class VehicleListPaper extends React.Component {
                         >
                             <ExpandMoreIcon />
                         </IconButton>
+                        {processButton}
                     </CardActions>
                     <Collapse
                         in={this.state.expanded}
@@ -176,7 +260,7 @@ class VehicleListPaper extends React.Component {
                                     <TableRow>
                                         <TableCell>Process type</TableCell>
                                         <TableCell align="right">
-                                            Last Update
+                                            Submission Date
                                         </TableCell>
                                         <TableCell align="right">
                                             State
@@ -228,41 +312,6 @@ class VehicleListPaper extends React.Component {
                 </Card>
             </Grid>
         );
-    }
-
-    renderProcess(state) {
-        switch (state) {
-            case 'NEW':
-                return (
-                    <Button
-                        variant="contained"
-                        component={Link}
-                        to={`/dashboard/vehicles/${this.props.vehicle._id}/register`}
-                    >
-                        Register
-                    </Button>
-                );
-            case 'REGISTERED':
-                return (
-                    <Button
-                        variant="contained"
-                        component={Link}
-                        to={`/dashboard/vehicles/${this.props.vehicle._id}/deregister`}
-                    >
-                        Deregister
-                    </Button>
-                );
-            case 'DEREGISTERED':
-                return (
-                    <Button
-                        variant="contained"
-                        component={Link}
-                        to={`/dashboard/vehicles/${this.props.vehicle._id}/register`}
-                    >
-                        Reregister
-                    </Button>
-                );
-        }
     }
 }
 

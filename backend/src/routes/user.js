@@ -26,4 +26,9 @@ router.delete(
     // middlewares.checkAuthentication,
     UserController.deleteLicensePlateReservation
 ); // delete licensePlateReservation for specified user, licenseplate still exist in own table
+router.delete(
+    '/:userId/licensePlateReservations/plate/:plateId',
+    // middlewares.checkAuthentication,
+    UserController.deleteLicensePlateReservationByPlate
+); // delete licensePlateReservation for specified user, licenseplate still exist in own table
 module.exports = router;

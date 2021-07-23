@@ -19,6 +19,7 @@ import { withStyles } from '@material-ui/styles';
 import InfoIcon from '@material-ui/icons/Info';
 import { PayPalButton } from 'react-paypal-button-v2';
 import LicensePlateService from '../services/LicensePlateService';
+import UserService from '../services/UserService';
 
 const LightTooltip = withStyles(() => ({
     tooltip: {
@@ -295,6 +296,7 @@ export default function ProcessDetailsForm({
     useEffect(() => {
         const fetchData = async () => {
             if (process.processType == 'REGISTRATION') {
+                const user = await UserService.getUserDetails(); // could have just added a new plate reservation
                 let platesResult = [];
                 for (const reservedPlateId of user.licensePlateReservations.map(
                     (reservation) => reservation.licensePlate

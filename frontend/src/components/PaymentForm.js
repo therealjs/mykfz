@@ -7,6 +7,7 @@ import Checkbox from '@material-ui/core/Checkbox';
 import { PayPalButton } from 'react-paypal-button-v2';
 import ProcessService from '../services/ProcessService';
 import { Checkmark } from 'react-checkmark';
+import Button from '@material-ui/core/Button';
 
 export default function PaymentForm({ process, onProcessPaid }) {
     const clientId =
@@ -38,6 +39,7 @@ export default function PaymentForm({ process, onProcessPaid }) {
             <Grid container spacing={3}>
                 <Grid item xs={12}>
                     {process.isPaid ? paymentConfirmedMessage : paymentButtons}
+                    <Button onClick={onProcessPaid}>(Skip Payment)</Button>
                 </Grid>
             </Grid>
         </React.Fragment>

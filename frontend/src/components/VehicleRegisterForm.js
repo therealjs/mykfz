@@ -141,10 +141,14 @@ function VehicleRegisterForm({ user }) {
 
     const handleSubmit = async () => {
         if (!isSubmitting) {
-            // delete used plate
-            // TODO what to do if process is rejected?
             setIsSubmitting(true);
             await VehicleService.createProcess(vehicleId, process);
+
+            // delete plate reservation
+            await UserService.deleteLicensePlateReservationByPlate(
+                user._id,
+                process.info.licensePlate
+            );
             setIsSubmitting(false);
             setActiveStep(activeStep + 1);
             // timer.current = window.setTimeout(() => {
@@ -152,18 +156,6 @@ function VehicleRegisterForm({ user }) {
             //     setLoading(false);
             // }, 2000);
         }
-
-        // // delete used plate
-        // // TODO what to do if process is rejected?
-        // setIsSubmitting(true);
-        // // await LicensePlateService.deleteLicensePlateReservation(
-        // //     user._id,
-        // //     process.licensePlate
-        // // );
-
-        // await VehicleService.createProcess(vehicleId, process);
-        // setIsSubmitting(false);
-        // setActiveStep(activeStep + 1);
     };
 
     const isProcessComplete = (process) => {

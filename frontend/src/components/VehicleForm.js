@@ -360,23 +360,6 @@ class VehicleForm extends React.Component {
                                         })}
                                     </Select>
                                 </Grid>
-
-                                {/* <MuiPickersUtilsProvider utils={DateFnsUtils}>
-              <KeyboardDatePicker
-                InputLabelProps={{
-                  shrink: true,
-                }}
-                fullWidth
-                margin="normal"
-                label="General Inspection"
-                format="yyyy-MM"
-                value={this.state.generalInspection}
-                onChange={this.handleChangeDate}
-                KeyboardButtonProps={{
-                  'aria-label': 'change date',
-                }}
-              />
-            </MuiPickersUtilsProvider> */}
                                 <Grid item xs={12}>
                                     <Button
                                         style={{
