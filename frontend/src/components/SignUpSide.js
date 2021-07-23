@@ -14,13 +14,16 @@ import Paper from '@material-ui/core/Paper';
 import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import { Tooltip, InputAdornment } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, withStyles } from '@material-ui/core/styles';
 import UserService from '../services/UserService';
 import { useHistory } from 'react-router-dom';
 import Copyright from './Copyright';
 import DistrictService from '../services/DistrictService';
 import SecurityIcon from '@material-ui/icons/Security';
+import InfoIcon from '@material-ui/icons/Info';
+import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 import { Checkmark } from 'react-checkmark';
 
 const useStyles = makeStyles((theme) => ({
@@ -62,6 +65,15 @@ const useStyles = makeStyles((theme) => ({
         }
     }
 }));
+
+const LightTooltip = withStyles(() => ({
+    tooltip: {
+        backgroundColor: '#175B8E',
+        color: 'white',
+        fontSize: 14,
+        fontFamily: 'Nunito'
+    }
+}))(Tooltip);
 
 function validateEmail(email) {
     var re =
@@ -345,6 +357,31 @@ export default function SignUpSide(props) {
                 </Grid>
             );
     };
+    const tooltipImgTxt = (
+        <div>
+            <Grid
+                container
+                alignItems="center"
+                justifyContent="center"
+                spacing={1}
+            >
+                <Grid item>
+                    <label>
+                        To check your identity we need your identity document
+                        number. You can find it on the top right of your id.
+                    </label>
+                </Grid>
+                <Grid item>
+                    <img
+                        width="282"
+                        height="200"
+                        src="http://www.kartenlesegeraet-personalausweis.de/bilder/ausweisnummer-neuer-personalausweis.jpg"
+                        alt=""
+                    ></img>
+                </Grid>
+            </Grid>
+        </div>
+    );
 
     return (
         <Grid container component="main" className={classes.root}>
@@ -465,7 +502,7 @@ export default function SignUpSide(props) {
                                 <Grid item xs={3}>
                                     <Grid
                                         container
-                                        justify="center"
+                                        justifyContent="center"
                                         alignItems="center"
                                     >
                                         <Grid item>
@@ -547,6 +584,18 @@ export default function SignUpSide(props) {
                                     name="idId"
                                     autoFocus
                                     onChange={handleChange}
+                                    InputProps={{
+                                        endAdornment: (
+                                            <LightTooltip
+                                                title={tooltipImgTxt}
+                                                placement="right"
+                                            >
+                                                <InputAdornment position="end">
+                                                    <InfoOutlinedIcon color="inherit" />
+                                                </InputAdornment>
+                                            </LightTooltip>
+                                        )
+                                    }}
                                 />
                             </Grid>
                             <Grid item xs={6}>

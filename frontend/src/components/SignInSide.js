@@ -4,6 +4,7 @@ import Alert from '@material-ui/lab/Alert';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
+import { Tooltip, InputAdornment } from '@material-ui/core';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import Link from '@material-ui/core/Link';
@@ -59,9 +60,6 @@ export default function SignInSide(props) {
         password: ''
     });
     const [errorMessage, setErrorMessage] = useState('');
-    const handleClick = () => {
-        setErrorMessage('Example error message!');
-    };
 
     const handleChange = (e) => {
         let name = e.target.name;
