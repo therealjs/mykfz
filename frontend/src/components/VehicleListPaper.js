@@ -146,9 +146,9 @@ class VehicleListPaper extends React.Component {
                 style={{ marginLeft: 'auto' }}
                 variant="contained"
                 component={Link}
-                to={`/dashboard/vehicles/${this.props.vehicle._id}/deregister`}
+                to={`/dashboard/vehicles/${this.props.vehicle._id}/register`}
             >
-                Deregister
+                Register
             </Button>
         );
 
