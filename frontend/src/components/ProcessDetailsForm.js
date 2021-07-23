@@ -165,7 +165,7 @@ function RegisterProcessFormFields({
 function DeregisterProcessFormFields({ vehicle, process, onProcessChange }) {
     const tooltipSecurityCode = (
         <div>
-            <Grid container>
+            <Grid container justifyContent="center" spacing={1}>
                 <Grid item>
                     <label>
                         The security code I can be found on the acceptance paper
@@ -187,7 +187,7 @@ function DeregisterProcessFormFields({ vehicle, process, onProcessChange }) {
 
     const tooltipPlateCode = (
         <div>
-            <Grid container>
+            <Grid container justifyContent="center" spacing={1}>
                 <Grid item>
                     <label>
                         The plate code can be found on the license plate

@@ -13,6 +13,8 @@ import ProcessDetailsForm from './ProcessDetailsForm';
 import Review from './Review';
 import VehicleService from '../services/VehicleService';
 import UserService from '../services/UserService';
+import Alert from '@material-ui/lab/Alert';
+import Grid from '@material-ui/core/Grid';
 
 const useStyles = makeStyles((theme) => ({
     appBar: {
@@ -48,6 +50,10 @@ const useStyles = makeStyles((theme) => ({
     button: {
         marginTop: theme.spacing(3),
         marginLeft: theme.spacing(1)
+    },
+    alert: {
+        marginTop: theme.spacing(3),
+        marginRight: theme.spacing(1)
     }
 }));
 
@@ -57,12 +63,18 @@ const steps = [
     'Review your registration'
 ];
 
+function isNumLet(input) {
+    var re = /^[0-9a-zA-Z]+$/;
+    return re.test(input);
+}
+
 function VehicleDeregisterForm({ user }) {
     const classes = useStyles();
     let { vehicleId } = useParams();
     const history = useHistory();
 
     const [loading, setLoading] = useState(true);
+    const [errorMessage, setErrorMessage] = useState('');
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [activeStep, setActiveStep] = useState(0);
     const [process, setProcess] = useState({
@@ -105,7 +117,21 @@ function VehicleDeregisterForm({ user }) {
     };
 
     const handleNext = () => {
-        setActiveStep(activeStep + 1);
+        console.log(process.info.secCodeI);
+        if (
+            process.info.secCodeI.length != 7 ||
+            !isNumLet(process.info.secCodeI)
+        ) {
+            setErrorMessage('Provide a valid security code.');
+            return;
+        } else if (
+            process.info.plateCode.length != 3 ||
+            !isNumLet(process.info.plateCode)
+        ) {
+            setErrorMessage('Provide a valid plate code.');
+            return;
+        } else setActiveStep(activeStep + 1);
+        setErrorMessage('');
     };
 
     const handleBack = () => {
@@ -252,6 +278,18 @@ function VehicleDeregisterForm({ user }) {
                             <React.Fragment>
                                 {getStepContent(activeStep)}
                                 <div className={classes.buttons}>
+                                    {errorMessage && (
+                                        <Grid
+                                            className={classes.alert}
+                                            item
+                                            xs={12}
+                                        >
+                                            <Alert severity="error">
+                                                {errorMessage}
+                                            </Alert>
+                                        </Grid>
+                                    )}
+
                                     {activeStep !== 0 && (
                                         <Button
                                             onClick={handleBack}
