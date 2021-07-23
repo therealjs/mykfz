@@ -132,10 +132,10 @@ export default class ProcessService {
                     {
                         text:
                             licensePlate.areaCode +
-                            '-' +
-                            licensePlate.digits +
-                            '-' +
-                            licensePlate.letters,
+                            ' - ' +
+                            licensePlate.letters.toUpperCase() +
+                            ' ' +
+                            licensePlate.digits,
                         width: 300
                     }
                 ],
@@ -210,5 +210,13 @@ export default class ProcessService {
                 }
             );
         });
+    }
+
+    static calculatePrice(process) {
+        let res = process.processType == 'REGISTRATION' ? 27.0 : 7.5;
+        if (process.usesReservedPlate) {
+            res += 10.2;
+        }
+        return res;
     }
 }

@@ -14,7 +14,7 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import MenuIcon from '@material-ui/icons/Menu';
 import clsx from 'clsx';
 import React, { useEffect, useState } from 'react';
-import { Route, Switch } from 'react-router';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import LicensePlateReservationList from './LicensePlateReservationList';
 import LicensePlateReservationForm from './LicensePlateReservationForm';
 import VehicleForm from '../components/VehicleForm';
@@ -27,6 +27,9 @@ import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import { withRouter } from 'react-router';
 import Copyright from './Copyright';
 import logo from '../../resources/logo_small.png';
+import VehicleRegisterForm from './VehicleRegisterForm';
+import VehicleDeregisterForm from './VehicleDeregisterForm';
+import { VehicleFormView } from '../views/VehicleFormView';
 
 const drawerWidth = 240;
 
@@ -113,6 +116,7 @@ function Dashboard(props) {
     const classes = useStyles();
     const [open, setOpen] = useState(true);
     const [user, setUser] = useState({});
+    const [loading, setLoading] = useState(true);
 
     const logout = () => {
         UserService.logout();
@@ -135,10 +139,45 @@ function Dashboard(props) {
         const fetchData = async () => {
             let userResult = await UserService.getUserDetails();
             setUser(userResult);
+            setLoading(false);
         };
 
         fetchData();
     }, []);
+
+    const containerContent = loading ? (
+        <h2>Loading</h2>
+    ) : (
+        <Switch>
+            <Route exact={true} path="/dashboard">
+                <Redirect to={'/dashboard/vehicles'} />
+            </Route>
+            <Route exact={true} path="/dashboard/vehicles">
+                <VehicleList user={user} />
+            </Route>
+            <Route path="/dashboard/vehicles/:vehicleId/register">
+                <VehicleRegisterForm user={user} />
+            </Route>
+            <Route path="/dashboard/vehicles/:vehicleId/deregister">
+                <VehicleDeregisterForm user={user} />
+            </Route>
+            <Route path="/dashboard/vehicles/:vehicleId/edit">
+                <VehicleForm />
+            </Route>
+            <Route path="/dashboard/add">
+                <VehicleForm />
+            </Route>
+            <Route path="/dashboard/plates">
+                <LicensePlateReservationList />
+            </Route>
+            <Route path="/dashboard/reservation">
+                <LicensePlateReservationForm />
+            </Route>
+            <Route path="/dashboard/user">
+                <UserProfile />
+            </Route>
+        </Switch>
+    );
 
     return (
         <div className={classes.root}>
@@ -203,26 +242,7 @@ function Dashboard(props) {
             <main className={classes.content}>
                 <div className={classes.appBarSpacer} />
                 <Container maxWidth="lg" className={classes.container}>
-                    <Switch>
-                        <Route path="/dashboard/vehicles">
-                            <VehicleList user={user} />
-                        </Route>
-                        <Route path="/dashboard/add">
-                            <VehicleForm />
-                        </Route>
-                        <Route path="/dashboard/plates">
-                            <LicensePlateReservationList />
-                        </Route>
-                        <Route path="/dashboard/verification">
-                            <UserVerification />
-                        </Route>
-                        <Route path="/dashboard/reservation">
-                            <LicensePlateReservationForm />
-                        </Route>
-                        <Route path="/dashboard/user">
-                            <UserProfile />
-                        </Route>
-                    </Switch>
+                    {containerContent}
                     <Box pt={4}>
                         <Copyright />
                     </Box>

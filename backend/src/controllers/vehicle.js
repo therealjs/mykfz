@@ -176,6 +176,10 @@ const updatedProcess = (oldProcess, newProcess) => {
     return oldProcess;
 };
 
+const wasAccepted = (processUpdate) => {
+    return processUpdate.state == 'ACCEPTED';
+};
+
 const updateProcess = async (req, res) => {
     try {
         let { vehicleId, processId } = req.params;
@@ -203,8 +207,23 @@ const updateProcess = async (req, res) => {
         const newProcess = updatedProcess(process, processUpdate);
 
         VehicleModel.findById(vehicleId).then((vehicle) => {
+            // update process
             const process = vehicle.processes.id(processId);
             process.set(newProcess);
+
+            console.log('process set');
+
+            // update state and licensePlate
+            if (wasAccepted(processUpdate)) {
+                if (newProcess.processType == 'REGISTRATION') {
+                    vehicle.state = 'REGISTERED';
+                    vehicle.licensePlate = newProcess.info.licensePlate;
+                } else if (newProcess.processType == 'DEREGISTRATION') {
+                    vehicle.state = 'DEREGISTERED';
+                    vehicle.licensePlate = null;
+                }
+            }
+
             return vehicle.save();
         });
 

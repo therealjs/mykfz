@@ -32,19 +32,19 @@ export default class LicensePlateService {
     }
 
     // TODO
-    static getLicensePlatesForUser(user_id) {
-        return new Promise((resolve, reject) => {
-            HttpService.get(
-                `${LicensePlateService.baseURL()}?owner=${user_id}`,
-                function (data) {
-                    resolve(data);
-                },
-                function (textStatus) {
-                    reject(textStatus);
-                }
-            );
-        });
-    }
+    // static getLicensePlatesForUser(user_id) {
+    //     return new Promise((resolve, reject) => {
+    //         HttpService.get(
+    //             `${LicensePlateService.baseURL()}?owner=${user_id}`,
+    //             function (data) {
+    //                 resolve(data);
+    //             },
+    //             function (textStatus) {
+    //                 reject(textStatus);
+    //             }
+    //         );
+    //     });
+    // }
 
     static getLicensePlate(id) {
         return new Promise((resolve, reject) => {

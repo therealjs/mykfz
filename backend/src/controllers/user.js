@@ -1,5 +1,6 @@
 'use strict';
 
+const mongoose = require('mongoose');
 const UserModel = require('../models/user');
 const bcrypt = require('bcryptjs');
 
@@ -160,6 +161,89 @@ const createLicensePlateReservation = (req, res) => {
     }
 };
 
+const deleteLicensePlateReservationByPlate = async (req, res) => {
+    try {
+        let { userId, plateId } = req.params;
+
+        const user = await UserModel.findById(userId).exec();
+
+        if (!user) {
+            return res.status(404).json({
+                error: 'Not Found',
+                message: `User not found`
+            });
+        }
+
+        const reservation = user.licensePlateReservations.find((r) => {
+            console.log(`${r.licensePlate} vs ${plateId}`);
+            return r.licensePlate == plateId;
+        });
+
+        if (!reservation) {
+            return res.status(404).json({
+                error: 'Not Found',
+                message: `Reservation not found`
+            });
+        }
+
+        UserModel.findById(userId).then((user) => {
+            // update user
+            user.licensePlateReservations
+                .find((r) => {
+                    return r.licensePlate == plateId;
+                })
+                .remove();
+            user.save();
+        });
+
+        return res.status(200).json(user);
+    } catch (err) {
+        return res.status(500).json({
+            error: 'Internal Server Error',
+            message: err.message
+        });
+    }
+};
+
+const deleteLicensePlateReservation = async (req, res) => {
+    try {
+        let { userId, plateReservationId } = req.params;
+
+        const user = await UserModel.findById(userId).exec();
+
+        if (!user) {
+            return res.status(404).json({
+                error: 'Not Found',
+                message: `User not found`
+            });
+        }
+
+        const reservation = user.licensePlateReservations.find((r) => {
+            return r._id == plateReservationId;
+        });
+
+        if (!reservation) {
+            return res.status(404).json({
+                error: 'Not Found',
+                message: `Reservation not found`
+            });
+        }
+
+        UserModel.findById(userId).then((user) => {
+            // update user
+            user.licensePlateReservations.id(plateReservationId).remove();
+            user.save();
+        });
+
+        return res.status(200).json(user);
+    } catch (err) {
+        return res.status(500).json({
+            error: 'Internal Server Error',
+            message: err.message
+        });
+    }
+};
+
 module.exports = {
     create,
     read,
@@ -167,5 +251,7 @@ module.exports = {
     remove,
     list,
     listLicensePlateReservations,
-    createLicensePlateReservation
+    createLicensePlateReservation,
+    deleteLicensePlateReservation,
+    deleteLicensePlateReservationByPlate
 };

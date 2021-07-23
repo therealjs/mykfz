@@ -59,9 +59,6 @@ export default function SignInSide(props) {
         password: ''
     });
     const [errorMessage, setErrorMessage] = useState('');
-    const handleClick = () => {
-        setErrorMessage('Example error message!');
-    };
 
     const handleChange = (e) => {
         let name = e.target.name;
