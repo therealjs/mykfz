@@ -19,6 +19,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Nfc from 'nfc-react-web';
 import Copyright from '../components/Copyright';
+import UserVerification from '../components/UserVerification';
 
 const useStyles = makeStyles((theme) => ({
     paper: {
@@ -45,38 +46,6 @@ const useStyles = makeStyles((theme) => ({
 
 function UserVerificationContent({ user, verified, verifyUser }) {
     const classes = useStyles();
-
-    const actionButton = verified ? (
-        <Button
-            component={Link}
-            to="/dashboard"
-            fullWidth
-            variant="contained"
-            className={classes.submit}
-            color="primary"
-        >
-            Continue To Dashboard
-        </Button>
-    ) : (
-        <Button
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-            onClick={verifyUser}
-        >
-            Verify
-        </Button>
-    );
-
-    const verificationForm = verified ? (
-        <Checkmark size="96px" className={classes.submit} />
-    ) : (
-        <Avatar className={classes.avatar}>
-            <LockOutlinedIcon />
-        </Avatar>
-    );
-
     return (
         <div>
             {verificationForm}
@@ -95,7 +64,6 @@ function UserVerificationView(props) {
             let userResult = await UserService.getUserDetails();
             setUser(userResult);
         };
-
         fetchData();
     }, []);
 
@@ -104,32 +72,70 @@ function UserVerificationView(props) {
         setVerified(true);
     };
 
+    function Action() {
+        //if (videoScan) {
+        return (
+            <UserVerification /> 
+        );
+        // }
+        // else {
+        //     return(
+        //         <Button
+        //             fullWidth
+        //             variant="contained"
+        //             color="primary"
+        //             //className={classes.submit}
+        //             //onClick={updateVideoScan()}
+        //         >
+        //             Start Verification
+        //         </Button>
+        //     );
+        // }
+    }
+
+    function VerifyButton() {
+        return(
+            <Button
+                fullWidth
+                variant="contained"
+                color="primary"
+                className={classes.submit}
+                onClick={verifyUser}
+                >
+                Verify x
+            </Button>
+        )
+    }
+
     const scanNfc = async () => {
         console.log('scanning something');
     };
 
     return (
-        <Container component="main" maxWidth="xs">
+        <Grid container direction="column" spacing={2} justifyContent="center" alignItems="center">
             <CssBaseline />
-            <div className={classes.paper}>
-                <Avatar className={classes.avatar}>
-                    <LockOutlinedIcon />
-                </Avatar>
+            <Grid item>
+                <div className={classes.paper}>
+                    <Avatar className={classes.avatar}>
+                        <LockOutlinedIcon />
+                    </Avatar>
+                </div>
+            </Grid>
+            <Grid item>
                 <Typography component="h1" variant="h5">
                     Verification
                 </Typography>
-                <form className={classes.form} noValidate>
-                    <UserVerificationContent
-                        user={user}
-                        verified={verified}
-                        verifyUser={verifyUser}
-                    />
-                </form>
-            </div>
+            </Grid>
+            <Grid item>
+                <Action />
+            </Grid>
+            <Grid item>
+                <VerifyButton />
+            </Grid>
             <Box mt={8}>
                 <Copyright />
             </Box>
-        </Container>
+        </Grid>
     );
 }
 

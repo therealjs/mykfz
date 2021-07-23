@@ -22,6 +22,7 @@ import { mainListItems } from './listItems';
 import VehicleList from './VehicleList';
 import UserService from '../services/UserService';
 import UserProfile from './UserProfile';
+import UserVerification from './UserVerification';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import { withRouter } from 'react-router';
 import Copyright from './Copyright';
@@ -202,6 +203,9 @@ function Dashboard(props) {
                         </Route>
                         <Route path="/dashboard/plates">
                             <LicensePlateReservationList />
+                        </Route>
+                        <Route path="/dashboard/verification">
+                            <UserVerification />
                         </Route>
                         <Route path="/dashboard/reservation">
                             <LicensePlateReservationForm />
