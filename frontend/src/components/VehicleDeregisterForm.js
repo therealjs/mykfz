@@ -70,6 +70,7 @@ function VehicleDeregisterForm({ user }) {
         date: Date(),
         state: 'PENDING',
         info: {
+            reservePlate: false,
             secCodeI: '',
             plateCode: ''
         },
@@ -95,8 +96,12 @@ function VehicleDeregisterForm({ user }) {
     };
 
     const onProcessChange = (e) => {
-        const { name, value } = e.target;
+        let { name, value } = e.target;
         const processInfo = process.info;
+        if (name === 'reservePlate') {
+            // check checked
+            value = e.target.checked;
+        }
         processInfo[name] = value;
         setProcess((prevState) => ({
             ...prevState,
@@ -196,7 +201,7 @@ function VehicleDeregisterForm({ user }) {
                         onClick={handleSubmit}
                         className={classes.button}
                     >
-                        Complete Registration
+                        Complete Deregistration
                     </Button>
                 );
             default:

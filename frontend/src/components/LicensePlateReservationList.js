@@ -20,6 +20,7 @@ import LicensePlate from './LicensePlate';
 import UserService from '../services/UserService';
 import LicensePlateService from '../services/LicensePlateService';
 import DeleteIcon from '@material-ui/icons/Delete';
+import { Alert, AlertTitle } from '@material-ui/lab';
 
 const makeLogos = require('../../resources/carLogos');
 
@@ -100,6 +101,24 @@ class LicensePlateReservationList extends React.Component {
     }
 
     render() {
+        if (!this.state.reservedPlates || this.state.reservedPlates == 0) {
+            return (
+                <Grid
+                    justify="center"
+                    container
+                    alignItems="center"
+                    spacing={3}
+                >
+                    <Grid item xs={6}>
+                        <Alert severity="info">
+                            <AlertTitle>No License Plates</AlertTitle>
+                            Try reserving a new license plate on the side bar.
+                        </Alert>
+                    </Grid>
+                </Grid>
+            );
+        }
+
         return (
             //this.state.reservedPlates.length > 0 ?
             <TableContainer component={Paper}>

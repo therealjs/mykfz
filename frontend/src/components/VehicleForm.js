@@ -151,12 +151,10 @@ class VehicleForm extends React.Component {
             const re = /^[0-9\b]+$/;
             if (event.target.value === '' || re.test(event.target.value)) {
                 this.setState({ digits: event.target.value });
-                console.log(this.state.digits);
             }
         } else if (event.target.name === 'letters') {
             // only allow letters
             const re = /^[a-zA-Z]+$/;
-            console.log('entered letters');
             if (event.target.value === '' || re.test(event.target.value)) {
                 this.setState({ letters: event.target.value.toUpperCase() });
             }

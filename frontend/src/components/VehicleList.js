@@ -1,16 +1,11 @@
 'use strict';
 
+import { Grid, Link } from '@material-ui/core';
+import { Alert, AlertTitle } from '@material-ui/lab';
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-
-import VehicleListPaper from './VehicleListPaper';
-
-import Grid from '@material-ui/core/Grid';
-import IconButton from '@material-ui/core/IconButton';
-import AddIcon from '@material-ui/icons/Add';
-import VehicleService from '../services/VehicleService';
-
 import { withRouter } from 'react-router';
+import VehicleService from '../services/VehicleService';
+import VehicleListPaper from './VehicleListPaper';
 
 function VehicleList({ user }) {
     const [vehicles, setVehicles] = useState([]);
@@ -25,6 +20,20 @@ function VehicleList({ user }) {
 
         fetchData();
     }, []);
+
+    if (!vehicles || vehicles.length == 0) {
+        return (
+            <Grid justify="center" container alignItems="center" spacing={3}>
+                <Grid item xs={6}>
+                    <Alert severity="info">
+                        <AlertTitle>No Vehicles</AlertTitle>
+                        Try adding a new vehicle on the side bar.
+                    </Alert>
+                </Grid>
+            </Grid>
+        );
+    }
+
     return (
         <Grid
             justify="flex-start"
