@@ -336,6 +336,7 @@ export default function SignUpSide(props) {
                                     renderInput={(params) => (
                                         <TextField
                                             {...params}
+                                            required={true}
                                             label="District"
                                             variant="outlined"
                                             margin="normal"
