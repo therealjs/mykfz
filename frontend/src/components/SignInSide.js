@@ -84,10 +84,22 @@ export default function SignInSide(props) {
                             'The username you entered does not belong to an account. Please check your username and try again.'
                         );
                     } else {
-                        console.log('ERROR');
-                        setErrorMessage(
-                            'Sorry, your password was incorrect. Please double-check your password.'
-                        );
+                        if (error == 'Unauthorized') {
+                            setErrorMessage(
+                                'Sorry, your password was incorrect. Please double-check your password.'
+                            );
+                        } else {
+                            if (error == 'Failed to fetch') {
+                                setErrorMessage(
+                                    'Login is currently not possible due to a server error, we are working on a solution.'
+                                );
+                            } else {
+                                console.log(error);
+                                setErrorMessage(
+                                    'There is an issue with the login process, please contact the customer service.'
+                                );
+                            }
+                        }
                     }
                 });
             console.log(history);
