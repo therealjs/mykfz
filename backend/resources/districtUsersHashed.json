@@ -1,0 +1,2795 @@
+[
+    {
+        "_id": "albdonaukreisulm@mykfz.eu",
+        "username": "albdonaukreisulm@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "albdonaukreisulm"
+    },
+    {
+        "_id": "landkreisahrweiler@mykfz.eu",
+        "username": "landkreisahrweiler@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisahrweiler"
+    },
+    {
+        "_id": "landkreisaltenkirchenwesterwald@mykfz.eu",
+        "username": "landkreisaltenkirchenwesterwald@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisaltenkirchenwesterwald"
+    },
+    {
+        "_id": "landkreisaltenburgerland@mykfz.eu",
+        "username": "landkreisaltenburgerland@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisaltenburgerland"
+    },
+    {
+        "_id": "staedteregionaachen@mykfz.eu",
+        "username": "staedteregionaachen@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "staedteregionaachen"
+    },
+    {
+        "_id": "altmarkkreissalzwedel@mykfz.eu",
+        "username": "altmarkkreissalzwedel@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "altmarkkreissalzwedel"
+    },
+    {
+        "_id": "landkreisaltoetting@mykfz.eu",
+        "username": "landkreisaltoetting@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisaltoetting"
+    },
+    {
+        "_id": "landkreisalzeyworms@mykfz.eu",
+        "username": "landkreisalzeyworms@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisalzeyworms"
+    },
+    {
+        "_id": "landkreisaichachfriedberg@mykfz.eu",
+        "username": "landkreisaichachfriedberg@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisaichachfriedberg"
+    },
+    {
+        "_id": "landkreisammerland@mykfz.eu",
+        "username": "landkreisammerland@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisammerland"
+    },
+    {
+        "_id": "stadtansbach@mykfz.eu",
+        "username": "stadtansbach@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "stadtansbach"
+    },
+    {
+        "_id": "landkreisansbach@mykfz.eu",
+        "username": "landkreisansbach@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisansbach"
+    },
+    {
+        "_id": "landkreisanhaltbitterfeld@mykfz.eu",
+        "username": "landkreisanhaltbitterfeld@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisanhaltbitterfeld"
+    },
+    {
+        "_id": "stadtaschaffenburg@mykfz.eu",
+        "username": "stadtaschaffenburg@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "stadtaschaffenburg"
+    },
+    {
+        "_id": "landkreisaschaffenburg@mykfz.eu",
+        "username": "landkreisaschaffenburg@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisaschaffenburg"
+    },
+    {
+        "_id": "stadtamberg@mykfz.eu",
+        "username": "stadtamberg@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "stadtamberg"
+    },
+    {
+        "_id": "stadtaugsburg@mykfz.eu",
+        "username": "stadtaugsburg@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "stadtaugsburg"
+    },
+    {
+        "_id": "landkreisambergsulzbach@mykfz.eu",
+        "username": "landkreisambergsulzbach@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisambergsulzbach"
+    },
+    {
+        "_id": "landkreisaurich@mykfz.eu",
+        "username": "landkreisaurich@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisaurich"
+    },
+    {
+        "_id": "landkreisaugsburg@mykfz.eu",
+        "username": "landkreisaugsburg@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisaugsburg"
+    },
+    {
+        "_id": "landkreisbadkreuznach@mykfz.eu",
+        "username": "landkreisbadkreuznach@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisbadkreuznach"
+    },
+    {
+        "_id": "stadtbadenbaden@mykfz.eu",
+        "username": "stadtbadenbaden@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "stadtbadenbaden"
+    },
+    {
+        "_id": "stadtbamberg@mykfz.eu",
+        "username": "stadtbamberg@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "stadtbamberg"
+    },
+    {
+        "_id": "landkreisbamberg@mykfz.eu",
+        "username": "landkreisbamberg@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisbamberg"
+    },
+    {
+        "_id": "landkreisbadduerkheimbadduerkheimanderweinstrasse@mykfz.eu",
+        "username": "landkreisbadduerkheimbadduerkheimanderweinstrasse@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisbadduerkheimbadduerkheimanderweinstrasse"
+    },
+    {
+        "_id": "landkreisbadkissingen@mykfz.eu",
+        "username": "landkreisbadkissingen@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisbadkissingen"
+    },
+    {
+        "_id": "landkreisbarnim@mykfz.eu",
+        "username": "landkreisbarnim@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisbarnim"
+    },
+    {
+        "_id": "landkreisbautzen@mykfz.eu",
+        "username": "landkreisbautzen@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisbautzen"
+    },
+    {
+        "_id": "stadtbayreuth@mykfz.eu",
+        "username": "stadtbayreuth@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "stadtbayreuth"
+    },
+    {
+        "_id": "landkreisbadtoelzwolfratshausen@mykfz.eu",
+        "username": "landkreisbadtoelzwolfratshausen@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisbadtoelzwolfratshausen"
+    },
+    {
+        "_id": "landkreisbayreuth@mykfz.eu",
+        "username": "landkreisbayreuth@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisbayreuth"
+    },
+    {
+        "_id": "landkreisberchtesgadenerland@mykfz.eu",
+        "username": "landkreisberchtesgadenerland@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisberchtesgadenerland"
+    },
+    {
+        "_id": "landkreisbiberach@mykfz.eu",
+        "username": "landkreisbiberach@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisbiberach"
+    },
+    {
+        "_id": "stadtbielefeld@mykfz.eu",
+        "username": "stadtbielefeld@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "stadtbielefeld"
+    },
+    {
+        "_id": "landkreisbirkenfeld@mykfz.eu",
+        "username": "landkreisbirkenfeld@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisbirkenfeld"
+    },
+    {
+        "_id": "stadtberlin@mykfz.eu",
+        "username": "stadtberlin@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "stadtberlin"
+    },
+    {
+        "_id": "stadtbochum@mykfz.eu",
+        "username": "stadtbochum@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "stadtbochum"
+    },
+    {
+        "_id": "landkreisbernkastelwittlich@mykfz.eu",
+        "username": "landkreisbernkastelwittlich@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisbernkastelwittlich"
+    },
+    {
+        "_id": "bodenseekreisfriedrichshafen@mykfz.eu",
+        "username": "bodenseekreisfriedrichshafen@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "bodenseekreisfriedrichshafen"
+    },
+    {
+        "_id": "stadtbonn@mykfz.eu",
+        "username": "stadtbonn@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "stadtbonn"
+    },
+    {
+        "_id": "landkreisboeblingen@mykfz.eu",
+        "username": "landkreisboeblingen@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisboeblingen"
+    },
+    {
+        "_id": "kreisbergstrasseheppenheimbergstrasse@mykfz.eu",
+        "username": "kreisbergstrasseheppenheimbergstrasse@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "kreisbergstrasseheppenheimbergstrasse"
+    },
+    {
+        "_id": "stadtbottrop@mykfz.eu",
+        "username": "stadtbottrop@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "stadtbottrop"
+    },
+    {
+        "_id": "landkreisboerdeboerdekreis@mykfz.eu",
+        "username": "landkreisboerdeboerdekreis@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisboerdeboerdekreis"
+    },
+    {
+        "_id": "kreisborken@mykfz.eu",
+        "username": "kreisborken@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "kreisborken"
+    },
+    {
+        "_id": "landkreisbreisgauhochschwarzwaldfreiburgimbreisgau@mykfz.eu",
+        "username": "landkreisbreisgauhochschwarzwaldfreiburgimbreisgau@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisbreisgauhochschwarzwaldfreiburgimbreisgau"
+    },
+    {
+        "_id": "stadtgemeindebremen@mykfz.eu",
+        "username": "stadtgemeindebremen@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "stadtgemeindebremen"
+    },
+    {
+        "_id": "seestadtbremerhaven@mykfz.eu",
+        "username": "seestadtbremerhaven@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "seestadtbremerhaven"
+    },
+    {
+        "_id": "landkreiscalw@mykfz.eu",
+        "username": "landkreiscalw@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreiscalw"
+    },
+    {
+        "_id": "burgenlandkreis@mykfz.eu",
+        "username": "burgenlandkreis@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "burgenlandkreis"
+    },
+    {
+        "_id": "landkreiscelle@mykfz.eu",
+        "username": "landkreiscelle@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreiscelle"
+    },
+    {
+        "_id": "brandenburganderhavel@mykfz.eu",
+        "username": "brandenburganderhavel@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "brandenburganderhavel"
+    },
+    {
+        "_id": "landkreischam@mykfz.eu",
+        "username": "landkreischam@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreischam"
+    },
+    {
+        "_id": "stadtbraunschweig@mykfz.eu",
+        "username": "stadtbraunschweig@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "stadtbraunschweig"
+    },
+    {
+        "_id": "stadtcoburg@mykfz.eu",
+        "username": "stadtcoburg@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "stadtcoburg"
+    },
+    {
+        "_id": "stadtchemnitz@mykfz.eu",
+        "username": "stadtchemnitz@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "stadtchemnitz"
+    },
+    {
+        "_id": "landkreiscoburg@mykfz.eu",
+        "username": "landkreiscoburg@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreiscoburg"
+    },
+    {
+        "_id": "kreiscoesfeld@mykfz.eu",
+        "username": "kreiscoesfeld@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "kreiscoesfeld"
+    },
+    {
+        "_id": "landkreiscochemzell@mykfz.eu",
+        "username": "landkreiscochemzell@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreiscochemzell"
+    },
+    {
+        "_id": "landkreiscloppenburg@mykfz.eu",
+        "username": "landkreiscloppenburg@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreiscloppenburg"
+    },
+    {
+        "_id": "landkreiscuxhaven@mykfz.eu",
+        "username": "landkreiscuxhaven@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreiscuxhaven"
+    },
+    {
+        "_id": "stadtcottbus@mykfz.eu",
+        "username": "stadtcottbus@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "stadtcottbus"
+    },
+    {
+        "_id": "landkreisdachau@mykfz.eu",
+        "username": "landkreisdachau@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisdachau"
+    },
+    {
+        "_id": "stadtdarmstadt@mykfz.eu",
+        "username": "stadtdarmstadt@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "stadtdarmstadt"
+    },
+    {
+        "_id": "landkreisdahmespreewald@mykfz.eu",
+        "username": "landkreisdahmespreewald@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisdahmespreewald"
+    },
+    {
+        "_id": "stadtdelmenhorst@mykfz.eu",
+        "username": "stadtdelmenhorst@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "stadtdelmenhorst"
+    },
+    {
+        "_id": "stadtdessaurosslau@mykfz.eu",
+        "username": "stadtdessaurosslau@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "stadtdessaurosslau"
+    },
+    {
+        "_id": "landkreisdeggendorf@mykfz.eu",
+        "username": "landkreisdeggendorf@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisdeggendorf"
+    },
+    {
+        "_id": "landkreisdiepholz@mykfz.eu",
+        "username": "landkreisdiepholz@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisdiepholz"
+    },
+    {
+        "_id": "landkreisdillingenanderdonau@mykfz.eu",
+        "username": "landkreisdillingenanderdonau@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisdillingenanderdonau"
+    },
+    {
+        "_id": "landkreisdarmstadtdieburg@mykfz.eu",
+        "username": "landkreisdarmstadtdieburg@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisdarmstadtdieburg"
+    },
+    {
+        "_id": "landkreisdingolfinglandau@mykfz.eu",
+        "username": "landkreisdingolfinglandau@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisdingolfinglandau"
+    },
+    {
+        "_id": "kreisdithmarschenheide@mykfz.eu",
+        "username": "kreisdithmarschenheide@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "kreisdithmarschenheide"
+    },
+    {
+        "_id": "landkreisdonauries@mykfz.eu",
+        "username": "landkreisdonauries@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisdonauries"
+    },
+    {
+        "_id": "stadtduisburg@mykfz.eu",
+        "username": "stadtduisburg@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "stadtduisburg"
+    },
+    {
+        "_id": "stadtdresden@mykfz.eu",
+        "username": "stadtdresden@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "stadtdresden"
+    },
+    {
+        "_id": "donnersbergkreis@mykfz.eu",
+        "username": "donnersbergkreis@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "donnersbergkreis"
+    },
+    {
+        "_id": "stadtduesseldorf@mykfz.eu",
+        "username": "stadtduesseldorf@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "stadtduesseldorf"
+    },
+    {
+        "_id": "kreisdueren@mykfz.eu",
+        "username": "kreisdueren@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "kreisdueren"
+    },
+    {
+        "_id": "landkreiseichsfeld@mykfz.eu",
+        "username": "landkreiseichsfeld@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreiseichsfeld"
+    },
+    {
+        "_id": "landkreisebersberg@mykfz.eu",
+        "username": "landkreisebersberg@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisebersberg"
+    },
+    {
+        "_id": "landkreiseichstaett@mykfz.eu",
+        "username": "landkreiseichstaett@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreiseichstaett"
+    },
+    {
+        "_id": "stadtdortmund@mykfz.eu",
+        "username": "stadtdortmund@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "stadtdortmund"
+    },
+    {
+        "_id": "stadtemden@mykfz.eu",
+        "username": "stadtemden@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "stadtemden"
+    },
+    {
+        "_id": "landkreisemmendingen@mykfz.eu",
+        "username": "landkreisemmendingen@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisemmendingen"
+    },
+    {
+        "_id": "landkreisemsland@mykfz.eu",
+        "username": "landkreisemsland@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisemsland"
+    },
+    {
+        "_id": "stadteisenach@mykfz.eu",
+        "username": "stadteisenach@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "stadteisenach"
+    },
+    {
+        "_id": "enneperuhrkreis@mykfz.eu",
+        "username": "enneperuhrkreis@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "enneperuhrkreis"
+    },
+    {
+        "_id": "eifelkreisbitburgpruem@mykfz.eu",
+        "username": "eifelkreisbitburgpruem@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "eifelkreisbitburgpruem"
+    },
+    {
+        "_id": "enzkreis@mykfz.eu",
+        "username": "enzkreis@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "enzkreis"
+    },
+    {
+        "_id": "landkreiserding@mykfz.eu",
+        "username": "landkreiserding@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreiserding"
+    },
+    {
+        "_id": "landkreiselbeelster@mykfz.eu",
+        "username": "landkreiselbeelster@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreiselbeelster"
+    },
+    {
+        "_id": "stadterlangen@mykfz.eu",
+        "username": "stadterlangen@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "stadterlangen"
+    },
+    {
+        "_id": "stadterfurt@mykfz.eu",
+        "username": "stadterfurt@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "stadterfurt"
+    },
+    {
+        "_id": "landkreiserlangenhoechstadt@mykfz.eu",
+        "username": "landkreiserlangenhoechstadt@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreiserlangenhoechstadt"
+    },
+    {
+        "_id": "kreiseuskirchen@mykfz.eu",
+        "username": "kreiseuskirchen@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "kreiseuskirchen"
+    },
+    {
+        "_id": "stadtflensburg@mykfz.eu",
+        "username": "stadtflensburg@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "stadtflensburg"
+    },
+    {
+        "_id": "landkreisesslingen@mykfz.eu",
+        "username": "landkreisesslingen@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisesslingen"
+    },
+    {
+        "_id": "landkreisforchheim@mykfz.eu",
+        "username": "landkreisforchheim@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisforchheim"
+    },
+    {
+        "_id": "stadtessen@mykfz.eu",
+        "username": "stadtessen@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "stadtessen"
+    },
+    {
+        "_id": "stadtfrankenthalpfalz@mykfz.eu",
+        "username": "stadtfrankenthalpfalz@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "stadtfrankenthalpfalz"
+    },
+    {
+        "_id": "stadtfrankfurtammain@mykfz.eu",
+        "username": "stadtfrankfurtammain@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "stadtfrankfurtammain"
+    },
+    {
+        "_id": "stadtfrankfurtoder@mykfz.eu",
+        "username": "stadtfrankfurtoder@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "stadtfrankfurtoder"
+    },
+    {
+        "_id": "erzgebirgskreis@mykfz.eu",
+        "username": "erzgebirgskreis@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "erzgebirgskreis"
+    },
+    {
+        "_id": "stadtfreiburgimbreisgau@mykfz.eu",
+        "username": "stadtfreiburgimbreisgau@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "stadtfreiburgimbreisgau"
+    },
+    {
+        "_id": "landkreisfriesland@mykfz.eu",
+        "username": "landkreisfriesland@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisfriesland"
+    },
+    {
+        "_id": "landkreisfreising@mykfz.eu",
+        "username": "landkreisfreising@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisfreising"
+    },
+    {
+        "_id": "landkreisfreyunggrafenau@mykfz.eu",
+        "username": "landkreisfreyunggrafenau@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisfreyunggrafenau"
+    },
+    {
+        "_id": "stadtfuerth@mykfz.eu",
+        "username": "stadtfuerth@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "stadtfuerth"
+    },
+    {
+        "_id": "landkreisfulda@mykfz.eu",
+        "username": "landkreisfulda@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisfulda"
+    },
+    {
+        "_id": "landkreisfuerstenfeldbruck@mykfz.eu",
+        "username": "landkreisfuerstenfeldbruck@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisfuerstenfeldbruck"
+    },
+    {
+        "_id": "landkreisfuerth@mykfz.eu",
+        "username": "landkreisfuerth@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisfuerth"
+    },
+    {
+        "_id": "landkreisgarmischpartenkirchen@mykfz.eu",
+        "username": "landkreisgarmischpartenkirchen@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisgarmischpartenkirchen"
+    },
+    {
+        "_id": "landkreisfreudenstadt@mykfz.eu",
+        "username": "landkreisfreudenstadt@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisfreudenstadt"
+    },
+    {
+        "_id": "stadtgelsenkirchen@mykfz.eu",
+        "username": "stadtgelsenkirchen@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "stadtgelsenkirchen"
+    },
+    {
+        "_id": "landkreisgifhorn@mykfz.eu",
+        "username": "landkreisgifhorn@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisgifhorn"
+    },
+    {
+        "_id": "stadtgera@mykfz.eu",
+        "username": "stadtgera@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "stadtgera"
+    },
+    {
+        "_id": "landkreisgoeppingen@mykfz.eu",
+        "username": "landkreisgoeppingen@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisgoeppingen"
+    },
+    {
+        "_id": "landkreisgoettingen@mykfz.eu",
+        "username": "landkreisgoettingen@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisgoettingen"
+    },
+    {
+        "_id": "landkreisgoerlitz@mykfz.eu",
+        "username": "landkreisgoerlitz@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisgoerlitz"
+    },
+    {
+        "_id": "landkreisgiessen@mykfz.eu",
+        "username": "landkreisgiessen@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisgiessen"
+    },
+    {
+        "_id": "landkreisgermersheim@mykfz.eu",
+        "username": "landkreisgermersheim@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisgermersheim"
+    },
+    {
+        "_id": "landkreisgoslar@mykfz.eu",
+        "username": "landkreisgoslar@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisgoslar"
+    },
+    {
+        "_id": "landkreisgotha@mykfz.eu",
+        "username": "landkreisgotha@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisgotha"
+    },
+    {
+        "_id": "landkreisgrafschaftbentheimnordhorn@mykfz.eu",
+        "username": "landkreisgrafschaftbentheimnordhorn@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisgrafschaftbentheimnordhorn"
+    },
+    {
+        "_id": "landkreisgreiz@mykfz.eu",
+        "username": "landkreisgreiz@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisgreiz"
+    },
+    {
+        "_id": "kreisgrossgerau@mykfz.eu",
+        "username": "kreisgrossgerau@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "kreisgrossgerau"
+    },
+    {
+        "_id": "stadthalleandersaale@mykfz.eu",
+        "username": "stadthalleandersaale@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "stadthalleandersaale"
+    },
+    {
+        "_id": "hansestadthamburg@mykfz.eu",
+        "username": "hansestadthamburg@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "hansestadthamburg"
+    },
+    {
+        "_id": "landkreishamelnpyrmont@mykfz.eu",
+        "username": "landkreishamelnpyrmont@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreishamelnpyrmont"
+    },
+    {
+        "_id": "stadthagen@mykfz.eu",
+        "username": "stadthagen@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "stadthagen"
+    },
+    {
+        "_id": "kreisguetersloh@mykfz.eu",
+        "username": "kreisguetersloh@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "kreisguetersloh"
+    },
+    {
+        "_id": "stadthamm@mykfz.eu",
+        "username": "stadthamm@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "stadthamm"
+    },
+    {
+        "_id": "regionhannover@mykfz.eu",
+        "username": "regionhannover@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "regionhannover"
+    },
+    {
+        "_id": "landkreisguenzburg@mykfz.eu",
+        "username": "landkreisguenzburg@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisguenzburg"
+    },
+    {
+        "_id": "landkreisharburgwinsenluhe@mykfz.eu",
+        "username": "landkreisharburgwinsenluhe@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisharburgwinsenluhe"
+    },
+    {
+        "_id": "landkreisharz@mykfz.eu",
+        "username": "landkreisharz@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisharz"
+    },
+    {
+        "_id": "landkreishassberge@mykfz.eu",
+        "username": "landkreishassberge@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreishassberge"
+    },
+    {
+        "_id": "landkreisheidekreis@mykfz.eu",
+        "username": "landkreisheidekreis@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisheidekreis"
+    },
+    {
+        "_id": "landkreishavelland@mykfz.eu",
+        "username": "landkreishavelland@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreishavelland"
+    },
+    {
+        "_id": "stadtheilbronn@mykfz.eu",
+        "username": "stadtheilbronn@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "stadtheilbronn"
+    },
+    {
+        "_id": "kreisheinsberg@mykfz.eu",
+        "username": "kreisheinsberg@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "kreisheinsberg"
+    },
+    {
+        "_id": "landkreisheidenheim@mykfz.eu",
+        "username": "landkreisheidenheim@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisheidenheim"
+    },
+    {
+        "_id": "landkreishelmstedt@mykfz.eu",
+        "username": "landkreishelmstedt@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreishelmstedt"
+    },
+    {
+        "_id": "landkreisheilbronn@mykfz.eu",
+        "username": "landkreisheilbronn@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisheilbronn"
+    },
+    {
+        "_id": "kreisherford@mykfz.eu",
+        "username": "kreisherford@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "kreisherford"
+    },
+    {
+        "_id": "stadtheidelberg@mykfz.eu",
+        "username": "stadtheidelberg@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "stadtheidelberg"
+    },
+    {
+        "_id": "stadtherne@mykfz.eu",
+        "username": "stadtherne@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "stadtherne"
+    },
+    {
+        "_id": "landkreishildesheim@mykfz.eu",
+        "username": "landkreishildesheim@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreishildesheim"
+    },
+    {
+        "_id": "hochsauerlandkreis@mykfz.eu",
+        "username": "hochsauerlandkreis@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "hochsauerlandkreis"
+    },
+    {
+        "_id": "hochtaunuskreisbadhomburgvdhoehe@mykfz.eu",
+        "username": "hochtaunuskreisbadhomburgvdhoehe@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "hochtaunuskreisbadhomburgvdhoehe"
+    },
+    {
+        "_id": "stadthof@mykfz.eu",
+        "username": "stadthof@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "stadthof"
+    },
+    {
+        "_id": "landkreishersfeldrotenburg@mykfz.eu",
+        "username": "landkreishersfeldrotenburg@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreishersfeldrotenburg"
+    },
+    {
+        "_id": "landkreishildburghausen@mykfz.eu",
+        "username": "landkreishildburghausen@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreishildburghausen"
+    },
+    {
+        "_id": "kreisherzogtumlauenburgratzeburg@mykfz.eu",
+        "username": "kreisherzogtumlauenburgratzeburg@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "kreisherzogtumlauenburgratzeburg"
+    },
+    {
+        "_id": "landkreishof@mykfz.eu",
+        "username": "landkreishof@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreishof"
+    },
+    {
+        "_id": "hohenlohekreiskuenzelsau@mykfz.eu",
+        "username": "hohenlohekreiskuenzelsau@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "hohenlohekreiskuenzelsau"
+    },
+    {
+        "_id": "landkreisholzminden@mykfz.eu",
+        "username": "landkreisholzminden@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisholzminden"
+    },
+    {
+        "_id": "stadtingolstadt@mykfz.eu",
+        "username": "stadtingolstadt@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "stadtingolstadt"
+    },
+    {
+        "_id": "kreishoexter@mykfz.eu",
+        "username": "kreishoexter@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "kreishoexter"
+    },
+    {
+        "_id": "stadtjena@mykfz.eu",
+        "username": "stadtjena@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "stadtjena"
+    },
+    {
+        "_id": "landkreisjerichowerland@mykfz.eu",
+        "username": "landkreisjerichowerland@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisjerichowerland"
+    },
+    {
+        "_id": "stadtkaiserslautern@mykfz.eu",
+        "username": "stadtkaiserslautern@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "stadtkaiserslautern"
+    },
+    {
+        "_id": "stadtkarlsruhe@mykfz.eu",
+        "username": "stadtkarlsruhe@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "stadtkarlsruhe"
+    },
+    {
+        "_id": "landkreiskaiserslautern@mykfz.eu",
+        "username": "landkreiskaiserslautern@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreiskaiserslautern"
+    },
+    {
+        "_id": "landkreiskarlsruhe@mykfz.eu",
+        "username": "landkreiskarlsruhe@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreiskarlsruhe"
+    },
+    {
+        "_id": "stadtkassel@mykfz.eu",
+        "username": "stadtkassel@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "stadtkassel"
+    },
+    {
+        "_id": "landkreiskassel@mykfz.eu",
+        "username": "landkreiskassel@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreiskassel"
+    },
+    {
+        "_id": "stadtkaufbeuren@mykfz.eu",
+        "username": "stadtkaufbeuren@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "stadtkaufbeuren"
+    },
+    {
+        "_id": "landkreiskelheim@mykfz.eu",
+        "username": "landkreiskelheim@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreiskelheim"
+    },
+    {
+        "_id": "stadtkemptenallgaeu@mykfz.eu",
+        "username": "stadtkemptenallgaeu@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "stadtkemptenallgaeu"
+    },
+    {
+        "_id": "stadtkiel@mykfz.eu",
+        "username": "stadtkiel@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "stadtkiel"
+    },
+    {
+        "_id": "landkreiskitzingen@mykfz.eu",
+        "username": "landkreiskitzingen@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreiskitzingen"
+    },
+    {
+        "_id": "stadtkoblenz@mykfz.eu",
+        "username": "stadtkoblenz@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "stadtkoblenz"
+    },
+    {
+        "_id": "ilmkreis@mykfz.eu",
+        "username": "ilmkreis@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "ilmkreis"
+    },
+    {
+        "_id": "stadtkoeln@mykfz.eu",
+        "username": "stadtkoeln@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "stadtkoeln"
+    },
+    {
+        "_id": "kreiskleve@mykfz.eu",
+        "username": "kreiskleve@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "kreiskleve"
+    },
+    {
+        "_id": "landkreiskonstanz@mykfz.eu",
+        "username": "landkreiskonstanz@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreiskonstanz"
+    },
+    {
+        "_id": "stadtkrefeld@mykfz.eu",
+        "username": "stadtkrefeld@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "stadtkrefeld"
+    },
+    {
+        "_id": "landkreiskronach@mykfz.eu",
+        "username": "landkreiskronach@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreiskronach"
+    },
+    {
+        "_id": "landkreiskulmbach@mykfz.eu",
+        "username": "landkreiskulmbach@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreiskulmbach"
+    },
+    {
+        "_id": "landkreiskusel@mykfz.eu",
+        "username": "landkreiskusel@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreiskusel"
+    },
+    {
+        "_id": "kyffhaeuserkreis@mykfz.eu",
+        "username": "kyffhaeuserkreis@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "kyffhaeuserkreis"
+    },
+    {
+        "_id": "stadtlandshut@mykfz.eu",
+        "username": "stadtlandshut@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "stadtlandshut"
+    },
+    {
+        "_id": "landkreislandsbergamlech@mykfz.eu",
+        "username": "landkreislandsbergamlech@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreislandsbergamlech"
+    },
+    {
+        "_id": "landkreislandshut@mykfz.eu",
+        "username": "landkreislandshut@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreislandshut"
+    },
+    {
+        "_id": "landkreisleer@mykfz.eu",
+        "username": "landkreisleer@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisleer"
+    },
+    {
+        "_id": "stadtleipzig@mykfz.eu",
+        "username": "stadtleipzig@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "stadtleipzig"
+    },
+    {
+        "_id": "stadtlandauinderpfalz@mykfz.eu",
+        "username": "stadtlandauinderpfalz@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "stadtlandauinderpfalz"
+    },
+    {
+        "_id": "stadtleverkusen@mykfz.eu",
+        "username": "stadtleverkusen@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "stadtleverkusen"
+    },
+    {
+        "_id": "landkreisleipzig@mykfz.eu",
+        "username": "landkreisleipzig@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisleipzig"
+    },
+    {
+        "_id": "landkreislichtenfels@mykfz.eu",
+        "username": "landkreislichtenfels@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreislichtenfels"
+    },
+    {
+        "_id": "landkreislimburgweilburg@mykfz.eu",
+        "username": "landkreislimburgweilburg@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreislimburgweilburg"
+    },
+    {
+        "_id": "lahndillkreis@mykfz.eu",
+        "username": "lahndillkreis@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "lahndillkreis"
+    },
+    {
+        "_id": "kreislippe@mykfz.eu",
+        "username": "kreislippe@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "kreislippe"
+    },
+    {
+        "_id": "hansestadtluebeck@mykfz.eu",
+        "username": "hansestadtluebeck@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "hansestadtluebeck"
+    },
+    {
+        "_id": "landkreisluechowdannenberg@mykfz.eu",
+        "username": "landkreisluechowdannenberg@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisluechowdannenberg"
+    },
+    {
+        "_id": "landkreislindaubodensee@mykfz.eu",
+        "username": "landkreislindaubodensee@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreislindaubodensee"
+    },
+    {
+        "_id": "landkreisludwigsburg@mykfz.eu",
+        "username": "landkreisludwigsburg@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisludwigsburg"
+    },
+    {
+        "_id": "landkreisloerrach@mykfz.eu",
+        "username": "landkreisloerrach@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisloerrach"
+    },
+    {
+        "_id": "stadtludwigshafenamrhein@mykfz.eu",
+        "username": "stadtludwigshafenamrhein@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "stadtludwigshafenamrhein"
+    },
+    {
+        "_id": "landkreisludwigslustparchim@mykfz.eu",
+        "username": "landkreisludwigslustparchim@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisludwigslustparchim"
+    },
+    {
+        "_id": "landkreislueneburg@mykfz.eu",
+        "username": "landkreislueneburg@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreislueneburg"
+    },
+    {
+        "_id": "stadtmagdeburg@mykfz.eu",
+        "username": "stadtmagdeburg@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "stadtmagdeburg"
+    },
+    {
+        "_id": "maintauberkreistauberbischofsheim@mykfz.eu",
+        "username": "maintauberkreistauberbischofsheim@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "maintauberkreistauberbischofsheim"
+    },
+    {
+        "_id": "maintaunuskreis@mykfz.eu",
+        "username": "maintaunuskreis@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "maintaunuskreis"
+    },
+    {
+        "_id": "landkreismainspessart@mykfz.eu",
+        "username": "landkreismainspessart@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreismainspessart"
+    },
+    {
+        "_id": "stadtmainz@mykfz.eu",
+        "username": "stadtmainz@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "stadtmainz"
+    },
+    {
+        "_id": "stadtmannheim@mykfz.eu",
+        "username": "stadtmannheim@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "stadtmannheim"
+    },
+    {
+        "_id": "landkreismainzbingen@mykfz.eu",
+        "username": "landkreismainzbingen@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreismainzbingen"
+    },
+    {
+        "_id": "landkreismansfeldsuedharz@mykfz.eu",
+        "username": "landkreismansfeldsuedharz@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreismansfeldsuedharz"
+    },
+    {
+        "_id": "landkreismarburgbiedenkopf@mykfz.eu",
+        "username": "landkreismarburgbiedenkopf@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreismarburgbiedenkopf"
+    },
+    {
+        "_id": "maerkischerkreis@mykfz.eu",
+        "username": "maerkischerkreis@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "maerkischerkreis"
+    },
+    {
+        "_id": "landkreismaerkischoderland@mykfz.eu",
+        "username": "landkreismaerkischoderland@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreismaerkischoderland"
+    },
+    {
+        "_id": "mainkinzigkreis@mykfz.eu",
+        "username": "mainkinzigkreis@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "mainkinzigkreis"
+    },
+    {
+        "_id": "landkreismayenkoblenz@mykfz.eu",
+        "username": "landkreismayenkoblenz@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreismayenkoblenz"
+    },
+    {
+        "_id": "landkreismecklenburgischeseenplatte@mykfz.eu",
+        "username": "landkreismecklenburgischeseenplatte@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreismecklenburgischeseenplatte"
+    },
+    {
+        "_id": "stadtmemmingen@mykfz.eu",
+        "username": "stadtmemmingen@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "stadtmemmingen"
+    },
+    {
+        "_id": "landkreismeissen@mykfz.eu",
+        "username": "landkreismeissen@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreismeissen"
+    },
+    {
+        "_id": "landkreismiltenberg@mykfz.eu",
+        "username": "landkreismiltenberg@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreismiltenberg"
+    },
+    {
+        "_id": "kreismindenluebbecke@mykfz.eu",
+        "username": "kreismindenluebbecke@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "kreismindenluebbecke"
+    },
+    {
+        "_id": "kreismettmann@mykfz.eu",
+        "username": "kreismettmann@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "kreismettmann"
+    },
+    {
+        "_id": "landkreismerzigwadern@mykfz.eu",
+        "username": "landkreismerzigwadern@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreismerzigwadern"
+    },
+    {
+        "_id": "stadtmoenchengladbach@mykfz.eu",
+        "username": "stadtmoenchengladbach@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "stadtmoenchengladbach"
+    },
+    {
+        "_id": "landkreismittelsachsenfreiberg@mykfz.eu",
+        "username": "landkreismittelsachsenfreiberg@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreismittelsachsenfreiberg"
+    },
+    {
+        "_id": "landkreismuehldorfaminn@mykfz.eu",
+        "username": "landkreismuehldorfaminn@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreismuehldorfaminn"
+    },
+    {
+        "_id": "landkreismiesbach@mykfz.eu",
+        "username": "landkreismiesbach@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreismiesbach"
+    },
+    {
+        "_id": "stadtmuenchen@mykfz.eu",
+        "username": "stadtmuenchen@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "stadtmuenchen"
+    },
+    {
+        "_id": "stadtmuelheimanderruhr@mykfz.eu",
+        "username": "stadtmuelheimanderruhr@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "stadtmuelheimanderruhr"
+    },
+    {
+        "_id": "stadtmuenster@mykfz.eu",
+        "username": "stadtmuenster@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "stadtmuenster"
+    },
+    {
+        "_id": "neckarodenwaldkreismosbach@mykfz.eu",
+        "username": "neckarodenwaldkreismosbach@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "neckarodenwaldkreismosbach"
+    },
+    {
+        "_id": "landkreisneuburgschrobenhausen@mykfz.eu",
+        "username": "landkreisneuburgschrobenhausen@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisneuburgschrobenhausen"
+    },
+    {
+        "_id": "landkreismuenchen@mykfz.eu",
+        "username": "landkreismuenchen@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreismuenchen"
+    },
+    {
+        "_id": "landkreisneustadtanderaischbadwindsheim@mykfz.eu",
+        "username": "landkreisneustadtanderaischbadwindsheim@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisneustadtanderaischbadwindsheim"
+    },
+    {
+        "_id": "stadtneumuenster@mykfz.eu",
+        "username": "stadtneumuenster@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "stadtneumuenster"
+    },
+    {
+        "_id": "landkreisneustadtanderwaldnaab@mykfz.eu",
+        "username": "landkreisneustadtanderwaldnaab@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisneustadtanderwaldnaab"
+    },
+    {
+        "_id": "landkreisneunkirchen@mykfz.eu",
+        "username": "landkreisneunkirchen@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisneunkirchen"
+    },
+    {
+        "_id": "stadtneustadtanderweinstrasse@mykfz.eu",
+        "username": "stadtneustadtanderweinstrasse@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "stadtneustadtanderweinstrasse"
+    },
+    {
+        "_id": "landkreisneumarktinderoberpfalz@mykfz.eu",
+        "username": "landkreisneumarktinderoberpfalz@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisneumarktinderoberpfalz"
+    },
+    {
+        "_id": "landkreisneuulm@mykfz.eu",
+        "username": "landkreisneuulm@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisneuulm"
+    },
+    {
+        "_id": "landkreisnienburgweser@mykfz.eu",
+        "username": "landkreisnienburgweser@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisnienburgweser"
+    },
+    {
+        "_id": "landkreisneuwied@mykfz.eu",
+        "username": "landkreisneuwied@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisneuwied"
+    },
+    {
+        "_id": "kreisnordfriesland@mykfz.eu",
+        "username": "kreisnordfriesland@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "kreisnordfriesland"
+    },
+    {
+        "_id": "landkreisnordhausen@mykfz.eu",
+        "username": "landkreisnordhausen@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisnordhausen"
+    },
+    {
+        "_id": "stadtnuernberg@mykfz.eu",
+        "username": "stadtnuernberg@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "stadtnuernberg"
+    },
+    {
+        "_id": "landkreisnortheim@mykfz.eu",
+        "username": "landkreisnortheim@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisnortheim"
+    },
+    {
+        "_id": "landkreisoberallgaeu@mykfz.eu",
+        "username": "landkreisoberallgaeu@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisoberallgaeu"
+    },
+    {
+        "_id": "stadtoberhausen@mykfz.eu",
+        "username": "stadtoberhausen@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "stadtoberhausen"
+    },
+    {
+        "_id": "oberbergischerkreisgummersbach@mykfz.eu",
+        "username": "oberbergischerkreisgummersbach@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "oberbergischerkreisgummersbach"
+    },
+    {
+        "_id": "landkreisoberhavel@mykfz.eu",
+        "username": "landkreisoberhavel@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisoberhavel"
+    },
+    {
+        "_id": "landkreisnordwestmecklenburg@mykfz.eu",
+        "username": "landkreisnordwestmecklenburg@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisnordwestmecklenburg"
+    },
+    {
+        "_id": "landkreisoberspreewaldlausitz@mykfz.eu",
+        "username": "landkreisoberspreewaldlausitz@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisoberspreewaldlausitz"
+    },
+    {
+        "_id": "landkreisnordsachsentorgau@mykfz.eu",
+        "username": "landkreisnordsachsentorgau@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisnordsachsentorgau"
+    },
+    {
+        "_id": "landkreisoffenbach@mykfz.eu",
+        "username": "landkreisoffenbach@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisoffenbach"
+    },
+    {
+        "_id": "odenwaldkreiserbach@mykfz.eu",
+        "username": "odenwaldkreiserbach@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "odenwaldkreiserbach"
+    },
+    {
+        "_id": "stadtoffenbachammain@mykfz.eu",
+        "username": "stadtoffenbachammain@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "stadtoffenbachammain"
+    },
+    {
+        "_id": "landkreisoldenburg@mykfz.eu",
+        "username": "landkreisoldenburg@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisoldenburg"
+    },
+    {
+        "_id": "stadtoldenburg@mykfz.eu",
+        "username": "stadtoldenburg@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "stadtoldenburg"
+    },
+    {
+        "_id": "kreisolpe@mykfz.eu",
+        "username": "kreisolpe@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "kreisolpe"
+    },
+    {
+        "_id": "ortenaukreis@mykfz.eu",
+        "username": "ortenaukreis@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "ortenaukreis"
+    },
+    {
+        "_id": "stadtosnabrueck@mykfz.eu",
+        "username": "stadtosnabrueck@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "stadtosnabrueck"
+    },
+    {
+        "_id": "landkreisoderspree@mykfz.eu",
+        "username": "landkreisoderspree@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisoderspree"
+    },
+    {
+        "_id": "landkreisosterholz@mykfz.eu",
+        "username": "landkreisosterholz@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisosterholz"
+    },
+    {
+        "_id": "kreisostholstein@mykfz.eu",
+        "username": "kreisostholstein@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "kreisostholstein"
+    },
+    {
+        "_id": "ostalbkreisaalen@mykfz.eu",
+        "username": "ostalbkreisaalen@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "ostalbkreisaalen"
+    },
+    {
+        "_id": "landkreisostallgaeu@mykfz.eu",
+        "username": "landkreisostallgaeu@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisostallgaeu"
+    },
+    {
+        "_id": "landkreisostprignitzruppin@mykfz.eu",
+        "username": "landkreisostprignitzruppin@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisostprignitzruppin"
+    },
+    {
+        "_id": "kreispaderborn@mykfz.eu",
+        "username": "kreispaderborn@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "kreispaderborn"
+    },
+    {
+        "_id": "stadtpassau@mykfz.eu",
+        "username": "stadtpassau@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "stadtpassau"
+    },
+    {
+        "_id": "landkreisosnabrueck@mykfz.eu",
+        "username": "landkreisosnabrueck@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisosnabrueck"
+    },
+    {
+        "_id": "landkreispassau@mykfz.eu",
+        "username": "landkreispassau@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreispassau"
+    },
+    {
+        "_id": "landkreispeine@mykfz.eu",
+        "username": "landkreispeine@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreispeine"
+    },
+    {
+        "_id": "stadtpirmasens@mykfz.eu",
+        "username": "stadtpirmasens@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "stadtpirmasens"
+    },
+    {
+        "_id": "kreisploen@mykfz.eu",
+        "username": "kreisploen@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "kreisploen"
+    },
+    {
+        "_id": "stadtpforzheim@mykfz.eu",
+        "username": "stadtpforzheim@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "stadtpforzheim"
+    },
+    {
+        "_id": "landkreispotsdammittelmark@mykfz.eu",
+        "username": "landkreispotsdammittelmark@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreispotsdammittelmark"
+    },
+    {
+        "_id": "stadtpotsdam@mykfz.eu",
+        "username": "stadtpotsdam@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "stadtpotsdam"
+    },
+    {
+        "_id": "landkreisrastatt@mykfz.eu",
+        "username": "landkreisrastatt@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisrastatt"
+    },
+    {
+        "_id": "landkreisprignitz@mykfz.eu",
+        "username": "landkreisprignitz@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisprignitz"
+    },
+    {
+        "_id": "kreisrecklinghausen@mykfz.eu",
+        "username": "kreisrecklinghausen@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "kreisrecklinghausen"
+    },
+    {
+        "_id": "landkreispfaffenhofenanderilm@mykfz.eu",
+        "username": "landkreispfaffenhofenanderilm@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreispfaffenhofenanderilm"
+    },
+    {
+        "_id": "landkreisregen@mykfz.eu",
+        "username": "landkreisregen@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisregen"
+    },
+    {
+        "_id": "stadtregensburg@mykfz.eu",
+        "username": "stadtregensburg@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "stadtregensburg"
+    },
+    {
+        "_id": "landkreisregensburg@mykfz.eu",
+        "username": "landkreisregensburg@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisregensburg"
+    },
+    {
+        "_id": "kreispinneberghelgoland@mykfz.eu",
+        "username": "kreispinneberghelgoland@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "kreispinneberghelgoland"
+    },
+    {
+        "_id": "stadtremscheid@mykfz.eu",
+        "username": "stadtremscheid@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "stadtremscheid"
+    },
+    {
+        "_id": "remsmurrkreiswaiblingen@mykfz.eu",
+        "username": "remsmurrkreiswaiblingen@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "remsmurrkreiswaiblingen"
+    },
+    {
+        "_id": "landkreisravensburg@mykfz.eu",
+        "username": "landkreisravensburg@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisravensburg"
+    },
+    {
+        "_id": "rheingautaunuskreisruedesheimamrhein@mykfz.eu",
+        "username": "rheingautaunuskreisruedesheimamrhein@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "rheingautaunuskreisruedesheimamrhein"
+    },
+    {
+        "_id": "rheinerftkreisbergheim@mykfz.eu",
+        "username": "rheinerftkreisbergheim@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "rheinerftkreisbergheim"
+    },
+    {
+        "_id": "rheinischbergischerkreisbergischgladbach@mykfz.eu",
+        "username": "rheinischbergischerkreisbergischgladbach@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "rheinischbergischerkreisbergischgladbach"
+    },
+    {
+        "_id": "kreisrendsburgeckernfoerde@mykfz.eu",
+        "username": "kreisrendsburgeckernfoerde@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "kreisrendsburgeckernfoerde"
+    },
+    {
+        "_id": "rheinhunsrueckkreissimmernhunsrueck@mykfz.eu",
+        "username": "rheinhunsrueckkreissimmernhunsrueck@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "rheinhunsrueckkreissimmernhunsrueck"
+    },
+    {
+        "_id": "landkreisreutlingen@mykfz.eu",
+        "username": "landkreisreutlingen@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisreutlingen"
+    },
+    {
+        "_id": "rheinkreisneuss@mykfz.eu",
+        "username": "rheinkreisneuss@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "rheinkreisneuss"
+    },
+    {
+        "_id": "rheinlahnkreisbadems@mykfz.eu",
+        "username": "rheinlahnkreisbadems@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "rheinlahnkreisbadems"
+    },
+    {
+        "_id": "rheinsiegkreissiegburg@mykfz.eu",
+        "username": "rheinsiegkreissiegburg@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "rheinsiegkreissiegburg"
+    },
+    {
+        "_id": "rheinneckarkreisheidelberg@mykfz.eu",
+        "username": "rheinneckarkreisheidelberg@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "rheinneckarkreisheidelberg"
+    },
+    {
+        "_id": "landkreisrhoengrabfeldbadneustadtadsaale@mykfz.eu",
+        "username": "landkreisrhoengrabfeldbadneustadtadsaale@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisrhoengrabfeldbadneustadtadsaale"
+    },
+    {
+        "_id": "rheinpfalzkreis@mykfz.eu",
+        "username": "rheinpfalzkreis@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "rheinpfalzkreis"
+    },
+    {
+        "_id": "stadtrosenheim@mykfz.eu",
+        "username": "stadtrosenheim@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "stadtrosenheim"
+    },
+    {
+        "_id": "landkreisrosenheim@mykfz.eu",
+        "username": "landkreisrosenheim@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisrosenheim"
+    },
+    {
+        "_id": "hansestadtrostock@mykfz.eu",
+        "username": "hansestadtrostock@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "hansestadtrostock"
+    },
+    {
+        "_id": "landkreisrotenburgwuemme@mykfz.eu",
+        "username": "landkreisrotenburgwuemme@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisrotenburgwuemme"
+    },
+    {
+        "_id": "landkreisrostock@mykfz.eu",
+        "username": "landkreisrostock@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisrostock"
+    },
+    {
+        "_id": "landkreisroth@mykfz.eu",
+        "username": "landkreisroth@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisroth"
+    },
+    {
+        "_id": "saaleholzlandkreis@mykfz.eu",
+        "username": "saaleholzlandkreis@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "saaleholzlandkreis"
+    },
+    {
+        "_id": "saalekreis@mykfz.eu",
+        "username": "saalekreis@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "saalekreis"
+    },
+    {
+        "_id": "landkreisrottalinnpfarrkirchen@mykfz.eu",
+        "username": "landkreisrottalinnpfarrkirchen@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisrottalinnpfarrkirchen"
+    },
+    {
+        "_id": "landkreissaalfeldrudolstadt@mykfz.eu",
+        "username": "landkreissaalfeldrudolstadt@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreissaalfeldrudolstadt"
+    },
+    {
+        "_id": "saaleorlakreis@mykfz.eu",
+        "username": "saaleorlakreis@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "saaleorlakreis"
+    },
+    {
+        "_id": "regionalverbandsaarbruecken@mykfz.eu",
+        "username": "regionalverbandsaarbruecken@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "regionalverbandsaarbruecken"
+    },
+    {
+        "_id": "landkreissaarlouis@mykfz.eu",
+        "username": "landkreissaarlouis@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreissaarlouis"
+    },
+    {
+        "_id": "landkreisrottweil@mykfz.eu",
+        "username": "landkreisrottweil@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisrottweil"
+    },
+    {
+        "_id": "saarpfalzkreishomburg@mykfz.eu",
+        "username": "saarpfalzkreishomburg@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "saarpfalzkreishomburg"
+    },
+    {
+        "_id": "landkreissanktwendel@mykfz.eu",
+        "username": "landkreissanktwendel@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreissanktwendel"
+    },
+    {
+        "_id": "stadtsalzgitter@mykfz.eu",
+        "username": "stadtsalzgitter@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "stadtsalzgitter"
+    },
+    {
+        "_id": "landkreisschaumburg@mykfz.eu",
+        "username": "landkreisschaumburg@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisschaumburg"
+    },
+    {
+        "_id": "salzlandkreis@mykfz.eu",
+        "username": "salzlandkreis@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "salzlandkreis"
+    },
+    {
+        "_id": "landkreisschmalkaldenmeiningen@mykfz.eu",
+        "username": "landkreisschmalkaldenmeiningen@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisschmalkaldenmeiningen"
+    },
+    {
+        "_id": "stadtschwabach@mykfz.eu",
+        "username": "stadtschwabach@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "stadtschwabach"
+    },
+    {
+        "_id": "landkreissaechsischeschweizosterzgebirgepirna@mykfz.eu",
+        "username": "landkreissaechsischeschweizosterzgebirgepirna@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreissaechsischeschweizosterzgebirgepirna"
+    },
+    {
+        "_id": "kreisschleswigflensburg@mykfz.eu",
+        "username": "kreisschleswigflensburg@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "kreisschleswigflensburg"
+    },
+    {
+        "_id": "landkreisschwandorf@mykfz.eu",
+        "username": "landkreisschwandorf@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisschwandorf"
+    },
+    {
+        "_id": "landkreisschwaebischhall@mykfz.eu",
+        "username": "landkreisschwaebischhall@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisschwaebischhall"
+    },
+    {
+        "_id": "schwarzwaldbaarkreisvillingenschwenningen@mykfz.eu",
+        "username": "schwarzwaldbaarkreisvillingenschwenningen@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "schwarzwaldbaarkreisvillingenschwenningen"
+    },
+    {
+        "_id": "stadtschweinfurt@mykfz.eu",
+        "username": "stadtschweinfurt@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "stadtschweinfurt"
+    },
+    {
+        "_id": "stadtschwerin@mykfz.eu",
+        "username": "stadtschwerin@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "stadtschwerin"
+    },
+    {
+        "_id": "landkreisschweinfurt@mykfz.eu",
+        "username": "landkreisschweinfurt@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisschweinfurt"
+    },
+    {
+        "_id": "schwalmederkreishombergefze@mykfz.eu",
+        "username": "schwalmederkreishombergefze@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "schwalmederkreishombergefze"
+    },
+    {
+        "_id": "kreissoest@mykfz.eu",
+        "username": "kreissoest@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "kreissoest"
+    },
+    {
+        "_id": "landkreissigmaringen@mykfz.eu",
+        "username": "landkreissigmaringen@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreissigmaringen"
+    },
+    {
+        "_id": "kreissegeberg@mykfz.eu",
+        "username": "kreissegeberg@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "kreissegeberg"
+    },
+    {
+        "_id": "stadtsolingen@mykfz.eu",
+        "username": "stadtsolingen@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "stadtsolingen"
+    },
+    {
+        "_id": "landkreissonneberg@mykfz.eu",
+        "username": "landkreissonneberg@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreissonneberg"
+    },
+    {
+        "_id": "landkreissoemmerda@mykfz.eu",
+        "username": "landkreissoemmerda@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreissoemmerda"
+    },
+    {
+        "_id": "stadtspeyer@mykfz.eu",
+        "username": "stadtspeyer@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "stadtspeyer"
+    },
+    {
+        "_id": "kreissiegenwittgenstein@mykfz.eu",
+        "username": "kreissiegenwittgenstein@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "kreissiegenwittgenstein"
+    },
+    {
+        "_id": "landkreisspreeneisse@mykfz.eu",
+        "username": "landkreisspreeneisse@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisspreeneisse"
+    },
+    {
+        "_id": "landkreisstade@mykfz.eu",
+        "username": "landkreisstade@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisstade"
+    },
+    {
+        "_id": "kreissteinburgitzehoe@mykfz.eu",
+        "username": "kreissteinburgitzehoe@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "kreissteinburgitzehoe"
+    },
+    {
+        "_id": "kreissteinfurt@mykfz.eu",
+        "username": "kreissteinfurt@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "kreissteinfurt"
+    },
+    {
+        "_id": "landkreisstendal@mykfz.eu",
+        "username": "landkreisstendal@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisstendal"
+    },
+    {
+        "_id": "kreisstormarnbadoldesloe@mykfz.eu",
+        "username": "kreisstormarnbadoldesloe@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "kreisstormarnbadoldesloe"
+    },
+    {
+        "_id": "stadtstraubing@mykfz.eu",
+        "username": "stadtstraubing@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "stadtstraubing"
+    },
+    {
+        "_id": "landkreisstraubingbogen@mykfz.eu",
+        "username": "landkreisstraubingbogen@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisstraubingbogen"
+    },
+    {
+        "_id": "landkreisstarnberg@mykfz.eu",
+        "username": "landkreisstarnberg@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisstarnberg"
+    },
+    {
+        "_id": "stadtstuttgart@mykfz.eu",
+        "username": "stadtstuttgart@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "stadtstuttgart"
+    },
+    {
+        "_id": "landkreistirschenreuth@mykfz.eu",
+        "username": "landkreistirschenreuth@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreistirschenreuth"
+    },
+    {
+        "_id": "landkreisteltowflaeming@mykfz.eu",
+        "username": "landkreisteltowflaeming@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisteltowflaeming"
+    },
+    {
+        "_id": "landkreistraunstein@mykfz.eu",
+        "username": "landkreistraunstein@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreistraunstein"
+    },
+    {
+        "_id": "landkreissuedlicheweinstrasse@mykfz.eu",
+        "username": "landkreissuedlicheweinstrasse@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreissuedlicheweinstrasse"
+    },
+    {
+        "_id": "landkreistriersaarburg@mykfz.eu",
+        "username": "landkreistriersaarburg@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreistriersaarburg"
+    },
+    {
+        "_id": "landkreistuebingen@mykfz.eu",
+        "username": "landkreistuebingen@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreistuebingen"
+    },
+    {
+        "_id": "landkreistuttlingen@mykfz.eu",
+        "username": "landkreistuttlingen@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreistuttlingen"
+    },
+    {
+        "_id": "landkreissuedwestpfalzpirmasens@mykfz.eu",
+        "username": "landkreissuedwestpfalzpirmasens@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreissuedwestpfalzpirmasens"
+    },
+    {
+        "_id": "landkreisuckermark@mykfz.eu",
+        "username": "landkreisuckermark@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisuckermark"
+    },
+    {
+        "_id": "stadtulm@mykfz.eu",
+        "username": "stadtulm@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "stadtulm"
+    },
+    {
+        "_id": "stadttrier@mykfz.eu",
+        "username": "stadttrier@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "stadttrier"
+    },
+    {
+        "_id": "unstruthainichkreis@mykfz.eu",
+        "username": "unstruthainichkreis@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "unstruthainichkreis"
+    },
+    {
+        "_id": "kreisunna@mykfz.eu",
+        "username": "kreisunna@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "kreisunna"
+    },
+    {
+        "_id": "landkreisunterallgaeumindelheim@mykfz.eu",
+        "username": "landkreisunterallgaeumindelheim@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisunterallgaeumindelheim"
+    },
+    {
+        "_id": "landkreisverden@mykfz.eu",
+        "username": "landkreisverden@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisverden"
+    },
+    {
+        "_id": "landkreisvechta@mykfz.eu",
+        "username": "landkreisvechta@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisvechta"
+    },
+    {
+        "_id": "landkreisuelzen@mykfz.eu",
+        "username": "landkreisuelzen@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisuelzen"
+    },
+    {
+        "_id": "landkreisvorpommerngreifswald@mykfz.eu",
+        "username": "landkreisvorpommerngreifswald@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisvorpommerngreifswald"
+    },
+    {
+        "_id": "vogtlandkreis@mykfz.eu",
+        "username": "vogtlandkreis@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "vogtlandkreis"
+    },
+    {
+        "_id": "kreisviersen@mykfz.eu",
+        "username": "kreisviersen@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "kreisviersen"
+    },
+    {
+        "_id": "landkreisvulkaneifeldaun@mykfz.eu",
+        "username": "landkreisvulkaneifeldaun@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisvulkaneifeldaun"
+    },
+    {
+        "_id": "landkreiswaldeckfrankenbergkorbach@mykfz.eu",
+        "username": "landkreiswaldeckfrankenbergkorbach@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreiswaldeckfrankenbergkorbach"
+    },
+    {
+        "_id": "landkreisvorpommernruegen@mykfz.eu",
+        "username": "landkreisvorpommernruegen@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisvorpommernruegen"
+    },
+    {
+        "_id": "landkreiswaldshut@mykfz.eu",
+        "username": "landkreiswaldshut@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreiswaldshut"
+    },
+    {
+        "_id": "kreiswarendorf@mykfz.eu",
+        "username": "kreiswarendorf@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "kreiswarendorf"
+    },
+    {
+        "_id": "stadtweideninderoberpfalz@mykfz.eu",
+        "username": "stadtweideninderoberpfalz@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "stadtweideninderoberpfalz"
+    },
+    {
+        "_id": "stadtweimar@mykfz.eu",
+        "username": "stadtweimar@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "stadtweimar"
+    },
+    {
+        "_id": "landkreisweilheimschongau@mykfz.eu",
+        "username": "landkreisweilheimschongau@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisweilheimschongau"
+    },
+    {
+        "_id": "wartburgkreis@mykfz.eu",
+        "username": "wartburgkreis@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "wartburgkreis"
+    },
+    {
+        "_id": "weimarerlandapolda@mykfz.eu",
+        "username": "weimarerlandapolda@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "weimarerlandapolda"
+    },
+    {
+        "_id": "landkreisweissenburggunzenhausen@mykfz.eu",
+        "username": "landkreisweissenburggunzenhausen@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreisweissenburggunzenhausen"
+    },
+    {
+        "_id": "landkreiswesermarschbrakeunterweser@mykfz.eu",
+        "username": "landkreiswesermarschbrakeunterweser@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreiswesermarschbrakeunterweser"
+    },
+    {
+        "_id": "werrameissnerkreiseschwege@mykfz.eu",
+        "username": "werrameissnerkreiseschwege@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "werrameissnerkreiseschwege"
+    },
+    {
+        "_id": "kreiswesel@mykfz.eu",
+        "username": "kreiswesel@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "kreiswesel"
+    },
+    {
+        "_id": "vogelsbergkreis@mykfz.eu",
+        "username": "vogelsbergkreis@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "vogelsbergkreis"
+    },
+    {
+        "_id": "westerwaldkreis@mykfz.eu",
+        "username": "westerwaldkreis@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "westerwaldkreis"
+    },
+    {
+        "_id": "landkreiswittenberg@mykfz.eu",
+        "username": "landkreiswittenberg@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreiswittenberg"
+    },
+    {
+        "_id": "landkreiswittmund@mykfz.eu",
+        "username": "landkreiswittmund@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreiswittmund"
+    },
+    {
+        "_id": "wetteraukreisfriedberghessen@mykfz.eu",
+        "username": "wetteraukreisfriedberghessen@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "wetteraukreisfriedberghessen"
+    },
+    {
+        "_id": "stadtwolfsburg@mykfz.eu",
+        "username": "stadtwolfsburg@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "stadtwolfsburg"
+    },
+    {
+        "_id": "landkreiswolfenbuettel@mykfz.eu",
+        "username": "landkreiswolfenbuettel@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreiswolfenbuettel"
+    },
+    {
+        "_id": "stadtwiesbaden@mykfz.eu",
+        "username": "stadtwiesbaden@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "stadtwiesbaden"
+    },
+    {
+        "_id": "landkreiswunsiedelimfichtelgebirge@mykfz.eu",
+        "username": "landkreiswunsiedelimfichtelgebirge@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreiswunsiedelimfichtelgebirge"
+    },
+    {
+        "_id": "stadtworms@mykfz.eu",
+        "username": "stadtworms@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "stadtworms"
+    },
+    {
+        "_id": "stadtwuppertal@mykfz.eu",
+        "username": "stadtwuppertal@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "stadtwuppertal"
+    },
+    {
+        "_id": "stadtwuerzburg@mykfz.eu",
+        "username": "stadtwuerzburg@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "stadtwuerzburg"
+    },
+    {
+        "_id": "stadtwilhelmshaven@mykfz.eu",
+        "username": "stadtwilhelmshaven@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "stadtwilhelmshaven"
+    },
+    {
+        "_id": "zollernalbkreisbalingen@mykfz.eu",
+        "username": "zollernalbkreisbalingen@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "zollernalbkreisbalingen"
+    },
+    {
+        "_id": "stadtzweibruecken@mykfz.eu",
+        "username": "stadtzweibruecken@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "stadtzweibruecken"
+    },
+    {
+        "_id": "landkreiszwickau@mykfz.eu",
+        "username": "landkreiszwickau@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreiszwickau"
+    },
+    {
+        "_id": "landkreiswuerzburg@mykfz.eu",
+        "username": "landkreiswuerzburg@mykfz.eu",
+        "password": "$2a$08$ZiqlWV4lkIh0AUZcHuEsT./.hXSImKl0b5brjgiAMePSJU34DKhsC",
+        "isDistrictUser": true,
+        "district": "landkreiswuerzburg"
+    }
+]
