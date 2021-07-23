@@ -39,13 +39,13 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-export default function Review() {
+export default function Review({ vehicle, process }) {
     const classes = useStyles();
 
     return (
         <React.Fragment>
             <Typography variant="h6" gutterBottom>
-                Order summary
+                Process summary
             </Typography>
             <List disablePadding>
                 {products.map((product) => (

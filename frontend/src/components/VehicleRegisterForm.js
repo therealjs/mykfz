@@ -1,21 +1,18 @@
-import React, { useState } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import { withRouter } from 'react-router';
-
-import CssBaseline from '@material-ui/core/CssBaseline';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
+import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
-import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
-import Button from '@material-ui/core/Button';
-import Link from '@material-ui/core/Link';
+import Stepper from '@material-ui/core/Stepper';
+import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
-import ProcessDetailsForm from './ProcessDetailsForm';
+import React, { useState, useEffect } from 'react';
+import { withRouter } from 'react-router';
+import { useParams } from 'react-router-dom';
 import PaymentForm from './PaymentForm';
+import ProcessDetailsForm from './ProcessDetailsForm';
 import Review from './Review';
-import Copyright from './Copyright';
+import VehicleService from '../services/VehicleService';
+import UserService from '../services/UserService';
 
 const useStyles = makeStyles((theme) => ({
     appBar: {
@@ -62,14 +59,39 @@ const steps = [
 
 function VehicleRegisterForm() {
     const classes = useStyles();
+    let { vehicleId } = useParams();
+
+    const [loading, setLoading] = useState(true);
     const [activeStep, setActiveStep] = useState(0);
     const [process, setProcess] = useState({
         processType: 'REGISTRATION',
-        usesReservedPlate: false,
+        licensePlate: '',
         iban: '',
         evb: '',
-        secCodeII: ''
+        secCodeII: '',
+        isPaid: false
     });
+
+    const [vehicle, setVehicle] = useState({});
+    const [user, setUser] = useState({});
+    useEffect(() => {
+        const fetchData = async () => {
+            const vehicleResult = await VehicleService.getVehicle(vehicleId);
+            const userResult = await UserService.getUserDetails();
+            setUser(userResult);
+            setVehicle(vehicleResult);
+            setLoading(false);
+        };
+
+        fetchData();
+    }, []);
+
+    const onProcessPaid = () => {
+        setProcess((prevState) => ({
+            ...prevState,
+            ['isPaid']: true
+        }));
+    };
 
     const onProcessChange = (e) => {
         const { name, value } = e.target;
@@ -92,18 +114,91 @@ function VehicleRegisterForm() {
             case 0:
                 return (
                     <ProcessDetailsForm
+                        user={user}
                         process={process}
                         onProcessChange={onProcessChange}
+                        vehicle={vehicle}
                     />
                 );
             case 1:
-                return <PaymentForm process={process} />;
+                return (
+                    <PaymentForm
+                        process={process}
+                        onProcessPaid={onProcessPaid}
+                    />
+                );
             case 2:
-                return <Review />;
+                return <Review vehicle={vehicle} process={process} />;
             default:
                 throw new Error('Unknown step');
         }
     };
+
+    const handleSubmit = async () => {
+        // delete used plate
+        // TODO what to do if process is rejected?
+        const deletedPlateReservation =
+            await LicensePlateService.deleteLicensePlateReservation(
+                user._id,
+                process.licensePlate
+            );
+    };
+
+    const isProcessComplete = (process) => {
+        return (
+            process.processType &&
+            process.licensePlate &&
+            process.evb &&
+            process.iban &&
+            process.secCodeII
+        );
+    };
+
+    const getStepButton = (step) => {
+        switch (step) {
+            case 0:
+                return (
+                    <Button
+                        variant="contained"
+                        color="primary"
+                        disabled={!isProcessComplete(process)}
+                        onClick={handleNext}
+                        className={classes.button}
+                    >
+                        Next
+                    </Button>
+                );
+            case 1:
+                return (
+                    <Button
+                        variant="contained"
+                        color="primary"
+                        disabled={!process.isPaid}
+                        onClick={handleNext}
+                        className={classes.button}
+                    >
+                        Next
+                    </Button>
+                );
+            case 2:
+                return (
+                    <Button
+                        variant="contained"
+                        color="primary"
+                        onClick={handleSubmit}
+                        className={classes.button}
+                    >
+                        Complete Registration
+                    </Button>
+                );
+            default:
+                throw new Error('Unknown step');
+        }
+    };
+
+    if (loading) {
+        return <h2>Loading</h2>;
+    }
 
     return (
         <React.Fragment>
@@ -147,7 +242,8 @@ function VehicleRegisterForm() {
                                             Back
                                         </Button>
                                     )}
-                                    <Button
+                                    {getStepButton(activeStep)}
+                                    {/* <Button
                                         variant="contained"
                                         color="primary"
                                         onClick={handleNext}
@@ -156,7 +252,7 @@ function VehicleRegisterForm() {
                                         {activeStep === steps.length - 1
                                             ? 'Complete Registration'
                                             : 'Next'}
-                                    </Button>
+                                    </Button> */}
                                 </div>
                             </React.Fragment>
                         )}

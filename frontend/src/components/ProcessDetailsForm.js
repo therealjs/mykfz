@@ -14,10 +14,11 @@ import {
     Tooltip
 } from '@material-ui/core';
 import Checkbox from '@material-ui/core/Checkbox';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { withStyles } from '@material-ui/styles';
 import InfoIcon from '@material-ui/icons/Info';
 import { PayPalButton } from 'react-paypal-button-v2';
+import LicensePlateService from '../services/LicensePlateService';
 
 const LightTooltip = withStyles(() => ({
     tooltip: {
@@ -38,6 +39,33 @@ export default function ProcessDetailsForm({
         onProcessChange(event);
     };
 
+    const [loading, setLoading] = useState(true);
+    const [reservedPlates, setReservedPlates] = useState([]);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            let platesResult = [];
+            for (const reservedPlateId of user.licensePlateReservations.map(
+                (reservation) => reservation.licensePlate
+            )) {
+                const plate = await LicensePlateService.getLicensePlate(
+                    reservedPlateId
+                );
+                console.log(plate);
+                platesResult.push(plate);
+            }
+            setReservedPlates(platesResult);
+            console.log(platesResult);
+            setLoading(false);
+        };
+
+        fetchData();
+    }, []);
+
+    if (loading) {
+        return <h2>Loading</h2>;
+    }
+
     return (
         <React.Fragment>
             <Typography variant="h6" gutterBottom>
@@ -50,7 +78,7 @@ export default function ProcessDetailsForm({
                         disabled={true}
                         required={true}
                         fullWidth
-                        value={'VIN'}
+                        value={vehicle.vin}
                         InputProps={{
                             endAdornment: (
                                 <LightTooltip
@@ -67,6 +95,34 @@ export default function ProcessDetailsForm({
                     />
                 </Grid>
                 <Grid item xs={12}>
+                    <FormControl fullWidth>
+                        <InputLabel id="plate-select-label">
+                            Reserved Plate
+                        </InputLabel>
+                        <Select
+                            fullWidth
+                            value={process.licensePlate}
+                            labelId="plate-select-label"
+                            required={true}
+                            name="licensePlate"
+                            id="plate-select"
+                            onChange={onProcessChange}
+                        >
+                            {reservedPlates.map((plate) => {
+                                return (
+                                    <MenuItem value={plate._id}>
+                                        {`${plate.areaCode}` +
+                                            ' - ' +
+                                            `${plate.letters}` +
+                                            ' ' +
+                                            `${plate.digits}`}
+                                    </MenuItem>
+                                );
+                            })}
+                        </Select>
+                    </FormControl>
+                </Grid>
+                <Grid item xs={12}>
                     <TextField
                         label="eVB (7)"
                         name="evb"
@@ -74,6 +130,7 @@ export default function ProcessDetailsForm({
                         fullWidth
                         value={process.evb}
                         onChange={handleChange}
+                        minLength={7}
                         maxLength={7}
                         InputProps={{
                             endAdornment: (
@@ -97,6 +154,7 @@ export default function ProcessDetailsForm({
                         fullWidth
                         value={process.secCodeII}
                         onChange={handleChange}
+                        minLength={12}
                         maxLength={12}
                         InputProps={{
                             endAdornment: (
@@ -118,6 +176,7 @@ export default function ProcessDetailsForm({
                         fullWidth
                         value={process.iban}
                         onChange={handleChange}
+                        minLength={22}
                         maxLength={22}
                         InputProps={{
                             endAdornment: (

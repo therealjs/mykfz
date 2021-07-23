@@ -8,20 +8,18 @@ import { PayPalButton } from 'react-paypal-button-v2';
 import ProcessService from '../services/ProcessService';
 import { Checkmark } from 'react-checkmark';
 
-export default function PaymentForm({ process }) {
+export default function PaymentForm({ process, onProcessPaid }) {
     const clientId =
         'ATuI28VIncLCJuX7OGrZeGvMtje-hZnJMvYWnUcr_TF89oEoN0wO0D1oMz3cGq9ShUt-sEZhFXuA2lvN';
 
     const price = ProcessService.calculatePrice(process);
-
-    const [isPaid, setIsPaid] = useState(false);
 
     const paymentButtons = (
         <PayPalButton
             amount={price}
             // shippingPreference="NO_SHIPPING" // default is "GET_FROM_FILE"
             onSuccess={(details, data) => {
-                setIsPaid(true);
+                onProcessPaid();
             }}
             options={{
                 clientId: clientId,
@@ -39,7 +37,7 @@ export default function PaymentForm({ process }) {
             </Typography>
             <Grid container spacing={3}>
                 <Grid item xs={12}>
-                    {isPaid ? paymentConfirmedMessage : paymentButtons}
+                    {process.isPaid ? paymentConfirmedMessage : paymentButtons}
                 </Grid>
             </Grid>
         </React.Fragment>
