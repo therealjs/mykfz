@@ -126,6 +126,20 @@ export default class UserService {
         });
     }
 
+    static getAllUser() {
+        return new Promise((resolve, reject) => {
+            HttpService.get(
+                `http://localhost:3000/users`,
+                function (data) {
+                    resolve(data);
+                },
+                function (textStatus) {
+                    reject(textStatus);
+                }
+            );
+        });
+    }
+
     static async isDistrictUser() {
         const user = await this.getUserDetails();
         console.log(user);

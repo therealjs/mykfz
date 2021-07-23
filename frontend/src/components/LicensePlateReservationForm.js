@@ -31,6 +31,7 @@ import DistrictService from '../services/DistrictService';
 import LicensePlateService from '../services/LicensePlateService';
 
 class LicensePlateReservationForm extends React.Component {
+    
     constructor(props) {
         super(props);
 
@@ -39,10 +40,10 @@ class LicensePlateReservationForm extends React.Component {
             letters: '',
             digits: '',
             page: 0,
-            rowsPerPage: 10,
+            rowsPerPage: 5,
             areaCodeOptions: [],
             queriedLicensePlates: [],
-            selectedPlate: null
+            selectedPlate: null,
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -77,16 +78,21 @@ class LicensePlateReservationForm extends React.Component {
         this.setState({ [event.target.name]: event.target.value });
     }
 
-    handleChangePage(event) {
-        this.setState({ page: event.target.value });
+      handleChangePage(event, newPage) {
+        console.log(newPage)
+        this.setState({ page: newPage });
+        console.log(this.state.page);
     }
 
     handleChangeRowsPerPage(event) {
         this.setState({ rowsPerPage: event.target.value, page: 0 });
+        this.setState({ page: 0 });
+        console.log(this.state.rowsPerPage);
     }
 
     handleChangeSelection(event) {
         this.setState({ selectedPlate: event.target.value });
+        
         console.log(this.state.queriedLicensePlates);
         let id = this.state.selectedPlate;
     }
@@ -109,6 +115,7 @@ class LicensePlateReservationForm extends React.Component {
                 console.error('No License Plates found');
             }
         })();
+        console.log(this.state.selectedPlate);
     }
 
     handleSubmit(event) {
@@ -149,18 +156,21 @@ class LicensePlateReservationForm extends React.Component {
                 justify="center"
                 spacing={3}
             >
+                <Grid item>
+                <Card style={{ padding: '20px', maxWidth: '500px' }}>
+                <Grid container alignItems="center"
+                justify="center">
                 <Grid item xs={12}>
                     <form
                         onSubmit={this.handleSearch}
                         onReset={() => this.props.history.goBack()}
                     >
-                        <Card style={{ padding: '20px', maxWidth: '500px' }}>
                             <Typography
                                 style={{ marginBottom: '10px' }}
                                 component="h5"
                                 variant="h5"
                             >
-                                New Licenseplate Reservation
+                                Reserve new License Plate
                             </Typography>
                             <Grid
                                 justify="space-between"
@@ -266,14 +276,15 @@ class LicensePlateReservationForm extends React.Component {
                                     </Button>
                                 </Grid>
                             </Grid>
-                        </Card>
                     </form>
                 </Grid>
                 {this.state.queriedLicensePlates ? (
                     <Grid item xs={12}>
-                        <Card>
+                            <Grid container direction="column" alignItems="center">
+                            <Grid item>
                             <TableBody>
-                                {this.state.queriedLicensePlates.map(
+                                {this.state.queriedLicensePlates.slice(this.state.page * this.state.rowsPerPage,
+                                    this.state.page * this.state.rowsPerPage + this.state.rowsPerPage).map(
                                     (plate, index) => (
                                         <TableRow>
                                             <TableCell padding="checkbox">
@@ -301,14 +312,15 @@ class LicensePlateReservationForm extends React.Component {
                                     )
                                 )}
                             </TableBody>
+                            </Grid>
+                            <Grid item>
                             <TableFooter>
                                 <TableRow>
                                     <TablePagination
                                         rowsPerPageOptions={[
-                                            5,
-                                            10,
-                                            25,
-                                            { label: 'All', value: -1 }
+                                            { label: '5', value: 5 },
+                                            { label: '10', value: 10 },
+                                            { label: '25', value: 25 }
                                         ]}
                                         colSpan={3}
                                         count={
@@ -325,14 +337,26 @@ class LicensePlateReservationForm extends React.Component {
                                     />
                                 </TableRow>
                             </TableFooter>
-                            <Button type="submit" onClick={this.handleSubmit}>
-                                Reserve
-                            </Button>
-                        </Card>
+                            </Grid>
+                            </Grid>
+                            {(this.state.queriedLicensePlates.length != 0 || this.state.selectedPlate != null) ?
+                                    <Button style={{
+                                                float: 'right',
+                                                marginTop: '5px',
+                                                marginLeft: '15px'
+                                            }} type="submit" variant="contained"
+                                            type="submit"
+                                            color="primary" onClick={this.handleSubmit}>
+                                        Reserve
+                                    </Button>
+                            :[]}
                     </Grid>
                 ) : (
                     []
                 )}
+                </Grid>
+                </Card>
+                </Grid>
             </Grid>
         );
     }
