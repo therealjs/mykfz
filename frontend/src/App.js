@@ -23,6 +23,7 @@ import { LicensePlateReservationView } from './views/LicensePlateReservationView
 import { VehicleFormView } from './views/VehicleFormView';
 import Dashboard from './components/Dashboard';
 import SignInSide from './components/SignInSide';
+import SignUpSide from './components/SignUpSide';
 import UserSignup from './components/UserSignup';
 
 export default class App extends React.Component {
@@ -123,7 +124,9 @@ export default class App extends React.Component {
                 //{ component: UserLoginView, path: '/login' },
                 { component: DistrictLoginView, path: '/districtLogin' },
                 { component: SignInSide, path: '/login' },
-                { component: UserSignupView, path: '/register' },
+                { component: SignUpSide, path: '/register' },
+                //TODO Remove this
+                { component: UserSignupView, path: '/signup' },
                 { component: LandingPageView, path: '/landingPage' }
             ]
         };
