@@ -28,17 +28,20 @@ class LicensePlateReservationList extends React.Component {
         super(props);
 
         this.state = {
+            user: {},
             licensePlates: [],
             licensePlateReservations: [],
-            reservedPlateIds: [],
             reservedPlates: []
         };
+        this.handleDeleteLicensePlateReservation =
+            this.handleDeleteLicensePlateReservation.bind(this);
     }
 
     componentWillMount(props) {
         (async () => {
             let reservedPlates = [];
             const user = await UserService.getUserDetails();
+            this.setState({ user: user });
             await Promise.all(
                 user.licensePlateReservations.map(
                     async (licensePlateReservation) => {
@@ -74,6 +77,28 @@ class LicensePlateReservationList extends React.Component {
         return daysLeft;
     }
 
+    handleDeleteLicensePlateReservation(plateReservationId, plateId) {
+        (async () => {
+            try {
+                let user = await UserService.deleteLicensePlateReservation(
+                    this.state.user._id,
+                    plateReservationId
+                );
+                let deletedLicensePlate =
+                    await LicensePlateService.deleteLicensePlate(plateId);
+                let updatedReservedPlates = this.state.reservedPlates.filter(
+                    (plate) => plate._id === plateId
+                );
+                this.setState({
+                    user: user,
+                    reservedPlates: updatedReservedPlates
+                });
+            } catch (err) {
+                console.error(err);
+            }
+        })();
+    }
+
     render() {
         return (
             //this.state.reservedPlates.length > 0 ?
@@ -107,7 +132,15 @@ class LicensePlateReservationList extends React.Component {
                                     )}
                                 </TableCell>
                                 <TableCell>
-                                    <IconButton aria-label="delete">
+                                    <IconButton
+                                        aria-label="delete"
+                                        onClick={() =>
+                                            this.handleDeleteLicensePlateReservation(
+                                                licensePlate.reservation._id,
+                                                licensePlate.info._id
+                                            )
+                                        }
+                                    >
                                         <DeleteIcon />
                                     </IconButton>
                                 </TableCell>

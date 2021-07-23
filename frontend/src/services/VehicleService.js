@@ -120,4 +120,19 @@ export default class VehicleService {
             );
         });
     }
+
+    static createProcess(vehicleId, process) {
+        return new Promise((resolve, reject) => {
+            HttpService.post(
+                `${this.baseURL()}/${vehicleId}/processes`,
+                process,
+                function (data) {
+                    resolve(data);
+                },
+                function (textStatus) {
+                    reject(textStatus);
+                }
+            );
+        });
+    }
 }

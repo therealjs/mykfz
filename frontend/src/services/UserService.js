@@ -168,16 +168,26 @@ export default class UserService {
         });
     }
 
-    static deleteLicensePlateReservation(userId, plateId) {
+    static deleteLicensePlateReservation(userId, reservationId) {
         return new Promise((resolve, reject) => {
             HttpService.remove(
-                `http://${location.hostname}:3000/users/${userId}/licensePlateReservations/${plateId}`,
+                `http://localhost:3000/users/${userId}/licensePlateReservations/${reservationId}`,
                 function (data) {
-                    if (data.message != undefined) {
-                        resolve(data.message);
-                    } else {
-                        reject('Error while deleting');
-                    }
+                    resolve(data);
+                },
+                function (textStatus) {
+                    reject(textStatus);
+                }
+            );
+        });
+    }
+
+    static deleteLicensePlateReservationByPlate(userId, plateId) {
+        return new Promise((resolve, reject) => {
+            HttpService.remove(
+                `http://localhost:3000/users/${userId}/licensePlateReservations/plate/${plateId}`,
+                function (data) {
+                    resolve(data);
                 },
                 function (textStatus) {
                     reject(textStatus);

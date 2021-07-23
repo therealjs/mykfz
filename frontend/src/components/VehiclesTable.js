@@ -121,7 +121,7 @@ const ProcessesTable = ({ vehicleId, processes }) => {
             <TableHead>
                 <TableRow>
                     <TableCell>Type</TableCell>
-                    <TableCell>Date</TableCell>
+                    <TableCell>Submission Date</TableCell>
                     <TableCell align="right">Details</TableCell>
                     <TableCell align="right">Action</TableCell>
                 </TableRow>
@@ -188,12 +188,16 @@ const ProcessesTableRow = ({ vehicleId, process }) => {
             <TableCell component="th" scope="row">
                 {process.processType}
             </TableCell>
-            <TableCell>{process.date}</TableCell>
+            <TableCell>
+                {new Date(Date.parse(process.date)).toLocaleString('de-DE', {
+                    timeZone: 'UTC'
+                })}
+            </TableCell>
             <TableCell align="right">
                 <ProcessDetailsCell vehicleId={vehicleId} process={process} />
             </TableCell>
             <TableCell align="right">
-                {processState == 'NEW' ? (
+                {processState == 'NEW' || processState == 'PENDING' ? (
                     <ButtonGroup variant="contained">
                         <Button disabled={isSending} onClick={acceptProcess}>
                             ACCEPT

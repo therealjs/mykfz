@@ -30,25 +30,12 @@ function VehicleList({ user }) {
             justify="flex-start"
             container
             direction="row"
-            alignItems="center"
+            alignItems="flex-start"
             spacing={3}
         >
             {vehicles.map((vehicle, i) => (
                 <VehicleListPaper key={vehicle._id} vehicle={vehicle} />
             ))}
-
-            <Grid item xs={12} sm={6} md={6}>
-                <div style={{ display: 'flex', justifyContent: 'center' }}>
-                    <IconButton
-                        syle={{ width: 80 }}
-                        component={Link}
-                        to={'/dashboard/add'}
-                        aria-label="add"
-                    >
-                        <AddIcon />
-                    </IconButton>
-                </div>
-            </Grid>
         </Grid>
     );
 }
