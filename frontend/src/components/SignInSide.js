@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Avatar from '@material-ui/core/Avatar';
+import Alert from '@material-ui/lab/Alert';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
@@ -57,6 +58,10 @@ export default function SignInSide(props) {
         username: '',
         password: ''
     });
+    const [errorMessage, setErrorMessage] = useState('');
+    const handleClick = () => {
+        setErrorMessage('Example error message!');
+    };
 
     const handleChange = (e) => {
         let name = e.target.name;
@@ -68,12 +73,39 @@ export default function SignInSide(props) {
     const login = (e) => {
         e.preventDefault();
         try {
-            UserService.login(account.username, account.password).then(() => {
-                history.push('/');
-            });
+            UserService.login(account.username, account.password)
+                .then(() => {
+                    console.log('ERROR2');
+                    history.push('/');
+                })
+                .catch((error) => {
+                    if (error == 'User Not Found') {
+                        setErrorMessage(
+                            'The username you entered does not belong to an account. Please check your username and try again.'
+                        );
+                    } else {
+                        if (error == 'Unauthorized') {
+                            setErrorMessage(
+                                'Sorry, your password was incorrect. Please double-check your password.'
+                            );
+                        } else {
+                            if (error == 'Failed to fetch') {
+                                setErrorMessage(
+                                    'Login is currently not possible due to a server error, we are working on a solution.'
+                                );
+                            } else {
+                                console.log(error);
+                                setErrorMessage(
+                                    'There is an issue with the login process, please contact the customer service.'
+                                );
+                            }
+                        }
+                    }
+                });
             console.log(history);
         } catch (err) {
             console.error(err);
+            setErrorMessage(err);
         }
     };
 
@@ -132,6 +164,15 @@ export default function SignInSide(props) {
                         >
                             Login
                         </Button>
+                        <div>
+                            {errorMessage && (
+                                <Grid item xs={12}>
+                                    <Alert severity="error">
+                                        {errorMessage}
+                                    </Alert>
+                                </Grid>
+                            )}
+                        </div>
                         <Grid container>
                             <Grid item xs></Grid>
                             <Grid item>
@@ -140,6 +181,7 @@ export default function SignInSide(props) {
                                 </Link>
                             </Grid>
                         </Grid>
+
                         <Box mt={5}>
                             <Copyright />
                         </Box>
