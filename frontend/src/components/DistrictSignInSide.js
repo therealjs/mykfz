@@ -1,11 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Avatar from '@material-ui/core/Avatar';
-import Alert from '@material-ui/lab/Alert';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
+import Autocomplete from '@material-ui/lab/Autocomplete';
 import Link from '@material-ui/core/Link';
 import Paper from '@material-ui/core/Paper';
 import Box from '@material-ui/core/Box';
@@ -14,6 +12,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import UserService from '../services/UserService';
+import DistrictService from '../services/DistrictService';
 import { useHistory } from 'react-router-dom';
 import Copyright from './Copyright';
 
@@ -23,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
     },
     image: {
         backgroundImage:
-            'url(https://www.anytimeholidays.com.my/wp-content/uploads/2019/01/rental-car-facebook.jpg)',
+            'url(https://images.unsplash.com/photo-1485920694980-9c5db37b0d44?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80.jpg)',
         backgroundRepeat: 'no-repeat',
         backgroundColor:
             theme.palette.type === 'light'
@@ -42,6 +41,9 @@ const useStyles = makeStyles((theme) => ({
         margin: theme.spacing(1),
         backgroundColor: theme.palette.secondary.main
     },
+    avatarDistrict: {
+        margin: theme.spacing(1)
+    },
     form: {
         width: '100%', // Fix IE 11 issue.
         marginTop: theme.spacing(1)
@@ -58,7 +60,33 @@ export default function SignInSide(props) {
         username: '',
         password: ''
     });
-    const [errorMessage, setErrorMessage] = useState('');
+    const [districtUserOptions, setDistrictUserOptions] = useState([]);
+    const [districtLogo, setDistrictLogo] = useState(null);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const districtData = await DistrictService.getDistricts();
+            const allUser = await UserService.getAllUser()
+            const districtUser = allUser.filter(function (u) {
+                return u.isDistrictUser;
+              });
+
+            const districtUserOptions = districtUser.map(user => {
+                var district = districtData.find(d => {
+                    return d._id == user.district
+                  });
+                
+                var obj = {};
+                obj["name"] = district.name;
+                obj["picture"] = district.picture;
+                obj["username"] = user.username;
+
+                return obj;
+            });
+            setDistrictUserOptions(districtUserOptions);
+        };
+        fetchData();
+    }, []);
 
     const handleChange = (e) => {
         let name = e.target.name;
@@ -67,42 +95,19 @@ export default function SignInSide(props) {
         setAccount(account);
     };
 
+    const handleDistrictChange = (e, value) => {
+        account.username = value.username;
+        setDistrictLogo(value.picture);
+    };
+
     const login = (e) => {
         e.preventDefault();
         try {
-            UserService.login(account.username, account.password)
-                .then(() => {
-                    console.log('ERROR2');
-                    history.push('/');
-                })
-                .catch((error) => {
-                    if (error == 'User Not Found') {
-                        setErrorMessage(
-                            'The username you entered does not belong to an account. Please check your username and try again.'
-                        );
-                    } else {
-                        if (error == 'Unauthorized') {
-                            setErrorMessage(
-                                'Sorry, your password was incorrect. Please double-check your password.'
-                            );
-                        } else {
-                            if (error == 'Failed to fetch') {
-                                setErrorMessage(
-                                    'Login is currently not possible due to a server error, we are working on a solution.'
-                                );
-                            } else {
-                                console.log(error);
-                                setErrorMessage(
-                                    'There is an issue with the login process, please contact the customer service.'
-                                );
-                            }
-                        }
-                    }
-                });
-            console.log(history);
+            UserService.login(account.username, account.password).then(() => {
+                history.push('/');
+            });
         } catch (err) {
             console.error(err);
-            setErrorMessage(err);
         }
     };
 
@@ -119,26 +124,49 @@ export default function SignInSide(props) {
                 elevation={6}
                 square
             >
+                
                 <div className={classes.paper}>
-                    <Avatar className={classes.avatar}>
-                        <LockOutlinedIcon />
-                    </Avatar>
+                {account.username ?
+                    <Avatar 
+                        className={classes.avatarDistrict}
+                        variant="square"
+                        alt={'District'}
+                        src={districtLogo}
+                    />
+                    : <Avatar className={classes.avatar}>
+                    <LockOutlinedIcon />
+                        </Avatar>}
                     <Typography component="h1" variant="h5">
-                        Sign in
+                        District Login
                     </Typography>
                     <form className={classes.form} noValidate>
-                        <TextField
-                            variant="outlined"
-                            margin="normal"
-                            required
-                            fullWidth
-                            id="username"
-                            label="Email Address"
-                            name="username"
-                            autoComplete="email"
-                            autoFocus
-                            onChange={handleChange}
-                        />
+
+                        <Grid item>
+                            <Autocomplete
+                                options={districtUserOptions}
+                                getOptionLabel={(option) => option.name}
+                                name="username"
+                                required={true}
+                                fullWidth
+                                onChange={handleDistrictChange}
+                                renderOption={(option) => (
+                                    <React.Fragment>
+                                        <Avatar variant="square" alt={"D"} src={option.picture} />
+                                        <span>&nbsp;{option.name}</span>
+                                    </React.Fragment>
+                                    )}
+                                renderInput={(params) => (
+                                    <TextField
+                                        {...params}
+                                        required={true}
+                                        label="District"
+                                        variant="outlined"
+                                        margin="normal"
+                                        fullWidth
+                                    />
+                                )}
+                            />
+                        </Grid>
                         <TextField
                             variant="outlined"
                             margin="normal"
@@ -161,24 +189,6 @@ export default function SignInSide(props) {
                         >
                             Login
                         </Button>
-                        <div>
-                            {errorMessage && (
-                                <Grid item xs={12}>
-                                    <Alert severity="error">
-                                        {errorMessage}
-                                    </Alert>
-                                </Grid>
-                            )}
-                        </div>
-                        <Grid container>
-                            <Grid item xs></Grid>
-                            <Grid item>
-                                <Link href="/#/register" variant="body2">
-                                    {"Don't have an account? Sign Up"}
-                                </Link>
-                            </Grid>
-                        </Grid>
-
                         <Box mt={5}>
                             <Copyright />
                         </Box>
