@@ -17,13 +17,14 @@ import Checkbox from '@material-ui/core/Checkbox';
 import React, { useState, useEffect } from 'react';
 import { withStyles } from '@material-ui/styles';
 import InfoIcon from '@material-ui/icons/Info';
+import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 import { PayPalButton } from 'react-paypal-button-v2';
 import LicensePlateService from '../services/LicensePlateService';
 import UserService from '../services/UserService';
 
 const LightTooltip = withStyles(() => ({
     tooltip: {
-        backgroundColor: '#175B8E',
+        backgroundColor: '#3f51b5',
         color: 'white',
         fontSize: 14,
         fontFamily: 'Nunito'
@@ -53,7 +54,7 @@ function RegisterProcessFormFields({
                                 placement="right"
                             >
                                 <InputAdornment position="end">
-                                    <InfoIcon />
+                                    <InfoOutlinedIcon />
                                 </InputAdornment>
                             </LightTooltip>
                         )
@@ -105,7 +106,7 @@ function RegisterProcessFormFields({
                                 placement="right"
                             >
                                 <InputAdornment position="end">
-                                    <InfoIcon />
+                                    <InfoOutlinedIcon />
                                 </InputAdornment>
                             </LightTooltip>
                         )
@@ -127,7 +128,7 @@ function RegisterProcessFormFields({
                             //TODO insert actual tooltip
                             <LightTooltip title={'title'} placement="right">
                                 <InputAdornment position="end">
-                                    <InfoIcon />
+                                    <InfoOutlinedIcon />
                                 </InputAdornment>
                             </LightTooltip>
                         )
@@ -151,7 +152,7 @@ function RegisterProcessFormFields({
                                 placement="right"
                             >
                                 <InputAdornment position="end">
-                                    <InfoIcon />
+                                    <InfoOutlinedIcon />
                                 </InputAdornment>
                             </LightTooltip>
                         )

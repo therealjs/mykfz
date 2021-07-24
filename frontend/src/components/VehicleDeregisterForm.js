@@ -122,7 +122,6 @@ function VehicleDeregisterForm({ user }) {
     };
 
     const handleNext = () => {
-        console.log(process.info.secCodeI);
         if (
             process.info.secCodeI.length != 7 ||
             !isNumLet(process.info.secCodeI)
@@ -135,8 +134,10 @@ function VehicleDeregisterForm({ user }) {
         ) {
             setErrorMessage('Provide a valid plate code.');
             return;
-        } else setActiveStep(activeStep + 1);
-        setErrorMessage('');
+        } else {
+            setActiveStep(activeStep + 1);
+            setErrorMessage('');
+        }
     };
 
     const handleBack = () => {
