@@ -176,7 +176,8 @@ class VehicleRegister extends React.Component {
                     try {
                         const validatedPlate =
                             await LicensePlateService.createLicensePlate(
-                                licensePlate
+                                licensePlate,
+                                false
                             );
                         this.setState({
                             licensePlate: validatedPlate._id

@@ -117,7 +117,8 @@ export default class LicensePlateService {
         });
     }
 
-    static createLicensePlate(licensePlate) {
+    static createLicensePlate(licensePlate, isReservation) {
+        licensePlate['isReservation'] = isReservation;
         return new Promise((resolve, reject) => {
             HttpService.post(
                 LicensePlateService.baseURL(),

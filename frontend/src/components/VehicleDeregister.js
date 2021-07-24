@@ -70,7 +70,8 @@ class VehicleDeregister extends React.Component {
                     await LicensePlateService.createLicensePlateReservation(
                         this.props.user._id,
                         vehicle.licensePlate,
-                        90
+                        // TODO: set to 90 days
+                        100
                     );
             } catch (err) {
                 console.error(err);
