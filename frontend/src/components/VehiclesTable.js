@@ -145,6 +145,31 @@ const ProcessesTableRow = ({ vehicleId, process }) => {
     const acceptProcess = useCallback(async () => {
         if (isSending) return;
         setIsSending(true);
+
+        if (process.processType == 'REGISTRATION') {
+            // remove reservation?
+        } else {
+            const vehicle = await VehicleService.getVehicle(vehicleId);
+
+            // remove plate or add reservation
+            if (process.info.reservePlate) {
+                // add reservation
+                const vehicle = await VehicleService.getVehicle(vehicleId);
+                const userId = vehicle.owner;
+                await UserService.createLicensePlateReservation(
+                    userId,
+                    vehicle.licensePlate,
+                    90 * 24 * 60 * 60 // 90 days in seconds
+                );
+            } else {
+                // remove plate
+                await LicensePlateService.deleteLicensePlate(
+                    vehicle.licensePlate
+                );
+            }
+        }
+
+        // set state to accepted
         await ProcessService.accceptProcess(vehicleId, process._id);
 
         const newProcess = await VehicleService.getVehicleProcess(
@@ -160,6 +185,19 @@ const ProcessesTableRow = ({ vehicleId, process }) => {
     const rejectProcess = useCallback(async () => {
         if (isSending) return;
         setIsSending(true);
+
+        if (process.processType == 'REGISTRATION') {
+            // create reservation
+            const vehicle = await VehicleService.getVehicle(vehicleId);
+            const userId = vehicle.owner;
+            const plateId = process.info.licensePlate;
+            await UserService.createLicensePlateReservation(
+                userId,
+                plateId,
+                90 * 24 * 60 * 60 // 90 days in seconds
+            );
+        }
+
         await ProcessService.rejectProcess(vehicleId, process._id);
         const newProcess = await VehicleService.getVehicleProcess(
             vehicleId,
@@ -190,7 +228,7 @@ const ProcessesTableRow = ({ vehicleId, process }) => {
             </TableCell>
             <TableCell>
                 {new Date(Date.parse(process.date)).toLocaleString('de-DE', {
-                    timeZone: 'UTC'
+                    timeZone: 'Europe/Andorra'
                 })}
             </TableCell>
             <TableCell align="right">

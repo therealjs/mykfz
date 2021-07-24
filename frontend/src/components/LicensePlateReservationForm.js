@@ -342,7 +342,11 @@ class LicensePlateReservationForm extends React.Component {
                                     </form>
                                 </Grid>
                                 {this.state.errorMessage && (
-                                    <Grid item xs={12}>
+                                    <Grid
+                                        item
+                                        xs={12}
+                                        style={{ marginTop: '1em' }}
+                                    >
                                         <Alert severity="error">
                                             {this.state.errorMessage}
                                         </Alert>

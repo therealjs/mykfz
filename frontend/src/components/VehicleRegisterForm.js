@@ -201,7 +201,8 @@ function VehicleRegisterForm({ user }) {
             evb: '',
             secCodeII: ''
         },
-        isPaid: false
+        isPaid: false,
+        paymentDetails: {}
     });
 
     const [vehicle, setVehicle] = useState({});
@@ -215,10 +216,12 @@ function VehicleRegisterForm({ user }) {
         fetchData();
     }, []);
 
-    const onProcessPaid = () => {
+    const onProcessPaid = (details, data) => {
+        console.log(details, data);
         setProcess((prevState) => ({
             ...prevState,
-            ['isPaid']: true
+            isPaid: true,
+            paymentDetails: details
         }));
     };
 
@@ -396,7 +399,8 @@ function VehicleRegisterForm({ user }) {
                                 </Typography>
                                 <Typography variant="subtitle1">
                                     An employee will review your information.
-                                    You can see the state of your process on the
+                                    And you will be notified via email and can
+                                    see the state of your process on the
                                     dashboard.
                                 </Typography>
                                 <Button
