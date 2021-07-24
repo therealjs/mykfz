@@ -17,13 +17,14 @@ import Checkbox from '@material-ui/core/Checkbox';
 import React, { useState, useEffect } from 'react';
 import { withStyles } from '@material-ui/styles';
 import InfoIcon from '@material-ui/icons/Info';
+import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 import { PayPalButton } from 'react-paypal-button-v2';
 import LicensePlateService from '../services/LicensePlateService';
 import UserService from '../services/UserService';
 
 const LightTooltip = withStyles(() => ({
     tooltip: {
-        backgroundColor: '#175B8E',
+        backgroundColor: '#3f51b5',
         color: 'white',
         fontSize: 14,
         fontFamily: 'Nunito'
@@ -36,6 +37,27 @@ function RegisterProcessFormFields({
     reservedPlates,
     onProcessChange
 }) {
+    const tooltipImgTxt = (
+        <div>
+            <Grid container>
+                <Grid item>
+                    <label>
+                        Security Code II can be found on the acceptance paper
+                        part 2 of your vehicle.
+                    </label>
+                </Grid>
+                <Grid item>
+                    <img
+                        width="285"
+                        height="350"
+                        src="https://www.bmvi.de/SharedDocs/DE/Bilder/VerkehrUndMobilitaet/Strasse/fahrzeugzulassung-online-3.png?__blob=normal"
+                        alt=""
+                    ></img>
+                </Grid>
+            </Grid>
+        </div>
+    );
+
     return (
         <Grid container spacing={3}>
             <Grid item xs={12}>
@@ -53,7 +75,7 @@ function RegisterProcessFormFields({
                                 placement="right"
                             >
                                 <InputAdornment position="end">
-                                    <InfoIcon />
+                                    <InfoOutlinedIcon />
                                 </InputAdornment>
                             </LightTooltip>
                         )
@@ -105,7 +127,7 @@ function RegisterProcessFormFields({
                                 placement="right"
                             >
                                 <InputAdornment position="end">
-                                    <InfoIcon />
+                                    <InfoOutlinedIcon />
                                 </InputAdornment>
                             </LightTooltip>
                         )
@@ -124,10 +146,12 @@ function RegisterProcessFormFields({
                     maxLength={12}
                     InputProps={{
                         endAdornment: (
-                            //TODO insert actual tooltip
-                            <LightTooltip title={'title'} placement="right">
+                            <LightTooltip
+                                title={tooltipImgTxt}
+                                placement="right"
+                            >
                                 <InputAdornment position="end">
-                                    <InfoIcon />
+                                    <InfoOutlinedIcon />
                                 </InputAdornment>
                             </LightTooltip>
                         )
@@ -151,7 +175,7 @@ function RegisterProcessFormFields({
                                 placement="right"
                             >
                                 <InputAdornment position="end">
-                                    <InfoIcon />
+                                    <InfoOutlinedIcon />
                                 </InputAdornment>
                             </LightTooltip>
                         )

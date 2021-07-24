@@ -11,9 +11,18 @@ const create = async (req, res) => {
         });
 
     try {
-        let licensePlate = await LicensePlateModel.create(req.body);
+        let licensePlate = req.body;
+        console.log(licensePlate);
+        let expiryDate = new Date();
+        expiryDate.setSeconds(expiryDate.getSeconds() + 2592000);
+        let response = await LicensePlateModel.create({
+            areaCode: licensePlate.areaCode,
+            letters: licensePlate.letters,
+            digits: licensePlate.digits,
+            expireAt: expiryDate
+        });
 
-        return res.status(201).json(licensePlate);
+        return res.status(201).json(response);
     } catch (err) {
         return res.status(500).json({
             error: 'Internal server error',

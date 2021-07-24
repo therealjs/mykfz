@@ -87,7 +87,12 @@ function isnum(input) {
 }
 
 function isletter(input) {
-    var re = /^[A-Za-z]+$/;
+    var re = /^[a-zA-ZäöüÄÖÜ -]+$/i;
+    return re.test(input);
+}
+
+function isNumLet(input) {
+    var re = /^[0-9a-zA-Z]+$/;
     return re.test(input);
 }
 
@@ -174,8 +179,8 @@ export default function SignUpSide(props) {
                 }
             }
         }
-        if (account.firstName.length < 2 || !isletter(account.firstname)) {
-            setErrorMessage('Please fill in your firstname.');
+        if (account.firstName.length < 2 || !isletter(account.firstName)) {
+            setErrorMessage('Please fill in your first name.');
             return;
         }
         if (account.lastName.length < 2 || !isletter(account.lastName)) {
@@ -190,7 +195,7 @@ export default function SignUpSide(props) {
             setErrorMessage('Please provide your city.');
             return;
         }
-        if (account.idId === '') {
+        if (account.idId === '' || !isNumLet(account.idId)) {
             setErrorMessage(
                 'Please type in your identity document information.'
             );

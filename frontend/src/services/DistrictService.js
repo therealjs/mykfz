@@ -41,6 +41,24 @@ export default class DistrictService {
         });
     }
 
+    static getDistrictByUser(user) {
+        return new Promise((resolve, reject) => {
+            HttpService.get(
+                `${DistrictService.baseURL()}/user/${user}`,
+                function (data) {
+                    if (data != undefined || Object.keys(data).length !== 0) {
+                        resolve(data);
+                    } else {
+                        reject('Error while retrieving district');
+                    }
+                },
+                function (textStatus) {
+                    reject(textStatus);
+                }
+            );
+        });
+    }
+
     static updateDistrict(district) {
         return new Promise((resolve, reject) => {
             HttpService.put(

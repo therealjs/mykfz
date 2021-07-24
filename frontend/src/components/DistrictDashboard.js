@@ -1,18 +1,13 @@
 import AppBar from '@material-ui/core/AppBar';
 import Box from '@material-ui/core/Box';
+import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import Divider from '@material-ui/core/Divider';
-import Drawer from '@material-ui/core/Drawer';
-import IconButton from '@material-ui/core/IconButton';
-import Link from '@material-ui/core/Link';
-import List from '@material-ui/core/List';
+import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-import MenuIcon from '@material-ui/icons/Menu';
 import clsx from 'clsx';
 import React, { useEffect, useState } from 'react';
 import { withRouter } from 'react-router';
@@ -20,6 +15,7 @@ import DistrictService from '../services/DistrictService';
 import UserService from '../services/UserService';
 import VehiclesTable from './VehiclesTable';
 import Copyright from './Copyright';
+import logo from '../../resources/logo_small.png';
 
 const drawerWidth = 240;
 
@@ -122,9 +118,13 @@ function DistrictDashboard(props) {
     useEffect(() => {
         const fetchData = async () => {
             let userResult = await UserService.getUserDetails();
-            const districtId = userResult.district;
-            let districtResult = await DistrictService.getDistrict(districtId);
-            let vehiclesResult = await DistrictService.getVehicles(districtId);
+            const districtUsername = userResult.username;
+            let districtResult = await DistrictService.getDistrictByUser(
+                districtUsername
+            );
+            let vehiclesResult = await DistrictService.getVehicles(
+                districtResult._id
+            );
             setUser(userResult);
             setDistrict(districtResult);
             setVehicles(vehiclesResult);
@@ -142,31 +142,28 @@ function DistrictDashboard(props) {
                 className={clsx(classes.appBar)}
             >
                 <Toolbar className={classes.toolbar}>
-                    <IconButton
-                        edge="start"
-                        color="inherit"
-                        aria-label="open drawer"
-                        onClick={handleDrawerOpen}
-                        className={clsx(
-                            classes.menuButton,
-                            open && classes.menuButtonHidden
-                        )}
-                    >
-                        <MenuIcon />
-                    </IconButton>
-                    <Typography
-                        component="h1"
-                        variant="h6"
-                        color="inherit"
-                        noWrap
-                        className={classes.title}
-                    >
-                        MyKfz District Dashboard for {district.name} (
-                        {district._id})
-                    </Typography>
-                    <IconButton color="inherit">
-                        <ExitToAppIcon color="inherit" onClick={logout} />
-                    </IconButton>
+                    <Grid container style={{marginRight: "auto"}} alignItems="center" spacing={1}>
+                        <Grid item>
+                            <img src={logo} style={{height: "35px"}} alt="logo"/>
+                        </Grid>
+                        <Grid item>
+                            <img src={district.picture} style={{height: "35px"}} alt="districtLogo"/>
+                        </Grid>
+                        <Grid item>
+                            <Typography
+                            component="h1"
+                            variant="h6"
+                            color="inherit"
+                            noWrap
+                            className={classes.title}
+                            >
+                            {district.name}
+                            </Typography>
+                        </Grid>
+                    </Grid>
+                    <Button color="inherit" onClick={logout} endIcon={<ExitToAppIcon />}>
+                        Logout
+                    </Button>
                 </Toolbar>
             </AppBar>
             <main className={classes.content}>
