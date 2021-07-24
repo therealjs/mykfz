@@ -30,6 +30,7 @@ import TableRow from '@material-ui/core/TableRow';
 import LicensePlateService from '../services/LicensePlateService';
 import ProcessService from '../services/ProcessService';
 import Chip from '@material-ui/core/Chip';
+import VehicleEditDialog from './VehicleEditDialog';
 
 const makeLogos = require('../../resources/carLogos');
 
@@ -55,10 +56,13 @@ class VehicleListPaper extends React.Component {
                 digits: '  ',
                 letters: '  '
             },
-            expanded: false
+            expanded: false,
+            editOpen: false
         };
         this.handleExpandClick = this.handleExpandClick.bind(this);
         this.createPdfAndDownload = this.createPdfAndDownload.bind(this);
+        this.handleEditClose = this.handleEditClose.bind(this);
+        this.handleEditOpen = this.handleEditOpen.bind(this);
     }
 
     componentWillMount(props) {
@@ -96,6 +100,15 @@ class VehicleListPaper extends React.Component {
                 console.error(err);
             }
         })();
+    }
+
+    handleEditOpen() {
+        this.setState({ editOpen: true });
+    }
+
+    handleEditClose() {
+        this.setState({ editOpen: false });
+        this.props.onChange();
     }
 
     hasPendingProcesses(vehicle) {
@@ -198,15 +211,17 @@ class VehicleListPaper extends React.Component {
                             />
                         }
                         action={
-                            <IconButton
-                                component={Link}
-                                to={`/edit/${vehicle._id}`}
-                            >
+                            <IconButton onClick={this.handleEditOpen}>
                                 <EditIcon />
                             </IconButton>
                         }
                         title={vehicle.make + ' ' + vehicle.model}
                         subheader={vehicle.vin}
+                    />
+                    <VehicleEditDialog
+                        vehicle={vehicle}
+                        open={this.state.editOpen}
+                        handleClose={this.handleEditClose}
                     />
                     <CardContent
                         style={{
@@ -217,17 +232,23 @@ class VehicleListPaper extends React.Component {
                     >
                         {cardContent}
                         <Chip
-                            style={{ marginTop: '1em', width: '200px' }}
+                            style={{
+                                marginTop: '1em',
+                                width: '200px',
+                                justifyContent: 'space-between'
+                            }}
                             color={
                                 this.hasValidGeneralInspection(vehicle)
                                     ? 'primary'
                                     : 'secondary'
                             }
-                            size="large"
                             label={`${vehicle.generalInspectionMonth} / ${vehicle.generalInspectionYear}`}
                             avatar={
                                 <Avatar src="https://www.kues-fahrzeugueberwachung.de/wordpress/wp-content/uploads/2018/09/hu-plakette-gelb.png" />
                             }
+                            // onClick={this.handleEditOpen}
+                            onDelete={this.handleEditOpen}
+                            deleteIcon={<EditIcon />}
                         />
                     </CardContent>
                     <CardActions

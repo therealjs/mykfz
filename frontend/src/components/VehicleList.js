@@ -6,8 +6,11 @@ import React, { useEffect, useState } from 'react';
 import { withRouter } from 'react-router';
 import VehicleService from '../services/VehicleService';
 import VehicleListPaper from './VehicleListPaper';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 function VehicleList({ user }) {
+    const [loading, setLoading] = useState(true);
+    const [hasChanged, setHasChanged] = useState(false);
     const [vehicles, setVehicles] = useState([]);
 
     useEffect(() => {
@@ -16,10 +19,20 @@ function VehicleList({ user }) {
                 user._id
             );
             setVehicles(vehiclesResult);
+            setLoading(false);
+            setHasChanged(false);
         };
 
         fetchData();
-    }, []);
+    }, [hasChanged]);
+
+    const onChange = () => {
+        setHasChanged(true);
+    };
+
+    if (loading) {
+        return <CircularProgress />;
+    }
 
     if (!vehicles || vehicles.length == 0) {
         return (
@@ -43,7 +56,11 @@ function VehicleList({ user }) {
             spacing={3}
         >
             {vehicles.map((vehicle, i) => (
-                <VehicleListPaper key={vehicle._id} vehicle={vehicle} />
+                <VehicleListPaper
+                    onChange={onChange}
+                    key={vehicle._id}
+                    vehicle={vehicle}
+                />
             ))}
         </Grid>
     );
