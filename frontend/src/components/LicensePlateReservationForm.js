@@ -11,14 +11,16 @@ import {
     Button,
     FormGroup,
     FormControl,
-    Typography,
     TableFooter,
     TableBody,
     TableRow,
     TableCell,
     TablePagination,
+    Typography,
     Radio
 } from '@material-ui/core';
+
+import Alert from '@material-ui/lab/Alert';
 
 import LicensePlate from './LicensePlate';
 
@@ -44,6 +46,8 @@ class LicensePlateReservationForm extends React.Component {
             areaCodeOptions: [],
             queriedLicensePlates: [],
             selectedPlate: null,
+            errorMessage: '',
+            alreadyReservedPlates: 0,
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -52,6 +56,7 @@ class LicensePlateReservationForm extends React.Component {
         this.handleChangeRowsPerPage = this.handleChangeRowsPerPage.bind(this);
         this.handleChangePage = this.handleChangePage.bind(this);
         this.handleSearch = this.handleSearch.bind(this);
+        this.handleErrorMessage = this.handleErrorMessage.bind(this);
     }
 
     componentWillMount(props) {
@@ -66,9 +71,11 @@ class LicensePlateReservationForm extends React.Component {
                 );
                 this.setState({
                     user: user,
-                    areaCodeOptions: district.areaCode
+                    areaCodeOptions: district.areaCode,
+                    alreadyReservedPlates: user.licensePlateReservations.length,
                 });
             } catch (err) {
+                this.handleErrorMessage('Reservation is currently not possible due to a server error, we are working on a solution.')
                 console.error(err);
             }
         })();
@@ -78,7 +85,7 @@ class LicensePlateReservationForm extends React.Component {
         this.setState({ [event.target.name]: event.target.value });
     }
 
-      handleChangePage(event, newPage) {
+    handleChangePage(event, newPage) {
         console.log(newPage)
         this.setState({ page: newPage });
         console.log(this.state.page);
@@ -97,6 +104,10 @@ class LicensePlateReservationForm extends React.Component {
         let id = this.state.selectedPlate;
     }
 
+    handleErrorMessage(error) {
+        this.setState({ errorMessage: error });
+    }
+
     handleSearch(event) {
         event.preventDefault();
         const query = {
@@ -111,11 +122,15 @@ class LicensePlateReservationForm extends React.Component {
                 this.setState({
                     queriedLicensePlates: queriedPlates
                 });
+                if (queriedPlates.length == 0) {
+                    this.handleErrorMessage('No license plate found.')
+                } else {
+                    this.handleErrorMessage('')
+                }
             } catch (err) {
-                console.error('No License Plates found');
+                console.log(error)
             }
         })();
-        console.log(this.state.selectedPlate);
     }
 
     handleSubmit(event) {
@@ -156,6 +171,7 @@ class LicensePlateReservationForm extends React.Component {
                 justify="center"
                 spacing={3}
             >
+                {(this.state.alreadyReservedPlates < 5) ?
                 <Grid item>
                 <Card style={{ padding: '20px', maxWidth: '500px' }}>
                 <Grid container alignItems="center"
@@ -170,7 +186,7 @@ class LicensePlateReservationForm extends React.Component {
                                 component="h5"
                                 variant="h5"
                             >
-                                Reserve new License Plate
+                                License Plate Reservation
                             </Typography>
                             <Grid
                                 justify="space-between"
@@ -278,6 +294,13 @@ class LicensePlateReservationForm extends React.Component {
                             </Grid>
                     </form>
                 </Grid>
+                {this.state.errorMessage && (
+                        <Grid item xs={12}>
+                            <Alert severity="error">
+                                {this.state.errorMessage}
+                            </Alert>
+                        </Grid>
+                    )}
                 {this.state.queriedLicensePlates ? (
                     <Grid item xs={12}>
                             <Grid container direction="column" alignItems="center">
@@ -314,9 +337,8 @@ class LicensePlateReservationForm extends React.Component {
                             </TableBody>
                             </Grid>
                             <Grid item>
-                            <TableFooter>
-                                <TableRow>
                                     <TablePagination
+                                        style={{borderBottom: "None"}}
                                         rowsPerPageOptions={[
                                             { label: '5', value: 5 },
                                             { label: '10', value: 10 },
@@ -335,8 +357,6 @@ class LicensePlateReservationForm extends React.Component {
                                         }
                                         //ActionsComponent={TablePaginationActions}
                                     />
-                                </TableRow>
-                            </TableFooter>
                             </Grid>
                             </Grid>
                             {(this.state.queriedLicensePlates.length != 0 || this.state.selectedPlate != null) ?
@@ -355,8 +375,25 @@ class LicensePlateReservationForm extends React.Component {
                     []
                 )}
                 </Grid>
+                    <Typography
+                        syle={{marginTop: "10px"}}
+                        variant="caption"
+                        align="center"
+                        display="block"
+                        color="textSecondary"
+                        gutterBottom
+                    >
+                        You can reserve up to 5 license plates. A reservation costs 10,20€ and is valid for 30 days.
+                        You are only charged after using the plate for a new registration.
+                    </Typography>
                 </Card>
                 </Grid>
+
+    : <Grid item xs={12}>
+    <Alert severity="error">
+        {'You can only reserve up to 5 different license plates. You need to delete one of your reservations first.'}
+    </Alert>
+</Grid>}
             </Grid>
         );
     }
