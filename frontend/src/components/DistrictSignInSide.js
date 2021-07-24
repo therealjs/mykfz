@@ -78,7 +78,6 @@ export default function SignInSide(props) {
                     return d.user == user.username;
                 });
 
-                console.log(district)
                 var obj = {};
                 obj['name'] = district.name;
                 obj['picture'] = district.picture;
@@ -106,7 +105,7 @@ export default function SignInSide(props) {
     const login = (e) => {
         e.preventDefault();
         try {
-            UserService.login(account.username, account.password)
+            UserService.districtLogin(account.username, account.password)
                 .then(() => {
                     history.push('/');
                 })

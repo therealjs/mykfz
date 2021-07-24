@@ -24,15 +24,15 @@ import UserService from '../services/UserService';
 
 const useStyles = makeStyles((theme) => ({
     buttonSuccess: {
-        backgroundColor: green[500],
+        backgroundColor: '#7ac142',
         '&:hover': {
-            backgroundColor: green[700]
+            backgroundColor: '#7ac142',
         }
     },
     buttonFailure: {
-        backgroundColor: red[500],
+        backgroundColor: 'lightsalmon',
         '&:hover': {
-            backgroundColor: red[700]
+            backgroundColor: 'lightsalmon'
         }
     },
     slider: {
