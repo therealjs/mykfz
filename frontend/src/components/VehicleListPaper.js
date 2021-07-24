@@ -148,7 +148,7 @@ class VehicleListPaper extends React.Component {
 
         const state_colors = {
             PENDING: 'yellow',
-            ACCEPTED: 'lightgreen',
+            ACCEPTED: '#7ac142',
             REJECTED: 'lightsalmon'
         };
 
@@ -313,13 +313,15 @@ class VehicleListPaper extends React.Component {
                                 <TableHead>
                                     <TableRow>
                                         <TableCell>Process type</TableCell>
-                                        <TableCell align="right">
+                                        <TableCell align="center">
                                             Submission Date
                                         </TableCell>
-                                        <TableCell align="right">
+                                        <TableCell align="center">
                                             State
                                         </TableCell>
-                                        <TableCell>Print</TableCell>
+                                        <TableCell align="center">
+                                            Print
+                                        </TableCell>
                                     </TableRow>
                                 </TableHead>
                                 <TableBody>
@@ -328,26 +330,27 @@ class VehicleListPaper extends React.Component {
                                             <TableCell scope="row">
                                                 {process.processType}
                                             </TableCell>
-                                            <TableCell align="right">
+                                            <TableCell align="center">
                                                 {new Date(
                                                     Date.parse(process.date)
                                                 ).toLocaleString('de-DE', {
                                                     timeZone: 'UTC'
                                                 })}
                                             </TableCell>
-                                            <TableCell>
+                                            <TableCell align="center">
                                                 <Chip
                                                     style={{
                                                         backgroundColor:
                                                             state_colors[
                                                                 process.state
-                                                            ]
+                                                            ],
                                                     }}
                                                     label={process.state}
                                                 />
                                             </TableCell>
-                                            <TableCell>
+                                            <TableCell align="center">
                                                 <IconButton
+                                                    //style={{float: "right"}}
                                                     onClick={() =>
                                                         this.createPdfAndDownload(
                                                             process._id
