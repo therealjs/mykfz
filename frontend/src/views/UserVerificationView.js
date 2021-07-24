@@ -17,6 +17,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import { useHistory } from 'react-router-dom';
 import Nfc from 'nfc-react-web';
 import Copyright from '../components/Copyright';
 import UserVerification from '../components/UserVerification';
@@ -55,6 +56,7 @@ function UserVerificationContent({ user, verified, verifyUser }) {
 }
 
 function UserVerificationView(props) {
+    let history = useHistory()
     const classes = useStyles();
     const [user, setUser] = useState({});
     const [verified, setVerified] = useState(false);
@@ -70,6 +72,11 @@ function UserVerificationView(props) {
     const verifyUser = () => {
         UserService.verify();
         setVerified(true);
+    };
+
+    const cancel = () => {
+        UserService.logout();
+        history.push('/');
     };
 
     function Action() {
@@ -107,6 +114,19 @@ function UserVerificationView(props) {
         )
     }
 
+    function CancelButton() {
+        return(
+            <Button
+                fullWidth
+                variant="contained"
+                className={classes.submit}
+                onClick={cancel}
+                >
+                Cancel
+            </Button>
+        )
+    }
+
     const scanNfc = async () => {
         console.log('scanning something');
     };
@@ -131,6 +151,9 @@ function UserVerificationView(props) {
             </Grid>
             <Grid item>
                 <VerifyButton />
+            </Grid>
+            <Grid item>
+                <CancelButton />
             </Grid>
             <Box mt={8}>
                 <Copyright />
