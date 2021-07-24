@@ -195,6 +195,23 @@ class VehicleRegister extends React.Component {
                                 this.state.userId,
                                 this.state.licensePlate
                             );
+                        console.log(validatedPlate);
+
+                        // update ttl of licenseplate
+                        newExpireAt = new Date();
+                        newExpireAt.setYear(newExpireAt.getYear() + 10);
+                        console.log(newExpireAt);
+                        let chosenPlate = this.state.reservedPlates.filter(
+                            (plate) => plate._id === this.state.licensePlate
+                        );
+                        console.log(chosenPlate);
+                        chosenPlate.expireAt = newExpireAt;
+                        console.log(chosenPlate);
+                        const updatedPlate =
+                            await LicensePlateService.updateLicensePlate(
+                                chosenPlate
+                            );
+                        console.log(updatedPlate);
                     } catch (err) {
                         console.error(err);
                     }
