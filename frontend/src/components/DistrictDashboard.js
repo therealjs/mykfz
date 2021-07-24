@@ -122,9 +122,13 @@ function DistrictDashboard(props) {
     useEffect(() => {
         const fetchData = async () => {
             let userResult = await UserService.getUserDetails();
-            const districtId = userResult.district;
-            let districtResult = await DistrictService.getDistrict(districtId);
-            let vehiclesResult = await DistrictService.getVehicles(districtId);
+            const districtUsername = userResult.username;
+            let districtResult = await DistrictService.getDistrictByUser(
+                districtUsername
+            );
+            let vehiclesResult = await DistrictService.getVehicles(
+                districtResult._id
+            );
             setUser(userResult);
             setDistrict(districtResult);
             setVehicles(vehiclesResult);

@@ -75,7 +75,7 @@ export default function SignInSide(props) {
 
             const districtUserOptions = districtUser.map((user) => {
                 var district = districtData.find((d) => {
-                    return d._id == user.district;
+                    return d.user == user.username;
                 });
 
                 var obj = {};

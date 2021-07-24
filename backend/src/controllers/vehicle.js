@@ -216,6 +216,8 @@ const updateProcess = async (req, res) => {
 
             // update state and licensePlate
             if (wasAccepted(processUpdate)) {
+                // TODO send email to vehicle.owner (sollte email adresse sein)
+
                 if (newProcess.processType == 'REGISTRATION') {
                     vehicle.state = 'REGISTERED';
                     vehicle.licensePlate = newProcess.info.licensePlate;

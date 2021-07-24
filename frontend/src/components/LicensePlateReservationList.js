@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 
 import {
     Card,
+    CircularProgress,
     Grid,
     IconButton,
     TableContainer,
@@ -29,6 +30,7 @@ class LicensePlateReservationList extends React.Component {
         super(props);
 
         this.state = {
+            loading: true,
             user: {},
             licensePlates: [],
             licensePlateReservations: [],
@@ -60,7 +62,8 @@ class LicensePlateReservationList extends React.Component {
             return reservedPlates;
         })().then((reservedPlates) => {
             this.setState({
-                reservedPlates: reservedPlates
+                reservedPlates: reservedPlates,
+                loading: false
             });
         });
     }
@@ -101,6 +104,10 @@ class LicensePlateReservationList extends React.Component {
     }
 
     render() {
+        if (this.state.loading) {
+            return <CircularProgress />;
+        }
+
         if (!this.state.reservedPlates || this.state.reservedPlates == 0) {
             return (
                 <Grid

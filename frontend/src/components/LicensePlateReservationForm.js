@@ -143,7 +143,7 @@ class LicensePlateReservationForm extends React.Component {
                 user._id,
                 this.state.newLicensePlate,
                 // TODO: set to 30 days
-                100
+                2592000
             );
             this.props.history.push('/dashboard/plates');
         });
