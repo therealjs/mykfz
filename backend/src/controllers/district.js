@@ -25,6 +25,27 @@ const read = async (req, res) => {
     }
 };
 
+const readByUser = async (req, res) => {
+    try {
+        const user = req.params.user;
+
+        let district = await DistrictModel.findOne({ user: user }).exec();
+
+        if (!district)
+            return res.status(404).json({
+                error: 'Not Found',
+                message: `District not found`
+            });
+
+        return res.status(200).json(district);
+    } catch (err) {
+        return res.status(500).json({
+            error: 'Internal Server Error',
+            message: err.message
+        });
+    }
+};
+
 const update = async (req, res) => {
     if (Object.keys(req.body).length === 0) {
         return res.status(400).json({
@@ -133,6 +154,7 @@ const readProcesses = async (req, res) => {
 
 module.exports = {
     read,
+    readByUser,
     update,
     list,
     readProcesses,

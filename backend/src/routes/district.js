@@ -7,6 +7,7 @@ const middlewares = require('../middlewares');
 const DistrictController = require('../controllers/district');
 
 router.get('/', DistrictController.list); // List all districts
+router.get('/user/:user', DistrictController.readByUser); // Read a district by associated user
 router.get('/:districtId', DistrictController.read); // Read a district by Id
 router.put(
     '/:districtId',
