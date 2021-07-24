@@ -332,7 +332,7 @@ class VehicleListPaper extends React.Component {
                                                 {new Date(
                                                     Date.parse(process.date)
                                                 ).toLocaleString('de-DE', {
-                                                    timeZone: 'UTC'
+                                                    timeZone: 'Europe/Andorra'
                                                 })}
                                             </TableCell>
                                             <TableCell>

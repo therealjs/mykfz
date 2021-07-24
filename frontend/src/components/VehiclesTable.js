@@ -224,7 +224,7 @@ const ProcessesTableRow = ({ vehicleId, process }) => {
             </TableCell>
             <TableCell>
                 {new Date(Date.parse(process.date)).toLocaleString('de-DE', {
-                    timeZone: 'UTC'
+                    timeZone: 'Europe/Andorra'
                 })}
             </TableCell>
             <TableCell align="right">
