@@ -9,7 +9,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { Checkmark } from 'react-checkmark';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
@@ -62,6 +62,10 @@ function UserVerificationView(props) {
     useEffect(() => {
         const fetchData = async () => {
             let userResult = await UserService.getUserDetails();
+            if (userResult.isDistrictUser) {
+                // automatically verify district user
+                verifyUser();
+            }
             setUser(userResult);
         };
         fetchData();
@@ -72,47 +76,36 @@ function UserVerificationView(props) {
         setVerified(true);
     };
 
-    function Action() {
-        //if (videoScan) {
-        return (
-            <UserVerification /> 
-        );
-        // }
-        // else {
-        //     return(
-        //         <Button
-        //             fullWidth
-        //             variant="contained"
-        //             color="primary"
-        //             //className={classes.submit}
-        //             //onClick={updateVideoScan()}
-        //         >
-        //             Start Verification
-        //         </Button>
-        //     );
-        // }
-    }
-
     function VerifyButton() {
-        return(
+        return (
             <Button
                 fullWidth
                 variant="contained"
                 color="primary"
                 className={classes.submit}
                 onClick={verifyUser}
-                >
+            >
                 Verify x
             </Button>
-        )
+        );
     }
 
     const scanNfc = async () => {
         console.log('scanning something');
     };
 
+    if (user.isDistrictUser && verified) {
+        return <Redirect to={'/dashboard'} />;
+    }
+
     return (
-        <Grid container direction="column" spacing={2} justifyContent="center" alignItems="center">
+        <Grid
+            container
+            direction="column"
+            spacing={2}
+            justifyContent="center"
+            alignItems="center"
+        >
             <CssBaseline />
             <Grid item>
                 <div className={classes.paper}>
@@ -127,7 +120,7 @@ function UserVerificationView(props) {
                 </Typography>
             </Grid>
             <Grid item>
-                <Action />
+                <UserVerification />
             </Grid>
             <Grid item>
                 <VerifyButton />
