@@ -15,6 +15,7 @@ import ProcessDetailsForm from './ProcessDetailsForm';
 import Review from './Review';
 import VehicleService from '../services/VehicleService';
 import UserService from '../services/UserService';
+import LicensePlateService from '../services/LicensePlateService';
 
 const useStyles = makeStyles((theme) => ({
     appBar: {
@@ -293,6 +294,14 @@ function VehicleRegisterForm({ user }) {
                 user._id,
                 process.info.licensePlate
             );
+            // update ttl of licenseplate, increase to 10 years
+            let newExpireAt = new Date();
+            newExpireAt.setFullYear(newExpireAt.getFullYear() + 10);
+            let chosenPlate = await LicensePlateService.getLicensePlate(
+                process.info.licensePlate
+            );
+            chosenPlate.expireAt = newExpireAt;
+            await LicensePlateService.updateLicensePlate(chosenPlate);
             setIsSubmitting(false);
             setActiveStep(activeStep + 1);
             // timer.current = window.setTimeout(() => {

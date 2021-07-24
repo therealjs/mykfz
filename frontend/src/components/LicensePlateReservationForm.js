@@ -31,7 +31,6 @@ import DistrictService from '../services/DistrictService';
 import LicensePlateService from '../services/LicensePlateService';
 
 class LicensePlateReservationForm extends React.Component {
-    
     constructor(props) {
         super(props);
 
@@ -43,7 +42,7 @@ class LicensePlateReservationForm extends React.Component {
             rowsPerPage: 5,
             areaCodeOptions: [],
             queriedLicensePlates: [],
-            selectedPlate: null,
+            selectedPlate: null
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -78,8 +77,8 @@ class LicensePlateReservationForm extends React.Component {
         this.setState({ [event.target.name]: event.target.value });
     }
 
-      handleChangePage(event, newPage) {
-        console.log(newPage)
+    handleChangePage(event, newPage) {
+        console.log(newPage);
         this.setState({ page: newPage });
         console.log(this.state.page);
     }
@@ -92,7 +91,7 @@ class LicensePlateReservationForm extends React.Component {
 
     handleChangeSelection(event) {
         this.setState({ selectedPlate: event.target.value });
-        
+
         console.log(this.state.queriedLicensePlates);
         let id = this.state.selectedPlate;
     }
@@ -129,7 +128,10 @@ class LicensePlateReservationForm extends React.Component {
         (async () => {
             try {
                 const validatedPlate =
-                    await LicensePlateService.createLicensePlate(licensePlate);
+                    await LicensePlateService.createLicensePlate(
+                        licensePlate,
+                        true
+                    );
                 this.setState({
                     newLicensePlate: validatedPlate._id
                 });
@@ -140,7 +142,8 @@ class LicensePlateReservationForm extends React.Component {
             const reservation = await UserService.createLicensePlateReservation(
                 user._id,
                 this.state.newLicensePlate,
-                30
+                // TODO: set to 30 days
+                100
             );
             this.props.history.push('/dashboard/plates');
         });
@@ -157,205 +160,274 @@ class LicensePlateReservationForm extends React.Component {
                 spacing={3}
             >
                 <Grid item>
-                <Card style={{ padding: '20px', maxWidth: '500px' }}>
-                <Grid container alignItems="center"
-                justify="center">
-                <Grid item xs={12}>
-                    <form
-                        onSubmit={this.handleSearch}
-                        onReset={() => this.props.history.goBack()}
-                    >
-                            <Typography
-                                style={{ marginBottom: '10px' }}
-                                component="h5"
-                                variant="h5"
-                            >
-                                Reserve new License Plate
-                            </Typography>
-                            <Grid
-                                justify="space-between"
-                                container
-                                direction="row"
-                                alignItems="center"
-                                justify="center"
-                                spacing={3}
-                            >
-                                <Grid item xs={12}>
-                                    <FormGroup
-                                        row
-                                        style={{
-                                            justifyContent: 'space-between',
-                                            padding: '20px',
-                                            paddingLeft: '20%',
-                                            height: '120px',
-                                            backgroundImage: `url(${'https://t3.ftcdn.net/jpg/00/11/79/08/240_F_11790850_Gi4UC9cwGMUMGWtZhSP4yKpFg3tqlPis.jpg'})`,
-                                            backgroundSize: 'contain',
-                                            backgroundRepeat: 'no-repeat'
-                                        }}
+                    <Card style={{ padding: '20px', maxWidth: '500px' }}>
+                        <Grid container alignItems="center" justify="center">
+                            <Grid item xs={12}>
+                                <form
+                                    onSubmit={this.handleSearch}
+                                    onReset={() => this.props.history.goBack()}
+                                >
+                                    <Typography
+                                        style={{ marginBottom: '10px' }}
+                                        component="h5"
+                                        variant="h5"
                                     >
-                                        <FormControl
-                                            variant="outlined"
-                                            style={{ width: '80px' }}
-                                        >
-                                            <InputLabel>
-                                                {String('Area')}
-                                            </InputLabel>
-
-                                            <Select
-                                                value={this.state.areaCode}
-                                                required={true}
-                                                name="areaCode"
-                                                onChange={this.handleChange}
-                                            >
-                                                {this.state.areaCodeOptions.map(
-                                                    (areaCode) => {
-                                                        return (
-                                                            <MenuItem
-                                                                value={areaCode}
-                                                            >
-                                                                {areaCode}
-                                                            </MenuItem>
-                                                        );
-                                                    }
-                                                )}
-                                                ;
-                                            </Select>
-                                        </FormControl>
-                                        <FormControl style={{ width: '80px' }}>
-                                            <TextField
-                                                variant="outlined"
-                                                label="Letters"
-                                                required={true}
-                                                name="letters"
-                                                value={this.state.letters}
-                                                // ToDo add regex
-
-                                                onChange={this.handleChange}
-                                                inputProps={{
-                                                    maxLength: 2,
-                                                    style: {
-                                                        textTransform:
-                                                            'uppercase'
-                                                    }
+                                        Reserve new License Plate
+                                    </Typography>
+                                    <Grid
+                                        justify="space-between"
+                                        container
+                                        direction="row"
+                                        alignItems="center"
+                                        justify="center"
+                                        spacing={3}
+                                    >
+                                        <Grid item xs={12}>
+                                            <FormGroup
+                                                row
+                                                style={{
+                                                    justifyContent:
+                                                        'space-between',
+                                                    padding: '20px',
+                                                    paddingLeft: '20%',
+                                                    height: '120px',
+                                                    backgroundImage: `url(${'https://t3.ftcdn.net/jpg/00/11/79/08/240_F_11790850_Gi4UC9cwGMUMGWtZhSP4yKpFg3tqlPis.jpg'})`,
+                                                    backgroundSize: 'contain',
+                                                    backgroundRepeat:
+                                                        'no-repeat'
                                                 }}
-                                            />
-                                        </FormControl>
-                                        <FormControl style={{ width: '80px' }}>
-                                            <TextField
-                                                variant="outlined"
-                                                label="Digits"
-                                                required={true}
-                                                name="digits"
-                                                value={this.state.digits}
-                                                onChange={this.handleChange}
-                                                inputProps={{ maxLength: 4 }}
-                                            />
-                                        </FormControl>
-                                    </FormGroup>
-                                </Grid>
+                                            >
+                                                <FormControl
+                                                    variant="outlined"
+                                                    style={{ width: '80px' }}
+                                                >
+                                                    <InputLabel>
+                                                        {String('Area')}
+                                                    </InputLabel>
+
+                                                    <Select
+                                                        value={
+                                                            this.state.areaCode
+                                                        }
+                                                        required={true}
+                                                        name="areaCode"
+                                                        onChange={
+                                                            this.handleChange
+                                                        }
+                                                    >
+                                                        {this.state.areaCodeOptions.map(
+                                                            (areaCode) => {
+                                                                return (
+                                                                    <MenuItem
+                                                                        value={
+                                                                            areaCode
+                                                                        }
+                                                                    >
+                                                                        {
+                                                                            areaCode
+                                                                        }
+                                                                    </MenuItem>
+                                                                );
+                                                            }
+                                                        )}
+                                                        ;
+                                                    </Select>
+                                                </FormControl>
+                                                <FormControl
+                                                    style={{ width: '80px' }}
+                                                >
+                                                    <TextField
+                                                        variant="outlined"
+                                                        label="Letters"
+                                                        required={true}
+                                                        name="letters"
+                                                        value={
+                                                            this.state.letters
+                                                        }
+                                                        // ToDo add regex
+
+                                                        onChange={
+                                                            this.handleChange
+                                                        }
+                                                        inputProps={{
+                                                            maxLength: 2,
+                                                            style: {
+                                                                textTransform:
+                                                                    'uppercase'
+                                                            }
+                                                        }}
+                                                    />
+                                                </FormControl>
+                                                <FormControl
+                                                    style={{ width: '80px' }}
+                                                >
+                                                    <TextField
+                                                        variant="outlined"
+                                                        label="Digits"
+                                                        required={true}
+                                                        name="digits"
+                                                        value={
+                                                            this.state.digits
+                                                        }
+                                                        onChange={
+                                                            this.handleChange
+                                                        }
+                                                        inputProps={{
+                                                            maxLength: 4
+                                                        }}
+                                                    />
+                                                </FormControl>
+                                            </FormGroup>
+                                        </Grid>
+                                        <Grid item xs={12}>
+                                            <Button
+                                                style={{
+                                                    float: 'right',
+                                                    marginLeft: '15px'
+                                                }}
+                                                id="submit"
+                                                variant="contained"
+                                                type="submit"
+                                                color="primary"
+                                            >
+                                                Search
+                                            </Button>
+                                            <Button
+                                                style={{ float: 'right' }}
+                                                id="reset"
+                                                type="reset"
+                                                color="default"
+                                            >
+                                                Cancel
+                                            </Button>
+                                        </Grid>
+                                    </Grid>
+                                </form>
+                            </Grid>
+                            {this.state.queriedLicensePlates ? (
                                 <Grid item xs={12}>
-                                    <Button
-                                        style={{
-                                            float: 'right',
-                                            marginLeft: '15px'
-                                        }}
-                                        id="submit"
-                                        variant="contained"
-                                        type="submit"
-                                        color="primary"
+                                    <Grid
+                                        container
+                                        direction="column"
+                                        alignItems="center"
                                     >
-                                        Search
-                                    </Button>
-                                    <Button
-                                        style={{ float: 'right' }}
-                                        id="reset"
-                                        type="reset"
-                                        color="default"
-                                    >
-                                        Cancel
-                                    </Button>
-                                </Grid>
-                            </Grid>
-                    </form>
-                </Grid>
-                {this.state.queriedLicensePlates ? (
-                    <Grid item xs={12}>
-                            <Grid container direction="column" alignItems="center">
-                            <Grid item>
-                            <TableBody>
-                                {this.state.queriedLicensePlates.slice(this.state.page * this.state.rowsPerPage,
-                                    this.state.page * this.state.rowsPerPage + this.state.rowsPerPage).map(
-                                    (plate, index) => (
-                                        <TableRow>
-                                            <TableCell padding="checkbox">
-                                                <Radio
-                                                    value={index}
-                                                    defaultSelected={false}
-                                                    checked={
-                                                        index !=
-                                                        this.state.selectedPlate
-                                                            ? false
-                                                            : true
-                                                    }
-                                                    onChange={
-                                                        this
-                                                            .handleChangeSelection
-                                                    }
-                                                />
-                                            </TableCell>
-                                            <TableCell>
-                                                <LicensePlate
-                                                    licensePlate={plate}
-                                                />
-                                            </TableCell>
-                                        </TableRow>
-                                    )
-                                )}
-                            </TableBody>
-                            </Grid>
-                            <Grid item>
-                            <TableFooter>
-                                <TableRow>
-                                    <TablePagination
-                                        rowsPerPageOptions={[
-                                            { label: '5', value: 5 },
-                                            { label: '10', value: 10 },
-                                            { label: '25', value: 25 }
-                                        ]}
-                                        colSpan={3}
-                                        count={
-                                            this.state.queriedLicensePlates
-                                                .length
-                                        }
-                                        rowsPerPage={this.state.rowsPerPage}
-                                        page={this.state.page}
-                                        onChangePage={this.handleChangePage}
-                                        onChangeRowsPerPage={
-                                            this.handleChangeRowsPerPage
-                                        }
-                                        //ActionsComponent={TablePaginationActions}
-                                    />
-                                </TableRow>
-                            </TableFooter>
-                            </Grid>
-                            </Grid>
-                            {(this.state.queriedLicensePlates.length != 0 || this.state.selectedPlate != null) ?
-                                    <Button style={{
+                                        <Grid item>
+                                            <TableBody>
+                                                {this.state.queriedLicensePlates
+                                                    .slice(
+                                                        this.state.page *
+                                                            this.state
+                                                                .rowsPerPage,
+                                                        this.state.page *
+                                                            this.state
+                                                                .rowsPerPage +
+                                                            this.state
+                                                                .rowsPerPage
+                                                    )
+                                                    .map((plate, index) => (
+                                                        <TableRow>
+                                                            <TableCell padding="checkbox">
+                                                                <Radio
+                                                                    value={
+                                                                        index
+                                                                    }
+                                                                    defaultSelected={
+                                                                        false
+                                                                    }
+                                                                    checked={
+                                                                        index !=
+                                                                        this
+                                                                            .state
+                                                                            .selectedPlate
+                                                                            ? false
+                                                                            : true
+                                                                    }
+                                                                    onChange={
+                                                                        this
+                                                                            .handleChangeSelection
+                                                                    }
+                                                                />
+                                                            </TableCell>
+                                                            <TableCell>
+                                                                <LicensePlate
+                                                                    licensePlate={
+                                                                        plate
+                                                                    }
+                                                                />
+                                                            </TableCell>
+                                                        </TableRow>
+                                                    ))}
+                                            </TableBody>
+                                        </Grid>
+                                        <Grid item>
+                                            <TableFooter>
+                                                <TableRow>
+                                                    <TablePagination
+                                                        rowsPerPageOptions={[
+                                                            {
+                                                                label: '5',
+                                                                value: 5
+                                                            },
+                                                            {
+                                                                label: '10',
+                                                                value: 10
+                                                            },
+                                                            {
+                                                                label: '25',
+                                                                value: 25
+                                                            }
+                                                        ]}
+                                                        colSpan={3}
+                                                        count={
+                                                            this.state
+                                                                .queriedLicensePlates
+                                                                .length
+                                                        }
+                                                        rowsPerPage={
+                                                            this.state
+                                                                .rowsPerPage
+                                                        }
+                                                        page={this.state.page}
+                                                        onChangePage={
+                                                            this
+                                                                .handleChangePage
+                                                        }
+                                                        onChangeRowsPerPage={
+                                                            this
+                                                                .handleChangeRowsPerPage
+                                                        }
+                                                        //ActionsComponent={TablePaginationActions}
+                                                    />
+                                                </TableRow>
+                                            </TableFooter>
+                                        </Grid>
+                                    </Grid>
+                                    {this.state.queriedLicensePlates.length !=
+                                        0 ||
+                                    this.state.selectedPlate != null ? (
+                                        <Button
+                                            style={{
                                                 float: 'right',
                                                 marginTop: '5px',
                                                 marginLeft: '15px'
-                                            }} type="submit" variant="contained"
+                                            }}
                                             type="submit"
-                                            color="primary" onClick={this.handleSubmit}>
-                                        Reserve
-                                    </Button>
-                            :[]}
-                    </Grid>
-                ) : (
-                    []
-                )}
-                </Grid>
-                </Card>
+                                            variant="contained"
+                                            type="submit"
+                                            color="primary"
+                                            onClick={this.handleSubmit}
+                                        >
+                                            Reserve
+                                        </Button>
+                                    ) : (
+                                        []
+                                    )}
+                                </Grid>
+                            ) : (
+                                []
+                            )}
+                        </Grid>
+                    </Card>
                 </Grid>
             </Grid>
         );
