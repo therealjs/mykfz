@@ -190,7 +190,7 @@ function VehicleRegisterForm({ user }) {
     const [loading, setLoading] = useState(true);
     const [errorMessage, setErrorMessage] = useState('');
     const [isSubmitting, setIsSubmitting] = useState(false);
-    const [activeStep, setActiveStep] = useState(0);
+    const [activeStep, setActiveStep] = useState(2);
     const [process, setProcess] = useState({
         processType: 'REGISTRATION',
         date: Date(),
@@ -201,7 +201,79 @@ function VehicleRegisterForm({ user }) {
             evb: '',
             secCodeII: ''
         },
-        isPaid: false
+        isPaid: false,
+        paymentDetails: {
+            id: '4BC812161J077382N',
+            intent: 'CAPTURE',
+            status: 'COMPLETED',
+            purchase_units: [
+                {
+                    reference_id: 'default',
+                    amount: {
+                        currency_code: 'EUR',
+                        value: '27.00'
+                    },
+                    payee: {
+                        email_address: 'sb-jl047v6558609@business.example.com',
+                        merchant_id: '7C4HRZENSW7AN'
+                    },
+                    shipping: {
+                        name: {
+                            full_name: 'John Doe'
+                        },
+                        address: {
+                            address_line_1: 'ESpachstr. 1',
+                            admin_area_2: 'Freiburg',
+                            admin_area_1: 'Baden-Württemberg',
+                            postal_code: '79111',
+                            country_code: 'DE'
+                        }
+                    },
+                    payments: {
+                        captures: [
+                            {
+                                id: '1TT40090DD055522X',
+                                status: 'COMPLETED',
+                                amount: {
+                                    currency_code: 'EUR',
+                                    value: '27.00'
+                                },
+                                final_capture: true,
+                                seller_protection: {
+                                    status: 'ELIGIBLE',
+                                    dispute_categories: [
+                                        'ITEM_NOT_RECEIVED',
+                                        'UNAUTHORIZED_TRANSACTION'
+                                    ]
+                                },
+                                create_time: '2021-07-24T15:50:12Z',
+                                update_time: '2021-07-24T15:50:12Z'
+                            }
+                        ]
+                    }
+                }
+            ],
+            payer: {
+                name: {
+                    given_name: 'John',
+                    surname: 'Doe'
+                },
+                email_address: 'sb-blx2y6554970@personal.example.com',
+                payer_id: 'MKYQFMGSKQ2J8',
+                address: {
+                    country_code: 'DE'
+                }
+            },
+            create_time: '2021-07-24T15:50:02Z',
+            update_time: '2021-07-24T15:50:12Z',
+            links: [
+                {
+                    href: 'https://api.sandbox.paypal.com/v2/checkout/orders/4BC812161J077382N',
+                    rel: 'self',
+                    method: 'GET'
+                }
+            ]
+        }
     });
 
     const [vehicle, setVehicle] = useState({});
@@ -215,10 +287,12 @@ function VehicleRegisterForm({ user }) {
         fetchData();
     }, []);
 
-    const onProcessPaid = () => {
+    const onProcessPaid = (details, data) => {
+        console.log(details, data);
         setProcess((prevState) => ({
             ...prevState,
-            ['isPaid']: true
+            isPaid: true,
+            paymentDetails: details
         }));
     };
 

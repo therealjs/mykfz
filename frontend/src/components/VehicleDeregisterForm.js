@@ -100,7 +100,7 @@ function VehicleDeregisterForm({ user }) {
         fetchData();
     }, []);
 
-    const onProcessPaid = () => {
+    const onProcessPaid = (details, data) => {
         setProcess((prevState) => ({
             ...prevState,
             ['isPaid']: true

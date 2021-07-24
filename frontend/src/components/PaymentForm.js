@@ -19,9 +19,7 @@ export default function PaymentForm({ process, onProcessPaid }) {
         <PayPalButton
             amount={price}
             // shippingPreference="NO_SHIPPING" // default is "GET_FROM_FILE"
-            onSuccess={(details, data) => {
-                onProcessPaid();
-            }}
+            onSuccess={onProcessPaid}
             options={{
                 clientId: clientId,
                 currency: 'EUR'

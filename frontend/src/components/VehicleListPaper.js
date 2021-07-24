@@ -225,7 +225,7 @@ class VehicleListPaper extends React.Component {
                     <CardHeader
                         avatar={
                             <Avatar
-                                //variant="square"
+                                // variant="square"
                                 aria-label="make"
                                 src={makeLogos[vehicle.make]}
                             />

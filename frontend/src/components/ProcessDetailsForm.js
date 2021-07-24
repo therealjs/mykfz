@@ -15,12 +15,14 @@ import {
 } from '@material-ui/core';
 import Checkbox from '@material-ui/core/Checkbox';
 import React, { useState, useEffect } from 'react';
+import { withRouter, Link, useHistory } from 'react-router';
 import { withStyles } from '@material-ui/styles';
 import InfoIcon from '@material-ui/icons/Info';
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 import { PayPalButton } from 'react-paypal-button-v2';
 import LicensePlateService from '../services/LicensePlateService';
 import UserService from '../services/UserService';
+import Alert from '@material-ui/lab/Alert';
 
 const LightTooltip = withStyles(() => ({
     tooltip: {
@@ -37,6 +39,7 @@ function RegisterProcessFormFields({
     reservedPlates,
     onProcessChange
 }) {
+    const history = useHistory();
     const tooltipImgTxt = (
         <div>
             <Grid container>
@@ -57,6 +60,45 @@ function RegisterProcessFormFields({
             </Grid>
         </div>
     );
+
+    // TODO sollte eigentlich die validity der reservation gecheckt werden (nicht der plate)
+    const validPlates = reservedPlates.filter((plate) => {
+        if (!plate.expireAt) {
+            return false;
+        }
+        const currentTime = new Date().getTime();
+        const expiryTime = new Date(plate.expireAt).getTime();
+        return expiryTime > currentTime;
+    });
+    const validPlatesAvailable = validPlates.length > 0;
+
+    if (!validPlatesAvailable) {
+        console.log('no valid plates');
+        return (
+            <Grid container>
+                <Grid item xs={12}>
+                    <Alert severity="error">
+                        You don't have valid license plate reservations. Please
+                        reserve a new license plate before registering a
+                        vehicle!
+                    </Alert>
+                </Grid>
+                <Grid item xs={12}>
+                    <Button
+                        style={{ marginTop: '1em' }}
+                        fullWidth
+                        variant="contained"
+                        color="primary"
+                        onClick={() => {
+                            history.push('/dashboard');
+                        }}
+                    >
+                        Return To Dashboard
+                    </Button>
+                </Grid>
+            </Grid>
+        );
+    }
 
     return (
         <Grid container spacing={3}>
@@ -96,17 +138,24 @@ function RegisterProcessFormFields({
                         id="plate-select"
                         onChange={onProcessChange}
                     >
-                        {reservedPlates.map((plate) => {
-                            return (
-                                <MenuItem value={plate._id}>
-                                    {`${plate.areaCode}` +
-                                        ' - ' +
-                                        `${plate.letters}` +
-                                        ' ' +
-                                        `${plate.digits}`}
-                                </MenuItem>
-                            );
-                        })}
+                        {validPlatesAvailable ? (
+                            validPlates.map((plate) => {
+                                return (
+                                    <MenuItem value={plate._id}>
+                                        {`${plate.areaCode}` +
+                                            ' - ' +
+                                            `${plate.letters}` +
+                                            ' ' +
+                                            `${plate.digits}`}
+                                    </MenuItem>
+                                );
+                            })
+                        ) : (
+                            <MenuItem value="">
+                                You need to reserve a license plate before
+                                registering a vehicle
+                            </MenuItem>
+                        )}
                     </Select>
                 </FormControl>
             </Grid>
@@ -321,12 +370,7 @@ function DeregisterProcessFormFields({ vehicle, process, onProcessChange }) {
     );
 }
 
-export default function ProcessDetailsForm({
-    user,
-    vehicle,
-    process,
-    onProcessChange
-}) {
+function ProcessDetailsForm({ user, vehicle, process, onProcessChange }) {
     const [loading, setLoading] = useState(true);
     const [reservedPlates, setReservedPlates] = useState([]);
 
@@ -381,3 +425,5 @@ export default function ProcessDetailsForm({
         </React.Fragment>
     );
 }
+
+export default withRouter(ProcessDetailsForm);
