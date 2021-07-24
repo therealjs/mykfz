@@ -225,18 +225,18 @@ const updateProcess = async (req, res) => {
                     const owner = vehicle.owner;
                     const oldPlate = vehicle.licensePlate;
 
-                    if (oldPlate && newProcess.reservePlate) {
-                        // create plate reservation
-                        console.log(`adding reservation for plate ${oldPlate}`);
-                        UserModel.findByIdAndUpdate(vehicle.owner, {
-                            $addToSet: {
-                                licensePlateReservations: {
-                                    licensePlate: oldPlate,
-                                    expiry: Date.today().add({ days: +90 })
-                                }
-                            }
-                        });
-                    }
+                    // if (oldPlate && newProcess.reservePlate) {
+                    //     // create plate reservation
+                    //     console.log(`adding reservation for plate ${oldPlate}`);
+                    //     UserModel.findByIdAndUpdate(vehicle.owner, {
+                    //         $addToSet: {
+                    //             licensePlateReservations: {
+                    //                 licensePlate: oldPlate,
+                    //                 expiry: Date.today().add({ days: +90 })
+                    //             }
+                    //         }
+                    //     });
+                    // }
                     vehicle.state = 'DEREGISTERED';
                     vehicle.licensePlate = null;
                 }

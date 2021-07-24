@@ -185,6 +185,15 @@ const ProcessesTableRow = ({ vehicleId, process }) => {
     const rejectProcess = useCallback(async () => {
         if (isSending) return;
         setIsSending(true);
+
+        if (process.processType == 'REGISTRATION') {
+            // create reservation
+            const vehicle = await VehicleService.getVehicle(vehicleId);
+            const userId = vehicle.owner;
+            const plateId = process.info.licensePlate;
+            await UserService.createLicensePlateReservation(userId, plateId);
+        }
+
         await ProcessService.rejectProcess(vehicleId, process._id);
         const newProcess = await VehicleService.getVehicleProcess(
             vehicleId,
