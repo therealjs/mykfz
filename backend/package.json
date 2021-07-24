@@ -15,7 +15,8 @@
         "express": "4.16.2",
         "helmet": "^3.23.3",
         "jsonwebtoken": "8.1.1",
-        "mongoose": "^5.12.10"
+        "mongoose": "^5.12.10",
+        "nodemailer": "^6.6.3"
     },
     "devDependencies": {
         "nodemon": "1.14.12"

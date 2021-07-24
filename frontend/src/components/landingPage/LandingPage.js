@@ -259,8 +259,17 @@ export default function LandingPage({ offer }) {
                                         </Button>
                     </div>
                 </Container>
-               <Box pt={4} className={classes.copyright}>
-            <Copyright />
+            <Box pt={4} className={classes.copyright}>
+                <Copyright />
+                        <Typography
+                            variant="caption"
+                            align="center"
+                            display="block"
+                            color="textSecondary"
+                            gutterBottom
+                        >
+                            Video CC by http://www.beachfrontbroll.com/
+                        </Typography>
             </Box>
         </div>
         </body>
