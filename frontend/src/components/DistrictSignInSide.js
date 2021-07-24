@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Avatar from '@material-ui/core/Avatar';
+import Alert from '@material-ui/lab/Alert';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
@@ -62,24 +63,25 @@ export default function SignInSide(props) {
     });
     const [districtUserOptions, setDistrictUserOptions] = useState([]);
     const [districtLogo, setDistrictLogo] = useState(null);
+    const [errorMessage, setErrorMessage] = useState('');
 
     useEffect(() => {
         const fetchData = async () => {
             const districtData = await DistrictService.getDistricts();
-            const allUser = await UserService.getAllUser()
+            const allUser = await UserService.getAllUser();
             const districtUser = allUser.filter(function (u) {
                 return u.isDistrictUser;
-              });
+            });
 
-            const districtUserOptions = districtUser.map(user => {
-                var district = districtData.find(d => {
-                    return d._id == user.district
-                  });
-                
+            const districtUserOptions = districtUser.map((user) => {
+                var district = districtData.find((d) => {
+                    return d._id == user.district;
+                });
+
                 var obj = {};
-                obj["name"] = district.name;
-                obj["picture"] = district.picture;
-                obj["username"] = user.username;
+                obj['name'] = district.name;
+                obj['picture'] = district.picture;
+                obj['username'] = user.username;
 
                 return obj;
             });
@@ -103,9 +105,34 @@ export default function SignInSide(props) {
     const login = (e) => {
         e.preventDefault();
         try {
-            UserService.login(account.username, account.password).then(() => {
-                history.push('/');
-            });
+            UserService.login(account.username, account.password)
+                .then(() => {
+                    history.push('/');
+                })
+                .catch((error) => {
+                    if (error == 'User Not Found') {
+                        setErrorMessage(
+                            'The district you selected does not have permisson to log in. Please contact customer service.'
+                        );
+                    } else {
+                        if (error == 'Unauthorized') {
+                            setErrorMessage(
+                                'Sorry, your password was incorrect. Please double-check your password.'
+                            );
+                        } else {
+                            if (error == 'Failed to fetch') {
+                                setErrorMessage(
+                                    'Login is currently not possible due to a server error, we are working on a solution.'
+                                );
+                            } else {
+                                console.log(error);
+                                setErrorMessage(
+                                    'There is an issue with the login process, please contact the customer service.'
+                                );
+                            }
+                        }
+                    }
+                });
         } catch (err) {
             console.error(err);
         }
@@ -124,23 +151,23 @@ export default function SignInSide(props) {
                 elevation={6}
                 square
             >
-                
                 <div className={classes.paper}>
-                {account.username ?
-                    <Avatar 
-                        className={classes.avatarDistrict}
-                        variant="square"
-                        alt={'District'}
-                        src={districtLogo}
-                    />
-                    : <Avatar className={classes.avatar}>
-                    <LockOutlinedIcon />
-                        </Avatar>}
+                    {account.username ? (
+                        <Avatar
+                            className={classes.avatarDistrict}
+                            variant="square"
+                            alt={'District'}
+                            src={districtLogo}
+                        />
+                    ) : (
+                        <Avatar className={classes.avatar}>
+                            <LockOutlinedIcon />
+                        </Avatar>
+                    )}
                     <Typography component="h1" variant="h5">
                         District Login
                     </Typography>
                     <form className={classes.form} noValidate>
-
                         <Grid item>
                             <Autocomplete
                                 options={districtUserOptions}
@@ -151,10 +178,14 @@ export default function SignInSide(props) {
                                 onChange={handleDistrictChange}
                                 renderOption={(option) => (
                                     <React.Fragment>
-                                        <Avatar variant="square" alt={"D"} src={option.picture} />
+                                        <Avatar
+                                            variant="square"
+                                            alt={'D'}
+                                            src={option.picture}
+                                        />
                                         <span>&nbsp;{option.name}</span>
                                     </React.Fragment>
-                                    )}
+                                )}
                                 renderInput={(params) => (
                                     <TextField
                                         {...params}
@@ -189,6 +220,15 @@ export default function SignInSide(props) {
                         >
                             Login
                         </Button>
+                        <div>
+                            {errorMessage && (
+                                <Grid item xs={12}>
+                                    <Alert severity="error">
+                                        {errorMessage}
+                                    </Alert>
+                                </Grid>
+                            )}
+                        </div>
                         <Box mt={5}>
                             <Copyright />
                         </Box>

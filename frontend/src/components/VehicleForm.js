@@ -7,6 +7,8 @@ import {
     TextField,
     InputAdornment,
     InputLabel,
+    FormGroup,
+    FormControl,
     Select,
     MenuItem,
     Button,
@@ -28,6 +30,8 @@ import { withStyles } from '@material-ui/styles';
 import Alert from '@material-ui/lab/Alert';
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
+import DistrictService from '../services/DistrictService';
+import LicensePlateService from '../services/LicensePlateService';
 
 const LightTooltip = withStyles(() => ({
     tooltip: {
@@ -47,6 +51,11 @@ class VehicleForm extends React.Component {
                 owner: UserService.isAuthenticated()
                     ? UserService.getCurrentUser().id
                     : undefined,
+                error: null,
+                areaCodeOptions: [],
+                areaCode: '',
+                letters: '',
+                digits: '',
                 vin: props.vehicle.vin,
                 make: props.vehicle.make,
                 model: props.vehicle.model,
@@ -64,6 +73,11 @@ class VehicleForm extends React.Component {
                 owner: UserService.isAuthenticated()
                     ? UserService.getCurrentUser().id
                     : undefined,
+                error: null,
+                areaCodeOptions: [],
+                areaCode: '',
+                letters: '',
+                digits: '',
                 vin: '',
                 make: '',
                 model: '',
@@ -87,8 +101,23 @@ class VehicleForm extends React.Component {
         this.handleChangeVIN = this.handleChangeVIN.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.handleChangeDate = this.handleChangeDate.bind(this);
+        this.handleChangePlate = this.handleChangePlate.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.toggleGIBool = this.toggleGIBool.bind(this);
+    }
+
+    componentWillMount() {
+        this.setState({ loading: true });
+        UserService.getUserDetails().then((user) => {
+            DistrictService.getDistrict(user.address.district).then(
+                (district) => {
+                    this.setState({
+                        areaCodeOptions: district.areaCode,
+                        loading: false
+                    });
+                }
+            );
+        });
     }
 
     async handleChangeVIN(event) {
@@ -115,6 +144,36 @@ class VehicleForm extends React.Component {
         this.setState({ generalInspection: date });
     }
 
+    handleChangePlate(event) {
+        // if value is not blank, then test the regex
+        if (event.target.name === 'digits') {
+            // only allow blank or numbers
+            const re = /^[0-9\b]+$/;
+            if (event.target.value === '' || re.test(event.target.value)) {
+                this.setState({ digits: event.target.value });
+            }
+        } else if (event.target.name === 'letters') {
+            // only allow letters
+            const re = /^[a-zA-Z]+$/;
+            if (event.target.value === '' || re.test(event.target.value)) {
+                this.setState({ letters: event.target.value.toUpperCase() });
+            }
+        } else {
+            // area code
+            this.setState({ [event.target.name]: event.target.value });
+        }
+
+        // const query = {
+        //     ...this.state,
+        //     [event.target.name]: event.target.value
+        // };
+        // console.log(query);
+        // LicensePlateService.getAvailableLicensePlates(query).then((res) => {
+        //     console.log('queried plates');
+        //     console.log(res);
+        // });
+    }
+
     toggleGIBool(event) {
         this.setState({ generalInspectionBool: event.target.checked });
         this.setState({ generalInspectionMonth: '' });
@@ -124,35 +183,89 @@ class VehicleForm extends React.Component {
     handleSubmit(event) {
         event.preventDefault();
 
-        let vehicle = this.props.vehicle;
-        if (vehicle == undefined) {
-            vehicle = {};
-        }
+        if (this.state.state == 'REGISTERED') {
+            LicensePlateService.getAvailableLicensePlates(this.state).then(
+                (plateResult) => {
+                    console.log(plateResult);
+                    if (plateResult.length != 1) {
+                        setState({
+                            error: 'License Plate is invalid or already in use! Confirm your input.'
+                        });
+                        return;
+                    }
 
-        vehicle.owner = this.state.owner;
-        vehicle.vin = this.state.vin;
-        vehicle.make = this.state.make;
-        vehicle.model = this.state.model;
-        vehicle.licensePlate = this.state.licensePlate;
-        vehicle.state = this.state.state;
-        vehicle.generalInspectionMonth = this.state.generalInspectionMonth;
-        vehicle.generalInspectionYear = this.state.generalInspectionYear;
+                    const plateToCreate = plateResult[0];
+                    LicensePlateService.createLicensePlate(plateToCreate).then(
+                        (createdPlate) => {
+                            const plateId = createdPlate._id;
+                            this.setState({ licensePlate: plateId });
 
-        (vehicle._id
-            ? VehicleService.updateVehicle(vehicle)
-            : VehicleService.createVehicle(vehicle)
-        )
-            .then((data) => {
-                this.props.history.push('/dashboard');
-            })
-            .catch((error) => {
-                this.setState({
-                    error: 'A server error occured. Please confirm your input!'
+                            let vehicle = this.props.vehicle;
+                            if (vehicle == undefined) {
+                                vehicle = {};
+                            }
+
+                            vehicle.owner = this.state.owner;
+                            vehicle.vin = this.state.vin;
+                            vehicle.make = this.state.make;
+                            vehicle.model = this.state.model;
+                            vehicle.licensePlate = plateId;
+                            vehicle.state = this.state.state;
+                            vehicle.generalInspectionMonth =
+                                this.state.generalInspectionMonth;
+                            vehicle.generalInspectionYear =
+                                this.state.generalInspectionYear;
+
+                            (vehicle._id
+                                ? VehicleService.updateVehicle(vehicle)
+                                : VehicleService.createVehicle(vehicle)
+                            )
+                                .then((data) => {
+                                    this.props.history.push('/dashboard');
+                                })
+                                .catch((error) => {
+                                    this.setState({
+                                        error: 'A server error occured. Please confirm your input!'
+                                    });
+                                });
+                        }
+                    );
+                }
+            );
+        } else {
+            let vehicle = this.props.vehicle;
+            if (vehicle == undefined) {
+                vehicle = {};
+            }
+
+            vehicle.owner = this.state.owner;
+            vehicle.vin = this.state.vin;
+            vehicle.make = this.state.make;
+            vehicle.model = this.state.model;
+            vehicle.licensePlate = this.state.licensePlate;
+            vehicle.state = this.state.state;
+            vehicle.generalInspectionMonth = this.state.generalInspectionMonth;
+            vehicle.generalInspectionYear = this.state.generalInspectionYear;
+
+            (vehicle._id
+                ? VehicleService.updateVehicle(vehicle)
+                : VehicleService.createVehicle(vehicle)
+            )
+                .then((data) => {
+                    this.props.history.push('/dashboard');
+                })
+                .catch((error) => {
+                    this.setState({
+                        error: 'A server error occured. Please confirm your input!'
+                    });
                 });
-            });
+        }
     }
 
     render() {
+        if (this.state.loading) {
+            return <h2>Loading</h2>;
+        }
         return (
             <Grid
                 justify="space-between"
@@ -270,18 +383,96 @@ class VehicleForm extends React.Component {
                                 </Grid>
                                 {this.state.state == 'REGISTERED' ? (
                                     <Grid item xs={12}>
-                                        <TextField
-                                            variant="outlined"
-                                            label="License Plate"
-                                            fullWidth
-                                            value={this.state.licensePlate}
-                                            required={true}
-                                            disabled={
-                                                this.state.state != 'REGISTERED'
-                                            }
-                                            name="licensePlate"
-                                            onChange={this.handleChange}
-                                        />
+                                        <InputLabel>
+                                            Current License Plate
+                                        </InputLabel>
+                                        <FormGroup
+                                            row
+                                            style={{
+                                                justifyContent: 'space-between',
+                                                padding: '20px',
+                                                paddingLeft: '20%',
+                                                height: '120px',
+                                                backgroundImage: `url(${'https://t3.ftcdn.net/jpg/00/11/79/08/240_F_11790850_Gi4UC9cwGMUMGWtZhSP4yKpFg3tqlPis.jpg'})`,
+                                                backgroundSize: 'contain',
+                                                backgroundRepeat: 'no-repeat'
+                                            }}
+                                        >
+                                            <FormControl
+                                                variant="outlined"
+                                                style={{ width: '80px' }}
+                                            >
+                                                <InputLabel>
+                                                    {String('Area')}
+                                                </InputLabel>
+
+                                                <Select
+                                                    value={this.state.areaCode}
+                                                    required={true}
+                                                    name="areaCode"
+                                                    onChange={
+                                                        this.handleChangePlate
+                                                    }
+                                                >
+                                                    {this.state.areaCodeOptions.map(
+                                                        (areaCode) => {
+                                                            return (
+                                                                <MenuItem
+                                                                    value={
+                                                                        areaCode
+                                                                    }
+                                                                >
+                                                                    {areaCode}
+                                                                </MenuItem>
+                                                            );
+                                                        }
+                                                    )}
+                                                    ;
+                                                </Select>
+                                            </FormControl>
+                                            <FormControl
+                                                style={{ width: '80px' }}
+                                            >
+                                                <TextField
+                                                    variant="outlined"
+                                                    label="Letters"
+                                                    required={true}
+                                                    name="letters"
+                                                    value={this.state.letters}
+                                                    // ToDo add regex
+
+                                                    onChange={
+                                                        this.handleChangePlate
+                                                    }
+                                                    inputProps={{
+                                                        minLength: 1,
+                                                        maxLength: 2,
+                                                        style: {
+                                                            textTransform:
+                                                                'uppercase'
+                                                        }
+                                                    }}
+                                                />
+                                            </FormControl>
+                                            <FormControl
+                                                style={{ width: '80px' }}
+                                            >
+                                                <TextField
+                                                    variant="outlined"
+                                                    label="Digits"
+                                                    required={true}
+                                                    name="digits"
+                                                    value={this.state.digits}
+                                                    onChange={
+                                                        this.handleChangePlate
+                                                    }
+                                                    inputProps={{
+                                                        minLength: 2,
+                                                        maxLength: 4
+                                                    }}
+                                                />
+                                            </FormControl>
+                                        </FormGroup>
                                     </Grid>
                                 ) : (
                                     []

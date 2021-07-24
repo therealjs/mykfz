@@ -34,6 +34,20 @@ const login = async (req, res) => {
         // check for private user (not district user)
         if (user.isDistrict) return res.status(401).send({ token: null });
 
+        // delete all old reservations
+        var now = new Date();
+
+        UserModel.find({}).then(function (users) {
+            users.forEach((user) => {
+                user.licensePlateReservations
+                    .find((r) => {
+                        return r.expiryDate < now;
+                    })
+                    .remove();
+                user.save();
+            });
+        });
+
         // if user is found and password is valid
         // create a token
         const token = jwt.sign(

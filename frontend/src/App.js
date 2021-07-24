@@ -9,23 +9,16 @@ import {
 } from 'react-router-dom';
 
 import UserService from './services/UserService';
-import { UserLoginView } from './views/UserLoginView';
-import { DistrictLoginView } from './views/DistrictLoginView';
 import { UserSignupView } from './views/UserSignupView';
 import { LandingPageView } from './views/LandingPageView';
 
 import DashboardView from './views/DashboardView';
 import UserVerificationView from './views/UserVerificationView';
-import { VehicleDetailView } from './views/VehicleDetailView';
-import { VehicleRegisterView } from './views/VehicleRegisterView';
-import { VehicleDeregisterView } from './views/VehicleDeregisterView';
 import { LicensePlateReservationView } from './views/LicensePlateReservationView';
 import { VehicleFormView } from './views/VehicleFormView';
-import Dashboard from './components/Dashboard';
 import DistrictSignInSide from './components/DistrictSignInSide';
 import SignInSide from './components/SignInSide';
 import SignUpSide from './components/SignUpSide';
-import UserSignup from './components/UserSignup';
 
 export default class App extends React.Component {
     constructor(props) {
@@ -50,7 +43,7 @@ export default class App extends React.Component {
                         if (UserService.isAuthenticated()) {
                             // Check here if district user
                             if (UserService.isVerified()) {
-                            //if (UserService.isVerified()) {
+                                //if (UserService.isVerified()) {
                                 return <DashboardView />;
                             } else {
                                 // unverified regular user --> needs to verify first
@@ -72,26 +65,6 @@ export default class App extends React.Component {
                         }
                     },
                     path: '/edit/:id'
-                },
-                {
-                    render: (props) => {
-                        if (UserService.isAuthenticated()) {
-                            return <VehicleRegisterView {...props} />;
-                        } else {
-                            return <Redirect to={'/login'} />;
-                        }
-                    },
-                    path: '/register/:id'
-                },
-                {
-                    render: (props) => {
-                        if (UserService.isAuthenticated()) {
-                            return <VehicleDeregisterView {...props} />;
-                        } else {
-                            return <Redirect to={'/login'} />;
-                        }
-                    },
-                    path: '/deregister/:id'
                 },
                 {
                     render: (props) => {
