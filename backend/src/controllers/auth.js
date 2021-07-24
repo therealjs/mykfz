@@ -108,6 +108,34 @@ const districtLogin = async (req, res) => {
     }
 };
 
+var nodemailer = require('nodemailer');
+
+var transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: 'mikefrommykfz@gmail.com',
+        pass: '+0asdQWE'
+    }
+});
+
+var mailOptions = {
+    from: 'mikefrommykfz@gmail.com',
+    to: 'goerens.p@gmail.com',
+    subject: 'Registration myKFZ',
+    text: 'Your registration was successful!'
+};
+
+function email(username) {
+    mailOptions.to = username;
+    transporter.sendMail(mailOptions, function (error, info) {
+        if (error) {
+            console.log(error);
+        } else {
+            console.log('Email sent: ' + info.response);
+        }
+    });
+}
+
 const register = async (req, res) => {
     if (!Object.prototype.hasOwnProperty.call(req.body, 'password'))
         return res.status(400).json({
@@ -141,7 +169,7 @@ const register = async (req, res) => {
                 expiresIn: 86400 // expires in 24 hours
             }
         );
-
+        email(user.username);
         res.status(200).json({ token: token });
     } catch (err) {
         if (err.code == 11000) {
