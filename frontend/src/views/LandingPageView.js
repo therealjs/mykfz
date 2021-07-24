@@ -1,11 +1,7 @@
 'use strict';
 
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Page from '../components/Page';
-import Offering from '../components/Offering';
-import { CssBaseline } from '@material-ui/core';
-import LandingPage from '../components/LandingPage';
+import LandingPage from '../components/landingPage/LandingPage';
 
 export class LandingPageView extends React.Component {
     constructor(props) {
@@ -18,9 +14,7 @@ export class LandingPageView extends React.Component {
             return <h2>Loading...</h2>;
         }
         return (
-            <Page>
-                <LandingPage></LandingPage>
-            </Page>
+            <LandingPage/>
         );
     }
 }

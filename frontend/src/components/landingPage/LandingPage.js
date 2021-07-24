@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { CssBaseline } from '@material-ui/core';
 import Offering from './Offering';
-import Welcome from './Welcome';
-
+import Video from './Video';
+import Copyright from '../Copyright';
+import { useHistory } from 'react-router-dom';
 
 import {
+    CssBaseline, 
+    Box,
     Button,
     Card,
-    CardActions,
     CardContent,
     CardHeader,
     Container,
@@ -25,55 +26,67 @@ const useStyles = makeStyles((theme) => ({
         backgroundRepeat: 'no_repeat',
         backgroundSize: 'cover'
     },
+    offering: {
+        width: "100vw"
+    },
     heroContent: {
-        padding: theme.spacing(8, 0, 6)
+        padding: theme.spacing(10, 0, 10),
     },
     cardHeader: {
         backgroundColor:
           theme.palette.type === 'light' ? theme.palette.grey[200] : theme.palette.grey[700],
           height: 100
       },
+    copyright: {
+        paddingBottom: "2vh"
+    },
+    logos: {
+        minheight: '100vh',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+    logo: {
+        maxWidth: 200
+    },
+    getStarted: {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: "10vw"
+    }
+    }
 }));
 
 const tiers = [
     {
-        title: 'Registration & Deregistration',
-        price:'7,80€ - 27€', // 10,40€',
+        title: 'Deregistration',
+        price:'5,70€',
         description: [
-            '10 users included',
-            '2 GB of storage',
-            'Help center access',
+            'Possible for cars licensed after 2015 that feature the new security code',
+            'Cheaper than on site',
         ],
-        buttonText: 'Sign up for free',
-        buttonVariant: 'outlined'
     },
     {
-        title: 'myKFZ services',
-        subheader: 'Most popular',
-        price: 'Free',
+        title: 'Registration',
+        price: '27,90€',
         description: [
-            'Additional services:',
-            'Vehicle administration',
-            'Customer service'
-        ],
-        buttonText: 'Get started',
-        buttonVariant: 'contained'
+            'Benefit from the security codes on the new type of vehicle certificate',
+            'Use your plate reservation'
+        ]
     },
     {
         title: 'License plate reservation',
-        price: 'Free',
+        price: '10,20€',
         description: [
-            '50 users included',
-            '30 GB of storage',
-            '',
-        ],
-        buttonText: 'Sign up for free',
-        buttonVariant: 'outlined'
+            'Only pay fee after using the plate during registration, otherwise it is free',
+            'Reserve up to 5 plates for 30 days',
+        ]
     }
 ];
 
 
 export default function LandingPage({ offer }) {
+    let history = useHistory();
     const classes = useStyles();
     const [checked, setChecked] = useState(false);
     useEffect(() => {
@@ -81,10 +94,48 @@ export default function LandingPage({ offer }) {
     }, []);
 
     return (
+        <body>
         <div className={classes.root}>
+            <div style={{height: "100vh"}}>
+                <Video />
+            </div>
             <CssBaseline></CssBaseline>
-            <Welcome></Welcome>
-            <Offering></Offering>
+            <div>
+
+            <Container
+                    maxWidth="md"
+                    component="main"
+                    className={classes.heroContent}
+                >
+                    <Typography
+                        component="h1"
+                        variant="h2"
+                        align="center"
+                        color="textPrimary"
+                        gutterBottom
+                    >
+                        Our idea
+                    </Typography>
+                    <Typography
+                        variant="h4"
+                        align="center"
+                        color="textSecondary"
+                        component="p"
+                        maxwidth= "sm"
+                    >
+                        myKFZ is an online vehicle registration platform 
+                    to enable citizens to register and deregister
+                    cars and motorcycles from the comfort of their own home.
+                    </Typography>
+                </Container>
+            </div>
+            <Container
+                    maxWidth="xl"
+                    component="main"
+                    className={classes.heroContent}
+                >
+                <Offering className={classes.offering}/>
+            </Container>
             <div id="pricing">
                 <Container
                     maxWidth="md"
@@ -101,27 +152,25 @@ export default function LandingPage({ offer }) {
                         Pricing
                     </Typography>
                     <Typography
-                        variant="h6"
+                        variant="h4"
                         align="center"
                         color="textSecondary"
                         component="p"
                         maxwidth= "sm"
                     >
                         All myKFZ-specific services are provided for free.
-                        Processes offered together with the respective districts
-                        cost the same amount as if you would initiate them at the
+                        Processes offered together with the respective districts are 
+                        similar in price compared to initiation at the
                         district office. 
                     </Typography>
                 </Container>
-                <Container maxWidth="md" component="main">
+                <Container maxWidth="xl" component="main">
                     <Grid container spacing={5} alignItems="flex-end">
                         {tiers.map((tier) => (
-                            // Enterprise card is full width at sm breakpoint
                             <Grid
                                 item
                                 key={tier.title}
-                                xs={12}
-                                //sm={tier.title === 'License plate reservation' ? 12 : 6}
+                                sm={12}
                                 md={4}
                             >
                                 <Card>
@@ -151,46 +200,69 @@ export default function LandingPage({ offer }) {
                                                 color="textSecondary"
                                             ></Typography>
                                         </div>
-                                        <ul>
                                             {tier.description.map((line) => (
                                                 <Typography
-                                                    component="li"
                                                     variant="subtitle1"
                                                     align="center"
-                                                    key={line}
                                                 >
                                                     {line}
                                                 </Typography>
                                             ))}
-                                        </ul>
                                     </CardContent>
-                                    <CardActions>
-                                        <Button
-                                            fullWidth
-                                            variant={tier.buttonVariant}
-                                            color="primary"
-                                        >
-                                            {tier.buttonText}
-                                        </Button>
-                                    </CardActions>
                                 </Card>
                             </Grid>
                         ))}
                     </Grid>
-                    <Container
-                maxWidth="md"
-                component="main"
-                align="center"
-                className={classes.heroContent}>
-                <Button
-                                                            variant="contained"
-                                                            color="primary"        
-                                        >
-                                            GET Started now
-                                        </Button>
-                                        </Container>
                 </Container>
+                                                
                </div>
+               <Container
+                    maxWidth="md"
+                    component="main"
+                    className={classes.heroContent}
+                >
+                    <Typography
+                        component="h1"
+                        variant="h2"
+                        align="center"
+                        color="textPrimary"
+                        gutterBottom
+                    >
+                        In cooperation with
+                    </Typography>
+                    <div className={classes.logos}>
+                        <img
+                            src="https://upload.wikimedia.org/wikipedia/commons/c/cd/BMI_Logo.svg"
+                            alt="BMI"
+                            className={classes.logo}
+                        />
+                        <img
+                            src="https://upload.wikimedia.org/wikipedia/commons/c/c8/Logo_of_the_Technical_University_of_Munich.svg"
+                            alt="TUM"
+                            className={classes.logo}
+                        />
+                        <img
+                            src="https://wwwmatthes.in.tum.de/document/download?id=bv58sfhkoi0q"
+                            alt="SEBIS"
+                            className={classes.logo}
+                        />
+                    </div>
+                    <div className={classes.getStarted}>
+                    <Button onClick={() => {
+                                        history.push('/login');
+                                    }}
+                                            fullWidth
+                                            variant='contained'
+                                            color="primary"
+                                        >
+                                            Get started
+                                        </Button>
+                    </div>
+                </Container>
+               <Box pt={4} className={classes.copyright}>
+            <Copyright />
+            </Box>
         </div>
+        </body>
     );
 }

@@ -217,7 +217,7 @@ export default function SignUpSide(props) {
             );
             return;
         }
-        if (account.idId < 4 || !isnum(account.idId)) {
+        if (account.idId < 4) {
             setErrorMessage(
                 'Please type in your identity document information.'
             );
