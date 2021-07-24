@@ -57,6 +57,7 @@ export JWT_SECRET="very secret secret"
 
 ```bash
 mongoimport --db mykfzdb --collection districts --drop --type json --jsonArray --file "C:\path\to\project\backend\resources\district.json"
+mongoimport --db mykfzdb --collection users --type json --jsonArray --file ~/path/to/prototype/backend/resources/districtUsersHashed.json
 ```
 
 ## Start the project
