@@ -191,7 +191,11 @@ const ProcessesTableRow = ({ vehicleId, process }) => {
             const vehicle = await VehicleService.getVehicle(vehicleId);
             const userId = vehicle.owner;
             const plateId = process.info.licensePlate;
-            await UserService.createLicensePlateReservation(userId, plateId);
+            await UserService.createLicensePlateReservation(
+                userId,
+                plateId,
+                90 * 24 * 60 * 60 // 90 days in seconds
+            );
         }
 
         await ProcessService.rejectProcess(vehicleId, process._id);

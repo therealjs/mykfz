@@ -101,14 +101,13 @@ module.exports = class LicensePlateService {
         let validReservations = [];
         for (const user of users) {
             if (user.licensePlateReservations) {
-                console.log(user.licensePlateReservations);
                 for (const reservation of user.licensePlateReservations) {
                     const currentTime = new Date().getTime();
                     const expiryTime = new Date(
                         reservation.expiryDate
                     ).getTime();
 
-                    if (expiryTime > currentTime) {
+                    if (!reservation.expiryDate || expiryTime > currentTime) {
                         validReservations.push(reservation);
                     }
                 }
@@ -137,12 +136,22 @@ module.exports = class LicensePlateService {
 
         const allUsedPlatesIds = platesOnCars
             .concat(reservedPlates)
-            .concat(pendingRegistrations);
+            .concat(platesInPendingRegistrations);
 
         const allUsedPlates = await LicensePlateModel.find({
             _id: { $in: allUsedPlatesIds }
         });
 
+        console.log(
+            `length matches? ${
+                allUsedPlates.length ==
+                platesOnCars.length +
+                    reservedPlates.length +
+                    platesInPendingRegistrations.length
+            }`
+        );
+
+        console.log('allUsedPlates');
         console.log(allUsedPlates);
         return allUsedPlates;
 

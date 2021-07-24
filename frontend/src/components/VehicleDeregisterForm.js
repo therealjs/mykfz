@@ -171,8 +171,6 @@ function VehicleDeregisterForm({ user }) {
 
     const handleSubmit = async () => {
         if (!isSubmitting) {
-            // delete used plate
-            // TODO what to do if process is rejected?
             setIsSubmitting(true);
             await VehicleService.createProcess(vehicleId, process);
             setIsSubmitting(false);
