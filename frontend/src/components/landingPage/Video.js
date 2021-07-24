@@ -63,7 +63,7 @@ function Header() {
                 <Grid item>
                     <Button onClick={() => {
                                         history.push('/login');
-                                    }} style={{marginRight: "3vw"}} color="inherit">
+                                    }} style={{marginRight: "2vw"}} color="inherit">
                         Login
                     </Button>   
                 </Grid>
