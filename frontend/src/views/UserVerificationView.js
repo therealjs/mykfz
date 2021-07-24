@@ -65,6 +65,11 @@ function UserVerificationView(props) {
         const fetchData = async () => {
             let userResult = await UserService.getUserDetails();
             setUser(userResult);
+            if(userResult.isDistrictUser) {
+                UserService.verify();
+                setVerified(true);
+                history.push('/')
+            }
         };
         fetchData();
     }, []);
@@ -144,6 +149,22 @@ function UserVerificationView(props) {
             <Grid item>
                 <Typography component="h1" variant="h5">
                     Verification
+                </Typography>
+            </Grid>
+            <Grid item xs={4}>
+                <Typography
+                            variant="subtitle2"
+                            align="center"
+                            display="block"
+                            color="textSecondary"
+                        >
+                    Since our myKFZ processes are legally binding procedures, 
+                    we first ask you to verify your identity.
+                    Hold your ID card or passport in front of the camera. 
+                    Your name and id number must be clearly visible.
+                    After capturing, you can still adjust the brightness of the image on the right side.
+                    Start the verification process by clicking on "Recognize".
+
                 </Typography>
             </Grid>
             <Grid item>
