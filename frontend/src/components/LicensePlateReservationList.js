@@ -67,8 +67,13 @@ class LicensePlateReservationList extends React.Component {
 
     formatDate(expiryDate) {
         let currently = new Date(expiryDate);
-        const options = { year: 'numeric', month: 'long', day: 'numeric' }; //, hour: '2-digit', minute: '2-digit' };
-        return currently.toLocaleDateString('en-US', options);
+        const options = {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+            timeZone: 'Europe/Andorra'
+        }; //, hour: '2-digit', minute: '2-digit' };
+        return currently.toLocaleDateString('de-DE', options);
     }
 
     getDaysLeft(expiryDate) {
