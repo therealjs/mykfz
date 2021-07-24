@@ -48,7 +48,9 @@ export default class App extends React.Component {
                 {
                     render: (props) => {
                         if (UserService.isAuthenticated()) {
-                            if (UserService.isVerified() || UserService.isDistrictUser()) {
+                            // Check here if district user
+                            if (UserService.isVerified() || true) {
+                            //if (UserService.isVerified()) {
                                 return <DashboardView />;
                             } else {
                                 // unverified regular user --> needs to verify first
