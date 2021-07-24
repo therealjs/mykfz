@@ -42,13 +42,12 @@ const VehicleSchema = new mongoose.Schema({
                 required: true
             },
             date: Date,
-            state: String,
-            info: Object,
-            processState: {
+            state: {
                 type: String,
-                enum: ['PAYED', 'APPROVED', 'REJECTED'],
-                required: false
-            }
+                enum: ['PENDING', 'ACCEPTED', 'REJECTED'],
+                required: true
+            },
+            info: Object
         }
     ]
 });

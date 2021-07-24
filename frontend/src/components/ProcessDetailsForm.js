@@ -280,6 +280,19 @@ function DeregisterProcessFormFields({ vehicle, process, onProcessChange }) {
                     }}
                 />
             </Grid>
+            <Grid item xs={12}>
+                <FormControlLabel
+                    control={
+                        <Checkbox
+                            checked={process.info.reservePlate}
+                            onChange={onProcessChange}
+                            name="reservePlate"
+                            color="primary"
+                        />
+                    }
+                    label="Reserve license plate for 30 days? (when process is accepted)"
+                />
+            </Grid>
         </Grid>
     );
 }
