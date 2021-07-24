@@ -61,11 +61,6 @@ mongoimport --db mykfzdb --collection districts --drop --type json --jsonArray -
 mongoimport --db mykfzdb --collection users --type json --jsonArray --file ~/path/to/prototype/backend/resources/districtUsersHashed.json
 ```
 
-**In your db: Enable TTL to automatically delete expired license plates**
-```bash
-db.licenseplates.createIndex( { "expireAt": 1 }, { expireAfterSeconds: 0 } )
-```
-
 ## Start the project
 
 **Development environment**
