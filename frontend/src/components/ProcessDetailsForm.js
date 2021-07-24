@@ -37,6 +37,27 @@ function RegisterProcessFormFields({
     reservedPlates,
     onProcessChange
 }) {
+    const tooltipImgTxt = (
+        <div>
+            <Grid container>
+                <Grid item>
+                    <label>
+                        Security Code II can be found on the acceptance paper
+                        part 2 of your vehicle.
+                    </label>
+                </Grid>
+                <Grid item>
+                    <img
+                        width="285"
+                        height="350"
+                        src="https://www.bmvi.de/SharedDocs/DE/Bilder/VerkehrUndMobilitaet/Strasse/fahrzeugzulassung-online-3.png?__blob=normal"
+                        alt=""
+                    ></img>
+                </Grid>
+            </Grid>
+        </div>
+    );
+
     return (
         <Grid container spacing={3}>
             <Grid item xs={12}>
@@ -125,8 +146,10 @@ function RegisterProcessFormFields({
                     maxLength={12}
                     InputProps={{
                         endAdornment: (
-                            //TODO insert actual tooltip
-                            <LightTooltip title={'title'} placement="right">
+                            <LightTooltip
+                                title={tooltipImgTxt}
+                                placement="right"
+                            >
                                 <InputAdornment position="end">
                                     <InfoOutlinedIcon />
                                 </InputAdornment>

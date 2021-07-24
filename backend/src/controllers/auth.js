@@ -32,21 +32,48 @@ const login = async (req, res) => {
         if (!isPasswordValid) return res.status(401).send({ token: null });
 
         // check for private user (not district user)
-        if (user.isDistrict) return res.status(401).send({ token: null });
+        // if (user.isDistrict) return res.status(401).send({ token: null });
 
         // delete all old reservations
-        var now = new Date();
+        // var now = new Date(); //
 
-        UserModel.find({}).then(function (users) {
-            users.forEach((user) => {
-                user.licensePlateReservations
-                    .find((r) => {
-                        return r.expiryDate < now;
-                    })
-                    .remove();
-                user.save();
-            });
-        });
+        // UserModel.find({ isDistrictUser: false }).then(function (users) {
+        //     users.forEach((user) => {
+        //         if (
+        //             user.licensePlateReservations &&
+        //             user.licensePlateReservations.length > 0
+        //         ) {
+        //             user.licensePlateReservations
+        //                 .where('expiryDate')
+        //                 .lt(now)
+        //                 .remove();
+
+        //             user.save();
+        //         }
+        //     });
+        // });
+
+        // UserModel.find({}).then(function (users) {
+        //     users.forEach((user) => {
+        //         user.licensePlateReservations
+        //             .findAll((r) => {
+        //                 return r.expiryDate < now;
+        //             })
+        //             .remove();
+        //         user.save();
+        //     });
+        // });
+
+        // console.log(`removing expired reservations before ${now}`);
+
+        // UserModel.updateMany(
+        //     { isDistrictUser: false },
+        //     {
+        //         $pullAll: {
+        //             licensePlateReservations: { expiryDate: { $lte: now } }
+        //         }
+        //     }
+        // );
 
         // if user is found and password is valid
         // create a token

@@ -14,13 +14,12 @@ const create = async (req, res) => {
         let licensePlate = req.body;
         console.log(licensePlate);
         let expiryDate = new Date();
-        // TODO: set expiry to 30 days = 2592000
-        expiryDate.setSeconds(expiryDate.getSeconds() + 100);
+        expiryDate.setSeconds(expiryDate.getSeconds() + 2592000);
         let response = await LicensePlateModel.create({
             areaCode: licensePlate.areaCode,
             letters: licensePlate.letters,
             digits: licensePlate.digits,
-            expireAt: licensePlate.isReservation ? expiryDate : null
+            expireAt: expiryDate
         });
 
         return res.status(201).json(response);
