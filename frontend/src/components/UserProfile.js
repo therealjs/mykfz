@@ -26,17 +26,29 @@ export default function UserProfile() {
         fetchUserProfileData();
     }, []);
     return (
+        <Grid
+        justify="space-between"
+        container
+        direction="column"
+        alignItems="center"
+        justify="center"
+    >
+        <Grid item>
         <Card style={{ padding: '20px', maxWidth: '500px' }}>
             <CardContent>
                 <Grid container spacing={1}>
                     <Grid item xs={12}>
-                        <Avatar variant="square">
-                            {avatarLetters[0] + avatarLetters[1]}
-                        </Avatar>
+                    <Typography
+                                            style={{ marginBottom: '10px' }}
+                                            component="h5"
+                                            variant="h5"
+                                        >
+                            Personal Data
+                        </Typography>
                     </Grid>
                     <Grid item xs={4}>
                         <Typography gutterBottom variant="subtitle1">
-                            User name:
+                            Email Address:
                         </Typography>
                     </Grid>
                     <Grid item xs={8}>
@@ -92,5 +104,7 @@ export default function UserProfile() {
                 </Grid>
             </CardContent>
         </Card>
+        </Grid>
+    </Grid>
     );
 }
