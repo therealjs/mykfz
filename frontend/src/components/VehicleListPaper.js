@@ -225,7 +225,7 @@ class VehicleListPaper extends React.Component {
                     <CardHeader
                         avatar={
                             <Avatar
-                                //variant="square"
+                                // variant="square"
                                 aria-label="make"
                                 src={makeLogos[vehicle.make]}
                             />
@@ -334,7 +334,7 @@ class VehicleListPaper extends React.Component {
                                                 {new Date(
                                                     Date.parse(process.date)
                                                 ).toLocaleString('de-DE', {
-                                                    timeZone: 'UTC'
+                                                    timeZone: 'Europe/Andorra'
                                                 })}
                                             </TableCell>
                                             <TableCell align="center">

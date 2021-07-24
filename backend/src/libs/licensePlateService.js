@@ -1,6 +1,8 @@
 'use strict';
 
 const LicensePlateModel = require('../models/licensePlate');
+const VehicleModel = require('../models/vehicle');
+const UserModel = require('../models/user');
 
 const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
 const digits = '0123456789'.split('');
@@ -76,7 +78,84 @@ module.exports = class LicensePlateService {
     }
 
     static async getUsedPlates() {
-        return await LicensePlateModel.find().lean().exec();
+        // todo only include plates as 'used' if they are
+        // - at a registered vehicle
+        // - at a valid reservation
+        // - at a pending process
+
+        const vehicles = await VehicleModel.find({}).lean().exec();
+
+        // currently used plates on registered vehicles
+        const registeredVehicles = vehicles.filter(
+            (vehicle) => vehicle.state === 'REGISTERED'
+        );
+        const platesOnCars = registeredVehicles.map(
+            (vehicle) => vehicle.licensePlate
+        );
+
+        console.log('platesOnCars:');
+        console.log(platesOnCars);
+
+        // plates that have a valid reservation
+        const users = await UserModel.find().lean().exec();
+        let validReservations = [];
+        for (const user of users) {
+            if (user.licensePlateReservations) {
+                for (const reservation of user.licensePlateReservations) {
+                    const currentTime = new Date().getTime();
+                    const expiryTime = new Date(
+                        reservation.expiryDate
+                    ).getTime();
+
+                    if (!reservation.expiryDate || expiryTime > currentTime) {
+                        validReservations.push(reservation);
+                    }
+                }
+            }
+        }
+        const reservedPlates = validReservations.map(
+            (reservation) => reservation.licensePlate
+        );
+
+        // plates in pending registration processes
+        let pendingRegistrations = [];
+        for (const vehicle of vehicles) {
+            for (const process of vehicle.processes) {
+                if (
+                    process.processType === 'REGISTRATION' &&
+                    process.state === 'PENDING' &&
+                    process.info.licensePlate
+                ) {
+                    pendingRegistrations.push(process);
+                }
+            }
+        }
+        const platesInPendingRegistrations = pendingRegistrations.map(
+            (p) => p.info.licensePlate
+        );
+
+        const allUsedPlatesIds = platesOnCars
+            .concat(reservedPlates)
+            .concat(platesInPendingRegistrations);
+
+        const allUsedPlates = await LicensePlateModel.find({
+            _id: { $in: allUsedPlatesIds }
+        });
+
+        console.log(
+            `length matches? ${
+                allUsedPlates.length ==
+                platesOnCars.length +
+                    reservedPlates.length +
+                    platesInPendingRegistrations.length
+            }`
+        );
+
+        console.log('allUsedPlates');
+        console.log(allUsedPlates);
+        return allUsedPlates;
+
+        // return await LicensePlateModel.find().lean().exec();
     }
 
     static async getAvailablePlatesMatchingPattern(

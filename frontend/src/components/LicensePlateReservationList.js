@@ -38,10 +38,16 @@ class LicensePlateReservationList extends React.Component {
         };
         this.handleDeleteLicensePlateReservation =
             this.handleDeleteLicensePlateReservation.bind(this);
+        this.fetchPlates = this.fetchPlates.bind(this);
     }
 
     componentWillMount(props) {
+        this.fetchPlates();
+    }
+
+    fetchPlates() {
         (async () => {
+            // this.setState({ loading: true });
             let reservedPlates = [];
             const user = await UserService.getUserDetails();
             this.setState({ user: user });
@@ -94,13 +100,7 @@ class LicensePlateReservationList extends React.Component {
                     this.state.user._id,
                     plateReservationId
                 );
-                let updatedReservedPlates = this.state.reservedPlates.filter(
-                    (plate) => !(plate.info._id === plateId)
-                );
-                this.setState({
-                    user: user,
-                    reservedPlates: updatedReservedPlates
-                });
+                this.fetchPlates();
             } catch (err) {
                 console.error(err);
             }

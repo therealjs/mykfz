@@ -70,7 +70,7 @@ export default class ProcessService {
         // create doc name
         const dateString = new Date(
             Date.parse(processData.date)
-        ).toLocaleString('de-DE', { timeZone: 'UTC' });
+        ).toLocaleString('de-DE', { timeZone: 'Europe/Andorra' });
         const documentName =
             processData.processType +
             ', ' +
@@ -161,7 +161,9 @@ export default class ProcessService {
                     if (key === 'date') {
                         objectToFlatten[key] = new Date(
                             Date.parse(objectToFlatten[key])
-                        ).toLocaleDateString('de-DE', { timeZone: 'UTC' });
+                        ).toLocaleDateString('de-DE', {
+                            timeZone: 'Europe/Andorra'
+                        });
                     }
                     document.content.push({
                         columns: [

@@ -98,6 +98,51 @@ const list = async (req, res) => {
     }
 };
 
+const nodemailer = require('nodemailer');
+
+const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: 'mikefrommykfz@gmail.com',
+        pass: '+0asdQWE'
+    }
+});
+
+const mailApprovedOptions = {
+    from: 'Mike from myKFZ <mikefrommykfz@gmail.com>',
+    to: '',
+    subject: 'Process approval myKFZ',
+    text: 'Your process was approved!'
+};
+const mailRejectedOptions = {
+    from: 'Mike from myKFZ <mikefrommykfz@gmail.com>',
+    to: '',
+    subject: 'Process rejection myKFZ',
+    text: 'Your process was rejected!'
+};
+
+function email(username, approved) {
+    if (approved) {
+        mailApprovedOptions.to = username;
+        transporter.sendMail(mailApprovedOptions, function (error, info) {
+            if (error) {
+                console.log(error);
+            } else {
+                console.log('Email sent: ' + info.response);
+            }
+        });
+    } else {
+        mailRejectedOptions.to = username;
+        transporter.sendMail(mailRejectedOptions, function (error, info) {
+            if (error) {
+                console.log(error);
+            } else {
+                console.log('Email sent: ' + info.response);
+            }
+        });
+    }
+}
+
 const createProcess = (req, res) => {
     if (Object.keys(req.body).length === 0)
         return res.status(400).json({
@@ -188,6 +233,7 @@ const updateProcess = async (req, res) => {
         let processUpdate = req.body;
 
         const vehicle = await VehicleModel.findById(vehicleId).exec();
+        const user = await UserModel.findById(vehicle.owner).exec();
 
         if (!vehicle) {
             return res.status(404).json({
@@ -216,8 +262,7 @@ const updateProcess = async (req, res) => {
 
             // update state and licensePlate
             if (wasAccepted(processUpdate)) {
-                // TODO send email to vehicle.owner (sollte email adresse sein)
-
+                email(user.username, true);
                 if (newProcess.processType == 'REGISTRATION') {
                     vehicle.state = 'REGISTERED';
                     vehicle.licensePlate = newProcess.info.licensePlate;
@@ -225,23 +270,24 @@ const updateProcess = async (req, res) => {
                     const owner = vehicle.owner;
                     const oldPlate = vehicle.licensePlate;
 
-                    if (oldPlate && newProcess.reservePlate) {
-                        // create plate reservation
-                        console.log(`adding reservation for plate ${oldPlate}`);
-                        UserModel.findByIdAndUpdate(vehicle.owner, {
-                            $addToSet: {
-                                licensePlateReservations: {
-                                    licensePlate: oldPlate,
-                                    expiry: Date.today().add({ days: +90 })
-                                }
-                            }
-                        });
-                    }
+                    // if (oldPlate && newProcess.reservePlate) {
+                    //     // create plate reservation
+                    //     console.log(`adding reservation for plate ${oldPlate}`);
+                    //     UserModel.findByIdAndUpdate(vehicle.owner, {
+                    //         $addToSet: {
+                    //             licensePlateReservations: {
+                    //                 licensePlate: oldPlate,
+                    //                 expiry: Date.today().add({ days: +90 })
+                    //             }
+                    //         }
+                    //     });
+                    // }
                     vehicle.state = 'DEREGISTERED';
                     vehicle.licensePlate = null;
                 }
+            } else {
+                email(user.username, false);
             }
-
             return vehicle.save();
         });
 
