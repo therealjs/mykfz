@@ -12,6 +12,7 @@ import {
     CardContent,
     Collapse,
     Grid,
+    Tooltip,
     IconButton
 } from '@material-ui/core';
 import Avatar from '@material-ui/core/Avatar';
@@ -20,6 +21,7 @@ import PrintIcon from '@material-ui/icons/Print';
 import LicensePlate from './LicensePlate';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import clsx from 'clsx';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -31,6 +33,7 @@ import LicensePlateService from '../services/LicensePlateService';
 import ProcessService from '../services/ProcessService';
 import Chip from '@material-ui/core/Chip';
 import VehicleEditDialog from './VehicleEditDialog';
+import VehicleService from '../services/VehicleService';
 
 const makeLogos = require('../../resources/carLogos');
 
@@ -63,6 +66,7 @@ class VehicleListPaper extends React.Component {
         this.createPdfAndDownload = this.createPdfAndDownload.bind(this);
         this.handleEditClose = this.handleEditClose.bind(this);
         this.handleEditOpen = this.handleEditOpen.bind(this);
+        this.handleDelete = this.handleDelete.bind(this);
     }
 
     componentWillMount(props) {
@@ -111,6 +115,11 @@ class VehicleListPaper extends React.Component {
         this.props.onChange();
     }
 
+    async handleDelete() {
+        await VehicleService.deleteVehicle(this.props.vehicle._id);
+        this.props.onChange();
+    }
+
     hasPendingProcesses(vehicle) {
         return vehicle.processes.some((p) => p.state == 'PENDING');
     }
@@ -141,6 +150,17 @@ class VehicleListPaper extends React.Component {
             PENDING: 'yellow',
             ACCEPTED: 'lightgreen',
             REJECTED: 'lightsalmon'
+        };
+
+        const canDelete = () => {
+            const vehicle = this.props.vehicle;
+            if (
+                this.hasPendingProcesses(vehicle) ||
+                vehicle.state == 'REGISTERED'
+            ) {
+                return false;
+            }
+            return true;
         };
 
         const deregisterButton = (
@@ -211,9 +231,22 @@ class VehicleListPaper extends React.Component {
                             />
                         }
                         action={
-                            <IconButton onClick={this.handleEditOpen}>
-                                <EditIcon />
-                            </IconButton>
+                            <Tooltip
+                                title={
+                                    canDelete()
+                                        ? 'Delete Vehicle'
+                                        : 'Registered vehicles and vehicles with active processes cannot be deleted!'
+                                }
+                            >
+                                <span>
+                                    <IconButton
+                                        disabled={!canDelete()}
+                                        onClick={this.handleDelete}
+                                    >
+                                        <DeleteIcon />
+                                    </IconButton>
+                                </span>
+                            </Tooltip>
                         }
                         title={vehicle.make + ' ' + vehicle.model}
                         subheader={vehicle.vin}
