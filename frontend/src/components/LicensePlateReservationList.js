@@ -88,10 +88,8 @@ class LicensePlateReservationList extends React.Component {
                     this.state.user._id,
                     plateReservationId
                 );
-                let deletedLicensePlate =
-                    await LicensePlateService.deleteLicensePlate(plateId);
                 let updatedReservedPlates = this.state.reservedPlates.filter(
-                    (plate) => plate._id === plateId
+                    (plate) => !(plate.info._id === plateId)
                 );
                 this.setState({
                     user: user,
@@ -108,7 +106,7 @@ class LicensePlateReservationList extends React.Component {
             return <CircularProgress />;
         }
 
-        if (!this.state.reservedPlates || this.state.reservedPlates == 0) {
+        if (!this.state.reservedPlates || this.state.reservedPlates.length == 0) {
             return (
                 <Grid
                     justify="center"
