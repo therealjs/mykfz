@@ -66,20 +66,20 @@ export default function SignInSide(props) {
     useEffect(() => {
         const fetchData = async () => {
             const districtData = await DistrictService.getDistricts();
-            const allUser = await UserService.getAllUser()
+            const allUser = await UserService.getAllUser();
             const districtUser = allUser.filter(function (u) {
                 return u.isDistrictUser;
-              });
+            });
 
-            const districtUserOptions = districtUser.map(user => {
-                var district = districtData.find(d => {
-                    return d._id == user.district
-                  });
-                
+            const districtUserOptions = districtUser.map((user) => {
+                var district = districtData.find((d) => {
+                    return d.user == user.username;
+                });
+
                 var obj = {};
-                obj["name"] = district.name;
-                obj["picture"] = district.picture;
-                obj["username"] = user.username;
+                obj['name'] = district.name;
+                obj['picture'] = district.picture;
+                obj['username'] = user.username;
 
                 return obj;
             });
@@ -124,23 +124,23 @@ export default function SignInSide(props) {
                 elevation={6}
                 square
             >
-                
                 <div className={classes.paper}>
-                {account.username ?
-                    <Avatar 
-                        className={classes.avatarDistrict}
-                        variant="square"
-                        alt={'District'}
-                        src={districtLogo}
-                    />
-                    : <Avatar className={classes.avatar}>
-                    <LockOutlinedIcon />
-                        </Avatar>}
+                    {account.username ? (
+                        <Avatar
+                            className={classes.avatarDistrict}
+                            variant="square"
+                            alt={'District'}
+                            src={districtLogo}
+                        />
+                    ) : (
+                        <Avatar className={classes.avatar}>
+                            <LockOutlinedIcon />
+                        </Avatar>
+                    )}
                     <Typography component="h1" variant="h5">
                         District Login
                     </Typography>
                     <form className={classes.form} noValidate>
-
                         <Grid item>
                             <Autocomplete
                                 options={districtUserOptions}
@@ -151,10 +151,14 @@ export default function SignInSide(props) {
                                 onChange={handleDistrictChange}
                                 renderOption={(option) => (
                                     <React.Fragment>
-                                        <Avatar variant="square" alt={"D"} src={option.picture} />
+                                        <Avatar
+                                            variant="square"
+                                            alt={'D'}
+                                            src={option.picture}
+                                        />
                                         <span>&nbsp;{option.name}</span>
                                     </React.Fragment>
-                                    )}
+                                )}
                                 renderInput={(params) => (
                                     <TextField
                                         {...params}
