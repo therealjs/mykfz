@@ -96,7 +96,7 @@ class LicensePlateReservationList extends React.Component {
                 let deletedLicensePlate =
                     await LicensePlateService.deleteLicensePlate(plateId);
                 let updatedReservedPlates = this.state.reservedPlates.filter(
-                    (plate) => plate._id === plateId
+                    (plate) => plate._id != plateId
                 );
                 this.setState({
                     user: user,
