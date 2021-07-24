@@ -5,6 +5,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Divider from '@material-ui/core/Divider';
 import Drawer from '@material-ui/core/Drawer';
 import IconButton from '@material-ui/core/IconButton';
+import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import List from '@material-ui/core/List';
 import { makeStyles } from '@material-ui/core/styles';
@@ -216,9 +217,9 @@ function Dashboard(props) {
                         </Grid>
                     </Grid>
                     
-                    <IconButton color="inherit" onClick={logout}>
-                        <ExitToAppIcon color="inherit" />
-                    </IconButton>
+                    <Button color="inherit" onClick={logout} endIcon={<ExitToAppIcon />}>
+                        Logout
+                    </Button>
                 </Toolbar>
             </AppBar>
             <Drawer

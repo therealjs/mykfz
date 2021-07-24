@@ -78,6 +78,7 @@ export default function SignInSide(props) {
                     return d.user == user.username;
                 });
 
+                console.log(district)
                 var obj = {};
                 obj['name'] = district.name;
                 obj['picture'] = district.picture;
