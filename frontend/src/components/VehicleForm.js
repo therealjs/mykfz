@@ -57,6 +57,7 @@ class VehicleForm extends React.Component {
                 areaCode: '',
                 letters: '',
                 digits: '',
+                ownerName: '',
                 vin: props.vehicle.vin,
                 make: props.vehicle.make,
                 model: props.vehicle.model,
@@ -71,7 +72,6 @@ class VehicleForm extends React.Component {
             };
         } else {
             this.state = {
-                user: {},
                 owner: UserService.isAuthenticated()
                     ? UserService.getCurrentUser().id
                     : undefined,
@@ -80,6 +80,7 @@ class VehicleForm extends React.Component {
                 areaCode: '',
                 letters: '',
                 digits: '',
+                ownerName: '',
                 vin: '',
                 make: '',
                 model: '',
@@ -111,10 +112,10 @@ class VehicleForm extends React.Component {
     componentWillMount() {
         this.setState({ loading: true });
         UserService.getUserDetails().then((user) => {
+            this.setState({ ownerName: `${user.firstName} ${user.lastName}` });
             DistrictService.getDistrict(user.address.district).then(
                 (district) => {
                     this.setState({
-                        user: user,
                         areaCodeOptions: district.areaCode,
                         loading: false
                     });
@@ -297,7 +298,7 @@ class VehicleForm extends React.Component {
                                         id="OwnerField"
                                         fullWidth
                                         disabled={true}
-                                        value={`${this.state.user.firstName} ${this.state.user.lastName}`}
+                                        value={this.state.ownerName}
                                     />
                                 </Grid>
                                 <Grid item xs={12}>
@@ -402,6 +403,7 @@ class VehicleForm extends React.Component {
                                                 variant="outlined"
                                                 style={{ width: '80px' }}
                                             >
+<<<<<<< HEAD
                                                 <InputLabel
                                                     style={{
                                                         backgroundColor:
@@ -409,6 +411,9 @@ class VehicleForm extends React.Component {
                                                         padding: '0 5px 0 5px'
                                                     }}
                                                 >
+=======
+                                                <InputLabel style={{ backgroundColor: 'white',  padding: "0 10px 0 5px"}}>
+>>>>>>> feature-minor-changes
                                                     Area
                                                 </InputLabel>
 
