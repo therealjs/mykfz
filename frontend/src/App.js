@@ -3,22 +3,17 @@
 import React from 'react';
 import {
     HashRouter as Router,
+    Redirect,
     Route,
-    Switch,
-    Redirect
+    Switch
 } from 'react-router-dom';
-
-import UserService from './services/UserService';
-import { UserSignupView } from './views/UserSignupView';
-import { LandingPageView } from './views/LandingPageView';
-
-import DashboardView from './views/DashboardView';
-import UserVerificationView from './views/UserVerificationView';
-import { LicensePlateReservationView } from './views/LicensePlateReservationView';
-import { VehicleFormView } from './views/VehicleFormView';
 import DistrictSignInSide from './components/DistrictSignInSide';
+import LandingPage from './components/landingPage/LandingPage';
 import SignInSide from './components/SignInSide';
 import SignUpSide from './components/SignUpSide';
+import UserService from './services/UserService';
+import DashboardView from './views/DashboardView';
+import UserVerificationView from './views/UserVerificationView';
 
 export default class App extends React.Component {
     constructor(props) {
@@ -32,7 +27,7 @@ export default class App extends React.Component {
                         if (UserService.isAuthenticated()) {
                             return <Redirect to={'/dashboard'} />;
                         } else {
-                            return <Redirect to={'/landingPage'} />;
+                            return <Redirect to={'/home'} />;
                         }
                     },
                     path: '/',
@@ -58,36 +53,6 @@ export default class App extends React.Component {
                 {
                     render: (props) => {
                         if (UserService.isAuthenticated()) {
-                            return <VehicleFormView {...props} />;
-                        } else {
-                            return <Redirect to={'/login'} />;
-                        }
-                    },
-                    path: '/edit/:id'
-                },
-                {
-                    render: (props) => {
-                        if (UserService.isAuthenticated()) {
-                            return <VehicleFormView {...props} />;
-                        } else {
-                            return <Redirect to={'/login'} />;
-                        }
-                    },
-                    path: '/addVehicle'
-                },
-                {
-                    render: (props) => {
-                        if (UserService.isAuthenticated()) {
-                            return <LicensePlateReservationView {...props} />;
-                        } else {
-                            return <Redirect to={'/login'} />;
-                        }
-                    },
-                    path: '/addLicensePlateReservation'
-                },
-                {
-                    render: (props) => {
-                        if (UserService.isAuthenticated()) {
                             return <UserVerificationView />;
                         } else {
                             return <Redirect to={'/login'} />;
@@ -100,9 +65,7 @@ export default class App extends React.Component {
                 { component: DistrictSignInSide, path: '/districtLogin' },
                 { component: SignInSide, path: '/login' },
                 { component: SignUpSide, path: '/register' },
-                //TODO Remove this
-                { component: UserSignupView, path: '/signup' },
-                { component: LandingPageView, path: '/landingPage' }
+                { component: LandingPage, path: '/home' }
             ]
         };
     }

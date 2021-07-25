@@ -30,7 +30,6 @@ import Copyright from './Copyright';
 import logo from '../../resources/logo_small.png';
 import VehicleRegisterForm from './VehicleRegisterForm';
 import VehicleDeregisterForm from './VehicleDeregisterForm';
-import { VehicleFormView } from '../views/VehicleFormView';
 
 const drawerWidth = 240;
 
@@ -70,7 +69,7 @@ const useStyles = makeStyles((theme) => ({
         display: 'none'
     },
     title: {
-        marginBottom: "5px"
+        marginBottom: '5px'
     },
     drawerPaper: {
         position: 'relative',
@@ -200,24 +199,37 @@ function Dashboard(props) {
                     >
                         <MenuIcon />
                     </IconButton>
-                    <Grid container style={{marginRight: "auto"}} alignItems="center" spacing={1}>
+                    <Grid
+                        container
+                        style={{ marginRight: 'auto' }}
+                        alignItems="center"
+                        spacing={1}
+                    >
                         <Grid item>
-                            <img src={logo} style={{height: "35px"}} alt="logo"/>
+                            <img
+                                src={logo}
+                                style={{ height: '35px' }}
+                                alt="logo"
+                            />
                         </Grid>
                         <Grid item>
                             <Typography
-                            component="h1"
-                            variant="h6"
-                            color="inherit"
-                            noWrap
-                            className={classes.title}
+                                component="h1"
+                                variant="h6"
+                                color="inherit"
+                                noWrap
+                                className={classes.title}
                             >
-                            Dashboard
+                                Dashboard
                             </Typography>
                         </Grid>
                     </Grid>
-                    
-                    <Button color="inherit" onClick={logout} endIcon={<ExitToAppIcon />}>
+
+                    <Button
+                        color="inherit"
+                        onClick={logout}
+                        endIcon={<ExitToAppIcon />}
+                    >
                         Logout
                     </Button>
                 </Toolbar>
