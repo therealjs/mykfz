@@ -11,7 +11,7 @@ router.get('/user/:user', DistrictController.readByUser); // Read a district by 
 router.get('/:districtId', DistrictController.read); // Read a district by Id
 router.put(
     '/:districtId',
-    // middlewares.checkAuthentication,
+    middlewares.checkAuthentication,
     DistrictController.update
 ); // Update a district by Id
 router.get('/:districtId/processes', DistrictController.readProcesses); // Read processes related to district
