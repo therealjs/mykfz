@@ -36,7 +36,16 @@ export default function PaymentForm({ process, onProcessPaid }) {
                 Payment method
             </Typography>
             <Grid container spacing={3}>
-                <Grid item xs={12}>
+                <Grid
+                    style={{
+                        opacity: 0,
+                        position: 'absolute',
+                        bottom: 0,
+                        right: 0
+                    }}
+                    item
+                    xs={12}
+                >
                     {process.isPaid ? paymentConfirmedMessage : paymentButtons}
                     <Button onClick={onProcessPaid}>(Skip Payment)</Button>
                 </Grid>
