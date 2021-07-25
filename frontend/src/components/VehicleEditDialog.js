@@ -45,7 +45,9 @@ const VehicleEditDialog = ({ open, handleClose, vehicle }) => {
             onClose={handleClose}
             aria-labelledby="form-dialog-title"
         >
-            <DialogTitle id="form-dialog-title">Edit Vehicle</DialogTitle>
+            <DialogTitle id="form-dialog-title">
+                Edit General Inspection
+            </DialogTitle>
             <DialogContent>
                 <Grid
                     justify="space-evenly"
