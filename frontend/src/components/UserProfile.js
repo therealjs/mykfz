@@ -1,9 +1,8 @@
 'use strict';
 import { Avatar, Card, CardContent, Grid, Typography } from '@material-ui/core';
-
 import React, { useEffect, useState } from 'react';
-import UserService from '../services/UserService';
 import DistrictService from '../services/DistrictService';
+import UserService from '../services/UserService';
 
 export default function UserProfile() {
     const [user, setUser] = useState({});

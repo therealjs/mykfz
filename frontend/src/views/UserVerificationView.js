@@ -62,11 +62,6 @@ function UserVerificationView(props) {
                 verifyUser();
             }
             setUser(userResult);
-            if (userResult.isDistrictUser) {
-                UserService.verify();
-                setVerified(true);
-                history.push('/');
-            }
         };
         fetchData();
     }, []);
@@ -74,6 +69,7 @@ function UserVerificationView(props) {
     const verifyUser = () => {
         UserService.verify();
         setVerified(true);
+        history.push('/');
     };
 
     const cancel = () => {
