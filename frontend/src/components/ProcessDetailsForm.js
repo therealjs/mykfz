@@ -17,7 +17,6 @@ import Checkbox from '@material-ui/core/Checkbox';
 import React, { useState, useEffect } from 'react';
 import { withRouter, Link, useHistory } from 'react-router';
 import { withStyles } from '@material-ui/styles';
-import InfoIcon from '@material-ui/icons/Info';
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 import { PayPalButton } from 'react-paypal-button-v2';
 import LicensePlateService from '../services/LicensePlateService';
@@ -299,7 +298,7 @@ function DeregisterProcessFormFields({ vehicle, process, onProcessChange }) {
                                 placement="right"
                             >
                                 <InputAdornment position="end">
-                                    <InfoIcon />
+                                    <InfoOutlinedIcon />
                                 </InputAdornment>
                             </LightTooltip>
                         )
@@ -323,7 +322,7 @@ function DeregisterProcessFormFields({ vehicle, process, onProcessChange }) {
                                 placement="right"
                             >
                                 <InputAdornment position="end">
-                                    <InfoIcon />
+                                    <InfoOutlinedIcon />
                                 </InputAdornment>
                             </LightTooltip>
                         )
@@ -346,7 +345,7 @@ function DeregisterProcessFormFields({ vehicle, process, onProcessChange }) {
                                 placement="right"
                             >
                                 <InputAdornment position="end">
-                                    <InfoIcon />
+                                    <InfoOutlinedIcon />
                                 </InputAdornment>
                             </LightTooltip>
                         )

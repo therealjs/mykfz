@@ -22,7 +22,6 @@ import { useHistory } from 'react-router-dom';
 import Copyright from './Copyright';
 import DistrictService from '../services/DistrictService';
 import SecurityIcon from '@material-ui/icons/Security';
-import InfoIcon from '@material-ui/icons/Info';
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 import { Checkmark } from 'react-checkmark';
 
@@ -68,7 +67,7 @@ const useStyles = makeStyles((theme) => ({
 
 const LightTooltip = withStyles(() => ({
     tooltip: {
-        backgroundColor: '#175B8E',
+        backgroundColor: '#3f51b5',
         color: 'white',
         fontSize: 14,
         fontFamily: 'Nunito'
