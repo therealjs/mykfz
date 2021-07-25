@@ -57,6 +57,7 @@ class VehicleForm extends React.Component {
                 areaCode: '',
                 letters: '',
                 digits: '',
+                ownerName: '',
                 vin: props.vehicle.vin,
                 make: props.vehicle.make,
                 model: props.vehicle.model,
@@ -79,6 +80,7 @@ class VehicleForm extends React.Component {
                 areaCode: '',
                 letters: '',
                 digits: '',
+                ownerName: '',
                 vin: '',
                 make: '',
                 model: '',
@@ -110,6 +112,7 @@ class VehicleForm extends React.Component {
     componentWillMount() {
         this.setState({ loading: true });
         UserService.getUserDetails().then((user) => {
+            this.setState({ ownerName: `${user.firstName} ${user.lastName}` });
             DistrictService.getDistrict(user.address.district).then(
                 (district) => {
                     this.setState({
@@ -295,7 +298,7 @@ class VehicleForm extends React.Component {
                                         id="OwnerField"
                                         fullWidth
                                         disabled={true}
-                                        value={this.state.owner}
+                                        value={this.state.ownerName}
                                     />
                                 </Grid>
                                 <Grid item xs={12}>
@@ -400,7 +403,7 @@ class VehicleForm extends React.Component {
                                                 variant="outlined"
                                                 style={{ width: '80px' }}
                                             >
-                                                <InputLabel style={{ backgroundColor: 'white',  padding: "0 5px 0 5px"}}>
+                                                <InputLabel style={{ backgroundColor: 'white',  padding: "0 10px 0 5px"}}>
                                                     Area
                                                 </InputLabel>
 
