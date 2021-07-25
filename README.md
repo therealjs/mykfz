@@ -26,6 +26,7 @@ are at the intersection of both of them, we strove to create an application that
 # For vehicle owners
 The login for vehicle owners is reachable at "/login".
 After a succesful registration and login, you need to verify yourself.
+Disclaimer: We tried to mock the verification process as best as possible. In this step, we try to recognize the users name on his personal ID. In case it fails or takes too long, we provided the possibility to skip the verification by pressing a button und the buttom right (hint: the button is invisible but clickable. After clicking it, navigate to "/dashboard" manually).
 ![Alt text](/screenshots/user-verification.png?raw=true "User verification")
 
 
