@@ -215,7 +215,7 @@ export default class ProcessService {
     }
 
     static calculatePrice(process) {
-        let res = process.processType == 'REGISTRATION' ? (27.90 + 10.20) : 5.70;
+        let res = process.processType == 'REGISTRATION' ? (38.1) : 5.7;
         // For our prototype every registration uses a reserved license plate
         // if (process.usesReservedPlate) {
         //     res += 10.20;
