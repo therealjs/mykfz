@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
+import Divider from '@material-ui/core/Divider';
 import ListItemText from '@material-ui/core/ListItemText';
 import Grid from '@material-ui/core/Grid';
 import Alert from '@material-ui/lab/Alert';
@@ -72,6 +73,19 @@ function RegistrationReviewList({ process }) {
                     <ListItemText primary="IBAN for vehicle tax" />
                     <Typography variant="body2">{process.info.iban}</Typography>
                 </ListItem>
+                <Divider />
+                <ListItem className={classes.listItem}>
+                    <ListItemText primary="Registration fee" />
+                    <Typography variant="body2">
+                        €27.90
+                    </Typography>
+                </ListItem>
+                <ListItem className={classes.listItem}>
+                    <ListItemText primary="Reserved license plate fee" />
+                    <Typography variant="body2">
+                        €10.20
+                    </Typography>
+                </ListItem>
                 <ListItem className={classes.listItem}>
                     <ListItemText primary="Total" />
                     <Typography variant="subtitle1" className={classes.total}>
@@ -111,6 +125,13 @@ function DeregistrationReviewList({ process }) {
                     <ListItemText primary="Reserve License Plate?" />
                     <Typography variant="body2">
                         {process.info.reservePlate ? 'Yes' : 'No'}
+                    </Typography>
+                </ListItem>
+                <Divider />
+                <ListItem className={classes.listItem}>
+                    <ListItemText primary="Deregistration fee" />
+                    <Typography variant="body2">
+                        €5.70
                     </Typography>
                 </ListItem>
                 <ListItem className={classes.listItem}>

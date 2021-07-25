@@ -389,8 +389,7 @@ class VehicleForm extends React.Component {
                                             row
                                             style={{
                                                 justifyContent: 'space-between',
-                                                padding: '20px',
-                                                paddingLeft: '20%',
+                                                padding: '30px 30px 20px 20%',
                                                 height: '120px',
                                                 backgroundImage: `url(${'https://t3.ftcdn.net/jpg/00/11/79/08/240_F_11790850_Gi4UC9cwGMUMGWtZhSP4yKpFg3tqlPis.jpg'})`,
                                                 backgroundSize: 'contain',
@@ -401,8 +400,8 @@ class VehicleForm extends React.Component {
                                                 variant="outlined"
                                                 style={{ width: '80px' }}
                                             >
-                                                <InputLabel>
-                                                    {String('Area')}
+                                                <InputLabel style={{ backgroundColor: 'white',  padding: "0 5px 0 5px"}}>
+                                                    Area
                                                 </InputLabel>
 
                                                 <Select
