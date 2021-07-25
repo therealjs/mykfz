@@ -419,7 +419,7 @@ function VehicleRegisterForm({ user }) {
                                     see the state of your process on the
                                     dashboard.
                                 </Typography>
-                                <Button
+                                {/* <Button
                                     style={{ marginTop: '1em' }}
                                     disabled={
                                         isSubmitting || !process._id // undefined
@@ -430,7 +430,7 @@ function VehicleRegisterForm({ user }) {
                                     onClick={handleDownloadConfirmation}
                                 >
                                     Print Confirmation
-                                </Button>
+                                </Button> */}
                                 <Button
                                     style={{ marginTop: '1em' }}
                                     disabled={isSubmitting}
