@@ -276,7 +276,7 @@ class LicensePlateReservationForm extends React.Component {
                                                             width: '80px'
                                                         }}
                                                     >
-                                                        <InputLabel style={{ backgroundColor: 'white',  padding: "0 5px 0 5px"}}>
+                                                        <InputLabel style={{ backgroundColor: 'white',  padding: "0 10px 0 5px"}}>
                                                             Area
                                                         </InputLabel>
 

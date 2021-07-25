@@ -126,20 +126,18 @@ function RegisterProcessFormFields({
             </Grid>
             <Grid item xs={12}>
                 <FormControl fullWidth variant="outlined">
-                    <InputLabel id="plate-select-label" htmlFor="plate-select">
-                        Reserved Plate
+                    <InputLabel style={{ backgroundColor: 'white',  padding: "0 10px 0 5px"}}>
+                        Reserved Plate *
                     </InputLabel>
                     <Select
                         // variant="outlined"
                         fullWidth
                         value={process.info.licensePlate}
-                        labelId="plate-select-label"
                         required={true}
                         // name="licensePlate"
                         onChange={onProcessChange}
                         inputProps={{
-                            name: 'licensePlate',
-                            id: 'plate-select'
+                            name: 'licensePlate'
                         }}
                     >
                         {validPlatesAvailable ? (

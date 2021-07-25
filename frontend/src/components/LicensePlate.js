@@ -26,7 +26,7 @@ const LicensePlate = ({ vehicleState, licensePlate }) => {
             <div
                 style={{
                     position: 'absolute',
-                    margin: '10px 0px 0px 5px',
+                    margin: '10px 0px 0px 10%',
                     fontSize: '20px'
                 }}
             >
