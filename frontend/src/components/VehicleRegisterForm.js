@@ -288,20 +288,20 @@ function VehicleRegisterForm({ user }) {
         }
     };
 
-    const handleDownloadConfirmation = async () => {
-        if (!isSubmitting) {
-            setIsSubmitting(true);
-            try {
-                await ProcessService.generateProcessStatusPDF(
-                    vehicle._id,
-                    process._id
-                );
-            } catch (err) {
-                console.error(err);
-            }
-            setIsSubmitting(false);
-        }
-    };
+    // const handleDownloadConfirmation = async () => {
+    //     if (!isSubmitting) {
+    //         setIsSubmitting(true);
+    //         try {
+    //             await ProcessService.generateProcessStatusPDF(
+    //                 vehicle._id,
+    //                 process._id
+    //             );
+    //         } catch (err) {
+    //             console.error(err);
+    //         }
+    //         setIsSubmitting(false);
+    //     }
+    // };
 
     const handleSubmit = async () => {
         if (!isSubmitting) {
@@ -313,14 +313,7 @@ function VehicleRegisterForm({ user }) {
                 user._id,
                 process.info.licensePlate
             );
-            // update ttl of licenseplate, increase to 10 years
-            let newExpireAt = new Date();
-            newExpireAt.setFullYear(newExpireAt.getFullYear() + 10);
-            let chosenPlate = await LicensePlateService.getLicensePlate(
-                process.info.licensePlate
-            );
-            chosenPlate.expireAt = newExpireAt;
-            await LicensePlateService.updateLicensePlate(chosenPlate);
+
             setIsSubmitting(false);
             setActiveStep(activeStep + 1);
             // timer.current = window.setTimeout(() => {

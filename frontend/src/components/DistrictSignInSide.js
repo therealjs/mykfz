@@ -125,7 +125,6 @@ export default function SignInSide(props) {
                                     'Login is currently not possible due to a server error, we are working on a solution.'
                                 );
                             } else {
-                                console.log(error);
                                 setErrorMessage(
                                     'There is an issue with the login process, please contact the customer service.'
                                 );
@@ -178,11 +177,11 @@ export default function SignInSide(props) {
                                 onChange={handleDistrictChange}
                                 renderOption={(option) => (
                                     <React.Fragment>
-                                        <Avatar
+                                        {/* <Avatar
                                             variant="square"
                                             alt={'D'}
                                             src={option.picture}
-                                        />
+                                        /> */}
                                         <span>&nbsp;{option.name}</span>
                                     </React.Fragment>
                                 )}

@@ -363,7 +363,7 @@ function DeregisterProcessFormFields({ vehicle, process, onProcessChange }) {
                             color="primary"
                         />
                     }
-                    label="Reserve license plate for 30 days? (when process is accepted)"
+                    label="Reserve license plate for 90 days? (when process is accepted)"
                 />
             </Grid>
         </Grid>

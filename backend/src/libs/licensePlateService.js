@@ -142,17 +142,6 @@ module.exports = class LicensePlateService {
             _id: { $in: allUsedPlatesIds }
         });
 
-        console.log(
-            `length matches? ${
-                allUsedPlates.length ==
-                platesOnCars.length +
-                    reservedPlates.length +
-                    platesInPendingRegistrations.length
-            }`
-        );
-
-        console.log('allUsedPlates');
-        console.log(allUsedPlates);
         return allUsedPlates;
 
         // return await LicensePlateModel.find().lean().exec();
