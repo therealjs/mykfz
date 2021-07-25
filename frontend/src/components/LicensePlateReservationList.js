@@ -186,7 +186,8 @@ class LicensePlateReservationList extends React.Component {
                     </TableBody>
                     <caption style={{ textAlign: 'center' }}>
                         You can use your license plates as part of your vehicle
-                        registration.
+                        registration. Expired license plate reservations are highlighted
+                        in red.
                     </caption>
                 </Table>
             </TableContainer>
