@@ -228,6 +228,10 @@ class VehicleListPaper extends React.Component {
                             makeLogos[vehicle.make] ? (
                                 <Avatar
                                     // variant="square"
+                                    imgProps={{
+                                        style: { objectFit: 'contain' }
+                                    }}
+                                    // style={{ '> *': { objectFit: 'contain' } }}
                                     aria-label="make"
                                     src={makeLogos[vehicle.make]}
                                 />

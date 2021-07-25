@@ -655,6 +655,11 @@ export default function SignUpSide(props) {
                                     renderOption={(option) => (
                                         <React.Fragment>
                                             <Avatar
+                                                imgProps={{
+                                                    style: {
+                                                        objectFit: 'contain'
+                                                    }
+                                                }}
                                                 variant="square"
                                                 alt={'D'}
                                                 src={option.picture}
@@ -683,6 +688,11 @@ export default function SignUpSide(props) {
                                     >
                                         <Grid item>
                                             <Avatar
+                                                imgProps={{
+                                                    style: {
+                                                        objectFit: 'contain'
+                                                    }
+                                                }}
                                                 variant="square"
                                                 alt={'District'}
                                                 src={districtLogo}

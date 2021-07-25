@@ -153,6 +153,9 @@ export default function SignInSide(props) {
                 <div className={classes.paper}>
                     {account.username ? (
                         <Avatar
+                            imgProps={{
+                                style: { objectFit: 'contain' }
+                            }}
                             className={classes.avatarDistrict}
                             variant="square"
                             alt={'District'}

@@ -16,7 +16,7 @@ router.put(
 ); // Update a vehicle by Id
 router.delete(
     '/:vehicleId',
-    // middlewares.checkAuthentication,
+    middlewares.checkAuthentication,
     VehicleController.remove
 ); // Delete a vehicle by Id
 
@@ -24,7 +24,7 @@ router.delete(
 router.get('/:vehicleId/processes/', VehicleController.listProcesses); // List all processes of the vehicle
 router.post(
     '/:vehicleId/processes',
-    // middlewares.checkAuthentication,
+    middlewares.checkAuthentication,
     VehicleController.createProcess
 ); // Create a new process for specified vehicle
 router.get('/:vehicleId/processes/:processId', VehicleController.readProcess); // Read a specific process by vehicleId and processId
