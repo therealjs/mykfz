@@ -83,7 +83,24 @@ class LicensePlateReservationForm extends React.Component {
     }
 
     handleChange(event) {
-        this.setState({ [event.target.name]: event.target.value });
+        // if value is not blank, then test the regex
+        if (event.target.name === 'digits') {
+            // only allow blank or numbers
+            const re = /^[0-9?]{1,4}$/;
+            if (event.target.value === '' || re.test(event.target.value)) {
+                this.setState({ digits: event.target.value });
+            }
+        } else if (event.target.name === 'letters') {
+            // only allow letters
+            const value = event.target.value.toUpperCase();
+            const re = /^[A-Z?]{1,2}$/;
+            if (value === '' || re.test(value)) {
+                this.setState({ letters: value });
+            }
+        } else {
+            // area code
+            this.setState({ [event.target.name]: event.target.value });
+        }
     }
 
     handleChangePage(event, newPage) {
