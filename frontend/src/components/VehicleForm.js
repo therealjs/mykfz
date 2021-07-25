@@ -9,6 +9,7 @@ import {
     InputLabel,
     FormGroup,
     FormControl,
+    FormLabel,
     Select,
     MenuItem,
     Button,
@@ -162,16 +163,6 @@ class VehicleForm extends React.Component {
             // area code
             this.setState({ [event.target.name]: event.target.value });
         }
-
-        // const query = {
-        //     ...this.state,
-        //     [event.target.name]: event.target.value
-        // };
-        // console.log(query);
-        // LicensePlateService.getAvailableLicensePlates(query).then((res) => {
-        //     console.log('queried plates');
-        //     console.log(res);
-        // });
     }
 
     toggleGIBool(event) {
@@ -356,30 +347,38 @@ class VehicleForm extends React.Component {
                                 </Grid>
 
                                 <Grid item xs={12}>
-                                    <RadioGroup
-                                        style={{ justifyContent: 'center' }}
-                                        row
-                                        aria-label="gender"
-                                        name="state"
-                                        value={this.state.state}
-                                        onChange={this.handleChange.bind(this)}
-                                    >
-                                        <FormControlLabel
-                                            value="NEW"
-                                            control={<Radio />}
-                                            label="New"
-                                        />
-                                        <FormControlLabel
-                                            value="REGISTERED"
-                                            control={<Radio />}
-                                            label="Registered"
-                                        />
-                                        <FormControlLabel
-                                            value="DEREGISTERED"
-                                            control={<Radio />}
-                                            label="Deregistered"
-                                        />
-                                    </RadioGroup>
+                                    <FormControl fullWidth component="fieldset">
+                                        <FormLabel component="legend">
+                                            Current Registration State of the
+                                            Vehicle
+                                        </FormLabel>
+                                        <RadioGroup
+                                            style={{ justifyContent: 'center' }}
+                                            row
+                                            aria-label="gender"
+                                            name="state"
+                                            value={this.state.state}
+                                            onChange={this.handleChange.bind(
+                                                this
+                                            )}
+                                        >
+                                            <FormControlLabel
+                                                value="NEW"
+                                                control={<Radio />}
+                                                label="New"
+                                            />
+                                            <FormControlLabel
+                                                value="REGISTERED"
+                                                control={<Radio />}
+                                                label="Registered"
+                                            />
+                                            <FormControlLabel
+                                                value="DEREGISTERED"
+                                                control={<Radio />}
+                                                label="Deregistered"
+                                            />
+                                        </RadioGroup>
+                                    </FormControl>
                                 </Grid>
                                 {this.state.state == 'REGISTERED' ? (
                                     <Grid item xs={12}>
