@@ -217,11 +217,18 @@ function VehicleRegisterForm({ user }) {
 
     const onProcessPaid = (details, data) => {
         console.log(details, data);
-        setProcess((prevState) => ({
-            ...prevState,
-            isPaid: true,
-            paymentDetails: details
-        }));
+        if (details && data) {
+            setProcess((prevState) => ({
+                ...prevState,
+                isPaid: true,
+                paymentDetails: details
+            }));
+        } else {
+            setProcess((prevState) => ({
+                ...prevState,
+                isPaid: true
+            }));
+        }
     };
 
     const onProcessChange = (e) => {
@@ -307,7 +314,9 @@ function VehicleRegisterForm({ user }) {
             setIsSubmitting(true);
             console.log('before creation...');
 
-            await VehicleService.createProcess(vehicleId, process);
+            let processToCreate = process;
+            delete processToCreate.paymentDetails;
+            await VehicleService.createProcess(vehicleId, processToCreate);
             console.log('after creation...');
 
             // delete plate reservation
@@ -321,10 +330,6 @@ function VehicleRegisterForm({ user }) {
 
             setIsSubmitting(false);
             setActiveStep(activeStep + 1);
-            // timer.current = window.setTimeout(() => {
-            //     setSuccess(true);
-            //     setLoading(false);
-            // }, 2000);
         }
     };
 
