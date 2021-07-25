@@ -18,4 +18,7 @@ npm start
 ```
 
 # myKFZ preview
-To get an impression of the design and the structure of our application, we provided some screenshots here.
+To get an impression of the design and the structure of our application, we provided some screenshots and a short description here.
+
+![Alt text](/screenshots/dashboard.png?raw=true "Vehicle user dashboard")
+
