@@ -20,6 +20,8 @@ npm start
 # myKFZ preview
 To get an impression of the design and the structure of our application, we provided some screenshots and a short description here.
 
+![Alt text](/screenshots/landing-page.gif?raw=true "landingpage")
+
 As our application targets vehicle owners as well as district administratives/representatives and our use cases
 are at the intersection of both of them, we strove to create an application that serves both
 
@@ -27,7 +29,6 @@ are at the intersection of both of them, we strove to create an application that
 The login for vehicle owners is reachable at "/login".
 After a succesful registration and login, you need to verify yourself.
 ![Alt text](/screenshots/user-verification.png?raw=true "User verification")
-
 
 Then you can access the dashoard: 
 ![Alt text](/screenshots/dashboard.png?raw=true "dashboard")
