@@ -122,11 +122,9 @@ export default function SignUpSide(props) {
         const fetchData = async () => {
             const districtData = await DistrictService.getDistricts();
             setDistrictOptions(districtData);
-            console.log(districtData);
         };
 
         fetchData();
-        console.log(districtOptions);
     }, []);
 
     const handleClickOpen = () => {

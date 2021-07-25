@@ -105,21 +105,16 @@ class LicensePlateReservationForm extends React.Component {
     }
 
     handleChangePage(event, newPage) {
-        console.log(newPage);
         this.setState({ page: newPage });
-        console.log(this.state.page);
     }
 
     handleChangeRowsPerPage(event) {
         this.setState({ rowsPerPage: event.target.value, page: 0 });
         this.setState({ page: 0 });
-        console.log(this.state.rowsPerPage);
     }
 
     handleChangeSelection(event) {
         this.setState({ selectedPlate: event.target.value });
-
-        console.log(this.state.queriedLicensePlates);
         let id = this.state.selectedPlate;
     }
 

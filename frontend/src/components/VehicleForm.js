@@ -176,7 +176,6 @@ class VehicleForm extends React.Component {
         if (this.state.state == 'REGISTERED') {
             LicensePlateService.getAvailableLicensePlates(this.state).then(
                 (plateResult) => {
-                    console.log(plateResult);
                     if (plateResult.length != 1) {
                         this.setState({
                             error: 'License Plate is invalid or already in use! Confirm your input.'
