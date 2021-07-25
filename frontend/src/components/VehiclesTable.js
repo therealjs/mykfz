@@ -131,8 +131,6 @@ const CollapsibleRow = ({ vehicleId, processes, open }) => {
 };
 
 const ProcessesTable = ({ vehicleId, processes }) => {
-    console.log(processes);
-
     return (
         <Table size="small" aria-label="purchases">
             <TableHead>

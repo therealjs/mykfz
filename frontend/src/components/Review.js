@@ -142,7 +142,6 @@ function DeregistrationReviewList({ process }) {
 export default function Review({ vehicle, process }) {
     const classes = useStyles();
 
-    console.log(process);
     let payerName = '';
     try {
         payerName = `${process.paymentDetails.payer.name.given_name} ${process.paymentDetails.payer.name.surname}`;

@@ -97,7 +97,6 @@ export default function SignInSide(props) {
                         }
                     }
                 });
-            console.log(history);
         } catch (err) {
             console.error(err);
             setErrorMessage(err);

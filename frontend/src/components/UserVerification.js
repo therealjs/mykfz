@@ -81,7 +81,7 @@ const WebcamCapture = () => {
                 className={classes.submit}
                 onClick={startVerification}
             >
-                Start Verification
+                Start Authentication
             </Button>
         );
     }

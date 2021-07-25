@@ -132,7 +132,6 @@ const createLicensePlateReservation = (req, res) => {
         let reservationToAdd = req.body;
 
         console.log(`adding reservation:`);
-        console.log(reservationToAdd);
 
         UserModel.findByIdAndUpdate(
             userId,
@@ -175,7 +174,6 @@ const deleteLicensePlateReservationByPlate = async (req, res) => {
         }
 
         const reservation = user.licensePlateReservations.find((r) => {
-            console.log(`${r.licensePlate} vs ${plateId}`);
             return r.licensePlate == plateId;
         });
 

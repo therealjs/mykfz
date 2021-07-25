@@ -130,7 +130,7 @@ function UserVerificationView(props) {
             </Grid>
             <Grid item>
                 <Typography component="h1" variant="h5">
-                    Verification
+                    Authentication
                 </Typography>
             </Grid>
             <Grid item xs={4}>
@@ -145,7 +145,7 @@ function UserVerificationView(props) {
                     passport in front of the camera. Your name and id number
                     must be clearly visible. After capturing, you can still
                     adjust the brightness of the image on the right side. Start
-                    the verification process by clicking on "Recognize".
+                    the authentication process by clicking on "Recognize".
                 </Typography>
             </Grid>
             <Grid item>
