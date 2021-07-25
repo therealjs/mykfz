@@ -20,5 +20,27 @@ npm start
 # myKFZ preview
 To get an impression of the design and the structure of our application, we provided some screenshots and a short description here.
 
+As our application targets vehicle owners as well as district administratives/representatives and our use cases
+are at the intersection of both of them, we strove to create an application that serves both
+
+# For vehicle owners
+The login for vehicle owners is reachable at "/login".
+After a succesful registration and login, you need to verify yourself.
+
+Then you can access the dashoard: 
+
 ![Alt text](/screenshots/dashboard.png?raw=true "Vehicle user dashboard")
 
+From here, you can add your vehicle with all its information, and then start a registration or deregistration process. 
+In case you would like to register your vehicle, make sure to reserve a license plate before starting the registration process.
+After succesfully completing a process form and paying, a district administrative may approve your process.
+You can track the status of your process in the vehicle dashboard.
+
+# For district
+The login for districts is available at "/districtLogin".
+Note that it is not possible to register your district on your own. 
+Please contact us via Mail (mikefrommykfz@gmail.com) to create an account for your district!
+
+After you received the login credentials, you can login to the district dashboard.
+Here you can see all the vehicle administration processes concerning your district and approve or reject them.
+Once you approved/rejected a process, the vehicle owner will be notified via Mail.
