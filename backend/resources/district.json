@@ -3,7 +3,7 @@
         "areaCode": ["AC", "MON"],
         "name": "Städteregion Aachen",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/f/fb/DEU_Staedteregion_Aachen_COA.svg",
-        "user": "albdonaukreisulm"
+        "user": "staedteregionaachen"
     },
     {
         "areaCode": ["AW"],
@@ -15,61 +15,61 @@
         "areaCode": ["AIC", "FDB"],
         "name": "Landkreis Aichach-Friedberg",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/c/c0/Wappen_Landkreis_Aichach-Friedberg.svg",
-        "user": "landkreisaltenkirchenwesterwald"
+        "user": "landkreisaichachfriedberg"
     },
     {
         "areaCode": ["UL"],
         "name": "Alb-Donau-Kreis (Ulm)",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/4/4b/Landkreiswappen_des_Landkreises_Alb-Donau-Kreis.svg",
-        "user": "landkreisaltenburgerland"
+        "user": "albdonaukreisulm"
     },
     {
         "areaCode": ["ABG", "SLN"],
         "name": "Landkreis Altenburger Land",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/9/9b/Landkreiswappen_des_Landkreises_Altenburger_Land.png",
-        "user": "staedteregionaachen"
+        "user": "landkreisaltenburgerland"
     },
     {
         "areaCode": ["AW"],
         "name": "Landkreis Altenkirchen (Westerwald)",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/4/41/DEU_Landkreis_Altenkirchen_COA.svg",
-        "user": "altmarkkreissalzwedel"
+        "user": "landkreisaltenkirchenwesterwald"
     },
     {
         "areaCode": ["SAW", "GA", "KLZ"],
         "name": "Altmarkkreis Salzwedel",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/a/ad/Wappen_Altmarkkreis_Salzwedel.svg",
-        "user": "landkreisaltoetting"
+        "user": "altmarkkreissalzwedel"
     },
     {
         "areaCode": ["AÖ", "LF"],
         "name": "Landkreis Altötting",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/1/19/DEU_Landkreis_Alt%C3%B6tting_COA.svg",
-        "user": "landkreisalzeyworms"
+        "user": "landkreisaltoetting"
     },
     {
         "areaCode": ["AZ"],
         "name": "Landkreis Alzey-Worms",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/0/0d/DEU_Landkreis_Alzey-Worms_COA.svg",
-        "user": "landkreisaichachfriedberg"
+        "user": "landkreisalzeyworms"
     },
     {
         "areaCode": ["AM"],
         "name": "Stadt Amberg",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/6/6b/DEU_Amberg_COA.svg",
-        "user": "landkreisammerland"
+        "user": "stadtamberg"
     },
     {
         "areaCode": ["AS", "BUL", "ESB", "NAB", "SUL"],
         "name": "Landkreis Amberg-Sulzbach",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/5/53/Wappen_des_Landkreises_Amberg-Sulzbach.svg",
-        "user": "stadtansbach"
+        "user": "landkreisambergsulzbach"
     },
     {
         "areaCode": ["WST"],
         "name": "Landkreis Ammerland",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/4/40/Wappen_Landkreis_Ammerland.svg",
-        "user": "landkreisansbach"
+        "user": "landkreisammerland"
     },
     {
         "areaCode": ["ABI", "AZE", "BTF", "KÖT", "ZE"],
@@ -81,103 +81,103 @@
         "areaCode": ["AN"],
         "name": "Stadt Ansbach",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/2/29/Wappen_von_Ansbach.svg",
-        "user": "stadtaschaffenburg"
+        "user": "stadtansbach"
     },
     {
         "areaCode": ["AN", "DKB", "FEU", "ROT"],
         "name": "Landkreis Ansbach",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/e/e0/Wappen_des_Landkreises_Ansbach.svg",
-        "user": "landkreisaschaffenburg"
+        "user": "landkreisansbach"
     },
     {
         "areaCode": ["AB"],
         "name": "Stadt Aschaffenburg",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/e/e5/Wappen_Aschaffenburg.svg",
-        "user": "stadtamberg"
+        "user": "stadtaschaffenburg"
     },
     {
         "areaCode": ["AB", "ALZ"],
         "name": "Landkreis Aschaffenburg",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/c/ca/Wappen_Landkreis_Aschaffenburg.svg",
-        "user": "stadtaugsburg"
+        "user": "landkreisaschaffenburg"
     },
     {
         "areaCode": ["A"],
         "name": "Stadt Augsburg",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/d/dd/Augsburg_wappen.svg",
-        "user": "landkreisambergsulzbach"
+        "user": "stadtaugsburg"
     },
     {
         "areaCode": ["A", "SMÜ", "WER"],
         "name": "Landkreis Augsburg",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/9/92/Landkreis_Augsburg_Wappen.svg",
-        "user": "landkreisaurich"
+        "user": "landkreisaugsburg"
     },
     {
         "areaCode": ["AUR", "NOR"],
         "name": "Landkreis Aurich",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/b/b5/DEU_Landkreis_Aurich_COA.svg",
-        "user": "landkreisaugsburg"
+        "user": "landkreisaurich"
     },
     {
         "areaCode": ["DÜW"],
         "name": "Landkreis Bad Dürkheim (Bad Dürkheim an der Weinstraße)",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/5/52/Wappen_Landkreis_Bad_D%C3%BCrkheim.svg",
-        "user": "landkreisbadkreuznach"
+        "user": "landkreisbadduerkheimbadduerkheimanderweinstrasse"
     },
     {
         "areaCode": ["KG", "BRK", "HAB"],
         "name": "Landkreis Bad Kissingen",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/1/10/Wappen_Landkreis_Bad_Kissingen.svg",
-        "user": "stadtbadenbaden"
+        "user": "landkreisbadkissingen"
     },
     {
         "areaCode": ["KH"],
         "name": "Landkreis Bad Kreuznach",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/7/7b/DEU_Landkreis_Bad_Kreuznach_COA.svg",
-        "user": "stadtbamberg"
+        "user": "landkreisbadkreuznach"
     },
     {
         "areaCode": ["TÖL", "WOR"],
         "name": "Landkreis Bad Tölz-Wolfratshausen",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/d/d1/Wappen_Landkreis_Bad_Toelz-Wolfratshausen.svg",
-        "user": "landkreisbamberg"
+        "user": "landkreisbadtoelzwolfratshausen"
     },
     {
         "areaCode": ["BAD"],
         "name": "Stadt Baden-Baden",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/2/2d/Stadtwappen_der_Stadt_Baden-Baden.svg",
-        "user": "landkreisbadduerkheimbadduerkheimanderweinstrasse"
+        "user": "stadtbadenbaden"
     },
     {
         "areaCode": ["BA"],
         "name": "Stadt Bamberg",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/4/4c/Wappen_Bamberg.svg",
-        "user": "landkreisbadkissingen"
+        "user": "stadtbamberg"
     },
     {
         "areaCode": ["BA"],
         "name": "Landkreis Bamberg",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/8/80/DEU_Landkreis_Bamberg_COA.svg",
-        "user": "landkreisbarnim"
+        "user": "landkreisbamberg"
     },
     {
         "areaCode": ["BAR", "BER", "EW"],
         "name": "Landkreis Barnim",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/b/bf/Wappen_Landkreis_Barnim.svg",
-        "user": "landkreisbautzen"
+        "user": "landkreisbarnim"
     },
     {
         "areaCode": ["BZ", "BIW", "HY", "KM"],
         "name": "Landkreis Bautzen",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/0/05/Wappen_Landkreis_Bautzen.svg",
-        "user": "stadtbayreuth"
+        "user": "landkreisbautzen"
     },
     {
         "areaCode": ["BT"],
         "name": "Stadt Bayreuth",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/8/89/Wappen_von_Bayreuth.svg",
-        "user": "landkreisbadtoelzwolfratshausen"
+        "user": "stadtbayreuth"
     },
     {
         "areaCode": ["BT", "EBS", "ESB", "KEM", "MÜB", "PEG"],
@@ -195,49 +195,49 @@
         "areaCode": ["HP"],
         "name": "Kreis Bergstraße (Heppenheim (Bergstraße))",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/8/83/DEU_Kreis_Bergstrasse_COA.svg",
-        "user": "landkreisbiberach"
+        "user": "kreisbergstrasseheppenheimbergstrasse"
     },
     {
         "areaCode": ["B"],
         "name": "Stadt Berlin",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/d/d9/Coat_of_arms_of_Berlin.svg",
-        "user": "stadtbielefeld"
+        "user": "stadtberlin"
     },
     {
         "areaCode": ["WIL", "BKS"],
         "name": "Landkreis Bernkastel-Wittlich",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/f/fe/DEU_Landkreis_Bernkastel-Wittlich_COA.svg",
-        "user": "landkreisbirkenfeld"
+        "user": "landkreisbernkastelwittlich"
     },
     {
         "areaCode": ["BC"],
         "name": "Landkreis Biberach",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/5/5f/Wappen_Landkreis_Biberach.svg",
-        "user": "stadtberlin"
+        "user": "landkreisbiberach"
     },
     {
         "areaCode": ["BI"],
         "name": "Stadt Bielefeld",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/e/e6/DEU_Bielefeld_COA.svg",
-        "user": "stadtbochum"
+        "user": "stadtbielefeld"
     },
     {
         "areaCode": ["BIR"],
         "name": "Landkreis Birkenfeld",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/e/ea/DEU_Landkreis_Birkenfeld_COA.svg",
-        "user": "landkreisbernkastelwittlich"
+        "user": "landkreisbirkenfeld"
     },
     {
         "areaCode": ["BO", "WAT"],
         "name": "Stadt Bochum",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/b/b5/Stadtwappen_der_kreisfreien_Stadt_Bochum.svg",
-        "user": "bodenseekreisfriedrichshafen"
+        "user": "stadtbochum"
     },
     {
         "areaCode": ["FN", "TT", "ÜB"],
         "name": "Bodenseekreis (Friedrichshafen)",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/3/30/Bodenseekreis_Wappen.svg",
-        "user": "stadtbonn"
+        "user": "bodenseekreisfriedrichshafen"
     },
     {
         "areaCode": ["BB", "LEO"],
@@ -249,103 +249,103 @@
         "areaCode": ["BN"],
         "name": "Stadt Bonn",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/6/65/DEU_Bonn_COA.svg",
-        "user": "kreisbergstrasseheppenheimbergstrasse"
+        "user": "stadtbonn"
     },
     {
         "areaCode": ["BK", "BÖ", "HDL", "OC", "OK", "WMS", "WZL"],
         "name": "Landkreis Börde (Bördekreis)",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/d/d3/Wappen_Landkreis_Boerde.png",
-        "user": "stadtbottrop"
+        "user": "landkreisboerdeboerdekreis"
     },
     {
         "areaCode": ["BOR", "AH", "BOH"],
         "name": "Kreis Borken",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/6/6f/DEU_Kreis_Borken_COA.svg",
-        "user": "landkreisboerdeboerdekreis"
+        "user": "kreisborken"
     },
     {
         "areaCode": ["BOT"],
         "name": "Stadt Bottrop",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/f/fb/DEU_Bottrop_COA.svg",
-        "user": "kreisborken"
+        "user": "stadtbottrop"
     },
     {
         "areaCode": ["BRB"],
         "name": "Brandenburg an der Havel",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/2/2e/DEU_Brandenburg_an_der_Havel_COA.svg",
-        "user": "landkreisbreisgauhochschwarzwaldfreiburgimbreisgau"
+        "user": "brandenburganderhavel"
     },
     {
         "areaCode": ["BS"],
         "name": "Stadt Braunschweig",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/d/d3/DEU_Braunschweig_COA.svg",
-        "user": "stadtgemeindebremen"
+        "user": "stadtbraunschweig"
     },
     {
         "areaCode": ["FR"],
         "name": "Landkreis Breisgau-Hochschwarzwald (Freiburg im Breisgau)",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/c/c9/DEU_Landkreis_Breisgau-Hochschwarzwald_COA.svg",
-        "user": "seestadtbremerhaven"
+        "user": "landkreisbreisgauhochschwarzwaldfreiburgimbreisgau"
     },
     {
         "areaCode": ["HB"],
         "name": "Stadtgemeinde Bremen",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/6/64/Bremen_Wappen%28Mittel%29.svg",
-        "user": "landkreiscalw"
+        "user": "stadtgemeindebremen"
     },
     {
         "areaCode": ["HB"],
         "name": "Seestadt Bremerhaven",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/0/03/Wappen_Bremerhaven.svg",
-        "user": "burgenlandkreis"
+        "user": "seestadtbremerhaven"
     },
     {
         "areaCode": ["BLK", "HHM", "NEB", "NMB", "WSF", "ZZ"],
         "name": "Burgenlandkreis",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/7/7b/Wappen_Burgenlandkreis.svg",
-        "user": "landkreiscelle"
+        "user": "burgenlandkreis"
     },
     {
         "areaCode": ["CW"],
         "name": "Landkreis Calw",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/4/4c/Wappen_Landkreis_Calw.svg",
-        "user": "brandenburganderhavel"
+        "user": "landkreiscalw"
     },
     {
         "areaCode": ["CE"],
         "name": "Landkreis Celle",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/c/c5/Wappen_Landkreis_Celle.svg",
-        "user": "landkreischam"
+        "user": "landkreiscelle"
     },
     {
         "areaCode": ["CHA", "KÖZ", "ROD", "WÜM"],
         "name": "Landkreis Cham",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/4/4f/DEU_Landkreis_Cham_COA.svg",
-        "user": "stadtbraunschweig"
+        "user": "landkreischam"
     },
     {
         "areaCode": ["C"],
         "name": "Stadt Chemnitz",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/6/61/Wappen_chemnitz.PNG",
-        "user": "stadtcoburg"
+        "user": "stadtchemnitz"
     },
     {
         "areaCode": ["CLP"],
         "name": "Landkreis Cloppenburg",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/3/38/DEU_Landkreis_Cloppenburg_COA.svg",
-        "user": "stadtchemnitz"
+        "user": "landkreiscloppenburg"
     },
     {
         "areaCode": ["CO", "NEC"],
         "name": "Stadt Coburg",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/a/a3/DEU_Coburg_COA.svg",
-        "user": "landkreiscoburg"
+        "user": "stadtcoburg"
     },
     {
         "areaCode": ["CO", "NEC"],
         "name": "Landkreis Coburg",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/b/bd/Wappen_landkreis_coburg.svg",
-        "user": "kreiscoesfeld"
+        "user": "landkreiscoburg"
     },
     {
         "areaCode": ["COC", "ZEL"],
@@ -357,19 +357,19 @@
         "areaCode": ["COE", "LH"],
         "name": "Kreis Coesfeld",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/b/b7/DEU_Kreis_Coesfeld_COA.svg",
-        "user": "landkreiscloppenburg"
+        "user": "kreiscoesfeld"
     },
     {
         "areaCode": ["CB"],
         "name": "Stadt Cottbus",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/5/5e/Wappen_Cottbus.svg",
-        "user": "landkreiscuxhaven"
+        "user": "stadtcottbus"
     },
     {
         "areaCode": ["CUX"],
         "name": "Landkreis Cuxhaven",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/6/6a/Wappen_Landkreis_Cuxhaven_2018.svg",
-        "user": "stadtcottbus"
+        "user": "landkreiscuxhaven"
     },
     {
         "areaCode": ["DAH"],
@@ -381,49 +381,49 @@
         "areaCode": ["LDS", "KW", "LC", "LN"],
         "name": "Landkreis Dahme-Spreewald",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/7/79/Wappen_Landkreis_Dahme-Spreewald.svg",
-        "user": "stadtdarmstadt"
+        "user": "landkreisdahmespreewald"
     },
     {
         "areaCode": ["DA"],
         "name": "Stadt Darmstadt",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/2/28/Wappen_Darmstadt.svg",
-        "user": "landkreisdahmespreewald"
+        "user": "stadtdarmstadt"
     },
     {
         "areaCode": ["DA", "DI"],
         "name": "Landkreis Darmstadt-Dieburg",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/7/7e/DEU_Landkreis_Darmstadt-Dieburg_COA.svg",
-        "user": "stadtdelmenhorst"
+        "user": "landkreisdarmstadtdieburg"
     },
     {
         "areaCode": ["DEG"],
         "name": "Landkreis Deggendorf",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/2/2d/Wappen_Landkreis_Deggendorf.svg",
-        "user": "stadtdessaurosslau"
+        "user": "landkreisdeggendorf"
     },
     {
         "areaCode": ["DEL"],
         "name": "Stadt Delmenhorst",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/c/ce/DEU_Delmenhorst_COA.svg",
-        "user": "landkreisdeggendorf"
+        "user": "stadtdelmenhorst"
     },
     {
         "areaCode": ["DE", "RSL"],
         "name": "Stadt Dessau-Roßlau",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/4/44/Wappen_Dessau-Rosslau.svg",
-        "user": "landkreisdiepholz"
+        "user": "stadtdessaurosslau"
     },
     {
         "areaCode": ["DH", "SY"],
         "name": "Landkreis Diepholz",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/e/e5/DEU_Landkreis_Diepholz_COA.svg",
-        "user": "landkreisdillingenanderdonau"
+        "user": "landkreisdiepholz"
     },
     {
         "areaCode": ["DLG", "WER"],
         "name": "Landkreis Dillingen an der Donau",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/5/52/DEU_Landkreis_Dillingen_an_der_Donau_COA.svg",
-        "user": "landkreisdarmstadtdieburg"
+        "user": "landkreisdillingenanderdonau"
     },
     {
         "areaCode": ["DGF", "LAN"],
@@ -447,25 +447,25 @@
         "areaCode": ["KIB", "ROK"],
         "name": "Donnersbergkreis",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/f/f7/DEU_Donnersbergkreis_COA.svg",
-        "user": "stadtduisburg"
+        "user": "donnersbergkreis"
     },
     {
         "areaCode": ["DO"],
         "name": "Stadt Dortmund",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/f/f9/DEU_Dortmund_COA.svg",
-        "user": "stadtdresden"
+        "user": "stadtdortmund"
     },
     {
         "areaCode": ["DD"],
         "name": "Stadt Dresden",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/d/dc/Dresden_Stadtwappen.svg",
-        "user": "donnersbergkreis"
+        "user": "stadtdresden"
     },
     {
         "areaCode": ["DU"],
         "name": "Stadt Duisburg",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/f/fa/DEU_Duisburg_COA.svg",
-        "user": "stadtduesseldorf"
+        "user": "stadtduisburg"
     },
     {
         "areaCode": ["DN", "JÜL", "MON", "SLE"],
@@ -477,7 +477,7 @@
         "areaCode": ["D"],
         "name": "Stadt Düsseldorf",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/8/83/DEU_D%C3%BCsseldorf_COA.svg",
-        "user": "landkreiseichsfeld"
+        "user": "stadtduesseldorf"
     },
     {
         "areaCode": ["EBE"],
@@ -489,79 +489,79 @@
         "areaCode": ["EIC", "HIG", "WBS"],
         "name": "Landkreis Eichsfeld",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/1/12/DEU_Landkreis_Eichsfeld_COA.svg",
-        "user": "landkreiseichstaett"
+        "user": "landkreiseichsfeld"
     },
     {
         "areaCode": ["EI"],
         "name": "Landkreis Eichstätt",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/0/00/Wappen_Landkreis_Eichstaett.png",
-        "user": "stadtdortmund"
+        "user": "landkreiseichstaett"
     },
     {
         "areaCode": ["BIT", "PRÜ"],
         "name": "Eifelkreis Bitburg-Prüm",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/7/7a/DEU_Eifelkreis_Bitburg-Pruem_COA.svg",
-        "user": "stadtemden"
+        "user": "eifelkreisbitburgpruem"
     },
     {
         "areaCode": ["EA"],
         "name": "Stadt Eisenach",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/f/f2/Wappen_Eisenach.svg",
-        "user": "landkreisemmendingen"
+        "user": "stadteisenach"
     },
     {
         "areaCode": ["EE", "FI", "LIB"],
         "name": "Landkreis Elbe-Elster",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/1/1c/Wappen_Landkreis_Elbe-Elster.png",
-        "user": "landkreisemsland"
+        "user": "landkreiselbeelster"
     },
     {
         "areaCode": ["EMD"],
         "name": "Stadt Emden",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/6/62/DEU_Emden_COA.svg",
-        "user": "stadteisenach"
+        "user": "stadtemden"
     },
     {
         "areaCode": ["EM"],
         "name": "Landkreis Emmendingen",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/b/b7/Wappen_Landkreis_Emmendingen.svg",
-        "user": "enneperuhrkreis"
+        "user": "landkreisemmendingen"
     },
     {
         "areaCode": ["EL"],
         "name": "Landkreis Emsland",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/2/2a/Wappen_Landkreis_Emsland.svg",
-        "user": "eifelkreisbitburgpruem"
+        "user": "landkreisemsland"
     },
     {
         "areaCode": ["EN", "WIT"],
         "name": "Ennepe-Ruhr-Kreis",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/f/f7/DEU_Ennepe-Ruhr-Kreis_COA.svg",
-        "user": "enzkreis"
+        "user": "enneperuhrkreis"
     },
     {
         "areaCode": ["PF"],
         "name": "Enzkreis",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/7/76/Wappen_Enzkreis.svg",
-        "user": "landkreiserding"
+        "user": "enzkreis"
     },
     {
         "areaCode": ["ED"],
         "name": "Landkreis Erding",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/5/5e/DEU_Landkreis_Erding_COA.svg",
-        "user": "landkreiselbeelster"
+        "user": "landkreiserding"
     },
     {
         "areaCode": ["EF"],
         "name": "Stadt Erfurt",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/2/20/DEU_Erfurt_COA.svg",
-        "user": "stadterlangen"
+        "user": "stadterfurt"
     },
     {
         "areaCode": ["ER"],
         "name": "Stadt Erlangen",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/8/87/Wappen_Erlangen.svg",
-        "user": "stadterfurt"
+        "user": "stadterlangen"
     },
     {
         "areaCode": ["ERH", "HÖS"],
@@ -583,13 +583,13 @@
         ],
         "name": "Erzgebirgskreis",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/b/b1/Wappen_Erzgebirgskreis.svg",
-        "user": "kreiseuskirchen"
+        "user": "erzgebirgskreis"
     },
     {
         "areaCode": ["E"],
         "name": "Stadt Essen",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/8/82/DEU_Essen_COA.svg",
-        "user": "stadtflensburg"
+        "user": "stadtessen"
     },
     {
         "areaCode": ["ES", "NT"],
@@ -601,37 +601,37 @@
         "areaCode": ["EU", "SLE"],
         "name": "Kreis Euskirchen",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/e/eb/DEU_Kreis_Euskirchen_COA.svg",
-        "user": "landkreisforchheim"
+        "user": "kreiseuskirchen"
     },
     {
         "areaCode": ["FL"],
         "name": "Stadt Flensburg",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/2/21/Wappen_Flensburg.svg",
-        "user": "stadtessen"
+        "user": "stadtflensburg"
     },
     {
         "areaCode": ["FO", "EBS", "PEG"],
         "name": "Landkreis Forchheim",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/3/31/DEU_Landkreis_Forchheim_COA.svg",
-        "user": "stadtfrankenthalpfalz"
+        "user": "landkreisforchheim"
     },
     {
         "areaCode": ["FT"],
         "name": "Stadt Frankenthal (Pfalz)",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/d/df/DEU_Frankenthal_COA.svg",
-        "user": "stadtfrankfurtammain"
+        "user": "stadtfrankenthalpfalz"
     },
     {
         "areaCode": ["F"],
         "name": "Stadt Frankfurt am Main",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/6/65/Wappen_Frankfurt_am_Main.svg",
-        "user": "stadtfrankfurtoder"
+        "user": "stadtfrankfurtammain"
     },
     {
         "areaCode": ["FF"],
         "name": "Stadt Frankfurt (Oder)",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/8/80/DEU_Frankfurt_%28Oder%29_COA.svg",
-        "user": "erzgebirgskreis"
+        "user": "stadtfrankfurtoder"
     },
     {
         "areaCode": ["FR"],
@@ -643,13 +643,13 @@
         "areaCode": ["FS"],
         "name": "Landkreis Freising",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/9/9c/DEU_Landkreis_Freising_COA.svg",
-        "user": "landkreisfriesland"
+        "user": "landkreisfreising"
     },
     {
         "areaCode": ["FDS", "HCH", "HOR", "WOL"],
         "name": "Landkreis Freudenstadt",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/3/3d/Wappen_Landkreis_Freudenstadt.svg",
-        "user": "landkreisfreising"
+        "user": "landkreisfreudenstadt"
     },
     {
         "areaCode": ["FRG", "GRA", "WOS"],
@@ -661,7 +661,7 @@
         "areaCode": ["FRI"],
         "name": "Landkreis Friesland",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/0/0a/DEU_Landkreis_Friesland_COA.svg",
-        "user": "stadtfuerth"
+        "user": "landkreisfriesland"
     },
     {
         "areaCode": ["FD"],
@@ -679,19 +679,19 @@
         "areaCode": ["FÜ"],
         "name": "Stadt Fürth",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/c/c1/DEU_F%C3%BCrth_COA.svg",
-        "user": "landkreisfuerth"
+        "user": "stadtfuerth"
     },
     {
         "areaCode": ["FÜ"],
         "name": "Landkreis Fürth",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/8/84/DEU_Landkreis_F%C3%BCrth_COA.svg",
-        "user": "landkreisgarmischpartenkirchen"
+        "user": "landkreisfuerth"
     },
     {
         "areaCode": ["GAP"],
         "name": "Landkreis Garmisch-Partenkirchen",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/3/3d/DEU_Landkreis_Garmisch-Partenkirchen_COA.svg",
-        "user": "landkreisfreudenstadt"
+        "user": "landkreisgarmischpartenkirchen"
     },
     {
         "areaCode": ["GE"],
@@ -703,43 +703,43 @@
         "areaCode": ["G"],
         "name": "Stadt Gera",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/6/6c/Wappen_Gera.svg",
-        "user": "landkreisgifhorn"
+        "user": "stadtgera"
     },
     {
         "areaCode": ["GER"],
         "name": "Landkreis Germersheim",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/3/39/DEU_Landkreis_Germersheim_COA.svg",
-        "user": "stadtgera"
+        "user": "landkreisgermersheim"
     },
     {
         "areaCode": ["GI"],
         "name": "Landkreis Gießen",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/6/6d/Wappen_Landkreis_Gie%C3%9Fen.svg",
-        "user": "landkreisgoeppingen"
+        "user": "landkreisgiessen"
     },
     {
         "areaCode": ["GF"],
         "name": "Landkreis Gifhorn",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/7/7e/Wappen_Landkreis_Gifhorn.svg",
-        "user": "landkreisgoettingen"
+        "user": "landkreisgifhorn"
     },
     {
         "areaCode": ["GP"],
         "name": "Landkreis Göppingen",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/6/6e/Wappen_Landkreis_Goeppingen.svg",
-        "user": "landkreisgoerlitz"
+        "user": "landkreisgoeppingen"
     },
     {
         "areaCode": ["GR", "LÖB", "NOL", "NY", "WSW", "ZI"],
         "name": "Landkreis Görlitz",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/c/c0/Wappen_Landkreis_Goerlitz.svg",
-        "user": "landkreisgiessen"
+        "user": "landkreisgoerlitz"
     },
     {
         "areaCode": ["GÖ", "DUD", "HMÜ", "OHA"],
         "name": "Landkreis Göttingen",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/4/4d/DEU_Landkreis_Goettingen_COA.svg",
-        "user": "landkreisgermersheim"
+        "user": "landkreisgoettingen"
     },
     {
         "areaCode": ["GS", "BRL", "CLZ"],
@@ -775,49 +775,49 @@
         "areaCode": ["GZ", "KRU"],
         "name": "Landkreis Günzburg",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/d/d1/DEU_Landkreis_G%C3%BCnzburg_COA.svg",
-        "user": "stadthalleandersaale"
+        "user": "landkreisguenzburg"
     },
     {
         "areaCode": ["GT"],
         "name": "Kreis Gütersloh",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/9/90/DEU_Kreis_G%C3%BCtersloh_COA.svg",
-        "user": "hansestadthamburg"
+        "user": "kreisguetersloh"
     },
     {
         "areaCode": ["HA"],
         "name": "Stadt Hagen",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/e/e0/DEU_Hagen_COA.svg",
-        "user": "landkreishamelnpyrmont"
+        "user": "stadthagen"
     },
     {
         "areaCode": ["HAL"],
         "name": "Stadt Halle an der Saale",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/f/f0/Coat_of_arms_of_Halle_%28Saale%29.svg",
-        "user": "stadthagen"
+        "user": "stadthalleandersaale"
     },
     {
         "areaCode": ["HH"],
         "name": "Hansestadt Hamburg",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/5/5d/DEU_Hamburg_COA.svg",
-        "user": "kreisguetersloh"
+        "user": "hansestadthamburg"
     },
     {
         "areaCode": ["HM"],
         "name": "Landkreis Hameln-Pyrmont",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/b/bb/Wappen_Landkreis_Hameln-Pyrmont.svg",
-        "user": "stadthamm"
+        "user": "landkreishamelnpyrmont"
     },
     {
         "areaCode": ["HAM"],
         "name": "Stadt Hamm",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/d/dd/DEU_Hamm_COA.svg",
-        "user": "regionhannover"
+        "user": "stadthamm"
     },
     {
         "areaCode": ["H"],
         "name": "Region Hannover",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/a/ab/Wappen_der_Region_Hannover.svg",
-        "user": "landkreisguenzburg"
+        "user": "regionhannover"
     },
     {
         "areaCode": ["WL"],
@@ -841,55 +841,55 @@
         "areaCode": ["HVL", "NAU", "RN"],
         "name": "Landkreis Havelland",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/2/23/DEU_Havelland_COA.svg",
-        "user": "landkreisheidekreis"
+        "user": "landkreishavelland"
     },
     {
         "areaCode": ["HK"],
         "name": "Landkreis Heidekreis",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/7/71/Wappen_des_Heidekreises.svg",
-        "user": "landkreishavelland"
+        "user": "landkreisheidekreis"
     },
     {
         "areaCode": ["HD"],
         "name": "Stadt Heidelberg",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/4/46/Wappen_Heidelberg.svg",
-        "user": "stadtheilbronn"
+        "user": "stadtheidelberg"
     },
     {
         "areaCode": ["HDH"],
         "name": "Landkreis Heidenheim",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/2/2b/Wappen_Landkreis_Heidenheim.svg",
-        "user": "kreisheinsberg"
+        "user": "landkreisheidenheim"
     },
     {
         "areaCode": ["HN"],
         "name": "Stadt Heilbronn",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/3/31/Wappen_Heilbronn.svg",
-        "user": "landkreisheidenheim"
+        "user": "stadtheilbronn"
     },
     {
         "areaCode": ["HN"],
         "name": "Landkreis Heilbronn",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/f/f5/Wappen_Landkreis_Heilbronn.svg",
-        "user": "landkreishelmstedt"
+        "user": "landkreisheilbronn"
     },
     {
         "areaCode": ["HS", "ERK", "GK"],
         "name": "Kreis Heinsberg",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/b/b5/DEU_Kreis_Heinsberg_COA.svg",
-        "user": "landkreisheilbronn"
+        "user": "kreisheinsberg"
     },
     {
         "areaCode": ["HE"],
         "name": "Landkreis Helmstedt",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/9/99/DEU_Landkreis_Helmstedt_COA.svg",
-        "user": "kreisherford"
+        "user": "landkreishelmstedt"
     },
     {
         "areaCode": ["HF"],
         "name": "Kreis Herford",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/1/11/DEU_Kreis_Herford_COA.svg",
-        "user": "stadtheidelberg"
+        "user": "kreisherford"
     },
     {
         "areaCode": ["HER", "WAN"],
@@ -901,43 +901,43 @@
         "areaCode": ["HEF", "ROF"],
         "name": "Landkreis Hersfeld-Rotenburg",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/d/d2/Wappen_Landkreis_Hersfeld-Rotenburg.svg",
-        "user": "landkreishildesheim"
+        "user": "landkreishersfeldrotenburg"
     },
     {
         "areaCode": ["RZ"],
         "name": "Kreis Herzogtum Lauenburg (Ratzeburg)",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/8/8a/Wappen_Herzogtum_Lauenburg_alt.svg",
-        "user": "hochsauerlandkreis"
+        "user": "kreisherzogtumlauenburgratzeburg"
     },
     {
         "areaCode": ["HBN"],
         "name": "Landkreis Hildburghausen",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/9/9f/Wappen_Landkreis_Hildburghausen.svg",
-        "user": "hochtaunuskreisbadhomburgvdhoehe"
+        "user": "landkreishildburghausen"
     },
     {
         "areaCode": ["HI", "ALF"],
         "name": "Landkreis Hildesheim",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/7/7b/Wappen_Landkreis_Hildesheim.svg",
-        "user": "stadthof"
+        "user": "landkreishildesheim"
     },
     {
         "areaCode": ["HSK"],
         "name": "Hochsauerlandkreis",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/4/47/DEU_Hochsauerlandkreis_COA.svg",
-        "user": "landkreishersfeldrotenburg"
+        "user": "hochsauerlandkreis"
     },
     {
         "areaCode": ["HG", "USI"],
         "name": "Hochtaunuskreis(Bad Homburg v.d.Höhe)",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/d/d4/Wappen_Hochtaunuskreis.svg",
-        "user": "landkreishildburghausen"
+        "user": "hochtaunuskreisbadhomburgvdhoehe"
     },
     {
         "areaCode": ["HO"],
         "name": "Stadt Hof",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/d/de/Wappen_Hof2.svg",
-        "user": "kreisherzogtumlauenburgratzeburg"
+        "user": "stadthof"
     },
     {
         "areaCode": ["HO", "MÜB", "NAI", "REH", "SAN"],
@@ -961,37 +961,37 @@
         "areaCode": ["HX", "WAR"],
         "name": "Kreis Höxter",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/9/93/DEU_Kreis_H%C3%B6xter_COA.svg",
-        "user": "stadtingolstadt"
+        "user": "kreishoexter"
     },
     {
         "areaCode": ["IK", "ARN", "IL"],
         "name": "Ilm-Kreis",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/5/5c/Wappen_Ilm-Kreis.svg",
-        "user": "kreishoexter"
+        "user": "ilmkreis"
     },
     {
         "areaCode": ["IN"],
         "name": "Stadt Ingolstadt",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/b/b6/Wappen_Ingolstadt.svg",
-        "user": "stadtjena"
+        "user": "stadtingolstadt"
     },
     {
         "areaCode": ["J"],
         "name": "Stadt Jena",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/f/f8/Wappen_Jena.svg",
-        "user": "landkreisjerichowerland"
+        "user": "stadtjena"
     },
     {
         "areaCode": ["JL", "BRG", "GNT"],
         "name": "Landkreis Jerichower Land",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/9/96/Wappen_Landkreis_Jerichower_Land.svg",
-        "user": "stadtkaiserslautern"
+        "user": "landkreisjerichowerland"
     },
     {
         "areaCode": ["KL"],
         "name": "Stadt Kaiserslautern",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/4/4e/Kaiserslautern-Stadtwappen.svg",
-        "user": "stadtkarlsruhe"
+        "user": "stadtkaiserslautern"
     },
     {
         "areaCode": ["KL"],
@@ -1003,73 +1003,73 @@
         "areaCode": ["KA"],
         "name": "Stadt Karlsruhe",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/0/0a/DEU_Karlsruhe_COA.svg",
-        "user": "landkreiskarlsruhe"
+        "user": "stadtkarlsruhe"
     },
     {
         "areaCode": ["KA"],
         "name": "Landkreis Karlsruhe",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/6/63/DEU_Landkreis_Karlsruhe_COA.svg",
-        "user": "stadtkassel"
+        "user": "landkreiskarlsruhe"
     },
     {
         "areaCode": ["KS"],
         "name": "Stadt Kassel",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/d/de/Coat_of_arms_of_Kassel.svg",
-        "user": "landkreiskassel"
+        "user": "stadtkassel"
     },
     {
         "areaCode": ["KS", "HOG", "WOH"],
         "name": "Landkreis Kassel",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/3/35/Wappen_Landkreis_Kassel.svg",
-        "user": "stadtkaufbeuren"
+        "user": "landkreiskassel"
     },
     {
         "areaCode": ["KF"],
         "name": "Stadt Kaufbeuren",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/5/5f/Wappen_Kaufbeuren.svg",
-        "user": "landkreiskelheim"
+        "user": "stadtkaufbeuren"
     },
     {
         "areaCode": ["KEH", "MAI", "PAR", "RID", "ROL"],
         "name": "Landkreis Kelheim",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/4/4a/Wappen_Landkreis_Kelheim.svg",
-        "user": "stadtkemptenallgaeu"
+        "user": "landkreiskelheim"
     },
     {
         "areaCode": ["KE"],
         "name": "Stadt Kempten (Allgäu)",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/5/52/DEU_Kempten_%28Allg%C3%A4u%29_COA.svg",
-        "user": "stadtkiel"
+        "user": "stadtkemptenallgaeu"
     },
     {
         "areaCode": ["KI"],
         "name": "Stadt Kiel",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/1/1e/Wappen_Kiel_%28Alternativ%29.svg",
-        "user": "landkreiskitzingen"
+        "user": "stadtkiel"
     },
     {
         "areaCode": ["KT"],
         "name": "Landkreis Kitzingen",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/8/80/DEU_Landkreis_Kitzingen_COA.svg",
-        "user": "stadtkoblenz"
+        "user": "landkreiskitzingen"
     },
     {
         "areaCode": ["KLE", "GEL"],
         "name": "Kreis Kleve",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/b/ba/DEU_Kreis_Kleve_COA.svg",
-        "user": "ilmkreis"
+        "user": "kreiskleve"
     },
     {
         "areaCode": ["KO"],
         "name": "Stadt Koblenz",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/6/62/DEU_Koblenz_COA.svg",
-        "user": "stadtkoeln"
+        "user": "stadtkoblenz"
     },
     {
         "areaCode": ["K"],
         "name": "Stadt Köln",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/f/f1/DEU_Koeln_COA.svg",
-        "user": "kreiskleve"
+        "user": "stadtkoeln"
     },
     {
         "areaCode": ["KN", "STO (BÜS)"],
@@ -1111,43 +1111,43 @@
         "areaCode": ["LDK", "DIL", "WZ"],
         "name": "Lahn-Dill-Kreis",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/c/c3/Wappen_Lahn-Dill-Kreis.svg",
-        "user": "stadtlandshut"
+        "user": "lahndillkreis"
     },
     {
         "areaCode": ["LD"],
         "name": "Stadt Landau in der Pfalz",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/7/75/DEU_Landau_in_der_Pfalz_COA.svg",
-        "user": "landkreislandsbergamlech"
+        "user": "stadtlandauinderpfalz"
     },
     {
         "areaCode": ["LL"],
         "name": "Landkreis Landsberg am Lech",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/f/fa/Wappen_Landkreis_Landsberg_am_Lech.png",
-        "user": "landkreislandshut"
+        "user": "landkreislandsbergamlech"
     },
     {
         "areaCode": ["LA"],
         "name": "Stadt Landshut",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/7/72/DEU_Landshut_COA.svg",
-        "user": "landkreisleer"
+        "user": "stadtlandshut"
     },
     {
         "areaCode": ["LA", "MAI", "MAL", "ROL", "VIB"],
         "name": "Landkreis Landshut",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/f/fa/Wappen_Landkreis_Landshut.svg",
-        "user": "stadtleipzig"
+        "user": "landkreislandshut"
     },
     {
         "areaCode": ["LER"],
         "name": "Landkreis Leer",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/5/51/DEU_Landkreis_Leer_COA.svg",
-        "user": "stadtlandauinderpfalz"
+        "user": "landkreisleer"
     },
     {
         "areaCode": ["L"],
         "name": "Stadt Leipzig",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/4/47/Coat_of_arms_of_Leipzig.svg",
-        "user": "stadtleverkusen"
+        "user": "stadtleipzig"
     },
     {
         "areaCode": ["L", "BNA", "GHA", "GRM", "MTL", "WUR"],
@@ -1159,55 +1159,55 @@
         "areaCode": ["LEV", "OP"],
         "name": "Stadt Leverkusen",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/8/86/DEU_Leverkusen_COA.svg",
-        "user": "landkreislichtenfels"
+        "user": "stadtleverkusen"
     },
     {
         "areaCode": ["LIF", "STE"],
         "name": "Landkreis Lichtenfels",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/1/11/DEU_Landkreis_Lichtenfels_COA.svg",
-        "user": "landkreislimburgweilburg"
+        "user": "landkreislichtenfels"
     },
     {
         "areaCode": ["LM", "WEL"],
         "name": "Landkreis Limburg-Weilburg",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/8/8a/DEU_Landkreis_Limburg-Weilburg_COA.svg",
-        "user": "lahndillkreis"
+        "user": "landkreislimburgweilburg"
     },
     {
         "areaCode": ["LI"],
         "name": "Landkreis Lindau (Bodensee)",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/4/43/DEU_Landkreis_Lindau_Bodensee_COA.svg",
-        "user": "kreislippe"
+        "user": "landkreislindaubodensee"
     },
     {
         "areaCode": ["LIP"],
         "name": "Kreis Lippe",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/5/59/DEU_Kreis_Lippe_COA.svg",
-        "user": "hansestadtluebeck"
+        "user": "kreislippe"
     },
     {
         "areaCode": ["LÖ"],
         "name": "Landkreis Lörrach",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/3/30/Wappen_Landkreis_Loerrach.svg",
-        "user": "landkreisluechowdannenberg"
+        "user": "landkreisloerrach"
     },
     {
         "areaCode": ["HL"],
         "name": "Hansestadt Lübeck",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/3/3b/DEU_Luebeck_COA.svg",
-        "user": "landkreislindaubodensee"
+        "user": "hansestadtluebeck"
     },
     {
         "areaCode": ["DAN"],
         "name": "Landkreis Lüchow-Dannenberg",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/4/43/Wappen_Landkreis_L%C3%BCchow-Dannenberg.svg",
-        "user": "landkreisludwigsburg"
+        "user": "landkreisluechowdannenberg"
     },
     {
         "areaCode": ["LB", "VAI"],
         "name": "Landkreis Ludwigsburg",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/b/b7/Wappen_Landkreis_Ludwigsburg.svg",
-        "user": "landkreisloerrach"
+        "user": "landkreisludwigsburg"
     },
     {
         "areaCode": ["LU"],
@@ -1237,31 +1237,31 @@
         "areaCode": ["MSP"],
         "name": "Landkreis Main-Spessart",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/8/8c/DEU_Landkreis_Main-Spessart_COA.svg",
-        "user": "maintauberkreistauberbischofsheim"
+        "user": "landkreismainspessart"
     },
     {
         "areaCode": ["MKK", "HU", "GN", "SLÜ"],
         "name": "Main-Kinzig-Kreis",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/c/cd/DEU_Main-Kinzig-Kreis_COA.svg",
-        "user": "maintaunuskreis"
+        "user": "mainkinzigkreis"
     },
     {
         "areaCode": ["TBB", "MGH"],
         "name": "Main-Tauber-Kreis (Tauberbischofsheim)",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/b/b6/Wappen_Main-Tauber-Kreis.svg",
-        "user": "landkreismainspessart"
+        "user": "maintauberkreistauberbischofsheim"
     },
     {
         "areaCode": ["MTK"],
         "name": "Main-Taunus-Kreis",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/e/e4/Wappen_Main-Taunus-Kreis.svg",
-        "user": "stadtmainz"
+        "user": "maintaunuskreis"
     },
     {
         "areaCode": ["MZ"],
         "name": "Stadt Mainz",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/6/67/Coat_of_arms_of_Mainz-2008_new.svg",
-        "user": "stadtmannheim"
+        "user": "stadtmainz"
     },
     {
         "areaCode": ["MZ", "BIN"],
@@ -1273,31 +1273,31 @@
         "areaCode": ["MA"],
         "name": "Stadt Mannheim",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/f/fd/Wappen_Mannheim.svg",
-        "user": "landkreismansfeldsuedharz"
+        "user": "stadtmannheim"
     },
     {
         "areaCode": ["MSH", "EIL", "HET", "ML", "SGH"],
         "name": "Landkreis Mansfeld-Südharz",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/d/da/Wappen_Landkreis_Mansfeld-Suedharz.svg",
-        "user": "landkreismarburgbiedenkopf"
+        "user": "landkreismansfeldsuedharz"
     },
     {
         "areaCode": ["MR", "BID"],
         "name": "Landkreis Marburg-Biedenkopf",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/6/64/DEU_Landkreis_Marburg-Biedenkopf_COA.svg",
-        "user": "maerkischerkreis"
+        "user": "landkreismarburgbiedenkopf"
     },
     {
         "areaCode": ["MK"],
         "name": "Märkischer Kreis",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/6/6c/DEU_M%C3%A4rkischer_Kreis_COA.svg",
-        "user": "landkreismaerkischoderland"
+        "user": "maerkischerkreis"
     },
     {
         "areaCode": ["MOL", "FRW", "SEE", "SRB"],
         "name": "Landkreis Märkisch-Oderland",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/d/d3/DEU_Maerkisch-Oderland_COA.svg",
-        "user": "mainkinzigkreis"
+        "user": "landkreismaerkischoderland"
     },
     {
         "areaCode": ["MYK", "MY"],
@@ -1326,43 +1326,43 @@
         "areaCode": ["MEI", "GRH", "RG", "RIE"],
         "name": "Landkreis Meißen",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/a/a1/Wappen_vom_Landkreis_Meissen_2009.svg",
-        "user": "stadtmemmingen"
+        "user": "landkreismeissen"
     },
     {
         "areaCode": ["MM"],
         "name": "Stadt Memmingen",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/2/2a/Wappen_Memmingen.svg",
-        "user": "landkreismeissen"
+        "user": "stadtmemmingen"
     },
     {
         "areaCode": ["MZG"],
         "name": "Landkreis Merzig-Wadern",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/5/5b/Wappen_Landkreis_Merzig-Wadern.svg",
-        "user": "landkreismiltenberg"
+        "user": "landkreismerzigwadern"
     },
     {
         "areaCode": ["ME"],
         "name": "Kreis Mettmann",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/5/53/DEU_Kreis_Mettmann_COA.svg",
-        "user": "kreismindenluebbecke"
+        "user": "kreismettmann"
     },
     {
         "areaCode": ["MB"],
         "name": "Landkreis Miesbach",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/a/a2/Wappen_vom_Landkreis_Miesbach.svg",
-        "user": "kreismettmann"
+        "user": "landkreismiesbach"
     },
     {
         "areaCode": ["MIL", "OBB"],
         "name": "Landkreis Miltenberg",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/6/63/Wappen_Landkreis_Miltenberg.svg",
-        "user": "landkreismerzigwadern"
+        "user": "landkreismiltenberg"
     },
     {
         "areaCode": ["MI"],
         "name": "Kreis Minden-Lübbecke",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/5/5f/DEU_Kreis_Minden-Luebbecke_COA.svg",
-        "user": "stadtmoenchengladbach"
+        "user": "kreismindenluebbecke"
     },
     {
         "areaCode": ["FG", "BED", "DL", "FLÖ", "HC", "MW", "RL"],
@@ -1374,55 +1374,55 @@
         "areaCode": ["MG"],
         "name": "Stadt Mönchengladbach",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/4/4e/DEU_Moenchengladbach_COA.svg",
-        "user": "landkreismuehldorfaminn"
+        "user": "stadtmoenchengladbach"
     },
     {
         "areaCode": ["MÜ", "VIB", "WS"],
         "name": "Landkreis Mühldorf am Inn",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/6/60/Wappen_Landkreis_M%C3%BChldorf_am_Inn.svg",
-        "user": "landkreismiesbach"
+        "user": "landkreismuehldorfaminn"
     },
     {
         "areaCode": ["MH"],
         "name": "Stadt Mülheim an der Ruhr",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/5/58/DEU_Muelheim_an_der_Ruhr_COA.svg",
-        "user": "stadtmuenchen"
+        "user": "stadtmuelheimanderruhr"
     },
     {
         "areaCode": ["M"],
         "name": "Stadt München",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/1/17/Muenchen_Kleines_Stadtwappen.svg",
-        "user": "stadtmuelheimanderruhr"
+        "user": "stadtmuenchen"
     },
     {
         "areaCode": ["M", "AIB", "WOR"],
         "name": "Landkreis München",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/d/d2/DEU_Landkreis_M%C3%BCnchen_COA.svg",
-        "user": "stadtmuenster"
+        "user": "landkreismuenchen"
     },
     {
         "areaCode": ["MS"],
         "name": "Stadt Münster",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/a/ab/DEU_Muenster_COA.svg",
-        "user": "neckarodenwaldkreismosbach"
+        "user": "stadtmuenster"
     },
     {
         "areaCode": ["MOS", "BCH"],
         "name": "Neckar-Odenwald-Kreis (Mosbach)",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/c/c1/Wappen_Neckar-Odenwald-Kreis.svg",
-        "user": "landkreisneuburgschrobenhausen"
+        "user": "neckarodenwaldkreismosbach"
     },
     {
         "areaCode": ["ND", "SOB"],
         "name": "Landkreis Neuburg-Schrobenhausen",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/f/f4/Wappen_Landkreis_Neuburg-Schrobenhausen.svg",
-        "user": "landkreismuenchen"
+        "user": "landkreisneuburgschrobenhausen"
     },
     {
         "areaCode": ["NM", "PAR"],
         "name": "Landkreis Neumarkt in der Oberpfalz",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/d/d0/DEU_Landkreis_Neumarkt_in_der_Oberpfalz_COA.svg",
-        "user": "landkreisneustadtanderaischbadwindsheim"
+        "user": "landkreisneumarktinderoberpfalz"
     },
     {
         "areaCode": ["NMS"],
@@ -1434,25 +1434,25 @@
         "areaCode": ["NK"],
         "name": "Landkreis Neunkirchen",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/a/ac/Wappen_Landkreis_Neunkirchen.png",
-        "user": "landkreisneustadtanderwaldnaab"
+        "user": "landkreisneunkirchen"
     },
     {
         "areaCode": ["NEA", "SEF", "UFF"],
         "name": "Landkreis Neustadt an der Aisch-Bad Windsheim",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/f/fa/DEU_Landkreis_Neustadt_a.d.Aisch-Bad_Windsheim_COA.svg",
-        "user": "landkreisneunkirchen"
+        "user": "landkreisneustadtanderaischbadwindsheim"
     },
     {
         "areaCode": ["NEW", "ESB", "VOH"],
         "name": "Landkreis Neustadt an der Waldnaab",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/f/f5/DEU_Landkreis_Neustadt_an_der_Waldnaab_COA.svg",
-        "user": "stadtneustadtanderweinstrasse"
+        "user": "landkreisneustadtanderwaldnaab"
     },
     {
         "areaCode": ["NW"],
         "name": "Stadt Neustadt an der Weinstraße",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/4/44/DEU_Neustadt_an_der_Weinstrasse_COA.svg",
-        "user": "landkreisneumarktinderoberpfalz"
+        "user": "stadtneustadtanderweinstrasse"
     },
     {
         "areaCode": ["NU", "ILL"],
@@ -1464,13 +1464,13 @@
         "areaCode": ["NR"],
         "name": "Landkreis Neuwied",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/a/ab/DEU_Landkreis_Neuwied_COA.svg",
-        "user": "landkreisnienburgweser"
+        "user": "landkreisneuwied"
     },
     {
         "areaCode": ["NI"],
         "name": "Landkreis Nienburg/Weser",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/0/09/Wappen_Landkreis_Nienburg_Weser.svg",
-        "user": "landkreisneuwied"
+        "user": "landkreisnienburgweser"
     },
     {
         "areaCode": ["NF"],
@@ -1488,67 +1488,67 @@
         "areaCode": ["TDO", "DZ", "EB", "OZ", "TG", "TO"],
         "name": "Landkreis Nordsachsen (Torgau)",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/c/c6/Wappen_vom_Landkreis_Nordsachsen.svg",
-        "user": "stadtnuernberg"
+        "user": "landkreisnordsachsentorgau"
     },
     {
         "areaCode": ["NWM", "GDB", "GVM", "WIS", "HWI"],
         "name": "Landkreis Nordwestmecklenburg",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/7/7a/DEU_Nordwestmecklenburg_COA.svg",
-        "user": "landkreisnortheim"
+        "user": "landkreisnordwestmecklenburg"
     },
     {
         "areaCode": ["NOM", "EIN", "GAN"],
         "name": "Landkreis Northeim",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/f/f5/Wappen_Landkreis_Northeim.svg",
-        "user": "landkreisoberallgaeu"
+        "user": "landkreisnortheim"
     },
     {
         "areaCode": ["N"],
         "name": "Stadt Nürnberg",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/1/1f/Wappen_von_N%C3%BCrnberg.svg",
-        "user": "stadtoberhausen"
+        "user": "stadtnuernberg"
     },
     {
         "areaCode": ["OA"],
         "name": "Landkreis Oberallgäu",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/1/12/Wappen_Landkreis_Oberallgaeu.svg",
-        "user": "oberbergischerkreisgummersbach"
+        "user": "landkreisoberallgaeu"
     },
     {
         "areaCode": ["GM"],
         "name": "Oberbergischer Kreis (Gummersbach)",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/d/d9/DEU_Oberbergischer_Kreis_COA.svg",
-        "user": "landkreisoberhavel"
+        "user": "oberbergischerkreisgummersbach"
     },
     {
         "areaCode": ["OB"],
         "name": "Stadt Oberhausen",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/4/42/DEU_Oberhausen_COA.svg",
-        "user": "landkreisnordwestmecklenburg"
+        "user": "stadtoberhausen"
     },
     {
         "areaCode": ["OHV"],
         "name": "Landkreis Oberhavel",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/6/66/DEU_Oberhavel_COA.svg",
-        "user": "landkreisoberspreewaldlausitz"
+        "user": "landkreisoberhavel"
     },
     {
         "areaCode": ["OSL", "CA", "SFB"],
         "name": "Landkreis Oberspreewald-Lausitz",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/c/cd/Wappen_Landkreis_Oberspreewald-Lausitz.png",
-        "user": "landkreisnordsachsentorgau"
+        "user": "landkreisoberspreewaldlausitz"
     },
     {
         "areaCode": ["ERB"],
         "name": "Odenwaldkreis (Erbach)",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/3/3d/DEU_Odenwaldkreis_COA.svg",
-        "user": "landkreisoffenbach"
+        "user": "odenwaldkreiserbach"
     },
     {
         "areaCode": ["LOS", "BSK", "EH", "FW"],
         "name": "Landkreis Oder-Spree",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/0/0f/Wappen_Landkreis_Oder-Spree.svg",
-        "user": "odenwaldkreiserbach"
+        "user": "landkreisoderspree"
     },
     {
         "areaCode": ["OF"],
@@ -1560,7 +1560,7 @@
         "areaCode": ["OF"],
         "name": "Landkreis Offenbach",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/c/c1/Wappen_Landkreis_Offenbach.svg",
-        "user": "landkreisoldenburg"
+        "user": "landkreisoffenbach"
     },
     {
         "areaCode": ["OL"],
@@ -1572,73 +1572,73 @@
         "areaCode": ["OL"],
         "name": "Landkreis Oldenburg",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/7/7c/Wappen_landkreis_oldenburg.svg",
-        "user": "kreisolpe"
+        "user": "landkreisoldenburg"
     },
     {
         "areaCode": ["OE"],
         "name": "Kreis Olpe",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/f/f1/DEU_Kreis_Olpe_COA.svg",
-        "user": "ortenaukreis"
+        "user": "kreisolpe"
     },
     {
         "areaCode": ["OG", "BH", "KEL", "LR", "WOL"],
         "name": "Ortenaukreis",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/c/c6/DEU_Ortenaukreis_COA.svg",
-        "user": "stadtosnabrueck"
+        "user": "ortenaukreis"
     },
     {
         "areaCode": ["OS"],
         "name": "Stadt Osnabrück",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/b/bd/Osnabr%C3%BCck_Wappen.svg",
-        "user": "landkreisoderspree"
+        "user": "stadtosnabrueck"
     },
     {
         "areaCode": ["OS", "BSB", "MEL", "WTL"],
         "name": "Landkreis Osnabrück",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/d/de/DEU_Landkreis_Osnabr%C3%BCck_COA.svg",
-        "user": "landkreisosterholz"
+        "user": "landkreisosnabrueck"
     },
     {
         "areaCode": ["AA", "GD"],
         "name": "Ostalbkreis (Aalen)",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/b/bf/Wappen_Ostalbkreis.svg",
-        "user": "kreisostholstein"
+        "user": "ostalbkreisaalen"
     },
     {
         "areaCode": ["OAL", "FÜS", "MOD"],
         "name": "Landkreis Ostallgäu",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/f/ff/Wappen_Landkreis_Ostallgaeu.svg",
-        "user": "ostalbkreisaalen"
+        "user": "landkreisostallgaeu"
     },
     {
         "areaCode": ["OHZ"],
         "name": "Landkreis Osterholz",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/3/3c/DEU_Landkreis_Osterholz_COA.svg",
-        "user": "landkreisostallgaeu"
+        "user": "landkreisosterholz"
     },
     {
         "areaCode": ["OH"],
         "name": "Kreis Ostholstein",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/a/ad/Wappen_Kreis_Ostholstein.svg",
-        "user": "landkreisostprignitzruppin"
+        "user": "kreisostholstein"
     },
     {
         "areaCode": ["OPR", "KY", "NP", "WK"],
         "name": "Landkreis Ostprignitz-Ruppin",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/e/e9/Wappen_des_Landkreises_Ostprignitz-Ruppin.svg",
-        "user": "kreispaderborn"
+        "user": "landkreisostprignitzruppin"
     },
     {
         "areaCode": ["PB", "BÜR"],
         "name": "Kreis Paderborn",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/3/30/DEU_Kreis_Paderborn_COA.svg",
-        "user": "stadtpassau"
+        "user": "kreispaderborn"
     },
     {
         "areaCode": ["PA"],
         "name": "Stadt Passau",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/4/46/Wappen_Passau.svg",
-        "user": "landkreisosnabrueck"
+        "user": "stadtpassau"
     },
     {
         "areaCode": ["PA"],
@@ -1656,85 +1656,85 @@
         "areaCode": ["PAF"],
         "name": "Landkreis Pfaffenhofen an der Ilm",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/6/6b/Wappen_Landkreis_Pfaffenhofen_an_der_Ilm.svg",
-        "user": "stadtpirmasens"
+        "user": "landkreispfaffenhofenanderilm"
     },
     {
         "areaCode": ["PF"],
         "name": "Stadt Pforzheim",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/7/7a/Wappen_Pforzheim.svg",
-        "user": "kreisploen"
+        "user": "stadtpforzheim"
     },
     {
         "areaCode": ["PI", "AG"],
         "name": "Kreis Pinneberg - Helgoland",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/4/49/DEU_Kreis_Pinneberg_COA.svg",
-        "user": "stadtpforzheim"
+        "user": "kreispinneberghelgoland"
     },
     {
         "areaCode": ["PS"],
         "name": "Stadt Pirmasens",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/2/2f/Wappen_Pirmasens.svg",
-        "user": "landkreispotsdammittelmark"
+        "user": "stadtpirmasens"
     },
     {
         "areaCode": ["PLÖ"],
         "name": "Kreis Plön",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/a/a5/Wappen_Kreis_Ploen.svg",
-        "user": "stadtpotsdam"
+        "user": "kreisploen"
     },
     {
         "areaCode": ["P"],
         "name": "Stadt Potsdam",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/8/8b/DEU_Potsdam_COA.svg",
-        "user": "landkreisrastatt"
+        "user": "stadtpotsdam"
     },
     {
         "areaCode": ["PM"],
         "name": "Landkreis Potsdam-Mittelmark",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/d/d1/Wappen_des_Landkreises_Potsdam-Mittelmark.svg",
-        "user": "landkreisprignitz"
+        "user": "landkreispotsdammittelmark"
     },
     {
         "areaCode": ["PR"],
         "name": "Landkreis Prignitz",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/4/47/Wappen_des_Landkreises_Prignitz.svg",
-        "user": "kreisrecklinghausen"
+        "user": "landkreisprignitz"
     },
     {
         "areaCode": ["RA", "BH"],
         "name": "Landkreis Rastatt",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/c/cf/Wappen_Landkreis_Rastatt.svg",
-        "user": "landkreispfaffenhofenanderilm"
+        "user": "landkreisrastatt"
     },
     {
         "areaCode": ["RV", "SLG", "ÜB", "WG"],
         "name": "Landkreis Ravensburg",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/a/af/Wappen_Landkreis_Ravensburg2.svg",
-        "user": "landkreisregen"
+        "user": "landkreisravensburg"
     },
     {
         "areaCode": ["RE", "CAS", "GLA"],
         "name": "Kreis Recklinghausen",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/3/30/DEU_Kreis_Recklinghausen_COA.svg",
-        "user": "stadtregensburg"
+        "user": "kreisrecklinghausen"
     },
     {
         "areaCode": ["REG", "VIT"],
         "name": "Landkreis Regen",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/2/28/DEU_Landkreis_Regen_COA.svg",
-        "user": "landkreisregensburg"
+        "user": "landkreisregen"
     },
     {
         "areaCode": ["R"],
         "name": "Stadt Regensburg",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/3/35/Wappen_Regensburg.svg",
-        "user": "kreispinneberghelgoland"
+        "user": "stadtregensburg"
     },
     {
         "areaCode": ["R"],
         "name": "Landkreis Regensburg",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/7/72/DEU_Landkreis_Regensburg_COA.svg",
-        "user": "stadtremscheid"
+        "user": "landkreisregensburg"
     },
     {
         "areaCode": ["WN", "BK"],
@@ -1746,31 +1746,31 @@
         "areaCode": ["RS"],
         "name": "Stadt Remscheid",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/3/30/DEU_Remscheid_COA.svg",
-        "user": "landkreisravensburg"
+        "user": "stadtremscheid"
     },
     {
         "areaCode": ["RD", "ECK"],
         "name": "Kreis Rendsburg-Eckernförde",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/2/23/Wappen_Kreis_Rendsburg-Eckernfoerde.svg",
-        "user": "rheingautaunuskreisruedesheimamrhein"
+        "user": "kreisrendsburgeckernfoerde"
     },
     {
         "areaCode": ["RT"],
         "name": "Landkreis Reutlingen",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/5/5e/Wappen_Landkreis_Reutlingen.svg",
-        "user": "rheinerftkreisbergheim"
+        "user": "landkreisreutlingen"
     },
     {
         "areaCode": ["BM"],
         "name": "Rhein-Erft-Kreis (Bergheim)",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/4/4a/DEU_Rhein-Erft-Kreis_COA.svg",
-        "user": "rheinischbergischerkreisbergischgladbach"
+        "user": "rheinerftkreisbergheim"
     },
     {
         "areaCode": ["RÜD", "SWA"],
         "name": "Rheingau-Taunus-Kreis (Rüdesheim am Rhein)",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/3/3a/Wappen_Rheingau-Taunus-Kreis.svg",
-        "user": "kreisrendsburgeckernfoerde"
+        "user": "rheingautaunuskreisruedesheimamrhein"
     },
     {
         "areaCode": ["SIM", "GOA"],
@@ -1782,7 +1782,7 @@
         "areaCode": ["GL"],
         "name": "Rheinisch-Bergischer Kreis (Bergisch Gladbach)",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/8/8c/DEU_Rheinisch-Bergischer_Kreis_COA.svg",
-        "user": "landkreisreutlingen"
+        "user": "rheinischbergischerkreisbergischgladbach"
     },
     {
         "areaCode": ["NE", "GV"],
@@ -1800,25 +1800,25 @@
         "areaCode": ["HD"],
         "name": "Rhein-Neckar-Kreis (Heidelberg)",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/b/bc/COA_Rhein-Neckar-Kreis.svg",
-        "user": "rheinsiegkreissiegburg"
+        "user": "rheinneckarkreisheidelberg"
     },
     {
         "areaCode": ["RP"],
         "name": "Rhein-Pfalz-Kreis",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/b/bf/DEU_Rhein-Pfalz-Kreis_COA.svg",
-        "user": "rheinneckarkreisheidelberg"
+        "user": "rheinpfalzkreis"
     },
     {
         "areaCode": ["SU"],
         "name": "Rhein-Sieg-Kreis (Siegburg)",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/8/84/DEU_Rhein-Sieg-Kreis_COA.svg",
-        "user": "landkreisrhoengrabfeldbadneustadtadsaale"
+        "user": "rheinsiegkreissiegburg"
     },
     {
         "areaCode": ["NES", "KÖN", "MET"],
         "name": "Landkreis Rhön-Grabfeld (Bad Neustadt a.d.Saale)",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/7/76/DEU_Landkreis_Rhoen-Grabfeld_COA.svg",
-        "user": "rheinpfalzkreis"
+        "user": "landkreisrhoengrabfeldbadneustadtadsaale"
     },
     {
         "areaCode": ["RO"],
@@ -1842,13 +1842,13 @@
         "areaCode": ["LRO", "BÜZ", "DBR", "GÜ", "ROS", "TET"],
         "name": "Landkreis Rostock",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/f/ff/DEU_Landkreis_Rostock_COA.svg",
-        "user": "landkreisrotenburgwuemme"
+        "user": "landkreisrostock"
     },
     {
         "areaCode": ["ROW", "BRV"],
         "name": "Landkreis Rotenburg (Wümme)",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/0/0e/DEU_Landkreis_Rotenburg_Wuemme_COA.svg",
-        "user": "landkreisrostock"
+        "user": "landkreisrotenburgwuemme"
     },
     {
         "areaCode": ["RH", "HIP"],
@@ -1860,25 +1860,25 @@
         "areaCode": ["PAN", "EG", "GRI", "VIB"],
         "name": "Landkreis Rottal-Inn (Pfarrkirchen)",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/b/b6/Wappen_des_Landkreises_Rottal-Inn.svg",
-        "user": "saaleholzlandkreis"
+        "user": "landkreisrottalinnpfarrkirchen"
     },
     {
         "areaCode": ["RW"],
         "name": "Landkreis Rottweil",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/f/fb/Wappen_Landkreis_Rottweil.svg",
-        "user": "saalekreis"
+        "user": "landkreisrottweil"
     },
     {
         "areaCode": ["SK", "MER", "MQ", "QFT"],
         "name": "Saalekreis",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/7/78/Wappen_Saalekreis.svg",
-        "user": "landkreisrottalinnpfarrkirchen"
+        "user": "saalekreis"
     },
     {
         "areaCode": ["SHK", "EIS", "SRO"],
         "name": "Saale-Holzland-Kreis",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/c/c4/Wappen_Saale-Holzland-Kreis.svg",
-        "user": "landkreissaalfeldrudolstadt"
+        "user": "saaleholzlandkreis"
     },
     {
         "areaCode": ["SOK", "LBS", "PN", "SCZ"],
@@ -1890,19 +1890,19 @@
         "areaCode": ["SLF", "RU"],
         "name": "Landkreis Saalfeld-Rudolstadt",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/1/1f/Wappen_Landkreis_Saalfeld-Rudolstadt.svg",
-        "user": "regionalverbandsaarbruecken"
+        "user": "landkreissaalfeldrudolstadt"
     },
     {
         "areaCode": ["SB", "VK"],
         "name": "Regionalverband Saarbrücken",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/a/ab/Wappen_Stadtverband_Saarbruecken.svg",
-        "user": "landkreissaarlouis"
+        "user": "regionalverbandsaarbruecken"
     },
     {
         "areaCode": ["SLS"],
         "name": "Landkreis Saarlouis",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/2/2c/Wappen_Landkreis_Saarlouis.svg",
-        "user": "landkreisrottweil"
+        "user": "landkreissaarlouis"
     },
     {
         "areaCode": ["HOM", "IGB"],
@@ -1914,7 +1914,7 @@
         "areaCode": ["PIR", "DW", "FTL", "SEB"],
         "name": "Landkreis Sächsische Schweiz-Osterzgebirge (Pirna)",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/b/b8/Wappen_Landkreis_Saechsische_Schweiz-Osterzgebirge.svg",
-        "user": "landkreissanktwendel"
+        "user": "landkreissaechsischeschweizosterzgebirgepirna"
     },
     {
         "areaCode": ["SZ"],
@@ -1926,67 +1926,67 @@
         "areaCode": ["SLK", "ASL", "BBG", "SBK", "SFT"],
         "name": "Salzlandkreis",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/5/5d/Wappen_Salzlandkreis.svg",
-        "user": "landkreisschaumburg"
+        "user": "salzlandkreis"
     },
     {
         "areaCode": ["WND"],
         "name": "Landkreis Sankt Wendel",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/3/33/Wappen_Landkreis_St_Wendel.svg",
-        "user": "salzlandkreis"
+        "user": "landkreissanktwendel"
     },
     {
         "areaCode": ["SHG", "RI"],
         "name": "Landkreis Schaumburg",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/1/14/Wappen_Landkreis_Schaumburg.svg",
-        "user": "landkreisschmalkaldenmeiningen"
+        "user": "landkreisschaumburg"
     },
     {
         "areaCode": ["SL"],
         "name": "Kreis Schleswig-Flensburg",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/e/ec/Wappen_Kreis_Schleswig-Flensburg.svg",
-        "user": "stadtschwabach"
+        "user": "kreisschleswigflensburg"
     },
     {
         "areaCode": ["SM", "MGN"],
         "name": "Landkreis Schmalkalden-Meiningen",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/c/cd/Wappen_Landkreis_Schmalkalden-Meiningen.svg",
-        "user": "landkreissaechsischeschweizosterzgebirgepirna"
+        "user": "landkreisschmalkaldenmeiningen"
     },
     {
         "areaCode": ["SC"],
         "name": "Stadt Schwabach",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/5/59/DEU_Schwabach_COA.svg",
-        "user": "kreisschleswigflensburg"
+        "user": "stadtschwabach"
     },
     {
         "areaCode": ["SHA", "BK", "CR"],
         "name": "Landkreis Schwäbisch Hall",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/d/d7/Wappen_Landkreis_Schwaebisch_Hall.svg",
-        "user": "landkreisschwandorf"
+        "user": "landkreisschwaebischhall"
     },
     {
         "areaCode": ["HR", "FZ", "MEG", "ZIG"],
         "name": "Schwalm-Eder-Kreis (Homberg (Efze))",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/1/15/Wappen_Schwalm-Eder-Kreis.svg",
-        "user": "landkreisschwaebischhall"
+        "user": "schwalmederkreishombergefze"
     },
     {
         "areaCode": ["SAD", "BUL", "NAB", "NEN", "OVI", "ROD"],
         "name": "Landkreis Schwandorf",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/a/ac/DEU_Landkreis_Schwandorf_COA.svg",
-        "user": "schwarzwaldbaarkreisvillingenschwenningen"
+        "user": "landkreisschwandorf"
     },
     {
         "areaCode": ["VS"],
         "name": "Schwarzwald-Baar-Kreis (Villingen-Schwenningen)",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/b/bb/Wappen_Schwarzwald-Baar-Kreis.svg",
-        "user": "stadtschweinfurt"
+        "user": "schwarzwaldbaarkreisvillingenschwenningen"
     },
     {
         "areaCode": ["SW"],
         "name": "Stadt Schweinfurt",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/9/9a/DEU_Schweinfurt_COA.svg",
-        "user": "stadtschwerin"
+        "user": "stadtschweinfurt"
     },
     {
         "areaCode": ["SW", "GEO"],
@@ -1998,37 +1998,37 @@
         "areaCode": ["SN"],
         "name": "Stadt Schwerin",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/3/31/DEU_Schwerin_COA.svg",
-        "user": "schwalmederkreishombergefze"
+        "user": "stadtschwerin"
     },
     {
         "areaCode": ["SE"],
         "name": "Kreis Segeberg",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/a/a2/Wappen_Kreis_Segeberg.png",
-        "user": "kreissoest"
+        "user": "kreissegeberg"
     },
     {
         "areaCode": ["SI", "BLB"],
         "name": "Kreis Siegen-Wittgenstein",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/f/fd/DEU_Kreis_Siegen-Wittgenstein_COA.svg",
-        "user": "landkreissigmaringen"
+        "user": "kreissiegenwittgenstein"
     },
     {
         "areaCode": ["SIG", "SLG", "STO", "ÜB"],
         "name": "Landkreis Sigmaringen",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/d/d1/Wappen_Landkreis_Sigmaringen.svg",
-        "user": "kreissegeberg"
+        "user": "landkreissigmaringen"
     },
     {
         "areaCode": ["SO", "LP"],
         "name": "Kreis Soest",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/8/81/DEU_Kreis_Soest_COA.svg",
-        "user": "stadtsolingen"
+        "user": "kreissoest"
     },
     {
         "areaCode": ["SG"],
         "name": "Stadt Solingen",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/4/46/DEU_Solingen_COA.svg",
-        "user": "landkreissonneberg"
+        "user": "stadtsolingen"
     },
     {
         "areaCode": ["SÖM"],
@@ -2040,13 +2040,13 @@
         "areaCode": ["SON", "NH"],
         "name": "Landkreis Sonneberg",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/f/fc/DEU_Landkreis_Sonneberg_COA.svg",
-        "user": "stadtspeyer"
+        "user": "landkreissonneberg"
     },
     {
         "areaCode": ["SP"],
         "name": "Stadt Speyer",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/c/ce/DEU_Speyer_COA.svg",
-        "user": "kreissiegenwittgenstein"
+        "user": "stadtspeyer"
     },
     {
         "areaCode": ["SPN", "FOR", "GUB", "SPB"],
@@ -2064,43 +2064,43 @@
         "areaCode": ["STA", "WOR"],
         "name": "Landkreis Starnberg",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/9/9d/Wappen_Landkreis_Starnberg.svg",
-        "user": "kreissteinburgitzehoe"
+        "user": "landkreisstarnberg"
     },
     {
         "areaCode": ["IZ"],
         "name": "Kreis Steinburg (Itzehoe)",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/1/11/DEU_Kreis_Steinburg_COA.svg",
-        "user": "kreissteinfurt"
+        "user": "kreissteinburgitzehoe"
     },
     {
         "areaCode": ["ST", "BF", "TE"],
         "name": "Kreis Steinfurt",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/c/c9/DEU_Kreis_Steinfurt_COA.svg",
-        "user": "landkreisstendal"
+        "user": "kreissteinfurt"
     },
     {
         "areaCode": ["SDL", "HV", "OBG"],
         "name": "Landkreis Stendal",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/f/ff/Wappen_Landkreis_Stendal.svg",
-        "user": "kreisstormarnbadoldesloe"
+        "user": "landkreisstendal"
     },
     {
         "areaCode": ["OD"],
         "name": "Kreis Stormarn (Bad Oldesloe)",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/e/e0/Wappen_Kreis_Stormarn.svg",
-        "user": "stadtstraubing"
+        "user": "kreisstormarnbadoldesloe"
     },
     {
         "areaCode": ["SR"],
         "name": "Stadt Straubing",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/c/c5/DEU_Straubing_COA.svg",
-        "user": "landkreisstraubingbogen"
+        "user": "stadtstraubing"
     },
     {
         "areaCode": ["SR", "BOG", "MAL"],
         "name": "Landkreis Straubing-Bogen",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/7/73/DEU_Landkreis_Straubing-Bogen_COA.svg",
-        "user": "landkreisstarnberg"
+        "user": "landkreisstraubingbogen"
     },
     {
         "areaCode": ["S"],
@@ -2112,73 +2112,73 @@
         "areaCode": ["SÜW"],
         "name": "Landkreis Südliche Weinstraße",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/7/7d/Wappen_Landkreis_S%C3%BCdliche_Weinstra%C3%9Fe.svg",
-        "user": "landkreistirschenreuth"
+        "user": "landkreissuedlicheweinstrasse"
     },
     {
         "areaCode": ["PS", "ZW"],
         "name": "Landkreis Südwestpfalz (Pirmasens)",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/6/6a/DEU_Landkreis_Suedwestpfalz_COA.svg",
-        "user": "landkreisteltowflaeming"
+        "user": "landkreissuedwestpfalzpirmasens"
     },
     {
         "areaCode": ["TF"],
         "name": "Landkreis Teltow-Fläming",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/5/58/Wappen_des_Landkreises_Teltow-Fl%C3%A4ming.svg",
-        "user": "landkreistraunstein"
+        "user": "landkreisteltowflaeming"
     },
     {
         "areaCode": ["TIR", "KEM"],
         "name": "Landkreis Tirschenreuth",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/4/4b/DEU_Landkreis_Tirschenreuth_COA.svg",
-        "user": "landkreissuedlicheweinstrasse"
+        "user": "landkreistirschenreuth"
     },
     {
         "areaCode": ["TS", "LF"],
         "name": "Landkreis Traunstein",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/5/50/DEU_Landkreis_Traunstein_COA.svg",
-        "user": "landkreistriersaarburg"
+        "user": "landkreistraunstein"
     },
     {
         "areaCode": ["TR"],
         "name": "Stadt Trier",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/8/8a/DEU_Trier_COA.svg",
-        "user": "landkreistuebingen"
+        "user": "stadttrier"
     },
     {
         "areaCode": ["TR", "SAB"],
         "name": "Landkreis Trier-Saarburg",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/0/05/DEU_Landkreis_Trier-Saarburg_COA.svg",
-        "user": "landkreistuttlingen"
+        "user": "landkreistriersaarburg"
     },
     {
         "areaCode": ["TÜ"],
         "name": "Landkreis Tübingen",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/9/9a/Wappen_Landkreis_Tuebingen.svg",
-        "user": "landkreissuedwestpfalzpirmasens"
+        "user": "landkreistuebingen"
     },
     {
         "areaCode": ["TUT"],
         "name": "Landkreis Tuttlingen",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/3/38/Wappen_Landkreis_Tuttlingen.svg",
-        "user": "landkreisuckermark"
+        "user": "landkreistuttlingen"
     },
     {
         "areaCode": ["UM", "ANG", "PZ", "SDT", "TP"],
         "name": "Landkreis Uckermark",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/1/1e/DEU_Landkreis_Uckermark_COA.svg",
-        "user": "stadtulm"
+        "user": "landkreisuckermark"
     },
     {
         "areaCode": ["UE"],
         "name": "Landkreis Uelzen",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/0/05/Wappen_Landkreis_Uelzen.svg",
-        "user": "stadttrier"
+        "user": "landkreisuelzen"
     },
     {
         "areaCode": ["UL"],
         "name": "Stadt Ulm",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/1/1b/Coat_of_arms_of_Ulm.svg",
-        "user": "unstruthainichkreis"
+        "user": "stadtulm"
     },
     {
         "areaCode": ["UN", "LH", "LÜN"],
@@ -2190,13 +2190,13 @@
         "areaCode": ["UH", "LSZ", "MHL"],
         "name": "Unstrut-Hainich-Kreis",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/2/27/Wappen_Unstrut-Hainich-Kreis.svg",
-        "user": "landkreisunterallgaeumindelheim"
+        "user": "unstruthainichkreis"
     },
     {
         "areaCode": ["MN"],
         "name": "Landkreis Unterallgäu (Mindelheim)",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/9/92/Wappen_Landkreis_Unterallgaeu.svg",
-        "user": "landkreisverden"
+        "user": "landkreisunterallgaeumindelheim"
     },
     {
         "areaCode": ["VEC"],
@@ -2208,97 +2208,97 @@
         "areaCode": ["VER"],
         "name": "Landkreis Verden",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/3/3c/Wappen_Landkreis_Verden.png",
-        "user": "landkreisuelzen"
+        "user": "landkreisverden"
     },
     {
         "areaCode": ["VIE", "KK"],
         "name": "Kreis Viersen",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/3/3e/DEU_Kreis_Viersen_COA.svg",
-        "user": "landkreisvorpommerngreifswald"
+        "user": "kreisviersen"
     },
     {
         "areaCode": ["VB"],
         "name": "Vogelsbergkreis",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/5/5a/Wappen_Vogelsbergkreis.svg",
-        "user": "vogtlandkreis"
+        "user": "vogelsbergkreis"
     },
     {
         "areaCode": ["V", "AE", "OVL", "PL", "RC"],
         "name": "Vogtlandkreis",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/4/4d/Wappen_Vogtlandkreis.svg",
-        "user": "kreisviersen"
+        "user": "vogtlandkreis"
     },
     {
         "areaCode": ["VG", "ANK", "GW", "PW", "SBG", "UEM", "WLG", "HGW"],
         "name": "Landkreis Vorpommern-Greifswald",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/5/57/Wappen_Landkreis_Vorpommern-Greifswald.svg",
-        "user": "landkreisvulkaneifeldaun"
+        "user": "landkreisvorpommerngreifswald"
     },
     {
         "areaCode": ["VR", "GMN", "NVP", "RDG", "RÜG", "HST"],
         "name": "Landkreis Vorpommern-Rügen",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/1/11/Wappen_des_Landkreises_Vorpommern-R%C3%BCgen.svg",
-        "user": "landkreiswaldeckfrankenbergkorbach"
+        "user": "landkreisvorpommernruegen"
     },
     {
         "areaCode": ["DAU"],
         "name": "Landkreis Vulkaneifel (Daun)",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/3/3d/DEU_Landkreis_Vulkaneifel_COA.svg",
-        "user": "landkreisvorpommernruegen"
+        "user": "landkreisvulkaneifeldaun"
     },
     {
         "areaCode": ["KB", "FKB", "WA"],
         "name": "Landkreis Waldeck-Frankenberg (Korbach)",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/8/86/Wappen_Landkreis_Waldeck-Frankenberg.svg",
-        "user": "landkreiswaldshut"
+        "user": "landkreiswaldeckfrankenbergkorbach"
     },
     {
         "areaCode": ["WT", "SÄK"],
         "name": "Landkreis Waldshut",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/5/50/Wappen_Landkreis_Waldshut.svg",
-        "user": "kreiswarendorf"
+        "user": "landkreiswaldshut"
     },
     {
         "areaCode": ["WAF", "BE"],
         "name": "Kreis Warendorf",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/0/0b/DEU_Kreis_Warendorf_COA.svg",
-        "user": "stadtweideninderoberpfalz"
+        "user": "kreiswarendorf"
     },
     {
         "areaCode": ["WAK", "SLZ"],
         "name": "Wartburgkreis",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/2/22/Wappen_Wartburgkreis.svg",
-        "user": "stadtweimar"
+        "user": "wartburgkreis"
     },
     {
         "areaCode": ["WEN"],
         "name": "Stadt Weiden in der Oberpfalz",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/d/d8/DEU_Weiden_in_der_Oberpfalz_COA.svg",
-        "user": "landkreisweilheimschongau"
+        "user": "stadtweideninderoberpfalz"
     },
     {
         "areaCode": ["WM", "SOG"],
         "name": "Landkreis Weilheim-Schongau",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/d/d9/DEU_Landkreis_Weilheim-Schongau_COA.svg",
-        "user": "wartburgkreis"
+        "user": "landkreisweilheimschongau"
     },
     {
         "areaCode": ["WE"],
         "name": "Stadt Weimar",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/d/da/Wappen_Weimar.svg",
-        "user": "weimarerlandapolda"
+        "user": "stadtweimar"
     },
     {
         "areaCode": ["AP", "APD"],
         "name": "Weimarer Land (Apolda)",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/e/e6/Wappen_Landkreis_Weimarer_Land.svg",
-        "user": "landkreisweissenburggunzenhausen"
+        "user": "weimarerlandapolda"
     },
     {
         "areaCode": ["WUG", "GUN"],
         "name": "Landkreis Weißenburg-Gunzenhausen",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/9/95/Wappen_Landkreis_Weissenburg-Gunzenhausen.svg",
-        "user": "landkreiswesermarschbrakeunterweser"
+        "user": "landkreisweissenburggunzenhausen"
     },
     {
         "areaCode": ["ESW", "WIZ"],
@@ -2316,7 +2316,7 @@
         "areaCode": ["BRA"],
         "name": "Landkreis Wesermarsch (Brake (Unterweser))",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/e/e9/DEU_Landkreis_Wesermarsch_COA.svg",
-        "user": "vogelsbergkreis"
+        "user": "landkreiswesermarschbrakeunterweser"
     },
     {
         "areaCode": ["WW"],
@@ -2328,43 +2328,43 @@
         "areaCode": ["FB", "BÜD"],
         "name": "Wetteraukreis (Friedberg (Hessen))",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/c/cd/Wappen_Wetteraukreis.svg",
-        "user": "landkreiswittenberg"
+        "user": "wetteraukreisfriedberghessen"
     },
     {
         "areaCode": ["WI"],
         "name": "Stadt Wiesbaden",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/f/f9/Wappen_Wiesbaden.svg",
-        "user": "landkreiswittmund"
+        "user": "stadtwiesbaden"
     },
     {
         "areaCode": ["WHV"],
         "name": "Stadt Wilhelmshaven",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/1/1a/DEU_Wilhelmshaven_COA.svg",
-        "user": "wetteraukreisfriedberghessen"
+        "user": "stadtwilhelmshaven"
     },
     {
         "areaCode": ["WB", "GHC", "JE"],
         "name": "Landkreis Wittenberg",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/c/cd/Wappen_Landkreis_Wittenberg.svg",
-        "user": "stadtwolfsburg"
+        "user": "landkreiswittenberg"
     },
     {
         "areaCode": ["WTM"],
         "name": "Landkreis Wittmund",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/1/18/DEU_Landkreis_Wittmund_COA.svg",
-        "user": "landkreiswolfenbuettel"
+        "user": "landkreiswittmund"
     },
     {
         "areaCode": ["WF"],
         "name": "Landkreis Wolfenbüttel",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/3/30/Wappen_Landkreis_Wolfenb%C3%BCttel.svg",
-        "user": "stadtwiesbaden"
+        "user": "landkreiswolfenbuettel"
     },
     {
         "areaCode": ["WOB"],
         "name": "Stadt Wolfsburg",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/b/bf/DEU_Wolfsburg_COA.svg",
-        "user": "landkreiswunsiedelimfichtelgebirge"
+        "user": "stadtwolfsburg"
     },
     {
         "areaCode": ["WO"],
@@ -2376,42 +2376,42 @@
         "areaCode": ["WUN", "MAK", "REH", "SEL"],
         "name": "Landkreis Wunsiedel im Fichtelgebirge",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/1/17/Wappen_Landkreis_Wunsiedel_im_Fichtelgebirge.svg",
-        "user": "stadtwuppertal"
+        "user": "landkreiswunsiedelimfichtelgebirge"
     },
     {
         "areaCode": ["W"],
         "name": "Stadt Wuppertal",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/d/df/DEU_Wuppertal_COA.svg",
-        "user": "stadtwuerzburg"
+        "user": "stadtwuppertal"
     },
     {
         "areaCode": ["WÜ"],
         "name": "Stadt Würzburg",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/3/39/Wappen_von_Wuerzburg.svg",
-        "user": "stadtwilhelmshaven"
+        "user": "stadtwuerzburg"
     },
     {
         "areaCode": ["WÜ", "OCH"],
         "name": "Landkreis Würzburg",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/a/a2/DEU_Landkreis_W%C3%BCrzburg_COA.svg",
-        "user": "zollernalbkreisbalingen"
+        "user": "landkreiswuerzburg"
     },
     {
         "areaCode": ["BL", "HCH"],
         "name": "Zollernalbkreis (Balingen)",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/d/d0/Wappen_Zollernalbkreis.svg",
-        "user": "stadtzweibruecken"
+        "user": "zollernalbkreisbalingen"
     },
     {
         "areaCode": ["ZW"],
         "name": "Stadt Zweibrücken",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/8/8f/Wappen_Zweibruecken.jpg",
-        "user": "landkreiszwickau"
+        "user": "stadtzweibruecken"
     },
     {
         "areaCode": ["Z", "GC", "HOT", "WDA"],
         "name": "Landkreis Zwickau",
         "picture": "https://upload.wikimedia.org/wikipedia/commons/7/79/Wappen_vom_Landkreis_Zwickau.svg",
-        "user": "landkreiswuerzburg"
+        "user": "landkreiszwickau"
     }
 ]
