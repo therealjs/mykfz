@@ -179,7 +179,7 @@ class VehicleForm extends React.Component {
                 (plateResult) => {
                     console.log(plateResult);
                     if (plateResult.length != 1) {
-                        setState({
+                        this.setState({
                             error: 'License Plate is invalid or already in use! Confirm your input.'
                         });
                         return;
