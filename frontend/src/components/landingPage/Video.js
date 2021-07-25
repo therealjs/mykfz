@@ -15,6 +15,9 @@ const useStyles = makeStyles((theme) => ({
         alignItems: 'center',
         height: '90vh'
     },
+    welcome: {
+        color: "white"
+    },
     logoLarge: {
         width: "35vw",
         marginBottom: "2vw"
@@ -77,7 +80,7 @@ function Header() {
 
             <Grid container direction="column" justify="center" alignItems="center" className={classes.content}>
                 <Grid item>
-                <Typography variant="h1">
+                <Typography className={classes.welcome} variant="h1">
                          Welcome to
                     </Typography>
                 </Grid>
