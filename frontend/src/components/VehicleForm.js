@@ -403,17 +403,13 @@ class VehicleForm extends React.Component {
                                                 variant="outlined"
                                                 style={{ width: '80px' }}
                                             >
-<<<<<<< HEAD
                                                 <InputLabel
                                                     style={{
                                                         backgroundColor:
                                                             'white',
-                                                        padding: '0 5px 0 5px'
+                                                        padding: '0 10px 0 5px'
                                                     }}
                                                 >
-=======
-                                                <InputLabel style={{ backgroundColor: 'white',  padding: "0 10px 0 5px"}}>
->>>>>>> feature-minor-changes
                                                     Area
                                                 </InputLabel>
 
