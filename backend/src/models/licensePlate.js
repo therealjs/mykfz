@@ -15,10 +15,6 @@ const LicensePlateSchema = new mongoose.Schema({
     digits: {
         type: Number,
         required: true
-    },
-    expireAt: {
-        type: Date,
-        required: false
     }
 });
 

@@ -32,13 +32,13 @@ you should find that you have one new folder in your project.
 
 -   `dist` - contains all the files of your application and their dependencies.
 
-### Run the Application
+### Run the Frontend
 
 We have preconfigured the project with a simple development web server. The
 simplest way to start this server is:
 
-```
+```bash
 npm start
 ```
 
-Now browse to the app at `http://localhost:8000/index.html`.
+Now browse to the app at `http://localhost:8000/`.

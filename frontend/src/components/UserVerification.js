@@ -24,15 +24,15 @@ import UserService from '../services/UserService';
 
 const useStyles = makeStyles((theme) => ({
     buttonSuccess: {
-        backgroundColor: green[500],
+        backgroundColor: '#7ac142',
         '&:hover': {
-            backgroundColor: green[700]
+            backgroundColor: '#7ac142',
         }
     },
     buttonFailure: {
-        backgroundColor: red[500],
+        backgroundColor: 'lightsalmon',
         '&:hover': {
-            backgroundColor: red[700]
+            backgroundColor: 'lightsalmon'
         }
     },
     slider: {
@@ -90,8 +90,6 @@ const WebcamCapture = () => {
     // verified states
     // -1: verification failed
     // 0: initial
-    // 1: started webcam
-    // 2: verification
     // 3: verification successful
 
     function updateMonochrome(src) {
@@ -193,6 +191,10 @@ const WebcamCapture = () => {
         });
     }
 
+    function resetMonochrome() {
+        setMonochrome(null);
+    }
+
     function Decision() {
         switch (verified) {
             case 0:
@@ -242,11 +244,8 @@ const WebcamCapture = () => {
     }
 
     function CameraVerification() {
-        return (
-            <Grid container direction="column" spacing={2} justify="center" alignItems="center">
-                <Grid item>
-                <Grid container spacing={2} alignItems="flex-start" justify="center">
-                    <Grid item>
+        const liveWebcam = (
+            <Grid item>
                         <Grid container direction="column" spacing={2} justify="center" alignItems="center">
                             <Grid item>
                                 <Webcam
@@ -266,10 +265,10 @@ const WebcamCapture = () => {
                         </Grid>
                         </Grid>
                     </Grid>
-    
-                    {
-                        monochrome != null ?
-                        <Grid item>
+        );
+
+        const capturedWebcam = (
+            <Grid item>
                             <Grid container direction="column" spacing={2} justify="center" alignItems="center">
                                 <Grid item>
                                     <img style={{width: "450px"}} src={monochrome} alt="Image" />
@@ -302,11 +301,22 @@ const WebcamCapture = () => {
                                     <Button onClick={recognize} variant="contained"
                                             color="primary" startIcon={<LoopIcon />}>Recognize</Button>
                                 </Grid>
+                                <Grid item>
+                                    <Button onClick={resetMonochrome} variant="contained"
+                                            color="primary">New capture</Button>
+                                </Grid>
     
                             </Grid>
                         </Grid>
-    
-                        : []
+        )
+
+        return (
+            <Grid container direction="column" spacing={2} justify="center" alignItems="center">         
+                <Grid item>
+                    <Grid container spacing={2} alignItems="flex-start" justify="center">
+                    { monochrome == null ?
+                        liveWebcam
+                    :   capturedWebcam 
                     }
                 </Grid>
                 </Grid>

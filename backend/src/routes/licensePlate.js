@@ -2,6 +2,7 @@
 
 const express = require('express');
 const router = express.Router();
+const middlewares = require('../middlewares');
 
 const LicensePlateController = require('../controllers/licensePlate');
 
@@ -13,12 +14,12 @@ router.post('/', LicensePlateController.create); // Create new licensePlate
 router.get('/:licensePlateId', LicensePlateController.read); // Read a licensePlate by Id
 router.put(
     '/:licensePlateId',
-    // middlewares.checkAuthentication,
+    middlewares.checkAuthentication,
     LicensePlateController.update
 ); // Update a licensePlate by Id
 router.delete(
     '/:licensePlateId',
-    // middlewares.checkAuthentication,
+    middlewares.checkAuthentication,
     LicensePlateController.remove
 ); // Delete a licensePlate by Id
 

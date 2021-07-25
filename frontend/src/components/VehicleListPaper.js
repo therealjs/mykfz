@@ -22,6 +22,7 @@ import LicensePlate from './LicensePlate';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import clsx from 'clsx';
 import DeleteIcon from '@material-ui/icons/Delete';
+import DirectionsCarIcon from '@material-ui/icons/DirectionsCar';
 
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -148,7 +149,7 @@ class VehicleListPaper extends React.Component {
 
         const state_colors = {
             PENDING: 'yellow',
-            ACCEPTED: 'lightgreen',
+            ACCEPTED: '#7ac142',
             REJECTED: 'lightsalmon'
         };
 
@@ -224,11 +225,24 @@ class VehicleListPaper extends React.Component {
                 >
                     <CardHeader
                         avatar={
-                            <Avatar
-                                // variant="square"
-                                aria-label="make"
-                                src={makeLogos[vehicle.make]}
-                            />
+                            makeLogos[vehicle.make] ? (
+                                <Avatar
+                                    // variant="square"
+                                    imgProps={{
+                                        style: { objectFit: 'contain' }
+                                    }}
+                                    // style={{ '> *': { objectFit: 'contain' } }}
+                                    aria-label="make"
+                                    src={makeLogos[vehicle.make]}
+                                />
+                            ) : (
+                                <Avatar
+                                    // variant="square"
+                                    aria-label="make"
+                                >
+                                    <DirectionsCarIcon />
+                                </Avatar>
+                            )
                         }
                         action={
                             <Tooltip
@@ -313,13 +327,15 @@ class VehicleListPaper extends React.Component {
                                 <TableHead>
                                     <TableRow>
                                         <TableCell>Process type</TableCell>
-                                        <TableCell align="right">
+                                        <TableCell align="center">
                                             Submission Date
                                         </TableCell>
-                                        <TableCell align="right">
+                                        <TableCell align="center">
                                             State
                                         </TableCell>
-                                        <TableCell>Print</TableCell>
+                                        <TableCell align="center">
+                                            Print
+                                        </TableCell>
                                     </TableRow>
                                 </TableHead>
                                 <TableBody>
@@ -328,14 +344,14 @@ class VehicleListPaper extends React.Component {
                                             <TableCell scope="row">
                                                 {process.processType}
                                             </TableCell>
-                                            <TableCell align="right">
+                                            <TableCell align="center">
                                                 {new Date(
                                                     Date.parse(process.date)
                                                 ).toLocaleString('de-DE', {
                                                     timeZone: 'Europe/Andorra'
                                                 })}
                                             </TableCell>
-                                            <TableCell>
+                                            <TableCell align="center">
                                                 <Chip
                                                     style={{
                                                         backgroundColor:
@@ -346,8 +362,9 @@ class VehicleListPaper extends React.Component {
                                                     label={process.state}
                                                 />
                                             </TableCell>
-                                            <TableCell>
+                                            <TableCell align="center">
                                                 <IconButton
+                                                    //style={{float: "right"}}
                                                     onClick={() =>
                                                         this.createPdfAndDownload(
                                                             process._id

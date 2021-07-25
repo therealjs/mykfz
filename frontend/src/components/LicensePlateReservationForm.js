@@ -83,7 +83,32 @@ class LicensePlateReservationForm extends React.Component {
     }
 
     handleChange(event) {
-        this.setState({ [event.target.name]: event.target.value });
+        // if value is not blank, then test the regex
+        if (event.target.name === 'digits') {
+            // only allow blank or numbers
+            const re = /^[0-9?]{1,4}$/;
+            if (event.target.value === '' || re.test(event.target.value)) {
+                this.setState({ digits: event.target.value });
+            } else {
+                this.handleErrorMessage(
+                    "This field only accepts digits and the wildcard character '?'."
+                );
+            }
+        } else if (event.target.name === 'letters') {
+            // only allow letters
+            const value = event.target.value.toUpperCase();
+            const re = /^[A-Z?]{1,2}$/;
+            if (value === '' || re.test(value)) {
+                this.setState({ letters: value });
+            } else {
+                this.handleErrorMessage(
+                    "This field only accepts letters and the wildcard character '?'."
+                );
+            }
+        } else {
+            // area code
+            this.setState({ [event.target.name]: event.target.value });
+        }
     }
 
     handleChangePage(event, newPage) {
@@ -207,13 +232,36 @@ class LicensePlateReservationForm extends React.Component {
                                             spacing={3}
                                         >
                                             <Grid item xs={12}>
+                                                <Typography
+                                                    // syle={{ marginTop: '10px' }}
+                                                    variant="body1"
+                                                    // align="center"
+                                                    // display="block"
+                                                    // color="textSecondary"
+                                                    // gutterBottom
+                                                >
+                                                    Reserve a free license plate
+                                                    for up to 30 days. This
+                                                    plate may be used when
+                                                    registering a vehicle within
+                                                    myKfz.
+                                                </Typography>
+                                            </Grid>
+                                            <Grid item xs={12}>
+                                                <Alert severity="info">
+                                                    Hint – You can use the
+                                                    wildcard character '?' in
+                                                    your query to search for all
+                                                    matching patterns!
+                                                </Alert>
+                                            </Grid>
+                                            <Grid item xs={12}>
                                                 <FormGroup
                                                     row
                                                     style={{
                                                         justifyContent:
                                                             'space-between',
-                                                        padding: '20px',
-                                                        paddingLeft: '20%',
+                                                        padding: '30px 30px 20px 20%',
                                                         height: '120px',
                                                         backgroundImage: `url(${'https://t3.ftcdn.net/jpg/00/11/79/08/240_F_11790850_Gi4UC9cwGMUMGWtZhSP4yKpFg3tqlPis.jpg'})`,
                                                         backgroundSize:
@@ -228,8 +276,8 @@ class LicensePlateReservationForm extends React.Component {
                                                             width: '80px'
                                                         }}
                                                     >
-                                                        <InputLabel>
-                                                            {String('Area')}
+                                                        <InputLabel style={{ backgroundColor: 'white',  padding: "0 10px 0 5px"}}>
+                                                            Area
                                                         </InputLabel>
 
                                                         <Select
@@ -473,7 +521,7 @@ class LicensePlateReservationForm extends React.Component {
                                 )}
                             </Grid>
                             <Typography
-                                syle={{ marginTop: '10px' }}
+                                style={{ marginTop: '1em' }}
                                 variant="caption"
                                 align="center"
                                 display="block"

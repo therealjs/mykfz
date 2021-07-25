@@ -112,13 +112,13 @@ const mailApprovedOptions = {
     from: 'Mike from myKFZ <mikefrommykfz@gmail.com>',
     to: '',
     subject: 'Process approval myKFZ',
-    text: 'Your process was approved!'
+    html: { path: '../backend/resources/email-approval.html' }
 };
 const mailRejectedOptions = {
     from: 'Mike from myKFZ <mikefrommykfz@gmail.com>',
     to: '',
     subject: 'Process rejection myKFZ',
-    text: 'Your process was rejected!'
+    html: { path: '../backend/resources/email-rejection.html' }
 };
 
 function email(username, approved) {

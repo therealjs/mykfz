@@ -5,7 +5,8 @@
 Both for the back end and front end application check
 
 -   nodejs [official website](https://nodejs.org/en/) - nodejs includes
-    [npm](https://www.npmjs.com/) (node package manager)
+    [npm](https://www.npmjs.com/) (node package manager) 
+    (use at least node 14.17.1)
 
 Just for the backend application:
 
@@ -37,12 +38,6 @@ npm install
 mongod --dbpath relative/path/to/database
 ```
 
--   Create all database schemes and import data to begin with
-
-```
-mongorestore dump/
-```
-
 **Set the environment variables**
 
 This variables are based in your local configuration
@@ -56,16 +51,15 @@ export JWT_SECRET="very secret secret"
 **Add districts to your mongo db**
 
 ```bash
-mongoimport --db mykfzdb --collection districts --drop --type json --jsonArray --file "C:\path\to\project\backend\resources\district.json"
+mongoimport --db mykfzdb --collection districts --drop --type json --jsonArray --file ~/path/to/project/backend/resources/district.json
 mongoimport --db mykfzdb --collection users --type json --jsonArray --file ~/path/to/prototype/backend/resources/districtUsersHashed.json
 ```
 
-**In your db: Enable TTL to automatically delete expired license plates**
-```bash
-db.licenseplates.createIndex( { "expireAt": 1 }, { expireAfterSeconds: 0 } )
-```
+## Start mongo
 
-## Start the project
+```bash
+mongod --dbpath ~/mongodb_data
+```
 
 **Development environment**
 

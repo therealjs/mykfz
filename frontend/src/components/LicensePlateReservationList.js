@@ -75,21 +75,20 @@ class LicensePlateReservationList extends React.Component {
     }
 
     formatDate(expiryDate) {
-        let currently = new Date(expiryDate);
-        const options = {
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric',
+        return new Date(Date.parse(expiryDate)).toLocaleString('de-DE', {
             timeZone: 'Europe/Andorra'
-        }; //, hour: '2-digit', minute: '2-digit' };
-        return currently.toLocaleDateString('de-DE', options);
+        });
     }
 
     getDaysLeft(expiryDate) {
         let currently = new Date();
-        let difference = Math.abs(currently - new Date(expiryDate).getTime());
+        let difference = new Date(expiryDate).getTime() - currently;
         let daysLeft = Math.floor(difference / 1000 / 60 / 60 / 24);
-        return daysLeft;
+        if (daysLeft < 0) {
+            return 'EXPIRED';
+        } else {
+            return daysLeft;
+        }
     }
 
     handleDeleteLicensePlateReservation(plateReservationId, plateId) {
@@ -111,7 +110,10 @@ class LicensePlateReservationList extends React.Component {
             return <CircularProgress />;
         }
 
-        if (!this.state.reservedPlates || this.state.reservedPlates == 0) {
+        if (
+            !this.state.reservedPlates ||
+            this.state.reservedPlates.length == 0
+        ) {
             return (
                 <Grid
                     justify="center"
@@ -136,31 +138,40 @@ class LicensePlateReservationList extends React.Component {
                     <TableHead>
                         <TableRow>
                             <TableCell></TableCell>
-                            <TableCell>Expires</TableCell>
-                            <TableCell>Days Left</TableCell>
-                            <TableCell></TableCell>
+                            <TableCell align="center">Days Left</TableCell>
+                            <TableCell align="center">Expires</TableCell>
+                            <TableCell align="center">Delete</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
                         {this.state.reservedPlates.map((licensePlate) => (
-                            <TableRow key={licensePlate._id}>
+                            <TableRow
+                                key={licensePlate._id}
+                                style={
+                                    this.getDaysLeft(
+                                        licensePlate.reservation.expiryDate
+                                    ) == 'EXPIRED'
+                                        ? { backgroundColor: 'lightsalmon' }
+                                        : {}
+                                }
+                            >
                                 <TableCell align="left">
                                     <LicensePlate
                                         key={licensePlate._id}
                                         licensePlate={licensePlate.info}
                                     />
                                 </TableCell>
-                                <TableCell align="left">
-                                    {this.formatDate(
-                                        licensePlate.reservation.expiryDate
-                                    )}
-                                </TableCell>
-                                <TableCell>
+                                <TableCell align="center">
                                     {this.getDaysLeft(
                                         licensePlate.reservation.expiryDate
                                     )}
                                 </TableCell>
-                                <TableCell>
+                                <TableCell align="center">
+                                    {this.formatDate(
+                                        licensePlate.reservation.expiryDate
+                                    )}
+                                </TableCell>
+                                <TableCell align="center">
                                     <IconButton
                                         aria-label="delete"
                                         onClick={() =>
@@ -177,8 +188,8 @@ class LicensePlateReservationList extends React.Component {
                         ))}
                     </TableBody>
                     <caption style={{ textAlign: 'center' }}>
-                        Reservations always expire at 12:00 AM on the
-                        corresponding date.
+                        You can use your license plates as part of your vehicle
+                        registration.
                     </caption>
                 </Table>
             </TableContainer>

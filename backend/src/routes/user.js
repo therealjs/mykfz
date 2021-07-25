@@ -2,6 +2,7 @@
 
 const express = require('express');
 const router = express.Router();
+const middlewares = require('../middlewares');
 
 const UserController = require('../controllers/user');
 
@@ -18,17 +19,17 @@ router.get(
 ); // List all licensePlate Reservations for a user
 router.post(
     '/:userId/licensePlateReservations',
-    // middlewares.checkAuthentication,
+    middlewares.checkAuthentication,
     UserController.createLicensePlateReservation
 ); // Create a new licensePlateReservation for specified user
 router.delete(
     '/:userId/licensePlateReservations/:plateReservationId',
-    // middlewares.checkAuthentication,
+    middlewares.checkAuthentication,
     UserController.deleteLicensePlateReservation
 ); // delete licensePlateReservation for specified user, licenseplate still exist in own table
 router.delete(
     '/:userId/licensePlateReservations/plate/:plateId',
-    // middlewares.checkAuthentication,
+    middlewares.checkAuthentication,
     UserController.deleteLicensePlateReservationByPlate
 ); // delete licensePlateReservation for specified user, licenseplate still exist in own table
 module.exports = router;

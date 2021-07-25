@@ -17,7 +17,6 @@ import Checkbox from '@material-ui/core/Checkbox';
 import React, { useState, useEffect } from 'react';
 import { withRouter, Link, useHistory } from 'react-router';
 import { withStyles } from '@material-ui/styles';
-import InfoIcon from '@material-ui/icons/Info';
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 import { PayPalButton } from 'react-paypal-button-v2';
 import LicensePlateService from '../services/LicensePlateService';
@@ -34,12 +33,58 @@ const LightTooltip = withStyles(() => ({
 }))(Tooltip);
 
 function RegisterProcessFormFields({
+    user,
     vehicle,
     process,
-    reservedPlates,
     onProcessChange
 }) {
     const history = useHistory();
+
+    const [loading, setLoading] = useState(true);
+    const [validPlates, setValidPlates] = useState([]);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const user = await UserService.getUserDetails(); // could have just added a new plate reservation
+            const validReservations = user.licensePlateReservations.filter(
+                (r) => {
+                    const currentTime = new Date().getTime();
+                    const expiryTime = new Date(r.expiryDate).getTime();
+                    return expiryTime > currentTime;
+                }
+            );
+
+            let platesResult = [];
+            for (const reservedPlateId of validReservations.map(
+                (reservation) => reservation.licensePlate
+            )) {
+                const plate = await LicensePlateService.getLicensePlate(
+                    reservedPlateId
+                );
+                platesResult.push(plate);
+            }
+            setValidPlates(platesResult);
+            setLoading(false);
+        };
+
+        fetchData();
+    }, []);
+
+    if (loading) {
+        return <h2>Loading</h2>;
+    }
+
+    // TODO sollte eigentlich die validity der reservation gecheckt werden (nicht der plate)
+    // const validPlates = reservedPlates.filter((plate) => {
+    //     if (!plate.expireAt) {
+    //         return false;
+    //     }
+    //     const currentTime = new Date().getTime();
+    //     const expiryTime = new Date(plate.expireAt).getTime();
+    //     return expiryTime > currentTime;
+    // });
+    const validPlatesAvailable = validPlates.length > 0;
+
     const tooltipImgTxt = (
         <div>
             <Grid container>
@@ -60,17 +105,6 @@ function RegisterProcessFormFields({
             </Grid>
         </div>
     );
-
-    // TODO sollte eigentlich die validity der reservation gecheckt werden (nicht der plate)
-    const validPlates = reservedPlates.filter((plate) => {
-        if (!plate.expireAt) {
-            return false;
-        }
-        const currentTime = new Date().getTime();
-        const expiryTime = new Date(plate.expireAt).getTime();
-        return expiryTime > currentTime;
-    });
-    const validPlatesAvailable = validPlates.length > 0;
 
     if (!validPlatesAvailable) {
         console.log('no valid plates');
@@ -105,6 +139,7 @@ function RegisterProcessFormFields({
             <Grid item xs={12}>
                 <TextField
                     label="VIN"
+                    variant="outlined"
                     disabled={true}
                     required={true}
                     fullWidth
@@ -125,18 +160,20 @@ function RegisterProcessFormFields({
                 />
             </Grid>
             <Grid item xs={12}>
-                <FormControl fullWidth>
-                    <InputLabel id="plate-select-label">
-                        Reserved Plate
+                <FormControl fullWidth variant="outlined">
+                    <InputLabel style={{ backgroundColor: 'white',  padding: "0 10px 0 5px"}}>
+                        Reserved Plate *
                     </InputLabel>
                     <Select
+                        // variant="outlined"
                         fullWidth
                         value={process.info.licensePlate}
-                        labelId="plate-select-label"
                         required={true}
-                        name="licensePlate"
-                        id="plate-select"
+                        // name="licensePlate"
                         onChange={onProcessChange}
+                        inputProps={{
+                            name: 'licensePlate'
+                        }}
                     >
                         {validPlatesAvailable ? (
                             validPlates.map((plate) => {
@@ -163,6 +200,7 @@ function RegisterProcessFormFields({
                 <TextField
                     label="eVB (7)"
                     name="evb"
+                    variant="outlined"
                     required={true}
                     fullWidth
                     value={process.info.evb}
@@ -187,6 +225,7 @@ function RegisterProcessFormFields({
                 <TextField
                     label="Security Code II (12)"
                     name="secCodeII"
+                    variant="outlined"
                     required={true}
                     fullWidth
                     value={process.info.secCodeII}
@@ -211,6 +250,7 @@ function RegisterProcessFormFields({
                 <TextField
                     label="IBAN (22)"
                     name="iban"
+                    variant="outlined"
                     required={true}
                     fullWidth
                     value={process.info.iban}
@@ -287,6 +327,7 @@ function DeregisterProcessFormFields({ vehicle, process, onProcessChange }) {
             <Grid item xs={12}>
                 <TextField
                     label="VIN"
+                    variant="outlined"
                     disabled={true}
                     required={true}
                     fullWidth
@@ -299,7 +340,7 @@ function DeregisterProcessFormFields({ vehicle, process, onProcessChange }) {
                                 placement="right"
                             >
                                 <InputAdornment position="end">
-                                    <InfoIcon />
+                                    <InfoOutlinedIcon />
                                 </InputAdornment>
                             </LightTooltip>
                         )
@@ -310,6 +351,7 @@ function DeregisterProcessFormFields({ vehicle, process, onProcessChange }) {
                 <TextField
                     label="Security Code I (7)"
                     name="secCodeI"
+                    variant="outlined"
                     fullWidth
                     required={true}
                     value={process.info.secCodeI}
@@ -323,7 +365,7 @@ function DeregisterProcessFormFields({ vehicle, process, onProcessChange }) {
                                 placement="right"
                             >
                                 <InputAdornment position="end">
-                                    <InfoIcon />
+                                    <InfoOutlinedIcon />
                                 </InputAdornment>
                             </LightTooltip>
                         )
@@ -333,6 +375,7 @@ function DeregisterProcessFormFields({ vehicle, process, onProcessChange }) {
             <Grid item xs={12}>
                 <TextField
                     label="Plate Code (3)"
+                    variant="outlined"
                     required={true}
                     name="plateCode"
                     fullWidth
@@ -346,7 +389,7 @@ function DeregisterProcessFormFields({ vehicle, process, onProcessChange }) {
                                 placement="right"
                             >
                                 <InputAdornment position="end">
-                                    <InfoIcon />
+                                    <InfoOutlinedIcon />
                                 </InputAdornment>
                             </LightTooltip>
                         )
@@ -363,7 +406,7 @@ function DeregisterProcessFormFields({ vehicle, process, onProcessChange }) {
                             color="primary"
                         />
                     }
-                    label="Reserve license plate for 30 days? (when process is accepted)"
+                    label="Reserve license plate for 90 days? (when process is accepted)"
                 />
             </Grid>
         </Grid>
@@ -371,41 +414,12 @@ function DeregisterProcessFormFields({ vehicle, process, onProcessChange }) {
 }
 
 function ProcessDetailsForm({ user, vehicle, process, onProcessChange }) {
-    const [loading, setLoading] = useState(true);
-    const [reservedPlates, setReservedPlates] = useState([]);
-
-    useEffect(() => {
-        const fetchData = async () => {
-            if (process.processType == 'REGISTRATION') {
-                const user = await UserService.getUserDetails(); // could have just added a new plate reservation
-                let platesResult = [];
-                for (const reservedPlateId of user.licensePlateReservations.map(
-                    (reservation) => reservation.licensePlate
-                )) {
-                    const plate = await LicensePlateService.getLicensePlate(
-                        reservedPlateId
-                    );
-                    console.log(plate);
-                    platesResult.push(plate);
-                }
-                setReservedPlates(platesResult);
-            }
-            setLoading(false);
-        };
-
-        fetchData();
-    }, []);
-
-    if (loading) {
-        return <h2>Loading</h2>;
-    }
-
     const formGrid =
         process.processType == 'REGISTRATION' ? (
             <RegisterProcessFormFields
+                user={user}
                 vehicle={vehicle}
                 process={process}
-                reservedPlates={reservedPlates}
                 onProcessChange={onProcessChange}
             />
         ) : (

@@ -7,15 +7,14 @@ import Stepper from '@material-ui/core/Stepper';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Alert from '@material-ui/lab/Alert';
-import React, { useState, useEffect } from 'react';
-import { withRouter, Link, useHistory } from 'react-router';
+import React, { useEffect, useState } from 'react';
+import { useHistory, withRouter } from 'react-router';
 import { useParams } from 'react-router-dom';
+import UserService from '../services/UserService';
+import VehicleService from '../services/VehicleService';
 import PaymentForm from './PaymentForm';
 import ProcessDetailsForm from './ProcessDetailsForm';
 import Review from './Review';
-import VehicleService from '../services/VehicleService';
-import UserService from '../services/UserService';
-import LicensePlateService from '../services/LicensePlateService';
 
 const useStyles = makeStyles((theme) => ({
     appBar: {
@@ -218,11 +217,18 @@ function VehicleRegisterForm({ user }) {
 
     const onProcessPaid = (details, data) => {
         console.log(details, data);
-        setProcess((prevState) => ({
-            ...prevState,
-            isPaid: true,
-            paymentDetails: details
-        }));
+        if (details && data) {
+            setProcess((prevState) => ({
+                ...prevState,
+                isPaid: true,
+                paymentDetails: details
+            }));
+        } else {
+            setProcess((prevState) => ({
+                ...prevState,
+                isPaid: true
+            }));
+        }
     };
 
     const onProcessChange = (e) => {
@@ -236,7 +242,7 @@ function VehicleRegisterForm({ user }) {
     };
 
     const handleNext = () => {
-        console.log(process.info.licenseplate);
+        console.log(process.info.licensePlate);
         if (
             process.info.secCodeII.length != 12 ||
             !isNumLet(process.info.secCodeII)
@@ -287,30 +293,43 @@ function VehicleRegisterForm({ user }) {
         }
     };
 
+    // const handleDownloadConfirmation = async () => {
+    //     if (!isSubmitting) {
+    //         setIsSubmitting(true);
+    //         try {
+    //             await ProcessService.generateProcessStatusPDF(
+    //                 vehicle._id,
+    //                 process._id
+    //             );
+    //         } catch (err) {
+    //             console.error(err);
+    //         }
+    //         setIsSubmitting(false);
+    //     }
+    // };
+
     const handleSubmit = async () => {
         if (!isSubmitting) {
+            console.log('submitting...');
             setIsSubmitting(true);
-            await VehicleService.createProcess(vehicleId, process);
+            console.log('before creation...');
+
+            let processToCreate = process;
+            delete processToCreate.paymentDetails;
+            await VehicleService.createProcess(vehicleId, processToCreate);
+            console.log('after creation...');
 
             // delete plate reservation
+            console.log('before deletion...');
+
             await UserService.deleteLicensePlateReservationByPlate(
                 user._id,
                 process.info.licensePlate
             );
-            // update ttl of licenseplate, increase to 10 years
-            let newExpireAt = new Date();
-            newExpireAt.setFullYear(newExpireAt.getFullYear() + 10);
-            let chosenPlate = await LicensePlateService.getLicensePlate(
-                process.info.licensePlate
-            );
-            chosenPlate.expireAt = newExpireAt;
-            await LicensePlateService.updateLicensePlate(chosenPlate);
+            console.log('after deletion...');
+
             setIsSubmitting(false);
             setActiveStep(activeStep + 1);
-            // timer.current = window.setTimeout(() => {
-            //     setSuccess(true);
-            //     setLoading(false);
-            // }, 2000);
         }
     };
 
@@ -403,8 +422,21 @@ function VehicleRegisterForm({ user }) {
                                     see the state of your process on the
                                     dashboard.
                                 </Typography>
+                                {/* <Button
+                                    style={{ marginTop: '1em' }}
+                                    disabled={
+                                        isSubmitting || !process._id // undefined
+                                    }
+                                    fullWidth
+                                    variant="contained"
+                                    color="default"
+                                    onClick={handleDownloadConfirmation}
+                                >
+                                    Print Confirmation
+                                </Button> */}
                                 <Button
                                     style={{ marginTop: '1em' }}
+                                    disabled={isSubmitting}
                                     fullWidth
                                     variant="contained"
                                     color="primary"

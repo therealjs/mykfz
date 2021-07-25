@@ -64,12 +64,12 @@ const VehiclesTableRow = ({ vehicle }) => {
                 <TableCell component="th" scope="row">
                     {vehicle.vin}
                 </TableCell>
-                <TableCell align="right">
+                <TableCell align="center">
                     {owner.firstName} {owner.lastName}
                 </TableCell>
-                <TableCell align="right">{vehicle.make}</TableCell>
-                <TableCell align="right">{vehicle.model}</TableCell>
-                <TableCell align="right">
+                <TableCell align="center">{vehicle.make}</TableCell>
+                <TableCell align="center">{vehicle.model}</TableCell>
+                <TableCell align="center">
                     <Chip
                         label={
                             vehicle.state == 'REGISTERED'
@@ -121,9 +121,9 @@ const ProcessesTable = ({ vehicleId, processes }) => {
             <TableHead>
                 <TableRow>
                     <TableCell>Type</TableCell>
-                    <TableCell>Submission Date</TableCell>
-                    <TableCell align="right">Details</TableCell>
-                    <TableCell align="right">Action</TableCell>
+                    <TableCell align="center">Submission Date</TableCell>
+                    <TableCell align="center">Details</TableCell>
+                    <TableCell align="center">Action</TableCell>
                 </TableRow>
             </TableHead>
             <TableBody>
@@ -149,6 +149,7 @@ const ProcessesTableRow = ({ vehicleId, process }) => {
         if (process.processType == 'REGISTRATION') {
             // remove reservation?
         } else {
+            // deregistration
             const vehicle = await VehicleService.getVehicle(vehicleId);
 
             // remove plate or add reservation
@@ -217,7 +218,7 @@ const ProcessesTableRow = ({ vehicleId, process }) => {
     // };
 
     const state_colors = {
-        ACCEPTED: 'lightgreen',
+        ACCEPTED: '#7ac142',
         REJECTED: 'lightsalmon'
     };
 
@@ -226,15 +227,15 @@ const ProcessesTableRow = ({ vehicleId, process }) => {
             <TableCell component="th" scope="row">
                 {process.processType}
             </TableCell>
-            <TableCell>
+            <TableCell align="center">
                 {new Date(Date.parse(process.date)).toLocaleString('de-DE', {
                     timeZone: 'Europe/Andorra'
                 })}
             </TableCell>
-            <TableCell align="right">
+            <TableCell align="center">
                 <ProcessDetailsCell vehicleId={vehicleId} process={process} />
             </TableCell>
-            <TableCell align="right">
+            <TableCell align="center">
                 {processState == 'NEW' || processState == 'PENDING' ? (
                     <ButtonGroup variant="contained">
                         <Button disabled={isSending} onClick={acceptProcess}>
@@ -286,10 +287,10 @@ export default function VehiclesTable({ vehicles }) {
                         <TableRow>
                             <TableCell />
                             <TableCell>VIN</TableCell>
-                            <TableCell align="right">Owner</TableCell>
-                            <TableCell align="right">Make</TableCell>
-                            <TableCell align="right">Model</TableCell>
-                            <TableCell align="right">
+                            <TableCell align="center">Owner</TableCell>
+                            <TableCell align="center">Make</TableCell>
+                            <TableCell align="center">Model</TableCell>
+                            <TableCell align="center">
                                 Registration State
                             </TableCell>
                         </TableRow>

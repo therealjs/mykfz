@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
+import Divider from '@material-ui/core/Divider';
 import ListItemText from '@material-ui/core/ListItemText';
 import Grid from '@material-ui/core/Grid';
 import Alert from '@material-ui/lab/Alert';
 import ProcessService from '../services/ProcessService';
+import CircularProgress from '@material-ui/core/CircularProgress';
+import LicensePlateService from '../services/LicensePlateService';
 
 const useStyles = makeStyles((theme) => ({
     listItem: {
@@ -23,6 +26,24 @@ const useStyles = makeStyles((theme) => ({
 function RegistrationReviewList({ process }) {
     const classes = useStyles();
 
+    const [loading, setLoading] = useState(true);
+    const [plate, setPlate] = useState({});
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const plateId = process.info.licensePlate;
+            const plate = await LicensePlateService.getLicensePlate(plateId);
+
+            setPlate(plate);
+            setLoading(false);
+        };
+        fetchData();
+    }, []);
+
+    if (loading) {
+        return <CircularProgress />;
+    }
+
     return (
         <Grid item xs={12}>
             <List disablePadding>
@@ -35,7 +56,7 @@ function RegistrationReviewList({ process }) {
                 <ListItem className={classes.listItem}>
                     <ListItemText primary="License Plate" />
                     <Typography variant="body2">
-                        {process.info.licensePlate}
+                        {`${plate.areaCode} - ${plate.letters} ${plate.digits}`}
                     </Typography>
                 </ListItem>
                 <ListItem className={classes.listItem}>
@@ -43,7 +64,7 @@ function RegistrationReviewList({ process }) {
                     <Typography variant="body2">{process.info.evb}</Typography>
                 </ListItem>
                 <ListItem className={classes.listItem}>
-                    <ListItemText primary="Security Code 2" />
+                    <ListItemText primary="Security Code II" />
                     <Typography variant="body2">
                         {process.info.secCodeII}
                     </Typography>
@@ -51,6 +72,19 @@ function RegistrationReviewList({ process }) {
                 <ListItem className={classes.listItem}>
                     <ListItemText primary="IBAN for vehicle tax" />
                     <Typography variant="body2">{process.info.iban}</Typography>
+                </ListItem>
+                <Divider />
+                <ListItem className={classes.listItem}>
+                    <ListItemText primary="Registration fee" />
+                    <Typography variant="body2">
+                        €27.90
+                    </Typography>
+                </ListItem>
+                <ListItem className={classes.listItem}>
+                    <ListItemText primary="Reserved license plate fee" />
+                    <Typography variant="body2">
+                        €10.20
+                    </Typography>
                 </ListItem>
                 <ListItem className={classes.listItem}>
                     <ListItemText primary="Total" />
@@ -76,13 +110,13 @@ function DeregistrationReviewList({ process }) {
                     </Typography>
                 </ListItem>
                 <ListItem className={classes.listItem}>
-                    <ListItemText primary="License Plate" />
+                    <ListItemText primary="License Plate Security Code" />
                     <Typography variant="body2">
                         {process.info.plateCode}
                     </Typography>
                 </ListItem>
                 <ListItem className={classes.listItem}>
-                    <ListItemText primary="EVB" />
+                    <ListItemText primary="Security Code I" />
                     <Typography variant="body2">
                         {process.info.secCodeI}
                     </Typography>
@@ -91,6 +125,13 @@ function DeregistrationReviewList({ process }) {
                     <ListItemText primary="Reserve License Plate?" />
                     <Typography variant="body2">
                         {process.info.reservePlate ? 'Yes' : 'No'}
+                    </Typography>
+                </ListItem>
+                <Divider />
+                <ListItem className={classes.listItem}>
+                    <ListItemText primary="Deregistration fee" />
+                    <Typography variant="body2">
+                        €5.70
                     </Typography>
                 </ListItem>
                 <ListItem className={classes.listItem}>

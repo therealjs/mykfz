@@ -14,6 +14,7 @@ export default function PaymentForm({ process, onProcessPaid }) {
         'ATuI28VIncLCJuX7OGrZeGvMtje-hZnJMvYWnUcr_TF89oEoN0wO0D1oMz3cGq9ShUt-sEZhFXuA2lvN';
 
     const price = ProcessService.calculatePrice(process);
+    console.log(price);
 
     const paymentButtons = (
         <PayPalButton

@@ -9,6 +9,7 @@ import {
     InputLabel,
     FormGroup,
     FormControl,
+    FormLabel,
     Select,
     MenuItem,
     Button,
@@ -19,7 +20,7 @@ import {
     Tooltip,
     Typography
 } from '@material-ui/core';
-import InfoIcon from '@material-ui/icons/Info';
+import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 
 import { withRouter } from 'react-router-dom';
 
@@ -35,7 +36,7 @@ import LicensePlateService from '../services/LicensePlateService';
 
 const LightTooltip = withStyles(() => ({
     tooltip: {
-        backgroundColor: '#175B8E',
+        backgroundColor: '#3f51b5',
         color: 'white',
         fontSize: 14,
         fontFamily: 'Nunito'
@@ -56,6 +57,7 @@ class VehicleForm extends React.Component {
                 areaCode: '',
                 letters: '',
                 digits: '',
+                ownerName: '',
                 vin: props.vehicle.vin,
                 make: props.vehicle.make,
                 model: props.vehicle.model,
@@ -78,6 +80,7 @@ class VehicleForm extends React.Component {
                 areaCode: '',
                 letters: '',
                 digits: '',
+                ownerName: '',
                 vin: '',
                 make: '',
                 model: '',
@@ -109,6 +112,7 @@ class VehicleForm extends React.Component {
     componentWillMount() {
         this.setState({ loading: true });
         UserService.getUserDetails().then((user) => {
+            this.setState({ ownerName: `${user.firstName} ${user.lastName}` });
             DistrictService.getDistrict(user.address.district).then(
                 (district) => {
                     this.setState({
@@ -162,16 +166,6 @@ class VehicleForm extends React.Component {
             // area code
             this.setState({ [event.target.name]: event.target.value });
         }
-
-        // const query = {
-        //     ...this.state,
-        //     [event.target.name]: event.target.value
-        // };
-        // console.log(query);
-        // LicensePlateService.getAvailableLicensePlates(query).then((res) => {
-        //     console.log('queried plates');
-        //     console.log(res);
-        // });
     }
 
     toggleGIBool(event) {
@@ -188,7 +182,7 @@ class VehicleForm extends React.Component {
                 (plateResult) => {
                     console.log(plateResult);
                     if (plateResult.length != 1) {
-                        setState({
+                        this.setState({
                             error: 'License Plate is invalid or already in use! Confirm your input.'
                         });
                         return;
@@ -304,7 +298,7 @@ class VehicleForm extends React.Component {
                                         id="OwnerField"
                                         fullWidth
                                         disabled={true}
-                                        value={this.state.owner}
+                                        value={this.state.ownerName}
                                     />
                                 </Grid>
                                 <Grid item xs={12}>
@@ -325,7 +319,7 @@ class VehicleForm extends React.Component {
                                                     placement="right"
                                                 >
                                                     <InputAdornment position="end">
-                                                        <InfoIcon />
+                                                        <InfoOutlinedIcon />
                                                     </InputAdornment>
                                                 </LightTooltip>
                                             )
@@ -356,30 +350,38 @@ class VehicleForm extends React.Component {
                                 </Grid>
 
                                 <Grid item xs={12}>
-                                    <RadioGroup
-                                        style={{ justifyContent: 'center' }}
-                                        row
-                                        aria-label="gender"
-                                        name="state"
-                                        value={this.state.state}
-                                        onChange={this.handleChange.bind(this)}
-                                    >
-                                        <FormControlLabel
-                                            value="NEW"
-                                            control={<Radio />}
-                                            label="New"
-                                        />
-                                        <FormControlLabel
-                                            value="REGISTERED"
-                                            control={<Radio />}
-                                            label="Registered"
-                                        />
-                                        <FormControlLabel
-                                            value="DEREGISTERED"
-                                            control={<Radio />}
-                                            label="Deregistered"
-                                        />
-                                    </RadioGroup>
+                                    <FormControl fullWidth component="fieldset">
+                                        <FormLabel component="legend">
+                                            Current Registration State of the
+                                            Vehicle
+                                        </FormLabel>
+                                        <RadioGroup
+                                            style={{ justifyContent: 'center' }}
+                                            row
+                                            aria-label="gender"
+                                            name="state"
+                                            value={this.state.state}
+                                            onChange={this.handleChange.bind(
+                                                this
+                                            )}
+                                        >
+                                            <FormControlLabel
+                                                value="NEW"
+                                                control={<Radio />}
+                                                label="New"
+                                            />
+                                            <FormControlLabel
+                                                value="REGISTERED"
+                                                control={<Radio />}
+                                                label="Registered"
+                                            />
+                                            <FormControlLabel
+                                                value="DEREGISTERED"
+                                                control={<Radio />}
+                                                label="Deregistered"
+                                            />
+                                        </RadioGroup>
+                                    </FormControl>
                                 </Grid>
                                 {this.state.state == 'REGISTERED' ? (
                                     <Grid item xs={12}>
@@ -390,8 +392,7 @@ class VehicleForm extends React.Component {
                                             row
                                             style={{
                                                 justifyContent: 'space-between',
-                                                padding: '20px',
-                                                paddingLeft: '20%',
+                                                padding: '30px 30px 20px 20%',
                                                 height: '120px',
                                                 backgroundImage: `url(${'https://t3.ftcdn.net/jpg/00/11/79/08/240_F_11790850_Gi4UC9cwGMUMGWtZhSP4yKpFg3tqlPis.jpg'})`,
                                                 backgroundSize: 'contain',
@@ -402,8 +403,14 @@ class VehicleForm extends React.Component {
                                                 variant="outlined"
                                                 style={{ width: '80px' }}
                                             >
-                                                <InputLabel>
-                                                    {String('Area')}
+                                                <InputLabel
+                                                    style={{
+                                                        backgroundColor:
+                                                            'white',
+                                                        padding: '0 10px 0 5px'
+                                                    }}
+                                                >
+                                                    Area
                                                 </InputLabel>
 
                                                 <Select

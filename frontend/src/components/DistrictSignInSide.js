@@ -78,7 +78,6 @@ export default function SignInSide(props) {
                     return d.user == user.username;
                 });
 
-                console.log(district)
                 var obj = {};
                 obj['name'] = district.name;
                 obj['picture'] = district.picture;
@@ -106,7 +105,7 @@ export default function SignInSide(props) {
     const login = (e) => {
         e.preventDefault();
         try {
-            UserService.login(account.username, account.password)
+            UserService.districtLogin(account.username, account.password)
                 .then(() => {
                     history.push('/');
                 })
@@ -126,7 +125,6 @@ export default function SignInSide(props) {
                                     'Login is currently not possible due to a server error, we are working on a solution.'
                                 );
                             } else {
-                                console.log(error);
                                 setErrorMessage(
                                     'There is an issue with the login process, please contact the customer service.'
                                 );
@@ -155,6 +153,9 @@ export default function SignInSide(props) {
                 <div className={classes.paper}>
                     {account.username ? (
                         <Avatar
+                            imgProps={{
+                                style: { objectFit: 'contain' }
+                            }}
                             className={classes.avatarDistrict}
                             variant="square"
                             alt={'District'}
@@ -179,11 +180,11 @@ export default function SignInSide(props) {
                                 onChange={handleDistrictChange}
                                 renderOption={(option) => (
                                     <React.Fragment>
-                                        <Avatar
+                                        {/* <Avatar
                                             variant="square"
                                             alt={'D'}
                                             src={option.picture}
-                                        />
+                                        /> */}
                                         <span>&nbsp;{option.name}</span>
                                     </React.Fragment>
                                 )}
