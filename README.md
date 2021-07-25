@@ -1,22 +1,21 @@
 # myKFZ codebase
+Welcome to myKFZ!
+Our application consists of three parts: database (mongodb), backend (express, node) and frontend (react).
+Please refer to the READMEs of backend and frontend on how to set them up initially.
 
-## start backend
-
+Once you set up everything, you can run refer to the quick start guide.
+# Quick start guide
 ```bash
-cd backend
-mongod --dbpath ~/mongodb_data # start mongo
+# start backend
+cd backend/
 npm run devstart
-```
 
-## start frontend
+cd..
 
-```bash
-cd frontend
+# start frontend
+cd frontend/
 npm start
 ```
 
-## run prettier (only if you want to prettify all files, precommit hook should run automatically on git add .)
-
-```bash
-prettier --write "**/*.js"
-```
+# myKFZ preview
+To get an impression of the design and the structure of our application, we provided some screenshots here.

@@ -38,12 +38,6 @@ npm install
 mongod --dbpath relative/path/to/database
 ```
 
--   Create all database schemes and import data to begin with
-
-```
-mongorestore dump/
-```
-
 **Set the environment variables**
 
 This variables are based in your local configuration
@@ -61,7 +55,11 @@ mongoimport --db mykfzdb --collection districts --drop --type json --jsonArray -
 mongoimport --db mykfzdb --collection users --type json --jsonArray --file ~/path/to/prototype/backend/resources/districtUsersHashed.json
 ```
 
-## Start the project
+## Start mongo
+
+```bash
+mongod --dbpath ~/mongodb_data
+```
 
 **Development environment**
 
