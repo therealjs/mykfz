@@ -22,6 +22,7 @@ import LicensePlate from './LicensePlate';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import clsx from 'clsx';
 import DeleteIcon from '@material-ui/icons/Delete';
+import DirectionsCarIcon from '@material-ui/icons/DirectionsCar';
 
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -224,11 +225,20 @@ class VehicleListPaper extends React.Component {
                 >
                     <CardHeader
                         avatar={
-                            <Avatar
-                                // variant="square"
-                                aria-label="make"
-                                src={makeLogos[vehicle.make]}
-                            />
+                            makeLogos[vehicle.make] ? (
+                                <Avatar
+                                    // variant="square"
+                                    aria-label="make"
+                                    src={makeLogos[vehicle.make]}
+                                />
+                            ) : (
+                                <Avatar
+                                    // variant="square"
+                                    aria-label="make"
+                                >
+                                    <DirectionsCarIcon />
+                                </Avatar>
+                            )
                         }
                         action={
                             <Tooltip
@@ -343,7 +353,7 @@ class VehicleListPaper extends React.Component {
                                                         backgroundColor:
                                                             state_colors[
                                                                 process.state
-                                                            ],
+                                                            ]
                                                     }}
                                                     label={process.state}
                                                 />
