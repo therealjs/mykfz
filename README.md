@@ -1,9 +1,23 @@
 # myKFZ codebase
-Welcome to myKFZ!
+
+<p align="center">
+    ![Alt text](/screenshots/landing-page.gif?raw=true "landingpage")
+</p>
+
+## 👥 Group Members
+
+| 👤                    | 📨                           |
+|-----------------------|------------------------------|
+| Daniel Meint          | d.meint@tum.de               |
+| Jan Seelbach          | jan.seelbach@tum.de          |
+| Janik Schnellbach     | janik.schnellbach@tum.de     |
+| Philippe Goerens      | p.goerens@tum.de             |
+
 Our application consists of three parts: database (mongodb), backend (express, node) and frontend (react).
 Please refer to the READMEs of backend and frontend on how to set them up initially.
 
 Once you set up everything, you can run refer to the quick start guide.
+
 # Quick start guide
 ```bash
 # start backend
@@ -19,8 +33,6 @@ npm start
 
 # myKFZ preview
 To get an impression of the design and the structure of our application, we provided some screenshots and a short description here.
-
-![Alt text](/screenshots/landing-page.gif?raw=true "landingpage")
 
 As our application targets vehicle owners as well as district administratives/representatives and our use cases
 are at the intersection of both of them, we strove to create an application that serves both
