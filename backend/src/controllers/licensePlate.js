@@ -13,13 +13,10 @@ const create = async (req, res) => {
     try {
         let licensePlate = req.body;
         console.log(licensePlate);
-        let expiryDate = new Date();
-        expiryDate.setSeconds(expiryDate.getSeconds() + 2592000);
         let response = await LicensePlateModel.create({
             areaCode: licensePlate.areaCode,
             letters: licensePlate.letters,
-            digits: licensePlate.digits,
-            expireAt: expiryDate
+            digits: licensePlate.digits
         });
 
         return res.status(201).json(response);

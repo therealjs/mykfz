@@ -75,11 +75,9 @@ class LicensePlateReservationList extends React.Component {
     }
 
     formatDate(expiryDate) {
-        return (new Date(
-            Date.parse(expiryDate)
-        ).toLocaleString('de-DE', {
-            timeZone: 'UTC'
-        }))
+        return new Date(Date.parse(expiryDate)).toLocaleString('de-DE', {
+            timeZone: 'Europe/Andorra'
+        });
     }
 
     getDaysLeft(expiryDate) {
@@ -87,10 +85,10 @@ class LicensePlateReservationList extends React.Component {
         let difference = new Date(expiryDate).getTime() - currently;
         let daysLeft = Math.floor(difference / 1000 / 60 / 60 / 24);
         if (daysLeft < 0) {
-            return "EXPIRED";
-         } else {
+            return 'EXPIRED';
+        } else {
             return daysLeft;
-         }
+        }
     }
 
     handleDeleteLicensePlateReservation(plateReservationId, plateId) {
@@ -112,7 +110,10 @@ class LicensePlateReservationList extends React.Component {
             return <CircularProgress />;
         }
 
-        if (!this.state.reservedPlates || this.state.reservedPlates.length == 0) {
+        if (
+            !this.state.reservedPlates ||
+            this.state.reservedPlates.length == 0
+        ) {
             return (
                 <Grid
                     justify="center"
@@ -144,11 +145,16 @@ class LicensePlateReservationList extends React.Component {
                     </TableHead>
                     <TableBody>
                         {this.state.reservedPlates.map((licensePlate) => (
-                                <TableRow key={licensePlate._id} 
-                                    style={(this.getDaysLeft(
+                            <TableRow
+                                key={licensePlate._id}
+                                style={
+                                    this.getDaysLeft(
                                         licensePlate.reservation.expiryDate
-                                    ) == "EXPIRED") ? {backgroundColor: "lightsalmon"} : {}}>
-                                
+                                    ) == 'EXPIRED'
+                                        ? { backgroundColor: 'lightsalmon' }
+                                        : {}
+                                }
+                            >
                                 <TableCell align="left">
                                     <LicensePlate
                                         key={licensePlate._id}
@@ -182,7 +188,8 @@ class LicensePlateReservationList extends React.Component {
                         ))}
                     </TableBody>
                     <caption style={{ textAlign: 'center' }}>
-                        You can use your license plates as part of your vehicle registration.
+                        You can use your license plates as part of your vehicle
+                        registration.
                     </caption>
                 </Table>
             </TableContainer>

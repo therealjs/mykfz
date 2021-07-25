@@ -149,6 +149,7 @@ const ProcessesTableRow = ({ vehicleId, process }) => {
         if (process.processType == 'REGISTRATION') {
             // remove reservation?
         } else {
+            // deregistration
             const vehicle = await VehicleService.getVehicle(vehicleId);
 
             // remove plate or add reservation

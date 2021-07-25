@@ -16,6 +16,7 @@ import Review from './Review';
 import VehicleService from '../services/VehicleService';
 import UserService from '../services/UserService';
 import LicensePlateService from '../services/LicensePlateService';
+import ProcessService from '../services/ProcessService';
 
 const useStyles = makeStyles((theme) => ({
     appBar: {
@@ -287,6 +288,21 @@ function VehicleRegisterForm({ user }) {
         }
     };
 
+    // const handleDownloadConfirmation = async () => {
+    //     if (!isSubmitting) {
+    //         setIsSubmitting(true);
+    //         try {
+    //             await ProcessService.generateProcessStatusPDF(
+    //                 vehicle._id,
+    //                 process._id
+    //             );
+    //         } catch (err) {
+    //             console.error(err);
+    //         }
+    //         setIsSubmitting(false);
+    //     }
+    // };
+
     const handleSubmit = async () => {
         if (!isSubmitting) {
             setIsSubmitting(true);
@@ -297,14 +313,7 @@ function VehicleRegisterForm({ user }) {
                 user._id,
                 process.info.licensePlate
             );
-            // update ttl of licenseplate, increase to 10 years
-            let newExpireAt = new Date();
-            newExpireAt.setFullYear(newExpireAt.getFullYear() + 10);
-            let chosenPlate = await LicensePlateService.getLicensePlate(
-                process.info.licensePlate
-            );
-            chosenPlate.expireAt = newExpireAt;
-            await LicensePlateService.updateLicensePlate(chosenPlate);
+
             setIsSubmitting(false);
             setActiveStep(activeStep + 1);
             // timer.current = window.setTimeout(() => {
@@ -403,8 +412,21 @@ function VehicleRegisterForm({ user }) {
                                     see the state of your process on the
                                     dashboard.
                                 </Typography>
+                                {/* <Button
+                                    style={{ marginTop: '1em' }}
+                                    disabled={
+                                        isSubmitting || !process._id // undefined
+                                    }
+                                    fullWidth
+                                    variant="contained"
+                                    color="default"
+                                    onClick={handleDownloadConfirmation}
+                                >
+                                    Print Confirmation
+                                </Button> */}
                                 <Button
                                     style={{ marginTop: '1em' }}
+                                    disabled={isSubmitting}
                                     fullWidth
                                     variant="contained"
                                     color="primary"

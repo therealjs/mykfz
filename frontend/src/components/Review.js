@@ -43,7 +43,7 @@ function RegistrationReviewList({ process }) {
                     <Typography variant="body2">{process.info.evb}</Typography>
                 </ListItem>
                 <ListItem className={classes.listItem}>
-                    <ListItemText primary="Security Code 2" />
+                    <ListItemText primary="Security Code II" />
                     <Typography variant="body2">
                         {process.info.secCodeII}
                     </Typography>
@@ -76,13 +76,13 @@ function DeregistrationReviewList({ process }) {
                     </Typography>
                 </ListItem>
                 <ListItem className={classes.listItem}>
-                    <ListItemText primary="License Plate" />
+                    <ListItemText primary="License Plate Security Code" />
                     <Typography variant="body2">
                         {process.info.plateCode}
                     </Typography>
                 </ListItem>
                 <ListItem className={classes.listItem}>
-                    <ListItemText primary="EVB" />
+                    <ListItemText primary="Security Code I" />
                     <Typography variant="body2">
                         {process.info.secCodeI}
                     </Typography>
