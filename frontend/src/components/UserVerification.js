@@ -59,7 +59,6 @@ const WebcamCapture = () => {
         const fetchUserProfileData = async () => {
             const userResult = await UserService.getUserDetails();
             setUser(userResult);
-            console.log(userResult);
         };
 
         fetchUserProfileData();
@@ -139,7 +138,6 @@ const WebcamCapture = () => {
     function matchesUser(text) {
         text = text.replace(/\s/g, '');
         text = text.toUpperCase();
-        console.log(user);
         const lastName = user.lastName.toUpperCase();
         const firstName = user.firstName.toUpperCase();
         const id = user.identityDocument.idId;
@@ -163,7 +161,6 @@ const WebcamCapture = () => {
         });
         setImageSrc(imageSrc);
         updateMonochrome(imageSrc);
-        console.log(user);
     }, [webcamRef]);
 
     const handleChange = (event, newValue) => {
@@ -178,7 +175,6 @@ const WebcamCapture = () => {
         Tesseract.recognize(monochrome, 'eng', {
             logger: (m) => console.log(m)
         }).then((data) => {
-            console.log(data);
             let decision = 0;
 
             if (matchesUser(data.text)) {
@@ -209,7 +205,6 @@ const WebcamCapture = () => {
                             color="primary"
                             className={classes.buttonFailure}
                             variant="contained"
-                            onClick={console.log('Verification failed')}
                         >
                             Failed, try new capture
                         </Button>

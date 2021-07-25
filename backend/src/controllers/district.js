@@ -137,11 +137,8 @@ const readProcesses = async (req, res) => {
     try {
         const users = await getUsers(req.params.districtId);
         const vehicles = await getAllVehiclesForUsers(users);
-        console.log(vehicles);
 
         const processes = vehicles.map((vehicle) => vehicle.processes).flat();
-
-        console.log(processes);
 
         return res.status(200).json(processes);
     } catch (err) {
