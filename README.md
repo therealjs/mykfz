@@ -26,17 +26,22 @@ are at the intersection of both of them, we strove to create an application that
 # For vehicle owners
 The login for vehicle owners is reachable at "/login".
 After a succesful registration and login, you need to verify yourself.
+![Alt text](/screenshots/user-verification.png?raw=true "User verification")
+
 
 Then you can access the dashoard: 
+![Alt text](/screenshots/dashboard.png?raw=true "dashboard")
 
-![Alt text](/screenshots/dashboard.png?raw=true "Vehicle user dashboard")
+From here, you can add your vehicle with all its information, and then start a registration or deregistration process.
+![Alt text](/screenshots/add-vehicle.png?raw=true "Add vehicle")
 
-From here, you can add your vehicle with all its information, and then start a registration or deregistration process. 
 In case you would like to register your vehicle, make sure to reserve a license plate before starting the registration process.
+![Alt text](/screenshots/plate-reservation.png?raw=true "License plate reservation")
+
 After succesfully completing a process form and paying, a district administrative may approve your process.
 You can track the status of your process in the vehicle dashboard.
 
-# For district
+# For districts
 The login for districts is available at "/districtLogin".
 Note that it is not possible to register your district on your own. 
 Please contact us via Mail (mikefrommykfz@gmail.com) to create an account for your district!
@@ -44,3 +49,5 @@ Please contact us via Mail (mikefrommykfz@gmail.com) to create an account for yo
 After you received the login credentials, you can login to the district dashboard.
 Here you can see all the vehicle administration processes concerning your district and approve or reject them.
 Once you approved/rejected a process, the vehicle owner will be notified via Mail.
+
+![Alt text](/screenshots/district-dashboard.png?raw=true "District dashboard")
