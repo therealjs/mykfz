@@ -17,7 +17,6 @@ import Checkbox from '@material-ui/core/Checkbox';
 import React, { useState, useEffect } from 'react';
 import { withRouter, Link, useHistory } from 'react-router';
 import { withStyles } from '@material-ui/styles';
-import InfoIcon from '@material-ui/icons/Info';
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 import { PayPalButton } from 'react-paypal-button-v2';
 import LicensePlateService from '../services/LicensePlateService';
@@ -105,6 +104,7 @@ function RegisterProcessFormFields({
             <Grid item xs={12}>
                 <TextField
                     label="VIN"
+                    variant="outlined"
                     disabled={true}
                     required={true}
                     fullWidth
@@ -163,6 +163,7 @@ function RegisterProcessFormFields({
                 <TextField
                     label="eVB (7)"
                     name="evb"
+                    variant="outlined"
                     required={true}
                     fullWidth
                     value={process.info.evb}
@@ -187,6 +188,7 @@ function RegisterProcessFormFields({
                 <TextField
                     label="Security Code II (12)"
                     name="secCodeII"
+                    variant="outlined"
                     required={true}
                     fullWidth
                     value={process.info.secCodeII}
@@ -211,6 +213,7 @@ function RegisterProcessFormFields({
                 <TextField
                     label="IBAN (22)"
                     name="iban"
+                    variant="outlined"
                     required={true}
                     fullWidth
                     value={process.info.iban}
@@ -287,6 +290,7 @@ function DeregisterProcessFormFields({ vehicle, process, onProcessChange }) {
             <Grid item xs={12}>
                 <TextField
                     label="VIN"
+                    variant="outlined"
                     disabled={true}
                     required={true}
                     fullWidth
@@ -299,7 +303,7 @@ function DeregisterProcessFormFields({ vehicle, process, onProcessChange }) {
                                 placement="right"
                             >
                                 <InputAdornment position="end">
-                                    <InfoIcon />
+                                    <InfoOutlinedIcon />
                                 </InputAdornment>
                             </LightTooltip>
                         )
@@ -310,6 +314,7 @@ function DeregisterProcessFormFields({ vehicle, process, onProcessChange }) {
                 <TextField
                     label="Security Code I (7)"
                     name="secCodeI"
+                    variant="outlined"
                     fullWidth
                     required={true}
                     value={process.info.secCodeI}
@@ -323,7 +328,7 @@ function DeregisterProcessFormFields({ vehicle, process, onProcessChange }) {
                                 placement="right"
                             >
                                 <InputAdornment position="end">
-                                    <InfoIcon />
+                                    <InfoOutlinedIcon />
                                 </InputAdornment>
                             </LightTooltip>
                         )
@@ -333,6 +338,7 @@ function DeregisterProcessFormFields({ vehicle, process, onProcessChange }) {
             <Grid item xs={12}>
                 <TextField
                     label="Plate Code (3)"
+                    variant="outlined"
                     required={true}
                     name="plateCode"
                     fullWidth
@@ -346,7 +352,7 @@ function DeregisterProcessFormFields({ vehicle, process, onProcessChange }) {
                                 placement="right"
                             >
                                 <InputAdornment position="end">
-                                    <InfoIcon />
+                                    <InfoOutlinedIcon />
                                 </InputAdornment>
                             </LightTooltip>
                         )

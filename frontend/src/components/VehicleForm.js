@@ -20,7 +20,7 @@ import {
     Tooltip,
     Typography
 } from '@material-ui/core';
-import InfoIcon from '@material-ui/icons/Info';
+import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 
 import { withRouter } from 'react-router-dom';
 
@@ -36,7 +36,7 @@ import LicensePlateService from '../services/LicensePlateService';
 
 const LightTooltip = withStyles(() => ({
     tooltip: {
-        backgroundColor: '#175B8E',
+        backgroundColor: '#3f51b5',
         color: 'white',
         fontSize: 14,
         fontFamily: 'Nunito'
@@ -316,7 +316,7 @@ class VehicleForm extends React.Component {
                                                     placement="right"
                                                 >
                                                     <InputAdornment position="end">
-                                                        <InfoIcon />
+                                                        <InfoOutlinedIcon />
                                                     </InputAdornment>
                                                 </LightTooltip>
                                             )
