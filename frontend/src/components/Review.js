@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import List from '@material-ui/core/List';
@@ -7,6 +7,8 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Grid from '@material-ui/core/Grid';
 import Alert from '@material-ui/lab/Alert';
 import ProcessService from '../services/ProcessService';
+import CircularProgress from '@material-ui/core/CircularProgress';
+import LicensePlateService from '../services/LicensePlateService';
 
 const useStyles = makeStyles((theme) => ({
     listItem: {
@@ -23,6 +25,24 @@ const useStyles = makeStyles((theme) => ({
 function RegistrationReviewList({ process }) {
     const classes = useStyles();
 
+    const [loading, setLoading] = useState(true);
+    const [plate, setPlate] = useState({});
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const plateId = process.info.licensePlate;
+            const plate = await LicensePlateService.getLicensePlate(plateId);
+
+            setPlate(plate);
+            setLoading(false);
+        };
+        fetchData();
+    }, []);
+
+    if (loading) {
+        return <CircularProgress />;
+    }
+
     return (
         <Grid item xs={12}>
             <List disablePadding>
@@ -35,7 +55,7 @@ function RegistrationReviewList({ process }) {
                 <ListItem className={classes.listItem}>
                     <ListItemText primary="License Plate" />
                     <Typography variant="body2">
-                        {process.info.licensePlate}
+                        {`${plate.areaCode} - ${plate.letters} ${plate.digits}`}
                     </Typography>
                 </ListItem>
                 <ListItem className={classes.listItem}>

@@ -7,16 +7,14 @@ import Stepper from '@material-ui/core/Stepper';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Alert from '@material-ui/lab/Alert';
-import React, { useState, useEffect } from 'react';
-import { withRouter, Link, useHistory } from 'react-router';
+import React, { useEffect, useState } from 'react';
+import { useHistory, withRouter } from 'react-router';
 import { useParams } from 'react-router-dom';
+import UserService from '../services/UserService';
+import VehicleService from '../services/VehicleService';
 import PaymentForm from './PaymentForm';
 import ProcessDetailsForm from './ProcessDetailsForm';
 import Review from './Review';
-import VehicleService from '../services/VehicleService';
-import UserService from '../services/UserService';
-import LicensePlateService from '../services/LicensePlateService';
-import ProcessService from '../services/ProcessService';
 
 const useStyles = makeStyles((theme) => ({
     appBar: {
@@ -237,7 +235,7 @@ function VehicleRegisterForm({ user }) {
     };
 
     const handleNext = () => {
-        console.log(process.info.licenseplate);
+        console.log(process.info.licensePlate);
         if (
             process.info.secCodeII.length != 12 ||
             !isNumLet(process.info.secCodeII)
@@ -305,14 +303,21 @@ function VehicleRegisterForm({ user }) {
 
     const handleSubmit = async () => {
         if (!isSubmitting) {
+            console.log('submitting...');
             setIsSubmitting(true);
+            console.log('before creation...');
+
             await VehicleService.createProcess(vehicleId, process);
+            console.log('after creation...');
 
             // delete plate reservation
+            console.log('before deletion...');
+
             await UserService.deleteLicensePlateReservationByPlate(
                 user._id,
                 process.info.licensePlate
             );
+            console.log('after deletion...');
 
             setIsSubmitting(false);
             setActiveStep(activeStep + 1);
