@@ -75,9 +75,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:3000/vehicles",
+							"raw": "192.168.178.111:3000/vehicles",
 							"host": [
-								"localhost"
+								"192",
+								"168",
+								"178",
+								"111"
 							],
 							"port": "3000",
 							"path": [
@@ -125,6 +128,34 @@
 							"path": [
 								"vehicles",
 								"60b0c39a4cd09acea7175a45"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Vehicles By Id Copy",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"state\": \"REGISTERED\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/vehicles/60f970f842b089f4e7b5c97a",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"vehicles",
+								"60f970f842b089f4e7b5c97a"
 							]
 						}
 					},
@@ -190,14 +221,14 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:3000/vehicles/60c203b04b15f9b66b3c3293",
+							"raw": "localhost:3000/vehicles/60fa6c521c4b431eaa552665",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
 								"vehicles",
-								"60c203b04b15f9b66b3c3293"
+								"60fa6c521c4b431eaa552665"
 							]
 						}
 					},
@@ -214,14 +245,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:3000/vehicles/60cc36af5ea7e01f23ac9c6b/processes",
+							"raw": "localhost:3000/vehicles/60cc79f3b041c38cf054eddb/processes",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
 								"vehicles",
-								"60cc36af5ea7e01f23ac9c6b",
+								"60cc79f3b041c38cf054eddb",
 								"processes"
 							]
 						}
@@ -263,7 +294,58 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:3000/vehicles/60b0f476b6d28417d04cb590/processes/60b0f476b6d28417d04cb591",
+							"raw": "localhost:3000/vehicles/60cc79f3b041c38cf054eddb/processes/60cc7a46b041c38cf054eddd",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"vehicles",
+								"60cc79f3b041c38cf054eddb",
+								"processes",
+								"60cc7a46b041c38cf054eddd"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Specific Process of Vehicle",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"state\": \"PENDING\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/vehicles/60fa6c521c4b431eaa552665/processes/60fa742f3a33615945e25ff8",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"vehicles",
+								"60fa6c521c4b431eaa552665",
+								"processes",
+								"60fa742f3a33615945e25ff8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Specific Process of Vehicle As PDF",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/vehicles/60b0f476b6d28417d04cb590/processes/60b0f476b6d28417d04cb591?format=pdf",
 							"host": [
 								"localhost"
 							],
@@ -273,6 +355,12 @@
 								"60b0f476b6d28417d04cb590",
 								"processes",
 								"60b0f476b6d28417d04cb591"
+							],
+							"query": [
+								{
+									"key": "format",
+									"value": "pdf"
+								}
 							]
 						}
 					},
@@ -330,19 +418,65 @@
 					"response": []
 				},
 				{
-					"name": "Delete User",
+					"name": "Get Specific User",
 					"request": {
-						"method": "DELETE",
+						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:3000/users/60b9afdadad5b31be63de066",
+							"raw": "localhost:3000/users/60fc086445e13ca5eecb653f",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
 								"users",
-								"60b9afdadad5b31be63de066"
+								"60fc086445e13ca5eecb653f"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/users/60f83a774b23dec878147c6c",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users",
+								"60f83a774b23dec878147c6c"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"muenchen_land\",\n    \"password\": \"password\",\n    \"isDistrictUser\": true,\n    \"district\": \"60cc3609a88071d75c07e70d\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/users",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users"
 							]
 						}
 					},
@@ -370,6 +504,105 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Get Specific District",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/districts/60cc3609a88071d75c07e70d",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"districts",
+								"60cc3609a88071d75c07e70d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Specific District By Username",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/districts/user/altmarkkreissalzwedel",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"districts",
+								"user",
+								"altmarkkreissalzwedel"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Processes for Specific District",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/districts/60cc3609a88071d75c07e70d/processes",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"districts",
+								"60cc3609a88071d75c07e70d",
+								"processes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Users for Specific District",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/districts/60cc3609a88071d75c07e70d/users",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"districts",
+								"60cc3609a88071d75c07e70d",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Vehicles for Specific District",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/districts/60cc3609a88071d75c07e70d/vehicles",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"districts",
+								"60cc3609a88071d75c07e70d",
+								"vehicles"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -382,13 +615,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:3000/plateReservations",
+							"raw": "localhost:3000/licensePlates",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
-								"plateReservations"
+								"licensePlates"
 							]
 						}
 					},
@@ -446,14 +679,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:3000/users/60cc36a15ea7e01f23ac9c6a/licensePlateReservations",
+							"raw": "localhost:3000/users/60cc79a4b041c38cf054edda/licensePlateReservations",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
 								"users",
-								"60cc36a15ea7e01f23ac9c6a",
+								"60cc79a4b041c38cf054edda",
 								"licensePlateReservations"
 							]
 						}
@@ -467,7 +700,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"licensePlate\": \"60cc36e45ea7e01f23ac9c6c\",\n    \"expiryDate\": \"2022-09-09\"\n}",
+							"raw": "{\n    \"licensePlate\": \"60cd932bec606d386ebfe317\",\n    \"expiryDate\": \"2022-07-09\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -532,7 +765,7 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:3000/users/60cc36a15ea7e01f23ac9c6a/licensePlateReservations/60cc36e45ea7e01f23ac9c6c",
+							"raw": "localhost:3000/users/60cc36a15ea7e01f23ac9c6a/licensePlateReservations/60fbfd086776da972cab9f97",
 							"host": [
 								"localhost"
 							],
@@ -541,7 +774,38 @@
 								"users",
 								"60cc36a15ea7e01f23ac9c6a",
 								"licensePlateReservations",
-								"60cc36e45ea7e01f23ac9c6c"
+								"60fbfd086776da972cab9f97"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Plate Reservation By Plate",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/users/60fbfe60cdccec9902032f9b/licensePlateReservations/plate/60fbfee9cdccec9902032f9c",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users",
+								"60fbfe60cdccec9902032f9b",
+								"licensePlateReservations",
+								"plate",
+								"60fbfee9cdccec9902032f9c"
 							]
 						}
 					},
@@ -553,7 +817,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:3000/licensePlates/all?areaCode=M&letters=D?&digits=?9",
+							"raw": "localhost:3000/licensePlates/all?areaCode=M&letters=D?&digits=?91",
 							"host": [
 								"localhost"
 							],
@@ -573,7 +837,7 @@
 								},
 								{
 									"key": "digits",
-									"value": "?9"
+									"value": "?91"
 								}
 							]
 						}

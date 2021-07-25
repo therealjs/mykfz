@@ -7,9 +7,8 @@ import {
     DialogTitle,
     Grid,
     InputLabel,
-    Select,
     MenuItem,
-    TextField
+    Select
 } from '@material-ui/core';
 import React, { useState } from 'react';
 import { withRouter } from 'react-router';

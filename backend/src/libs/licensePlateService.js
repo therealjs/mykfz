@@ -93,9 +93,6 @@ module.exports = class LicensePlateService {
             (vehicle) => vehicle.licensePlate
         );
 
-        console.log('platesOnCars:');
-        console.log(platesOnCars);
-
         // plates that have a valid reservation
         const users = await UserModel.find().lean().exec();
         let validReservations = [];

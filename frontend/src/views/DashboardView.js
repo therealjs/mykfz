@@ -1,10 +1,10 @@
 'use strict';
 
-import React, { useState, useEffect } from 'react';
-import UserService from '../services/UserService';
+import React, { useEffect, useState } from 'react';
+import { withRouter } from 'react-router';
 import Dashboard from '../components/Dashboard';
 import DistrictDashboard from '../components/DistrictDashboard';
-import { withRouter } from 'react-router';
+import UserService from '../services/UserService';
 import LoadingView from './LoadingView';
 
 function DashboardView() {

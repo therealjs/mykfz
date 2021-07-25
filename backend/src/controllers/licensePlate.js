@@ -12,7 +12,6 @@ const create = async (req, res) => {
 
     try {
         let licensePlate = req.body;
-        console.log(licensePlate);
         let response = await LicensePlateModel.create({
             areaCode: licensePlate.areaCode,
             letters: licensePlate.letters,

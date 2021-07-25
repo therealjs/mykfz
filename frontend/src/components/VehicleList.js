@@ -1,12 +1,12 @@
 'use strict';
 
-import { Grid, Link } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import { Alert, AlertTitle } from '@material-ui/lab';
 import React, { useEffect, useState } from 'react';
 import { withRouter } from 'react-router';
 import VehicleService from '../services/VehicleService';
 import VehicleListPaper from './VehicleListPaper';
-import CircularProgress from '@material-ui/core/CircularProgress';
 
 function VehicleList({ user }) {
     const [loading, setLoading] = useState(true);

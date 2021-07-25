@@ -1,36 +1,29 @@
 'use strict';
 
-import React from 'react';
 import {
-    Grid,
-    Card,
-    TextField,
-    InputLabel,
-    Select,
-    MenuItem,
     Button,
-    FormGroup,
+    Card,
     FormControl,
-    TableFooter,
+    FormGroup,
+    Grid,
+    InputLabel,
+    MenuItem,
+    Radio,
+    Select,
     TableBody,
-    TableRow,
     TableCell,
     TablePagination,
-    Typography,
-    Radio
+    TableRow,
+    TextField,
+    Typography
 } from '@material-ui/core';
-
 import Alert from '@material-ui/lab/Alert';
-
-import LicensePlate from './LicensePlate';
-
-import Pagination from '@material-ui/lab/Pagination';
-
+import React from 'react';
 import { withRouter } from 'react-router-dom';
-
-import UserService from '../services/UserService';
 import DistrictService from '../services/DistrictService';
 import LicensePlateService from '../services/LicensePlateService';
+import UserService from '../services/UserService';
+import LicensePlate from './LicensePlate';
 
 class LicensePlateReservationForm extends React.Component {
     constructor(props) {
@@ -112,21 +105,16 @@ class LicensePlateReservationForm extends React.Component {
     }
 
     handleChangePage(event, newPage) {
-        console.log(newPage);
         this.setState({ page: newPage });
-        console.log(this.state.page);
     }
 
     handleChangeRowsPerPage(event) {
         this.setState({ rowsPerPage: event.target.value, page: 0 });
         this.setState({ page: 0 });
-        console.log(this.state.rowsPerPage);
     }
 
     handleChangeSelection(event) {
         this.setState({ selectedPlate: event.target.value });
-
-        console.log(this.state.queriedLicensePlates);
         let id = this.state.selectedPlate;
     }
 
@@ -261,7 +249,8 @@ class LicensePlateReservationForm extends React.Component {
                                                     style={{
                                                         justifyContent:
                                                             'space-between',
-                                                        padding: '30px 30px 20px 20%',
+                                                        padding:
+                                                            '30px 30px 20px 20%',
                                                         height: '120px',
                                                         backgroundImage: `url(${'https://t3.ftcdn.net/jpg/00/11/79/08/240_F_11790850_Gi4UC9cwGMUMGWtZhSP4yKpFg3tqlPis.jpg'})`,
                                                         backgroundSize:
@@ -276,7 +265,14 @@ class LicensePlateReservationForm extends React.Component {
                                                             width: '80px'
                                                         }}
                                                     >
-                                                        <InputLabel style={{ backgroundColor: 'white',  padding: "0 10px 0 5px"}}>
+                                                        <InputLabel
+                                                            style={{
+                                                                backgroundColor:
+                                                                    'white',
+                                                                padding:
+                                                                    '0 10px 0 5px'
+                                                            }}
+                                                        >
                                                             Area
                                                         </InputLabel>
 

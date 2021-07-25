@@ -216,7 +216,6 @@ function VehicleRegisterForm({ user }) {
     }, []);
 
     const onProcessPaid = (details, data) => {
-        console.log(details, data);
         if (details && data) {
             setProcess((prevState) => ({
                 ...prevState,
@@ -242,7 +241,6 @@ function VehicleRegisterForm({ user }) {
     };
 
     const handleNext = () => {
-        console.log(process.info.licensePlate);
         if (
             process.info.secCodeII.length != 12 ||
             !isNumLet(process.info.secCodeII)

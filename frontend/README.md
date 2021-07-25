@@ -41,4 +41,4 @@ simplest way to start this server is:
 npm start
 ```
 
-Now browse to the app at `http://localhost:8000/`.
+Now browse to the app at `http://localhost:8000/`. We optimized our application for the Google Chrome browser.
