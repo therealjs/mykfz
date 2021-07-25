@@ -33,12 +33,58 @@ const LightTooltip = withStyles(() => ({
 }))(Tooltip);
 
 function RegisterProcessFormFields({
+    user,
     vehicle,
     process,
-    reservedPlates,
     onProcessChange
 }) {
     const history = useHistory();
+
+    const [loading, setLoading] = useState(true);
+    const [validPlates, setValidPlates] = useState([]);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const user = await UserService.getUserDetails(); // could have just added a new plate reservation
+            const validReservations = user.licensePlateReservations.filter(
+                (r) => {
+                    const currentTime = new Date().getTime();
+                    const expiryTime = new Date(r.expiryDate).getTime();
+                    return expiryTime > currentTime;
+                }
+            );
+
+            let platesResult = [];
+            for (const reservedPlateId of validReservations.map(
+                (reservation) => reservation.licensePlate
+            )) {
+                const plate = await LicensePlateService.getLicensePlate(
+                    reservedPlateId
+                );
+                platesResult.push(plate);
+            }
+            setValidPlates(platesResult);
+            setLoading(false);
+        };
+
+        fetchData();
+    }, []);
+
+    if (loading) {
+        return <h2>Loading</h2>;
+    }
+
+    // TODO sollte eigentlich die validity der reservation gecheckt werden (nicht der plate)
+    // const validPlates = reservedPlates.filter((plate) => {
+    //     if (!plate.expireAt) {
+    //         return false;
+    //     }
+    //     const currentTime = new Date().getTime();
+    //     const expiryTime = new Date(plate.expireAt).getTime();
+    //     return expiryTime > currentTime;
+    // });
+    const validPlatesAvailable = validPlates.length > 0;
+
     const tooltipImgTxt = (
         <div>
             <Grid container>
@@ -59,17 +105,6 @@ function RegisterProcessFormFields({
             </Grid>
         </div>
     );
-
-    // TODO sollte eigentlich die validity der reservation gecheckt werden (nicht der plate)
-    const validPlates = reservedPlates.filter((plate) => {
-        if (!plate.expireAt) {
-            return false;
-        }
-        const currentTime = new Date().getTime();
-        const expiryTime = new Date(plate.expireAt).getTime();
-        return expiryTime > currentTime;
-    });
-    const validPlatesAvailable = validPlates.length > 0;
 
     if (!validPlatesAvailable) {
         console.log('no valid plates');
@@ -379,41 +414,12 @@ function DeregisterProcessFormFields({ vehicle, process, onProcessChange }) {
 }
 
 function ProcessDetailsForm({ user, vehicle, process, onProcessChange }) {
-    const [loading, setLoading] = useState(true);
-    const [reservedPlates, setReservedPlates] = useState([]);
-
-    useEffect(() => {
-        const fetchData = async () => {
-            if (process.processType == 'REGISTRATION') {
-                const user = await UserService.getUserDetails(); // could have just added a new plate reservation
-                let platesResult = [];
-                for (const reservedPlateId of user.licensePlateReservations.map(
-                    (reservation) => reservation.licensePlate
-                )) {
-                    const plate = await LicensePlateService.getLicensePlate(
-                        reservedPlateId
-                    );
-                    console.log(plate);
-                    platesResult.push(plate);
-                }
-                setReservedPlates(platesResult);
-            }
-            setLoading(false);
-        };
-
-        fetchData();
-    }, []);
-
-    if (loading) {
-        return <h2>Loading</h2>;
-    }
-
     const formGrid =
         process.processType == 'REGISTRATION' ? (
             <RegisterProcessFormFields
+                user={user}
                 vehicle={vehicle}
                 process={process}
-                reservedPlates={reservedPlates}
                 onProcessChange={onProcessChange}
             />
         ) : (
