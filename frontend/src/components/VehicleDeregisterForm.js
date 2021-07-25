@@ -85,7 +85,8 @@ function VehicleDeregisterForm({ user }) {
             secCodeI: '',
             plateCode: ''
         },
-        isPaid: false
+        isPaid: false,
+        paymentDetails: {}
     });
 
     const [vehicle, setVehicle] = useState({});
@@ -100,10 +101,18 @@ function VehicleDeregisterForm({ user }) {
     }, []);
 
     const onProcessPaid = (details, data) => {
-        setProcess((prevState) => ({
-            ...prevState,
-            ['isPaid']: true
-        }));
+        if (details && data) {
+            setProcess((prevState) => ({
+                ...prevState,
+                isPaid: true,
+                paymentDetails: details
+            }));
+        } else {
+            setProcess((prevState) => ({
+                ...prevState,
+                isPaid: true
+            }));
+        }
     };
 
     const onProcessChange = (e) => {

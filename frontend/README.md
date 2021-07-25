@@ -13,7 +13,7 @@ We get the tools we depend upon via `npm`, the
 [node package manager](https://www.npmjs.com).
 
 ```
-npm install
+npm install --force
 ```
 
 ### Create a Bundle for the Application

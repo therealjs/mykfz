@@ -491,9 +491,9 @@ class LicensePlateReservationForm extends React.Component {
                                                 />
                                             </Grid>
                                         </Grid>
-                                        {this.state.queriedLicensePlates
-                                            .length != 0 ||
-                                        this.state.selectedPlate != null ? (
+                                        {(this.state.queriedLicensePlates
+                                            .length != 0 &&
+                                        this.state.selectedPlate != null) ? (
                                             <Button
                                                 style={{
                                                     float: 'right',
