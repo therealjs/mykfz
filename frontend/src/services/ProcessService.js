@@ -46,7 +46,9 @@ const dataNotToPrint = [
     'district',
     'state',
     // added manually
-    'licensePlate'
+    'licensePlate',
+    'user',
+    'isDistrictUser'
 ];
 
 export default class ProcessService {
