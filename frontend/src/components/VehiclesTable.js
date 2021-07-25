@@ -1,6 +1,9 @@
 'use strict';
 
+import Badge from '@material-ui/core/Badge';
 import Box from '@material-ui/core/Box';
+import Button from '@material-ui/core/Button';
+import ButtonGroup from '@material-ui/core/ButtonGroup';
 import Chip from '@material-ui/core/Chip';
 import Collapse from '@material-ui/core/Collapse';
 import IconButton from '@material-ui/core/IconButton';
@@ -14,15 +17,12 @@ import TableRow from '@material-ui/core/TableRow';
 import Typography from '@material-ui/core/Typography';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
-import React, { useEffect, useState, useCallback } from 'react';
-import LicensePlateService from '../services/LicensePlateService';
-import UserService from '../services/UserService';
-import ProcessService from '../services/ProcessService';
-import Button from '@material-ui/core/Button';
-import ButtonGroup from '@material-ui/core/ButtonGroup';
 import PrintIcon from '@material-ui/icons/Print';
+import React, { useCallback, useEffect, useState } from 'react';
+import LicensePlateService from '../services/LicensePlateService';
+import ProcessService from '../services/ProcessService';
+import UserService from '../services/UserService';
 import VehicleService from '../services/VehicleService';
-import Badge from '@material-ui/core/Badge';
 
 const VehiclesTableRow = ({ vehicle }) => {
     const [owner, setOwner] = useState({});

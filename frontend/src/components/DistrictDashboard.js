@@ -1,9 +1,9 @@
 import AppBar from '@material-ui/core/AppBar';
 import Box from '@material-ui/core/Box';
-import Grid from '@material-ui/core/Grid';
+import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -11,11 +11,11 @@ import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import clsx from 'clsx';
 import React, { useEffect, useState } from 'react';
 import { withRouter } from 'react-router';
+import logo from '../../resources/logo_small.png';
 import DistrictService from '../services/DistrictService';
 import UserService from '../services/UserService';
-import VehiclesTable from './VehiclesTable';
 import Copyright from './Copyright';
-import logo from '../../resources/logo_small.png';
+import VehiclesTable from './VehiclesTable';
 
 const drawerWidth = 240;
 
@@ -142,26 +142,43 @@ function DistrictDashboard(props) {
                 className={clsx(classes.appBar)}
             >
                 <Toolbar className={classes.toolbar}>
-                    <Grid container style={{marginRight: "auto"}} alignItems="center" spacing={1}>
+                    <Grid
+                        container
+                        style={{ marginRight: 'auto' }}
+                        alignItems="center"
+                        spacing={1}
+                    >
                         <Grid item>
-                            <img src={logo} style={{height: "35px"}} alt="logo"/>
+                            <img
+                                src={logo}
+                                style={{ height: '35px' }}
+                                alt="logo"
+                            />
                         </Grid>
                         <Grid item>
-                            <img src={district.picture} style={{height: "35px"}} alt="districtLogo"/>
+                            <img
+                                src={district.picture}
+                                style={{ height: '35px' }}
+                                alt="districtLogo"
+                            />
                         </Grid>
                         <Grid item>
                             <Typography
-                            component="h1"
-                            variant="h6"
-                            color="inherit"
-                            noWrap
-                            className={classes.title}
+                                component="h1"
+                                variant="h6"
+                                color="inherit"
+                                noWrap
+                                className={classes.title}
                             >
-                            {district.name}
+                                {district.name}
                             </Typography>
                         </Grid>
                     </Grid>
-                    <Button color="inherit" onClick={logout} endIcon={<ExitToAppIcon />}>
+                    <Button
+                        color="inherit"
+                        onClick={logout}
+                        endIcon={<ExitToAppIcon />}
+                    >
                         Logout
                     </Button>
                 </Toolbar>

@@ -1,29 +1,29 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { InputAdornment, Tooltip } from '@material-ui/core';
 import Avatar from '@material-ui/core/Avatar';
-import Alert from '@material-ui/lab/Alert';
+import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
-import Autocomplete from '@material-ui/lab/Autocomplete';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import Paper from '@material-ui/core/Paper';
-import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import { Tooltip, InputAdornment } from '@material-ui/core';
-import Typography from '@material-ui/core/Typography';
+import Paper from '@material-ui/core/Paper';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
-import UserService from '../services/UserService';
-import { useHistory } from 'react-router-dom';
-import Copyright from './Copyright';
-import DistrictService from '../services/DistrictService';
-import SecurityIcon from '@material-ui/icons/Security';
+import TextField from '@material-ui/core/TextField';
+import Typography from '@material-ui/core/Typography';
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
+import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import SecurityIcon from '@material-ui/icons/Security';
+import Alert from '@material-ui/lab/Alert';
+import Autocomplete from '@material-ui/lab/Autocomplete';
+import React, { useEffect, useRef, useState } from 'react';
 import { Checkmark } from 'react-checkmark';
+import { useHistory } from 'react-router-dom';
+import DistrictService from '../services/DistrictService';
+import UserService from '../services/UserService';
+import Copyright from './Copyright';
 
 const useStyles = makeStyles((theme) => ({
     root: {

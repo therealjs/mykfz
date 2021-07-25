@@ -1,26 +1,19 @@
 'use strict';
 
-import React, { useState, useEffect } from 'react';
-import { withRouter } from 'react-router';
-import UserService from '../services/UserService';
 import Avatar from '@material-ui/core/Avatar';
+import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
-import { Link, Redirect } from 'react-router-dom';
-import { Checkmark } from 'react-checkmark';
 import Grid from '@material-ui/core/Grid';
-import Box from '@material-ui/core/Box';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
-import { useHistory } from 'react-router-dom';
-import Nfc from 'nfc-react-web';
+import Typography from '@material-ui/core/Typography';
+import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import React, { useEffect, useState } from 'react';
+import { withRouter } from 'react-router';
+import { Redirect, useHistory } from 'react-router-dom';
 import Copyright from '../components/Copyright';
 import UserVerification from '../components/UserVerification';
+import UserService from '../services/UserService';
 
 const useStyles = makeStyles((theme) => ({
     paper: {

@@ -1,27 +1,24 @@
 'use strict';
 
-import React from 'react';
-import { Link } from 'react-router-dom';
-
 import {
-    Card,
     CircularProgress,
     Grid,
     IconButton,
-    TableContainer,
+    Paper,
     Table,
-    TableHead,
-    TableRow,
     TableBody,
     TableCell,
-    Paper
+    TableContainer,
+    TableHead,
+    TableRow
 } from '@material-ui/core';
-import { withRouter } from 'react-router-dom';
-import LicensePlate from './LicensePlate';
-import UserService from '../services/UserService';
-import LicensePlateService from '../services/LicensePlateService';
 import DeleteIcon from '@material-ui/icons/Delete';
 import { Alert, AlertTitle } from '@material-ui/lab';
+import React from 'react';
+import { withRouter } from 'react-router-dom';
+import LicensePlateService from '../services/LicensePlateService';
+import UserService from '../services/UserService';
+import LicensePlate from './LicensePlate';
 
 const makeLogos = require('../../resources/carLogos');
 

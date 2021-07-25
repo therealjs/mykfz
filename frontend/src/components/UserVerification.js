@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
     buttonSuccess: {
         backgroundColor: '#7ac142',
         '&:hover': {
-            backgroundColor: '#7ac142',
+            backgroundColor: '#7ac142'
         }
     },
     buttonFailure: {
@@ -74,17 +74,17 @@ const WebcamCapture = () => {
     }
 
     function StartButton() {
-        return(
+        return (
             <Button
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-            onClick={startVerification}
+                fullWidth
+                variant="contained"
+                color="primary"
+                className={classes.submit}
+                onClick={startVerification}
             >
-            Start Verification
-        </Button>
-        )
+                Start Verification
+            </Button>
+        );
     }
 
     // verified states
@@ -246,99 +246,134 @@ const WebcamCapture = () => {
     function CameraVerification() {
         const liveWebcam = (
             <Grid item>
-                        <Grid container direction="column" spacing={2} justify="center" alignItems="center">
-                            <Grid item>
-                                <Webcam
-                                    imageSmoothing={false}
-                                    audio={false}
-                                    height={300}
-                                    ref={webcamRef}
-                                    screenshotFormat="image/jpeg"
-                                    width={600}
-                                    screenshotQuality={1}
-                                />
-    
-                            </Grid>
-                            <Grid item>
-                            <Button onClick={capture} variant="contained"
-                                    color="primary" startIcon={<PhotoIcon />}>Capture</Button>
-                        </Grid>
-                        </Grid>
+                <Grid
+                    container
+                    direction="column"
+                    spacing={2}
+                    justify="center"
+                    alignItems="center"
+                >
+                    <Grid item>
+                        <Webcam
+                            imageSmoothing={false}
+                            audio={false}
+                            height={300}
+                            ref={webcamRef}
+                            screenshotFormat="image/jpeg"
+                            width={600}
+                            screenshotQuality={1}
+                        />
                     </Grid>
+                    <Grid item>
+                        <Button
+                            onClick={capture}
+                            variant="contained"
+                            color="primary"
+                            startIcon={<PhotoIcon />}
+                        >
+                            Capture
+                        </Button>
+                    </Grid>
+                </Grid>
+            </Grid>
         );
 
         const capturedWebcam = (
             <Grid item>
-                            <Grid container direction="column" spacing={2} justify="center" alignItems="center">
+                <Grid
+                    container
+                    direction="column"
+                    spacing={2}
+                    justify="center"
+                    alignItems="center"
+                >
+                    <Grid item>
+                        <img
+                            style={{ width: '450px' }}
+                            src={monochrome}
+                            alt="Image"
+                        />
+                    </Grid>
+                    <Grid item>
+                        <div className={classes.slider}>
+                            <Typography id="continuous-slider" gutterBottom>
+                                Brightness
+                            </Typography>
+                            <Grid container spacing={2}>
                                 <Grid item>
-                                    <img style={{width: "450px"}} src={monochrome} alt="Image" />
+                                    <RemoveIcon />
+                                </Grid>
+                                <Grid item xs>
+                                    <Slider
+                                        step={5}
+                                        value={dropOff}
+                                        onChange={handleChange}
+                                        min={200}
+                                        max={450}
+                                    />
                                 </Grid>
                                 <Grid item>
-                                    <div className={classes.slider}>
-                                        <Typography id="continuous-slider" gutterBottom>
-                                            Brightness
-                                        </Typography>
-                                        <Grid container spacing={2}>
-                                            <Grid item>
-                                            <RemoveIcon />
-                                            </Grid>
-                                            <Grid item xs>
-                                            <Slider
-                                                step={5}
-                                                value={dropOff}
-                                                onChange={handleChange}
-                                                min={200}
-                                                max={450}
-                                            />
-                                            </Grid>
-                                            <Grid item>
-                                            <AddIcon />
-                                            </Grid>
-                                        </Grid>
-                                    </div>
+                                    <AddIcon />
                                 </Grid>
-                                <Grid item>
-                                    <Button onClick={recognize} variant="contained"
-                                            color="primary" startIcon={<LoopIcon />}>Recognize</Button>
-                                </Grid>
-                                <Grid item>
-                                    <Button onClick={resetMonochrome} variant="contained"
-                                            color="primary">New capture</Button>
-                                </Grid>
-    
                             </Grid>
-                        </Grid>
-        )
-
-        return (
-            <Grid container direction="column" spacing={2} justify="center" alignItems="center">         
-                <Grid item>
-                    <Grid container spacing={2} alignItems="flex-start" justify="center">
-                    { monochrome == null ?
-                        liveWebcam
-                    :   capturedWebcam 
-                    }
+                        </div>
+                    </Grid>
+                    <Grid item>
+                        <Button
+                            onClick={recognize}
+                            variant="contained"
+                            color="primary"
+                            startIcon={<LoopIcon />}
+                        >
+                            Recognize
+                        </Button>
+                    </Grid>
+                    <Grid item>
+                        <Button
+                            onClick={resetMonochrome}
+                            variant="contained"
+                            color="primary"
+                        >
+                            New capture
+                        </Button>
+                    </Grid>
                 </Grid>
-                </Grid>
-                    {
-                        running ? 
-                        <Grid item xs>
-                            {<CircularProgress size={56}/>}
-                            
-                        </Grid> 
-                        :[]
-                    }
-                    <Grid item >
-                        <Decision/>
-                    </Grid> 
             </Grid>
         );
-    };
 
-    return (
-            cameraActive ? <CameraVerification />
-            : <StartButton />
-    );
+        return (
+            <Grid
+                container
+                direction="column"
+                spacing={2}
+                justify="center"
+                alignItems="center"
+            >
+                <Grid item>
+                    <Grid
+                        container
+                        spacing={2}
+                        alignItems="flex-start"
+                        justify="center"
+                    >
+                        {monochrome == null ? liveWebcam : capturedWebcam}
+                    </Grid>
+                </Grid>
+                {running ? (
+                    <Grid item xs>
+                        {<CircularProgress size={56} />}
+                    </Grid>
+                ) : (
+                    []
+                )}
+                <Grid item>
+                    <Decision />
+                </Grid>
+            </Grid>
+        );
+    }
+
+    return cameraActive ? <CameraVerification /> : <StartButton />;
 };
 
 export default function UserVerification() {

@@ -1,38 +1,34 @@
 'use strict';
 
-import React from 'react';
 import {
-    Grid,
+    Button,
     Card,
-    TextField,
+    FormControl,
+    FormControlLabel,
+    FormGroup,
+    FormLabel,
+    Grid,
     InputAdornment,
     InputLabel,
-    FormGroup,
-    FormControl,
-    FormLabel,
-    Select,
     MenuItem,
-    Button,
-    FormControlLabel,
-    RadioGroup,
     Radio,
+    RadioGroup,
+    Select,
     Switch,
+    TextField,
     Tooltip,
     Typography
 } from '@material-ui/core';
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
-
-import { withRouter } from 'react-router-dom';
-
-import VehicleService from '../services/VehicleService';
-import UserService from '../services/UserService';
-import VINService from '../services/VINService';
-import { withStyles } from '@material-ui/styles';
 import Alert from '@material-ui/lab/Alert';
-import Snackbar from '@material-ui/core/Snackbar';
-import MuiAlert from '@material-ui/lab/Alert';
+import { withStyles } from '@material-ui/styles';
+import React from 'react';
+import { withRouter } from 'react-router-dom';
 import DistrictService from '../services/DistrictService';
 import LicensePlateService from '../services/LicensePlateService';
+import UserService from '../services/UserService';
+import VehicleService from '../services/VehicleService';
+import VINService from '../services/VINService';
 
 const LightTooltip = withStyles(() => ({
     tooltip: {

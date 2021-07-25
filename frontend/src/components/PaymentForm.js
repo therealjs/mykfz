@@ -1,13 +1,10 @@
-import React, { useState } from 'react';
-import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
-import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
+import Typography from '@material-ui/core/Typography';
+import React from 'react';
+import { Checkmark } from 'react-checkmark';
 import { PayPalButton } from 'react-paypal-button-v2';
 import ProcessService from '../services/ProcessService';
-import { Checkmark } from 'react-checkmark';
-import Button from '@material-ui/core/Button';
 
 export default function PaymentForm({ process, onProcessPaid }) {
     const clientId =

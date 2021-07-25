@@ -1,20 +1,19 @@
-import React, { useState, useEffect } from 'react';
 import Avatar from '@material-ui/core/Avatar';
-import Alert from '@material-ui/lab/Alert';
+import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import TextField from '@material-ui/core/TextField';
-import Autocomplete from '@material-ui/lab/Autocomplete';
-import Link from '@material-ui/core/Link';
-import Paper from '@material-ui/core/Paper';
-import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import Typography from '@material-ui/core/Typography';
+import Paper from '@material-ui/core/Paper';
 import { makeStyles } from '@material-ui/core/styles';
-import UserService from '../services/UserService';
-import DistrictService from '../services/DistrictService';
+import TextField from '@material-ui/core/TextField';
+import Typography from '@material-ui/core/Typography';
+import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import Alert from '@material-ui/lab/Alert';
+import Autocomplete from '@material-ui/lab/Autocomplete';
+import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import DistrictService from '../services/DistrictService';
+import UserService from '../services/UserService';
 import Copyright from './Copyright';
 
 const useStyles = makeStyles((theme) => ({

@@ -2,26 +2,23 @@ import {
     Button,
     FormControl,
     FormControlLabel,
-    FormGroup,
-    FormLabel,
     Grid,
     InputAdornment,
     InputLabel,
     MenuItem,
     Select,
     TextField,
-    Typography,
-    Tooltip
+    Tooltip,
+    Typography
 } from '@material-ui/core';
 import Checkbox from '@material-ui/core/Checkbox';
-import React, { useState, useEffect } from 'react';
-import { withRouter, Link, useHistory } from 'react-router';
-import { withStyles } from '@material-ui/styles';
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
-import { PayPalButton } from 'react-paypal-button-v2';
+import Alert from '@material-ui/lab/Alert';
+import { withStyles } from '@material-ui/styles';
+import React, { useEffect, useState } from 'react';
+import { useHistory, withRouter } from 'react-router';
 import LicensePlateService from '../services/LicensePlateService';
 import UserService from '../services/UserService';
-import Alert from '@material-ui/lab/Alert';
 
 const LightTooltip = withStyles(() => ({
     tooltip: {
@@ -74,15 +71,6 @@ function RegisterProcessFormFields({
         return <h2>Loading</h2>;
     }
 
-    // TODO sollte eigentlich die validity der reservation gecheckt werden (nicht der plate)
-    // const validPlates = reservedPlates.filter((plate) => {
-    //     if (!plate.expireAt) {
-    //         return false;
-    //     }
-    //     const currentTime = new Date().getTime();
-    //     const expiryTime = new Date(plate.expireAt).getTime();
-    //     return expiryTime > currentTime;
-    // });
     const validPlatesAvailable = validPlates.length > 0;
 
     const tooltipImgTxt = (
@@ -161,7 +149,12 @@ function RegisterProcessFormFields({
             </Grid>
             <Grid item xs={12}>
                 <FormControl fullWidth variant="outlined">
-                    <InputLabel style={{ backgroundColor: 'white',  padding: "0 10px 0 5px"}}>
+                    <InputLabel
+                        style={{
+                            backgroundColor: 'white',
+                            padding: '0 10px 0 5px'
+                        }}
+                    >
                         Reserved Plate *
                     </InputLabel>
                     <Select

@@ -1,40 +1,38 @@
 'use strict';
 
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { withStyles } from '@material-ui/core/styles';
-import PropTypes from 'prop-types';
 import {
     Button,
     Card,
-    CardHeader,
     CardActions,
     CardContent,
+    CardHeader,
     Collapse,
     Grid,
-    Tooltip,
-    IconButton
+    IconButton,
+    Tooltip
 } from '@material-ui/core';
 import Avatar from '@material-ui/core/Avatar';
-import EditIcon from '@material-ui/icons/Edit';
-import PrintIcon from '@material-ui/icons/Print';
-import LicensePlate from './LicensePlate';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import clsx from 'clsx';
-import DeleteIcon from '@material-ui/icons/Delete';
-import DirectionsCarIcon from '@material-ui/icons/DirectionsCar';
-
+import Chip from '@material-ui/core/Chip';
+import { withStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-
+import DeleteIcon from '@material-ui/icons/Delete';
+import DirectionsCarIcon from '@material-ui/icons/DirectionsCar';
+import EditIcon from '@material-ui/icons/Edit';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import PrintIcon from '@material-ui/icons/Print';
+import clsx from 'clsx';
+import PropTypes from 'prop-types';
+import React from 'react';
+import { Link } from 'react-router-dom';
 import LicensePlateService from '../services/LicensePlateService';
 import ProcessService from '../services/ProcessService';
-import Chip from '@material-ui/core/Chip';
-import VehicleEditDialog from './VehicleEditDialog';
 import VehicleService from '../services/VehicleService';
+import LicensePlate from './LicensePlate';
+import VehicleEditDialog from './VehicleEditDialog';
 
 const makeLogos = require('../../resources/carLogos');
 

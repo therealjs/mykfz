@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
+import CircularProgress from '@material-ui/core/CircularProgress';
+import Divider from '@material-ui/core/Divider';
+import Grid from '@material-ui/core/Grid';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
-import Divider from '@material-ui/core/Divider';
 import ListItemText from '@material-ui/core/ListItemText';
-import Grid from '@material-ui/core/Grid';
+import { makeStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
 import Alert from '@material-ui/lab/Alert';
-import ProcessService from '../services/ProcessService';
-import CircularProgress from '@material-ui/core/CircularProgress';
+import React, { useEffect, useState } from 'react';
 import LicensePlateService from '../services/LicensePlateService';
+import ProcessService from '../services/ProcessService';
 
 const useStyles = makeStyles((theme) => ({
     listItem: {
@@ -76,15 +76,11 @@ function RegistrationReviewList({ process }) {
                 <Divider />
                 <ListItem className={classes.listItem}>
                     <ListItemText primary="Registration fee" />
-                    <Typography variant="body2">
-                        €27.90
-                    </Typography>
+                    <Typography variant="body2">€27.90</Typography>
                 </ListItem>
                 <ListItem className={classes.listItem}>
                     <ListItemText primary="Reserved license plate fee" />
-                    <Typography variant="body2">
-                        €10.20
-                    </Typography>
+                    <Typography variant="body2">€10.20</Typography>
                 </ListItem>
                 <ListItem className={classes.listItem}>
                     <ListItemText primary="Total" />
@@ -130,9 +126,7 @@ function DeregistrationReviewList({ process }) {
                 <Divider />
                 <ListItem className={classes.listItem}>
                     <ListItemText primary="Deregistration fee" />
-                    <Typography variant="body2">
-                        €5.70
-                    </Typography>
+                    <Typography variant="body2">€5.70</Typography>
                 </ListItem>
                 <ListItem className={classes.listItem}>
                     <ListItemText primary="Total" />

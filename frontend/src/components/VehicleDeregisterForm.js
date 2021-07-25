@@ -1,20 +1,19 @@
 import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
 import Stepper from '@material-ui/core/Stepper';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
-import React, { useState, useEffect } from 'react';
-import { withRouter, Link, useHistory } from 'react-router';
+import Alert from '@material-ui/lab/Alert';
+import React, { useEffect, useState } from 'react';
+import { useHistory, withRouter } from 'react-router';
 import { useParams } from 'react-router-dom';
+import VehicleService from '../services/VehicleService';
 import PaymentForm from './PaymentForm';
 import ProcessDetailsForm from './ProcessDetailsForm';
 import Review from './Review';
-import VehicleService from '../services/VehicleService';
-import UserService from '../services/UserService';
-import Alert from '@material-ui/lab/Alert';
-import Grid from '@material-ui/core/Grid';
 
 const useStyles = makeStyles((theme) => ({
     appBar: {
