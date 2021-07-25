@@ -162,8 +162,8 @@ var transporter = nodemailer.createTransport({
 var mailOptions = {
     from: 'mikefrommykfz@gmail.com',
     to: 'goerens.p@gmail.com',
-    subject: 'Registration myKFZ',
-    text: 'Your registration was successful!'
+    subject: 'Welcome to myKFZ!',
+    html: { path: '../backend/resources/email-registration.html' }
 };
 
 function email(username) {
