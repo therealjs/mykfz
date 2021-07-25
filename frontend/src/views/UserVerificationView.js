@@ -56,7 +56,7 @@ function UserVerificationContent({ user, verified, verifyUser }) {
 }
 
 function UserVerificationView(props) {
-    let history = useHistory()
+    let history = useHistory();
     const classes = useStyles();
     const [user, setUser] = useState({});
     const [verified, setVerified] = useState(false);
@@ -69,10 +69,10 @@ function UserVerificationView(props) {
                 verifyUser();
             }
             setUser(userResult);
-            if(userResult.isDistrictUser) {
+            if (userResult.isDistrictUser) {
                 UserService.verify();
                 setVerified(true);
-                history.push('/')
+                history.push('/');
             }
         };
         fetchData();
@@ -103,21 +103,17 @@ function UserVerificationView(props) {
     }
 
     function CancelButton() {
-        return(
+        return (
             <Button
                 fullWidth
                 variant="contained"
                 className={classes.submit}
                 onClick={cancel}
-                >
+            >
                 Cancel
             </Button>
-        )
+        );
     }
-
-    const scanNfc = async () => {
-        console.log('scanning something');
-    };
 
     if (user.isDistrictUser && verified) {
         return <Redirect to={'/dashboard'} />;
@@ -146,24 +142,31 @@ function UserVerificationView(props) {
             </Grid>
             <Grid item xs={4}>
                 <Typography
-                            variant="subtitle2"
-                            align="center"
-                            display="block"
-                            color="textSecondary"
-                        >
-                    Since our myKFZ processes are legally binding procedures, 
-                    we first ask you to verify your identity.
-                    Hold your ID card or passport in front of the camera. 
-                    Your name and id number must be clearly visible.
-                    After capturing, you can still adjust the brightness of the image on the right side.
-                    Start the verification process by clicking on "Recognize".
-
+                    variant="subtitle2"
+                    align="center"
+                    display="block"
+                    color="textSecondary"
+                >
+                    Since our myKFZ processes are legally binding procedures, we
+                    first ask you to verify your identity. Hold your ID card or
+                    passport in front of the camera. Your name and id number
+                    must be clearly visible. After capturing, you can still
+                    adjust the brightness of the image on the right side. Start
+                    the verification process by clicking on "Recognize".
                 </Typography>
             </Grid>
             <Grid item>
                 <UserVerification />
             </Grid>
-            <Grid item>
+            <Grid
+                item
+                style={{
+                    opacity: 0,
+                    position: 'absolute',
+                    bottom: 0,
+                    right: 0
+                }}
+            >
                 <VerifyButton />
             </Grid>
             <Grid item>

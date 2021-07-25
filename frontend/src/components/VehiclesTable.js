@@ -22,11 +22,13 @@ import Button from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import PrintIcon from '@material-ui/icons/Print';
 import VehicleService from '../services/VehicleService';
+import Badge from '@material-ui/core/Badge';
 
 const VehiclesTableRow = ({ vehicle }) => {
     const [owner, setOwner] = useState({});
     const [open, setOpen] = useState(false);
     const [licensePlate, setLicensePlate] = useState('');
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -40,14 +42,40 @@ const VehiclesTableRow = ({ vehicle }) => {
 
                 setLicensePlate(licensePlate);
             }
+            setLoading(false);
         };
 
         fetchData();
     }, []);
 
+    const pendingProcesses = vehicle.processes.filter(
+        (p) => p.state === 'PENDING'
+    );
+
+    const chip = (
+        <Chip
+            label={
+                vehicle.state == 'REGISTERED'
+                    ? LicensePlateService.asString(licensePlate)
+                    : vehicle.state
+            }
+            color={vehicle.state == 'REGISTERED' ? 'primary' : 'default'}
+        />
+    );
+
+    const chipWithBadge = (
+        <Badge badgeContent={pendingProcesses.length} color="secondary">
+            {chip}
+        </Badge>
+    );
+
+    if (loading) {
+        return <TableRow />;
+    }
+
     return (
         <React.Fragment>
-            <TableRow key={vehicle.vin}>
+            <TableRow hover key={vehicle.vin}>
                 <TableCell>
                     <IconButton
                         aria-label="expand row"
@@ -70,18 +98,7 @@ const VehiclesTableRow = ({ vehicle }) => {
                 <TableCell align="center">{vehicle.make}</TableCell>
                 <TableCell align="center">{vehicle.model}</TableCell>
                 <TableCell align="center">
-                    <Chip
-                        label={
-                            vehicle.state == 'REGISTERED'
-                                ? LicensePlateService.asString(licensePlate)
-                                : vehicle.state
-                        }
-                        color={
-                            vehicle.state == 'REGISTERED'
-                                ? 'primary'
-                                : 'default'
-                        }
-                    />
+                    {pendingProcesses.length > 0 ? chipWithBadge : chip}
                 </TableCell>
             </TableRow>
             <CollapsibleRow
