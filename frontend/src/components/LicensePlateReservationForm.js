@@ -89,6 +89,10 @@ class LicensePlateReservationForm extends React.Component {
             const re = /^[0-9?]{1,4}$/;
             if (event.target.value === '' || re.test(event.target.value)) {
                 this.setState({ digits: event.target.value });
+            } else {
+                this.handleErrorMessage(
+                    "This field only accepts digits and the wildcard character '?'."
+                );
             }
         } else if (event.target.name === 'letters') {
             // only allow letters
@@ -96,6 +100,10 @@ class LicensePlateReservationForm extends React.Component {
             const re = /^[A-Z?]{1,2}$/;
             if (value === '' || re.test(value)) {
                 this.setState({ letters: value });
+            } else {
+                this.handleErrorMessage(
+                    "This field only accepts letters and the wildcard character '?'."
+                );
             }
         } else {
             // area code
@@ -223,6 +231,30 @@ class LicensePlateReservationForm extends React.Component {
                                             justify="center"
                                             spacing={3}
                                         >
+                                            <Grid item xs={12}>
+                                                <Typography
+                                                    // syle={{ marginTop: '10px' }}
+                                                    variant="body1"
+                                                    // align="center"
+                                                    // display="block"
+                                                    // color="textSecondary"
+                                                    // gutterBottom
+                                                >
+                                                    Reserve a free license plate
+                                                    for up to 30 days. This
+                                                    plate may be used when
+                                                    registering a vehicle within
+                                                    myKfz.
+                                                </Typography>
+                                            </Grid>
+                                            <Grid item xs={12}>
+                                                <Alert severity="info">
+                                                    Hint – You can use the
+                                                    wildcard character '?' in
+                                                    your query to search for all
+                                                    matching patterns!
+                                                </Alert>
+                                            </Grid>
                                             <Grid item xs={12}>
                                                 <FormGroup
                                                     row
@@ -490,7 +522,7 @@ class LicensePlateReservationForm extends React.Component {
                                 )}
                             </Grid>
                             <Typography
-                                syle={{ marginTop: '10px' }}
+                                style={{ marginTop: '1em' }}
                                 variant="caption"
                                 align="center"
                                 display="block"

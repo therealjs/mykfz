@@ -16,6 +16,7 @@ import Review from './Review';
 import VehicleService from '../services/VehicleService';
 import UserService from '../services/UserService';
 import LicensePlateService from '../services/LicensePlateService';
+import ProcessService from '../services/ProcessService';
 
 const useStyles = makeStyles((theme) => ({
     appBar: {
@@ -287,6 +288,21 @@ function VehicleRegisterForm({ user }) {
         }
     };
 
+    const handleDownloadConfirmation = async () => {
+        if (!isSubmitting) {
+            setIsSubmitting(true);
+            try {
+                await ProcessService.generateProcessStatusPDF(
+                    vehicle._id,
+                    process._id
+                );
+            } catch (err) {
+                console.error(err);
+            }
+            setIsSubmitting(false);
+        }
+    };
+
     const handleSubmit = async () => {
         if (!isSubmitting) {
             setIsSubmitting(true);
@@ -405,6 +421,19 @@ function VehicleRegisterForm({ user }) {
                                 </Typography>
                                 <Button
                                     style={{ marginTop: '1em' }}
+                                    disabled={
+                                        isSubmitting || !process._id // undefined
+                                    }
+                                    fullWidth
+                                    variant="contained"
+                                    color="default"
+                                    onClick={handleDownloadConfirmation}
+                                >
+                                    Print Confirmation
+                                </Button>
+                                <Button
+                                    style={{ marginTop: '1em' }}
+                                    disabled={isSubmitting}
                                     fullWidth
                                     variant="contained"
                                     color="primary"
