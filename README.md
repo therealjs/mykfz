@@ -41,7 +41,7 @@ In case you would like to register your vehicle, make sure to reserve a license 
 After succesfully completing a process form and paying, a district administrative may approve your process.
 You can track the status of your process in the vehicle dashboard.
 
-# For district
+# For districts
 The login for districts is available at "/districtLogin".
 Note that it is not possible to register your district on your own. 
 Please contact us via Mail (mikefrommykfz@gmail.com) to create an account for your district!
