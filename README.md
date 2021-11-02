@@ -1,10 +1,6 @@
 ## 👥 Group Members
 
-| 👤                    | 
-| Daniel Meint          | 
-| Jan Seelbach          | 
-| Janik Schnellbach     | 
-| Philippe Goerens      |
+Daniel Meint, Jan Seelbach, Janik Schnellbach, Philippe Goerens
 
 Our application consists of three parts: database (mongodb), backend (express, node) and frontend (react).
 Please refer to the READMEs of backend and frontend on how to set them up initially.
