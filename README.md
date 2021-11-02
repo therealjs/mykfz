@@ -1,17 +1,10 @@
-# myKFZ codebase
-
-<p align="center">
-    ![Alt text](/screenshots/landing-page.gif?raw=true "landingpage")
-</p>
-
 ## 👥 Group Members
 
-| 👤                    | 📨                           |
-|-----------------------|------------------------------|
-| Daniel Meint          | d.meint@tum.de               |
-| Jan Seelbach          | jan.seelbach@tum.de          |
-| Janik Schnellbach     | janik.schnellbach@tum.de     |
-| Philippe Goerens      | p.goerens@tum.de             |
+| 👤                    | 
+| Daniel Meint          | 
+| Jan Seelbach          | 
+| Janik Schnellbach     | 
+| Philippe Goerens      |
 
 Our application consists of three parts: database (mongodb), backend (express, node) and frontend (react).
 Please refer to the READMEs of backend and frontend on how to set them up initially.
@@ -41,7 +34,7 @@ are at the intersection of both of them, we strove to create an application that
 The login for vehicle owners is reachable at "/login".
 After a succesful registration and login, you need to verify yourself.
 Disclaimer: We tried to mock the verification process as best as possible. In this step, we try to recognize the users name on his personal ID. In case it fails or takes too long, we provided the possibility to skip the verification by pressing a button on the bottom right (hint: the button is invisible but clickable. After clicking it, you will be navigated to the dashboard).
-![Alt text](/screenshots/user-verification.png?raw=true "User verification")
+(removed screen shot due to personal information.)
 
 Then you can access the dashoard: 
 ![Alt text](/screenshots/dashboard.png?raw=true "dashboard")
